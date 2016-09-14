@@ -1,0 +1,60 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{fix-cm}
+\usepackage{xifthen}
+\definecolor{friendlyA}{RGB}{128, 224, 255}
+\definecolor{hostileA}{RGB}{255, 128, 128}
+\definecolor{neutralA}{RGB}{170, 255, 170}
+\definecolor{unknownA}{RGB}{255, 255, 128}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\pgfkeys{/tikz/.cd,
+%--STYLES--%
+friendly/.style={fill=friendlyA},
+hostile/.style={fill=hostileA},
+neutral/.style={fill=neutralA},
+unknown/.style={fill=unknownA},
+monochrome/.style={fill=white}
+unclearstyle/.style={dashed},
+%--AIR/TEMPLATES--%
+faction/.store in=\faction,
+faction=friendly,
+unclear/.code= \ifthenelse{\boolean{#1}}{\tikzset{unclearstyle}}{}
+unclear=false,
+%monochrome/.code= \ifthenelse{\boolean{#1}}{\tikzset{tikz/monochrome}}{},
+}
+
+\begin{document}
+
+\tikzset{
+air/friendly/.pic={
+\draw [fill] (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
+air/hostile/.pic={
+\draw [fill] (0.5, -0.5) -- (0.5, 0.21) -- (0, 0.71) --  (-0.5, 0.21) --  (-0.5, -0.5);},
+air/neutral/.pic={
+\draw [fill] (0.5, -0.5) -- (0.5, 0.5) -- (-0.5, 0.5) -- (-0.5, -0.5);},
+air/unknown/.pic={
+\draw [fill] (315:0.5) arc (-90:90: 0.354);
+\begin{scope}[rotate=90]
+	\draw [fill] (315:0.5) arc (-90:90: 0.354);
+\end{scope}
+\begin{scope}[rotate=180]
+	\draw [fill] (315:0.5) arc (-90:90: 0.354);
+\end{scope}
+	\fill (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;}
+}
+
+\newcommand{\NATOAir}[1][]{
+
+	\tikzset{faction=friendly, unclear=false,#1}
+
+	\pic[\faction]{air/\faction};
+
+
+}
+
+\begin{tikzpicture}
+\NATOAir[faction=friendly, unclear=true]
+\end{tikzpicture}
+
+\end{document}
