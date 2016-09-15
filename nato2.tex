@@ -10,7 +10,7 @@
 \usetikzlibrary{shapes.geometric, positioning}
 \tikzset{
 NATOSymb air/friendly/.pic={
-\draw [fill=NATOSymb@fill] (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
 NATOSymb air/hostile/.pic={
 \draw [fill=NATOSymb@fill] (0.5, -0.5) -- (0.5, 0.21) -- (0, 0.71) --  (-0.5, 0.21) --  (-0.5, -0.5);},
 NATOSymb air/neutral/.pic={
@@ -27,10 +27,12 @@ NATOSymb air/unknown/.pic={
 /NATOSymb/.search also={/tikz},
 /NATOSymb/.cd,
 fill/.code={\colorlet{NATOSymb@fill}{#1}},
+line/.store in= \NATOSymb@line,
 shape/.store in=\NATOSymb@shape,
 monochrome/.style={/NATOSymb/fill=white},
+unclear/.style={/NATOSymb/line=densely dotted},
 fill=gray,
-line/.code={\let{NATOSymb@line}{#1}},
+line=solid,
 }
 \newcommand{\NATOAir}[1][]{
 \tikzset{%	
@@ -50,7 +52,7 @@ line/.code={\let{NATOSymb@line}{#1}},
 
 
 \begin{tikzpicture}
-\NATOAir[faction=unknown, monochrome]
+\NATOAir[faction=friendly, unclear]
 \end{tikzpicture}
 
 \end{document}
