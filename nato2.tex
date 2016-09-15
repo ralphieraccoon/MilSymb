@@ -2,33 +2,99 @@
 \makeatletter
 \usepackage[T1]{fontenc}
 \usepackage{fix-cm}
-\usepackage{xifthen}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
 \definecolor{unknownA}{RGB}{255, 255, 128}
 \usetikzlibrary{shapes.geometric, positioning}
+\tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
+  (current bounding box.south east) --
+  (current bounding box.south west) --
+  (current bounding box.north west) --
+  (current bounding box.north east)}
+]
 \tikzset{
 NATOSymb air/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
 NATOSymb air/hostile/.pic={
-\draw [fill=NATOSymb@fill] (0.5, -0.5) -- (0.5, 0.21) -- (0, 0.71) --  (-0.5, 0.21) --  (-0.5, -0.5);},
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (0.5, -0.5) -- (0.5, 0.21) -- (0, 0.71) --  (-0.5, 0.21) --  (-0.5, -0.5);},
 NATOSymb air/neutral/.pic={
-\draw [fill=NATOSymb@fill] (0.5, -0.5) -- (0.5, 0.5) -- (-0.5, 0.5) -- (-0.5, -0.5);},
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (0.5, -0.5) -- (0.5, 0.5) -- (-0.5, 0.5) -- (-0.5, -0.5);},
 NATOSymb air/unknown/.pic={
-\draw [fill=NATOSymb@fill] (315:0.5) arc (-90:90: 0.354);
+\draw [fill=NATOSymb@fill, \NATOSymb@linel] (315:0.5) arc (-90:90: 0.354);
 \begin{scope}[rotate=90]
-	\draw [fill=NATOSymb@fill] (315:0.5) arc (-90:90: 0.354);
+	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
 \end{scope}
 \begin{scope}[rotate=180]
-	\draw [fill=NATOSymb@fill] (315:0.5) arc (-90:90: 0.354);
+	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
 \end{scope}
-	\fill [fill=NATOSymb@fill] (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;}
+	\fill [fill=NATOSymb@fill] (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;},
+NATOSymb air/main/military/.pic={
+\node at (0,0) {MIL};},
+NATOSymb air/main/civilian/.pic={
+\node at (0,0) {CIV};},
+NATOSymb air/main/military fixed wing/.pic={
+\fill (-0.36,0.125) arc (77:275:0.075 and 0.125) -- (0,0) -- cycle;
+\begin{scope}[xscale=-1]
+\fill (-0.36,0.125) arc (77:275:0.075 and 0.125) -- (0,0) -- cycle;
+\end{scope}},
+NATOSymb air/main/civilian fixed wing/.pic={
+\draw (-0.36,0.125) arc (77:275:0.075 and 0.125) -- (0,0) -- cycle;
+\begin{scope}[xscale=-1]
+\draw (-0.36,0.125) arc (77:275:0.075 and 0.125) -- (0,0) -- cycle;
+\end{scope}},
+NATOSymb air/main/military rotary wing/.pic={
+\fill (0.44, 0.15) -- (0.44, -0.15) -- (-0.44, 0.15) -- (-0.44, -0.15) -- cycle;},
+NATOSymb air/main/civilian rotary wing/.pic={
+\draw (0.44, 0.15) -- (0.44, -0.15) -- (-0.44, 0.15) -- (-0.44, -0.15) -- cycle;},
+NATOSymb air/main/military balloon/.pic={
+\fill (0, 0.025) circle (0.175);
+\fill (-0.05, 0) -- (-0.05,-0.2) -- (0.05, -0.2) -- (0.05,0) -- cycle;},
+NATOSymb air/main/civilian balloon/.pic={
+\draw (0, 0.025) circle (0.175);
+\begin{scope}
+\clip (0, 0.025) circle (0.175) [reverseclip];
+	\draw (-0.05, 0) -- (-0.05,-0.2) -- (0.05, -0.2) -- (0.05,0) -- cycle;
+\end{scope}},
+NATOSymb air/main/military airship/.pic={
+\fill (0, 0) ellipse (0.45 and 0.15);
+\fill (0.2, 0) -- (0.3, 0.175) -- (0.4,0.175) -- (0.375,0) -- (0.4,-0.175) -- (0.3, -0.175) -- cycle;},
+NATOSymb air/main/civilian airship/.pic={
+\draw (0, 0) ellipse (0.45 and 0.15);
+\begin{scope}
+\clip (0, 0) ellipse (0.45 and 0.15) [reverseclip];
+	\draw (0.2, 0) -- (0.3, 0.175) -- (0.4,0.175) -- (0.375,0) -- (0.4,-0.175) -- (0.3, -0.175) -- cycle;
+\end{scope}},
+NATOSymb air/main/uav/.pic={
+\fill (0, -0.1) -- (0.45, 0.05) -- (0.45,0.1) -- (0, 0.025) -- (-0.45, 0.1) -- (-0.45, 0.05) -- cycle;},
+NATOSymb air/main/air decoy/.pic={
+\fill (0.42, -0.2) -- (0.42, -0.175) --  (-0.42, -0.175) --  (-0.42, -0.2) -- cycle;
+\begin{scope}[shift={(-0.18,0)}]
+	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
+\end{scope}
+\begin{scope}[shift={(0.12,0)}]
+	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
+\end{scope}
+\begin{scope}[shift={(0.42,0)}]
+	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
+\end{scope};},
+NATOSymb air/main/medic/.pic={
+\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
+\begin{scope}[rotate=90]
+\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
+\end{scope}},
+NATOSymb air/main/attack/.pic={
+\node at (0,0) {A};},
+NATOSymb air/main/bomber/.pic={
+\node at (0,0) {B};},
+NATOSymb air/main/cargo/.pic={
+\node at (0,0) {C};},
 /NATOSymb/.search also={/tikz},
 /NATOSymb/.cd,
 fill/.code={\colorlet{NATOSymb@fill}{#1}},
 line/.store in= \NATOSymb@line,
 shape/.store in=\NATOSymb@shape,
+symbC/.store in=\NATOSymb@symbC,
 monochrome/.style={/NATOSymb/fill=white},
 unclear/.style={/NATOSymb/line=densely dotted},
 fill=gray,
@@ -42,17 +108,37 @@ line=solid,
    faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
    faction/unknown/.style={/NATOSymb/.cd, shape=air/unknown, fill=unknownA},
+   main/.is choice,
+   main/military/.style={/NATOSymb/.cd, symbC=air/main/military},
+   main/civilian/.style={/NATOSymb/.cd, symbC=air/main/civilian},
+   main/military fixed wing/.style={/NATOSymb/.cd, symbC=air/main/military fixed wing},
+   main/civilian fixed wing/.style={/NATOSymb/.cd, symbC=air/main/civilian fixed wing},
+   main/military rotary wing/.style={/NATOSymb/.cd, symbC=air/main/military rotary wing},
+   main/civilian rotary wing/.style={/NATOSymb/.cd, symbC=air/main/civilian rotary wing},
+   main/military balloon/.style={/NATOSymb/.cd, symbC=air/main/military balloon},
+   main/civilian balloon/.style={/NATOSymb/.cd, symbC=air/main/civilian balloon},
+   main/military airship/.style={/NATOSymb/.cd, symbC=air/main/military airship},
+   main/civilian airship/.style={/NATOSymb/.cd, symbC=air/main/civilian airship},
+   main/unmanned aerial vehicle/.style={/NATOSymb/.cd, symbC=air/main/uav},
+   main/air decoy/.style={/NATOSymb/.cd, symbC=air/main/air decoy},
+   main/medic/.style={/NATOSymb/.cd, symbC=air/main/medic},
+   main/attack/.style={/NATOSymb/.cd, symbC=air/main/attack},
+   main/bomber/.style={/NATOSymb/.cd, symbC=air/main/bomber},
+   main/cargo/.style={/NATOSymb/.cd, symbC=air/main/cargo},
    faction=friendly,
+   main=military,
    #1,
  }%
- \pic {NATOSymb \NATOSymb@shape};
+ \fontfamily{phv}\fontseries{bx}\selectfont \fontsize{10}{0}\selectfont
+ \pic {NATOSymb \NATOSymb@shape}; %Draw background shape
+ \pic {NATOSymb \NATOSymb@symbC}; %Draw main symbol
 }
 \makeatother
 \begin{document}
 
 
 \begin{tikzpicture}
-\NATOAir[faction=friendly, unclear]
+\NATOAir[faction=friendly, main=air decoy, unclear]
 \end{tikzpicture}
 
 \end{document}
