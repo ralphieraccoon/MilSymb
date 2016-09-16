@@ -21,14 +21,14 @@ NATOSymb air/hostile/.pic={
 NATOSymb air/neutral/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (0.5, -0.5) -- (0.5, 0.5) -- (-0.5, 0.5) -- (-0.5, -0.5);},
 NATOSymb air/unknown/.pic={
-\draw [fill=NATOSymb@fill, \NATOSymb@linel] (315:0.5) arc (-90:90: 0.354);
+\fill [fill=NATOSymb@fill] (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
 \begin{scope}[rotate=90]
 	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
 \end{scope}
 \begin{scope}[rotate=180]
 	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\end{scope}
-	\fill [fill=NATOSymb@fill] (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;},
+\end{scope}},
 NATOSymb air/main/military/.pic={
 \node at (0,0) {MIL};},
 NATOSymb air/main/civilian/.pic={
@@ -83,18 +83,38 @@ NATOSymb air/main/medic/.pic={
 \begin{scope}[rotate=90]
 \fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
 \end{scope}},
-NATOSymb air/main/attack/.pic={
-\node at (0,0) {A};},
-NATOSymb air/main/bomber/.pic={
-\node at (0,0) {B};},
-NATOSymb air/main/cargo/.pic={
-\node at (0,0) {C};},
+NATOSymb air/upper/medic/.pic={
+\begin{scope}[scale=0.7]
+\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
+\begin{scope}[rotate=90]
+\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
+\end{scope}
+\end{scope}},
+NATOSymb main/text/.pic={
+\fontsize{10}{0}\selectfont
+\node at (0,0) {#1};},
+NATOSymb main/textsquashed/.pic={
+\fontsize{10}{0}\selectfont
+\node at (0,0) [xscale=0.7] {#1};},
+NATOSymb main/textsmall/.pic={
+\fontsize{6}{0}\selectfont
+\node at (0,0) {#1};},
+NATOSymb main/textsmallsquashed/.pic={
+\fontsize{6}{0}\selectfont
+\node at (0,0) [xscale=0.7] {#1};},
 /NATOSymb/.search also={/tikz},
 /NATOSymb/.cd,
 fill/.code={\colorlet{NATOSymb@fill}{#1}},
+speed leader/.code 2 args={\draw (0,0) -- (#1:#2);},
+speed leader/.value required,
 line/.store in= \NATOSymb@line,
 shape/.store in=\NATOSymb@shape,
 symbC/.store in=\NATOSymb@symbC,
+symbCT/.store in=\NATOSymb@symbCT,
+symbU/.store in=\NATOSymb@symbU,
+symbUT/.store in=\NATOSymb@symbUT,
+symbL/.store in=\NATOSymb@symbL,
+symbLT/.store in=\NATOSymb@symbLT,
 monochrome/.style={/NATOSymb/fill=white},
 unclear/.style={/NATOSymb/line=densely dotted},
 fill=gray,
@@ -109,8 +129,8 @@ line=solid,
    faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
    faction/unknown/.style={/NATOSymb/.cd, shape=air/unknown, fill=unknownA},
    main/.is choice,
-   main/military/.style={/NATOSymb/.cd, symbC=air/main/military},
-   main/civilian/.style={/NATOSymb/.cd, symbC=air/main/civilian},
+   main/military/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MIL},
+   main/civilian/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CIV},
    main/military fixed wing/.style={/NATOSymb/.cd, symbC=air/main/military fixed wing},
    main/civilian fixed wing/.style={/NATOSymb/.cd, symbC=air/main/civilian fixed wing},
    main/military rotary wing/.style={/NATOSymb/.cd, symbC=air/main/military rotary wing},
@@ -122,23 +142,103 @@ line=solid,
    main/unmanned aerial vehicle/.style={/NATOSymb/.cd, symbC=air/main/uav},
    main/air decoy/.style={/NATOSymb/.cd, symbC=air/main/air decoy},
    main/medic/.style={/NATOSymb/.cd, symbC=air/main/medic},
-   main/attack/.style={/NATOSymb/.cd, symbC=air/main/attack},
-   main/bomber/.style={/NATOSymb/.cd, symbC=air/main/bomber},
-   main/cargo/.style={/NATOSymb/.cd, symbC=air/main/cargo},
-   faction=friendly,
+   main/attack/.style={/NATOSymb/.cd, symbC=main/text, symbCT=A},
+   main/bomber/.style={/NATOSymb/.cd, symbC=main/text, symbCT=B},
+   main/cargo/.style={/NATOSymb/.cd, symbC=main/text, symbCT=C},
+   main/fighter/.style={/NATOSymb/.cd, symbC=main/text, symbCT=F},
+   main/jammer/.style={/NATOSymb/.cd, symbC=main/text, symbCT=J},
+   main/tanker/.style={/NATOSymb/.cd, symbC=main/text, symbCT=K},
+   main/patrol/.style={/NATOSymb/.cd, symbC=main/text, symbCT=P},
+   main/reconnaissance/.style={/NATOSymb/.cd, symbC=main/text, symbCT=R},
+   main/trainer/.style={/NATOSymb/.cd, symbC=main/text, symbCT=T},
+   main/utility/.style={/NATOSymb/.cd, symbC=main/text, symbCT=U},
+   main/vertical short takeoff and landing/.style={/NATOSymb/.cd, symbC=main/text, symbCT=V},
+   main/airborne command post/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ACP},
+   main/airborne early warning/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AEW},
+   main/anti surface warfare/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=ASUW},
+   main/anti submarine warfare/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ASW},
+   main/communications/.style={/NATOSymb/.cd, symbC=main/text, symbCT=COM},
+   main/combat search and rescue/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=CSAR},
+   main/electronic support measures/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ESM},
+   main/government/.style={/NATOSymb/.cd, symbC=main/text, symbCT=GOV},
+   main/mine countermeasures/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MCM},
+   main/personnel recovery/.style={/NATOSymb/.cd, symbC=main/text, symbCT=PR},
+   main/passenger/.style={/NATOSymb/.cd, symbC=main/text, symbCT=PX},
+   main/search and rescue/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SAR},
+   main/suppression of enemy air defence/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=SEAD},
+   main/special operations forces/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SOF},
+   main/ultra light/.style={/NATOSymb/.cd, symbC=main/text, symbCT=UL},
+   main/very important person/.style={/NATOSymb/.cd, symbC=main/text, symbCT=VIP},
+   upper/.is choice,
+   upper/none/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=}, 
+   upper/medical evacuation/.style= {/NATOSymb/.cd, symbU=air/upper/medic},
+   upper/cargo/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=C}, 
+   upper/jammer/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=J},
+   upper/tanker/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=K},
+   upper/patrol/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=J}, 
+   upper/reconnaissance/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=P}, 
+   upper/jammer/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=R}, 
+   upper/trainer/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=T}, 
+   upper/utility/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=U}, 
+   upper/airborne command post/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=ACP}, 
+   upper/airborne early warning/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=AEW},
+   upper/anti surface warfare/.style= {/NATOSymb/.cd, symbU=main/textsmallsquashed, symbUT=ASUW},    
+   upper/anti submarine warfare/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=ASW}, 
+   upper/communications/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=COM},   
+   upper/combat search and rescue/.style= {/NATOSymb/.cd, symbU=main/textsmallsquashed, symbUT=CSAR}, 
+   upper/electronic support measures/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=ESM},   
+   upper/government flight/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=GOV},   
+   upper/mine countermeasures/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=MCM},   
+   upper/personnel recovery/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=PR},   
+   upper/passenger plane/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=PX},
+   upper/search and rescue/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=SAR},        
+   upper/suppression of enemy air defenses/.style= {/NATOSymb/.cd, symbU=main/textsmallsquashed, symbUT=SEAD},
+   upper/special operations forces/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=SOF},       
+   upper/ultra light/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=UL},   
+   upper/photographic/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=PH},   
+   upper/very important person/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=VIP},  
+   upper/escort/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=E},
+   upper/intensive care/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=IC},
+   lower/.is choice,
+   lower/none/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
+   lower/light/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=L},      
+   lower/medium/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=M},    
+   lower/heavy/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=H},    
+   lower/boom only/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=B},    
+   lower/drogue only/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=D},
+   lower/boom and drogue/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=B/D}, 
+   lower/close range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=CR},      
+   lower/short range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=SR},     
+   lower/medium range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=MR},
+   lower/long range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=LR},            
    main=military,
+   upper=none,
+   lower=none,
    #1,
  }%
- \fontfamily{phv}\fontseries{bx}\selectfont \fontsize{10}{0}\selectfont
+ \fontfamily{phv}\fontseries{bx}\selectfont
  \pic {NATOSymb \NATOSymb@shape}; %Draw background shape
- \pic {NATOSymb \NATOSymb@symbC}; %Draw main symbol
+
+%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+%\begin{scope}
+%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
+%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
+%\end{scope}
+
+ \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
+ \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
+ \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
+
+\begin{scope}
+\end{scope}
 }
 \makeatother
 \begin{document}
 
 
 \begin{tikzpicture}
-\NATOAir[faction=friendly, main=air decoy, unclear]
+\NATOAir[faction=hostile, main=civilian airship, upper=search and rescue, lower=heavy, speed leader={30}{1}]
 \end{tikzpicture}
 
 \end{document}
