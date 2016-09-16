@@ -6,7 +6,7 @@
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
 \definecolor{unknownA}{RGB}{255, 255, 128}
-\usetikzlibrary{shapes.geometric, positioning}
+\usetikzlibrary{shapes.geometric, positioning, calc}
 \tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
   (current bounding box.south east) --
   (current bounding box.south west) --
@@ -210,14 +210,24 @@ line=solid,
    lower/close range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=CR},      
    lower/short range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=SR},     
    lower/medium range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=MR},
-   lower/long range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=LR},            
+   lower/long range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=LR},
+   track number/.store in= \NATOSymb@symbA,
+   call sign/.store in=\NATOSymb@symbB,
+   position and movement/.store in=\NATOSymb@symbD,
+   nation/.store in= \NATOSymb@symbE,
+   additional information/.store in=\NATOSymb@symbF,
+   track number=,
+   call sign=,
+   position and movement=,
+   nation=,
+   additional information=,     
    main=military,
    upper=none,
    lower=none,
    #1,
  }%
  \fontfamily{phv}\fontseries{bx}\selectfont
- \pic {NATOSymb \NATOSymb@shape}; %Draw background shape
+ \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 
 %\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
 %\begin{scope}
@@ -229,6 +239,12 @@ line=solid,
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
  \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
+ \fontsize{6}{0}\selectfont
+ \node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};
+ \node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};
+ \node [anchor=west] at (M.east) {\NATOSymb@symbD};
+ \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
+ \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
 
 \begin{scope}
 \end{scope}
@@ -238,7 +254,7 @@ line=solid,
 
 
 \begin{tikzpicture}
-\NATOAir[faction=hostile, main=civilian airship, upper=search and rescue, lower=heavy, speed leader={30}{1}]
+\NATOAir[faction=hostile, unclear, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]
 \end{tikzpicture}
 
 \end{document}
