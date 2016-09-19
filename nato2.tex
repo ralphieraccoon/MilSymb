@@ -246,15 +246,79 @@ line=solid,
  \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
  \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
 
-\begin{scope}
-\end{scope}
 }
+
+\newcommand{\NATOMissile}[1][]{
+\tikzset{%
+   /NATOSymb/.cd,
+   faction/.is choice,
+   faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
+   faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
+   faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
+   faction/unknown/.style={/NATOSymb/.cd, shape=air/unknown, fill=unknownA},
+   left/.is choice,
+   left/none/.style= {/NATOSymb/.cd, symbUT=}, 
+   left/air/.style= {/NATOSymb/.cd, symbUT=A}, 
+   left/surface/.style= {/NATOSymb/.cd, symbUT=S}, 
+   left/sub surface/.style= {/NATOSymb/.cd, symbUT=SU}, 
+   left/space/.style= {/NATOSymb/.cd, symbUT=SP}, 
+   left/anti ballistic/.style= {/NATOSymb/.cd, symbUT=AB}, 
+   left/ballistic/.style= {/NATOSymb/.cd, symbUT=B}, 
+   left/cruise/.style= {/NATOSymb/.cd, symbUT=C},
+   right/.is choice,
+   right/none/.style= {/NATOSymb/.cd, symbLT=}, 
+   right/air/.style= {/NATOSymb/.cd, symbLT=A}, 
+   right/surface/.style= {/NATOSymb/.cd, symbLT=S}, 
+   right/sub surface/.style= {/NATOSymb/.cd, symbLT=SU}, 
+   right/space/.style= {/NATOSymb/.cd, symbLT=SP}, 
+   right/launched/.style= {/NATOSymb/.cd, symbLT=L}, 
+   right/missile/.style= {/NATOSymb/.cd, symbLT=M},
+   track number/.store in= \NATOSymb@symbA,
+   call sign/.store in=\NATOSymb@symbB,
+   position and movement/.store in=\NATOSymb@symbD,
+   nation/.store in= \NATOSymb@symbE,
+   additional information/.store in=\NATOSymb@symbF,
+   track number=,
+   call sign=,
+   position and movement=,
+   nation=,
+   additional information=,      
+   faction=friendly,
+   left=none,
+   right=none,
+   #1,
+}%
+
+\pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
+
+%\begin{scope}[rotate=90]
+%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+%\begin{scope}
+%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
+%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
+%\end{scope}
+%\end{scope}
+
+\draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
+\fontfamily{phv}\fontseries{bx}\selectfont
+\fontsize{6}{0}\selectfont
+\node at (0.34, 0) {\NATOSymb@symbLT};
+\node at (-0.34, 0) {\NATOSymb@symbUT};
+\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};
+\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};
+\node [anchor=west] at (M.east) {\NATOSymb@symbD};
+\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
+\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
+
+}	
 \makeatother
 \begin{document}
 
 
 \begin{tikzpicture}
-\NATOAir[faction=hostile, unclear, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]
+%\NATOAir[faction=hostile, unclear, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]
+\NATOMissile[faction=hostile, left=cruise, right=space]
 \end{tikzpicture}
 
 \end{document}
