@@ -29,6 +29,24 @@ NATOSymb air/unknown/.pic={
 \begin{scope}[rotate=180]
 	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
 \end{scope}},
+NATOSymb land/friendly/.pic={
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.75, -0.5) rectangle (0.75, 0.5);},
+NATOSymb land/hostile/.pic={
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (0, -0.705) -- (-0.705, 0) -- (0, 0.705) -- (0.705, 0) -- cycle;},
+NATOSymb land/neutral/.pic={
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (0.5, -0.5) rectangle (-0.5, 0.5);},
+NATOSymb land/unknown/.pic={
+\fill [fill=NATOSymb@fill] (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
+\begin{scope}[rotate=90]
+	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
+\end{scope}
+\begin{scope}[rotate=180]
+	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
+\end{scope}
+\begin{scope}[rotate=270]
+	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
+\end{scope}},
 NATOSymb air/main/military/.pic={
 \node at (0,0) {MIL};},
 NATOSymb air/main/civilian/.pic={
@@ -311,14 +329,23 @@ line=solid,
 \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
 \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
 
-}	
+}
+
+%\newcommand{\NATOLand}[1][]{
+%\tikzset{%
+%
+%}%
+
+
+
 \makeatother
 \begin{document}
 
 
 \begin{tikzpicture}
 %\NATOAir[faction=hostile, unclear, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]
-\NATOMissile[faction=hostile, left=cruise, right=space]
+%\NATOMissile[faction=friendly, left=cruise, right=space]
+ \pic {NATOSymb land/unknown};
 \end{tikzpicture}
 
 \end{document}
