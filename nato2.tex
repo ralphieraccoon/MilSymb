@@ -21,14 +21,8 @@ NATOSymb air/hostile/.pic={
 NATOSymb air/neutral/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (0.5, -0.5) -- (0.5, 0.5) -- (-0.5, 0.5) -- (-0.5, -0.5);},
 NATOSymb air/unknown/.pic={
-\fill [fill=NATOSymb@fill] (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;
-\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\begin{scope}[rotate=90]
-	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\end{scope}
-\begin{scope}[rotate=180]
-	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\end{scope}},
+\path [use as bounding box] (-0.705,-0.355) -- (-0.705, 0.705) -- (0.705, 0.705) -- (0.705, -0.355) -- cycle;
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5);},
 NATOSymb land/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.75, -0.5) rectangle (0.75, 0.5);},
 NATOSymb land/hostile/.pic={
@@ -36,17 +30,18 @@ NATOSymb land/hostile/.pic={
 NATOSymb land/neutral/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (0.5, -0.5) rectangle (-0.5, 0.5);},
 NATOSymb land/unknown/.pic={
-\fill [fill=NATOSymb@fill] (315:0.5) -- (45:0.5) -- (135:0.5) -- (225:0.5) -- cycle;
-\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\begin{scope}[rotate=90]
-	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\end{scope}
-\begin{scope}[rotate=180]
-	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\end{scope}
-\begin{scope}[rotate=270]
-	\draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) arc (-90:90: 0.354);
-\end{scope}},
+\path [use as bounding box] (-0.705,-0.705) -- (-0.705, 0.705) -- (0.705, 0.705) -- (0.705, -0.705) -- cycle;
+\draw [fill=NATOSymb@fill, \NATOSymb@line] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle;
+},
+NATOSymb land/friendly/clip/.pic={
+\clip (-0.75, -0.5) rectangle (0.75, 0.5);},
+NATOSymb land/hostile/clip/.pic={
+\clip (0, -0.705) -- (-0.705, 0) -- (0, 0.705) -- (0.705, 0) -- cycle;},
+NATOSymb land/neutral/clip/.pic={
+\clip (0.5, -0.5) rectangle (-0.5, 0.5);},
+NATOSymb land/unknown/clip/.pic={
+\clip (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle;
+},
 NATOSymb air/main/military/.pic={
 \node at (0,0) {MIL};},
 NATOSymb air/main/civilian/.pic={
@@ -95,12 +90,47 @@ NATOSymb air/main/air decoy/.pic={
 \end{scope}
 \begin{scope}[shift={(0.42,0)}]
 	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
-\end{scope};},
+\end{scope}},
 NATOSymb air/main/medic/.pic={
 \fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
 \begin{scope}[rotate=90]
 \fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
 \end{scope}},
+NATOSymb fullframe/air assault with organic lift/friendly/.pic={
+\draw (-0.75, -0.2) -- (-0.1, -0.2) -- (0, -0.325) -- (0.1, -0.2) -- (0.75, -0.2);
+},
+NATOSymb fullframe/air assault with organic lift/hostile/.pic={
+\draw (-0.5, -0.2) -- (-0.15, -0.2) -- (0, -0.5) -- (0.15, -0.2) -- (0.5, -0.2);
+},
+NATOSymb fullframe/air assault with organic lift/neutral/.pic={
+\draw (-0.5, -0.2) -- (-0.1, -0.2) -- (0, -0.325) -- (0.1, -0.2) -- (0.5, -0.2);
+},
+NATOSymb fullframe/air assault with organic lift/unknown/.pic={
+\draw (-0.65, -0.2) -- (-0.1, -0.2) -- (0, -0.325) -- (0.1, -0.2) -- (0.65, -0.2);
+},
+NATOSymb fullframe/air defence/friendly/.pic={
+\draw (-0.75,-0.5) to[out=90,in=90,looseness=0.675] (0.75,-0.5);
+},
+NATOSymb fullframe/air defence/hostile/.pic={
+\draw (225:0.5) to[out=45,in=135,looseness=0.725] (315:0.5);
+},
+NATOSymb fullframe/air defence/neutral/.pic={
+\draw (-0.5, -0.5) to[out=90,in=90,looseness=1] (0.5, -0.5);
+},
+NATOSymb fullframe/air defence/unknown/.pic={
+\draw (225:0.5) to[out=45,in=135,looseness=0.725] (315:0.5);
+},
+NATOSymb fullframe/amphibious/.pic={
+\draw (0.81, 0) to[out=90,in=90,looseness=2.25] (0.63, 0) to[out=-90,in=-90,looseness=2.25] (0.45, 0) to[out=90,in=90,looseness=2.25] (0.27, 0) to[out=-90,in=-90,looseness=2.25] (0.09, 0) to[out=90,in=90,looseness=2.25] (-0.09, 0) to[out=-90,in=-90,looseness=2.25] (-0.27, 0) to[out=90,in=90,looseness=2.25] (-0.45, 0) to[out=-90,in=-90,looseness=2.25] (-0.63, 0) to[out=90,in=90,looseness=2.25] (-0.81, 0);
+},
+NATOSymb fullframe/amphibious/friendly/.pic={
+\clip (-0.75, -0.5) rectangle (0.75, 0.5);
+\pic {NATOSymb fullframe/amphibious};
+},
+NATOSymb fullframe/amphibious/hostile/.pic={
+%\clip (0, -0.705) -- (-0.705, 0) -- (0, 0.705) -- (0.705, 0) -- cycle;
+\pic [xscale=0.9] {NATOSymb fullframe/amphibious};
+},
 NATOSymb air/upper/medic/.pic={
 \begin{scope}[scale=0.7]
 \fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
@@ -308,16 +338,6 @@ line=solid,
 }%
 
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
-
-%\begin{scope}[rotate=90]
-%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-%\begin{scope}
-%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
-%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
-%\end{scope}
-%\end{scope}
-
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
 \fontfamily{phv}\fontseries{bx}\selectfont
 \fontsize{6}{0}\selectfont
@@ -331,11 +351,32 @@ line=solid,
 
 }
 
-%\newcommand{\NATOLand}[1][]{
-%\tikzset{%
-%
-%}%
+\newcommand{\NATOFullFrame}[1][]{
+\tikzset{
+  /NATOSymb/.cd,
+   selectedfaction/.store in=\NATOSymb@selectedfaction,
+   faction/.is choice,
+   faction/friendly/.style={/NATOSymb/.cd, shape=land/friendly, fill=friendlyA, selectedfaction=friendly},
+   faction/hostile/.style={/NATOSymb/.cd, shape=land/hostile, fill=hostileA, selectedfaction=hostile},
+   faction/neutral/.style={/NATOSymb/.cd, shape=land/neutral, fill=neutralA, selectedfaction=neutral},
+   faction/unknown/.style={/NATOSymb/.cd, shape=land/unknown, fill=unknownA, selectedfaction=unknown},
+   main/.is choice,
+   main/air assualt with organic lift/.style={/NATOSymb/.cd, symbC=fullframe/air assault with organic lift/\NATOSymb@selectedfaction},
+   main/air defence/.style={/NATOSymb/.cd, symbC=fullframe/air defence/\NATOSymb@selectedfaction},
+   main/amphibious/.style={/NATOSymb/.cd, symbC=fullframe/amphibious/\NATOSymb@selectedfaction},
+   faction=friendly,
+   main=air defence,
+  #1,
+}
 
+\pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; 
+
+\begin{scope}
+
+\pic {NATOSymb \NATOSymb@symbC};
+\end{scope}
+
+}
 
 
 \makeatother
@@ -343,9 +384,20 @@ line=solid,
 
 
 \begin{tikzpicture}
-%\NATOAir[faction=hostile, unclear, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]
-%\NATOMissile[faction=friendly, left=cruise, right=space]
- \pic {NATOSymb land/unknown};
+%\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
+
+\NATOFullFrame[faction=hostile, main=amphibious]
+
+
+\begin{scope}[rotate=0]
+\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+\begin{scope}
+\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
+	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
+\end{scope}
+\end{scope}
+
 \end{tikzpicture}
 
 \end{document}
