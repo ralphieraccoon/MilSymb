@@ -670,6 +670,47 @@ NATOSymb land/upper/topographic/.pic={
 NATOSymb land/upper/video imagery/.pic={
 \pic [scale=0.5, yshift=-1.75] {NATOSymb land/main/video imagery};
 },
+% LOWER %
+NATOSymb land/lower/airborne/.pic={
+\draw (0,-0.025) arc(0:180:0.15);
+\draw (0,-0.025) arc(180:0:0.15);
+},
+NATOSymb land/lower/arctic/.pic={
+\draw (-0.325,0.135) arc(180:270:0.075 and 0.15) -- +(0.5, 0) arc(-90:0:0.075 and 0.15);
+},
+NATOSymb land/lower/bicycle equipped/.pic={
+\draw (0,0) circle (0.1);
+},
+NATOSymb land/lower/control/.pic={
+\draw[{Stealth[inset=0pt,scale=0.5]}-{Stealth[inset=0pt,scale=0.5]}] (0, 0.125) -- (0, -0.125);
+\draw[{Stealth[inset=0pt,scale=0.5]}-{Stealth[inset=0pt,scale=0.5]}] (0.125, 0) -- (-0.125, 0);
+},
+NATOSymb land/lower/enhanced position location reporting system/.pic={
+\draw (0, 0.125) -- (0, -0.125);
+\draw (225:0.15) -- (0, 0) -- (315:0.15);
+},
+NATOSymb land/lower/intermodal/.pic={
+\draw (0.15, 0.05) -- (-0.15, 0.05) -- (-0.15, 0.1) -- (-0.25, 0.025) -- (-0.15, -0.05) -- (-0.15, 0) -- (0.15, 0) -- (0.15, -0.05) -- (0.25, 0.025) -- (0.15, 0.1) -- cycle;
+},
+NATOSymb land/lower/launcher/.pic={
+\draw (-0.25, -0.05) -- (0.25, 0.125) -- (0.25, -0.05);
+},
+NATOSymb land/lower/mountain/.pic={
+\fill (-0.125, -0.16) -- (0.125, -0.16) -- (0, 0.1) -- cycle;
+},
+NATOSymb land/lower/mountain/friendly/.pic={
+\pic {NATOSymb land/lower/mountain};
+},
+NATOSymb land/lower/mountain/hostile/.pic={
+\pic [yshift=-2.5]  {NATOSymb land/lower/mountain};
+},
+NATOSymb land/lower/mountain/neutral/.pic={
+\pic {NATOSymb land/lower/mountain};
+},
+NATOSymb land/lower/mountain/unknown/.pic={
+\clip [yshift=9.6] \clipunknown;
+\pic [yshift=-6.5]  {NATOSymb land/lower/mountain};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -857,7 +898,7 @@ line=solid,
    (0.5, -0.5) rectangle (-0.5, 0.5)
 }
 \newcommand*{\clipunknown}{
-  (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle
+ (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle
 }
 \newcommand{\NATOAir}[1][]{
 \tikzset{%	
@@ -1233,6 +1274,30 @@ line=solid,
    upper/video imagery/.style= {/NATOSymb/.cd, symbU=land/upper/video imagery},
    lower/.is choice,
    lower/none/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
+   lower/airbourne/.style= {/NATOSymb/.cd, symbL=land/lower/airbourne},
+   lower/arctic/.style= {/NATOSymb/.cd, symbL=land/lower/arctic},
+   lower/battle damage repair/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=BDR}
+   lower/bicycle equipped/.style= {/NATOSymb/.cd, symbL=land/lower/bicycle equipped},
+   lower/clearing/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=CLR}
+   lower/close range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=CR}
+   lower/bicycle equipped/.style= {/NATOSymb/.cd, symbL=land/lower/control},
+   lower/decontamination/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=D},
+   lower/demolition/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=DEM},
+   lower/dental/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=\ \ \ \  D},
+   lower/digital/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=DIG},
+   lower/enhanced location reporting system/.style= {/NATOSymb/.cd, symbL=land/lower/enhanced position location reporting system},
+   lower/equipment/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=E},
+   lower/heavy/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=H},
+   lower/intermodal/.style= {/NATOSymb/.cd, symbL=land/lower/intermodal},
+   lower/intensive care/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=\ \ \ \ IC},
+   lower/light/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=L},
+   lower/laboratory/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=LAB},
+   lower/launcher/.style= {/NATOSymb/.cd, symbL=land/lower/launcher},
+   lower/long range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=LR},
+   lower/medium range/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=MR},
+   lower/mountain/.style={/NATOSymb/.cd, symbL=land/lower/mountain/\NATOSymb@selectedfaction},
+   lower/multi channel/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=MC},
+   lower/optical/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=OPT},
    symbE/.store in= \NATOSymb@symbE,
    symbR/.store in= \NATOSymb@symbR,
    echelon/.is choice,
@@ -1284,18 +1349,18 @@ line=solid,
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
-\NATOLand[faction=friendly, main=infantry, echelon=batallion, status=reinforced and reduced]
+\NATOLand[faction=friendly, main=above corps support, echelon=platoon, lower=mountain, unclear]
 
-%\pic {NATOSymb multi/main/missile};
+%\pic at (0, -0.34) {NATOSymb land/lower/launcher};
 
-\begin{scope}[rotate=0, opacity=0.5]
-\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-\begin{scope}
-\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
-	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
-\end{scope}
-\end{scope}
+%\begin{scope}[rotate=0, opacity=0.5]
+%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+%\begin{scope}
+%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
+%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
+%\end{scope}
+%\end{scope}
 
 \end{tikzpicture}
 
