@@ -711,6 +711,43 @@ NATOSymb land/lower/mountain/unknown/.pic={
 \clip [yshift=9.6] \clipunknown;
 \pic [yshift=-6.5]  {NATOSymb land/lower/mountain};
 },
+NATOSymb land/lower/pack animal/.pic={
+\draw (-0.25,-0.05) -- (-0.125,0.125) -- (0, -0.05) -- (0.125, 0.125) -- (0.25, -0.05);
+},
+NATOSymb land/lower/radio relay line of sight/.pic={
+\draw circle(0.125);
+\clip circle(0.125);
+\fill (145:0.15) -- (325:0.15) -- (35:0.15) -- (215:0.15) -- cycle;
+},
+NATOSymb land/lower/railroad/.pic={
+\draw (0.36, 0.125) -- (-0.35, 0.125);
+\draw (0.3, 0.05) circle (0.06);
+\draw (0.17, 0.05) circle (0.06);
+\draw (-0.3, 0.05) circle (0.06);
+\draw (-0.17, 0.05) circle (0.06);
+},
+NATOSymb land/lower/recovery unmanned systems/.pic={
+\draw (-0.35, 0.125) arc(-180:0:0.35 and 0.2);
+},
+NATOSymb land/lower/riverine/.pic={
+\draw (-0.35, 0.125) arc(-180:0:0.35 and 0.2) -- cycle;
+},
+NATOSymb land/lower/ski/.pic={
+\draw (0.05, 0.125) -- (-0.075, -0.075);
+\draw (0.1, -0.05) -- (0.04, -0.1);
+\draw (-0.05, 0.125) -- (0.075, -0.075);
+\draw (-0.1, -0.05) -- (-0.04, -0.1);
+},
+NATOSymb land/lower/towed/.pic={
+\draw (-0.25, 0.05) -- (0.25,0.05);
+\draw (0.3, 0.05) circle (0.05);
+\draw (-0.3, 0.05) circle (0.05);
+},
+NATOSymb land/lower/wheeled/.pic={
+\draw (0.24, 0.05) circle (0.08);
+\draw (0, 0.05) circle (0.08);
+\draw (-0.24, 0.05) circle (0.08);
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1349,18 +1386,18 @@ line=solid,
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, lower=mountain, unclear]
+%\NATOLand[faction=friendly, main=above corps support, echelon=platoon, lower=mountain]
 
-%\pic at (0, -0.34) {NATOSymb land/lower/launcher};
+\pic at (0, -0.34) {NATOSymb land/lower/wheeled};
 
-%\begin{scope}[rotate=0, opacity=0.5]
-%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-%\begin{scope}
-%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
-%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
-%\end{scope}
-%\end{scope}
+\begin{scope}[rotate=0, opacity=0.5]
+\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+\begin{scope}
+\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
+	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
+\end{scope}
+\end{scope}
 
 \end{tikzpicture}
 
