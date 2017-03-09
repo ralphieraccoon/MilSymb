@@ -3,9 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{fix-cm}
 \usepackage{arev}
-\usepackage{amsmath}
 \usepackage{acronym}
-%\usepackage{fdsymbol}
 \usetikzlibrary{arrows.meta}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
@@ -1359,13 +1357,13 @@ line=solid,
    echelon/army/.style= {/NATOSymb/.cd, symbE=XXXX},
    echelon/army group/.style= {/NATOSymb/.cd, symbE=XXXXX},
    echelon/theatre/.style= {/NATOSymb/.cd, symbE=XXXXXX},
-   echelon/command/.style= {/NATOSymb/.cd, symbE=+ \ +},
+   echelon/command/.style= {/NATOSymb/.cd, symbE=\raisebox{1pt}{+ \ +}},
    task force/.style={execute at end picture={\draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);}},
    status/.is choice,
    status/none/.style= {/NATOSymb/.cd, symbR=},
-   status/reinforced/.style= {/NATOSymb/.cd, symbR=$+$},
-   status/reduced/.style= {/NATOSymb/.cd, symbR=$-$},
-   status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=$\pm$},
+   status/reinforced/.style= {/NATOSymb/.cd, symbR=+},
+   status/reduced/.style= {/NATOSymb/.cd, symbR=\textminus},
+   status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr}},
    altitude/.style 2 args={execute at end picture={ \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi}},
    altitude/.value required,
    faction=friendly,
@@ -1395,7 +1393,7 @@ line=solid,
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, altitude={Low}{}]
+\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, altitude={Low}{Medium}]
 
 %\pic at (0, -0.34) {NATOSymb land/lower/wheeled};
 
