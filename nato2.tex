@@ -1359,6 +1359,20 @@ line=solid,
    echelon/theatre/.style= {/NATOSymb/.cd, symbE=XXXXXX},
    echelon/command/.style= {/NATOSymb/.cd, symbE=\raisebox{1pt}{+ \ +}},
    task force/.style={execute at end picture={\draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);}},
+   %headquarters/.style={execute at end picture={\def\temp{friendly} \ifx\NATOSymb@selectedfaction\temp \draw (M.south west) -- +(0, -0.25); \fi}},
+   %headquarters/.style={execute at end picture={\draw (M.south west) -- +(0, -0.25); }},
+   drawH/.store in= \NATOSymb@drawH,
+   symbHT/.store in= \NATOSymb@symbHT,
+   headquarters/.is choice,
+   headquarters/none/.style= {/NATOSymb/.cd, drawH=false, symbHT=},
+   headquarters/blank/.style= {/NATOSymb/.cd, drawH=true, symbHT=},
+   headquarters/assault command post/.style= {/NATOSymb/.cd,  drawH=true, symbHT=ASLT},
+   headquarters/command group/.style= {/NATOSymb/.cd,  drawH=true, symbHT=CMD},
+   headquarters/forward command post/.style= {/NATOSymb/.cd,  drawH=true, symbHT=FWD},
+   headquarters/main command post/.style= {/NATOSymb/.cd,  drawH=true, symbHT=MAIN},
+   headquarters/rear command post/.style= {/NATOSymb/.cd,  drawH=true, symbHT=REAR},
+   headquarters/tactical operations center/.style= {/NATOSymb/.cd,  drawH=true, symbHT=TOC},
+   headquarters/tactical command post/.style= {/NATOSymb/.cd,  drawH=true, symbHT=TAC},
    status/.is choice,
    status/none/.style= {/NATOSymb/.cd, symbR=},
    status/reinforced/.style= {/NATOSymb/.cd, symbR=+},
@@ -1372,6 +1386,7 @@ line=solid,
    lower=none,
    echelon=none,
    status=none,
+   headquarters=none,
   #1,
 } %
  \fontfamily{phv}\fontseries{bx}\selectfont
@@ -1383,6 +1398,15 @@ line=solid,
 \node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\NATOSymb@symbE}; %Draw echelon
 \fontsize{8}{0}\selectfont
 \node [anchor=south west] at ($(M.north east)-(0, 0.15)$) {\NATOSymb@symbR}; %Draw status
+\def\friendly{friendly} % Draw headquarters
+\def\true{true}
+\ifx\NATOSymb@selectedfaction\friendly
+\ifx\NATOSymb@drawH\true  
+\draw (M.south west) -- +(0, -0.25);
+\fontsize{6}{0}\selectfont
+\node [anchor=north] at (M.south) {\NATOSymb@symbHT};
+\fi
+\fi
 }
 
 
@@ -1393,7 +1417,7 @@ line=solid,
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, altitude={Low}{Medium}]
+\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post, altitude={Low}{Medium}]
 
 %\pic at (0, -0.34) {NATOSymb land/lower/wheeled};
 
