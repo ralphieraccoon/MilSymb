@@ -363,7 +363,6 @@ NATOSymb land/main/signal tactical satellite/.pic={
 \pic at (0, 0) {NATOSymb land/main/tactical satellite};
 },
 NATOSymb land/main/supply/friendly/.pic={
-\pic at (-0.25, 0) {NATOSymb main/text={#1}};
 \draw (0.75, -0.25) -- (-0.75, -0.25);
 },
 NATOSymb land/main/supply/hostile/.pic={
@@ -1114,7 +1113,8 @@ line=solid,
 \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
 \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
 }
-\newcommand{\NATOLand}[1][]{
+\newif\iftaskforce
+\newcommand{\NATOLand}[2][]{
 \tikzset{
   /NATOSymb/.cd,
    selectedfaction/.store in=\NATOSymb@selectedfaction,
@@ -1154,7 +1154,7 @@ line=solid,
    main/reconnaissance/.style={/NATOSymb/.cd, symbC=land/main/reconnaissance/\NATOSymb@selectedfaction},
    main/search/.style={/NATOSymb/.cd, symbC=land/main/search},
    main/search electronic warfare/.style={/NATOSymb/.cd, symbC=land/main/search electronic warfare},
-   main/supply/.style={/NATOSymb/.cd, symbC=land/main/supply/\NATOSymb@selectedfaction={#1}},
+   main/supply/.style={/NATOSymb/.cd, symbC=land/main/supply/\NATOSymb@selectedfaction},
    main/above corps support/.style={/NATOSymb/.cd, symbC=land/main/above corps support/\NATOSymb@selectedfaction},
    main/administrative/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ADM},
    main/air traffic services/.style={/NATOSymb/.cd, symbC=land/main/air traffic services},
@@ -1242,7 +1242,7 @@ line=solid,
    main/video imagery/.style={/NATOSymb/.cd, symbC=land/main/video imagery},
    main/water/.style={/NATOSymb/.cd, symbC=land/main/water},
    main/water purification/.style={/NATOSymb/.cd, symbC=land/main/water purification},
-   supply/.style 2 args={execute at end picture={\ifx&##2& \pic at (0,0) {NATOSymb supply/class ##1};\else \node at (0,0) {\uppercase\expandafter{\romannumeral##1\relax} \& \uppercase\expandafter{\romannumeral##2\relax}}; \fi}},
+   supply/.style 2 args={execute at end picture={ \begin{scope}[shift={#2}] \ifx&##2& \pic at (0,0) {NATOSymb supply/class ##1};\else \node at (0,0) {\uppercase\expandafter{\romannumeral##1\relax} \& \uppercase\expandafter{\romannumeral##2\relax}}; \fi \end{scope}}},
    supply/.value required,
    upper/.is choice,
    upper/none/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
@@ -1358,9 +1358,7 @@ line=solid,
    echelon/army group/.style= {/NATOSymb/.cd, symbE=XXXXX},
    echelon/theatre/.style= {/NATOSymb/.cd, symbE=XXXXXX},
    echelon/command/.style= {/NATOSymb/.cd, symbE=\raisebox{1pt}{+ \ +}},
-   task force/.style={execute at end picture={\draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);}},
-   %headquarters/.style={execute at end picture={\def\temp{friendly} \ifx\NATOSymb@selectedfaction\temp \draw (M.south west) -- +(0, -0.25); \fi}},
-   %headquarters/.style={execute at end picture={\draw (M.south west) -- +(0, -0.25); }},
+   task force/.is if=taskforce,
    drawH/.store in= \NATOSymb@drawH,
    symbHT/.store in= \NATOSymb@symbHT,
    headquarters/.is choice,
@@ -1378,7 +1376,7 @@ line=solid,
    status/reinforced/.style= {/NATOSymb/.cd, symbR=+},
    status/reduced/.style= {/NATOSymb/.cd, symbR=\textminus},
    status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr}},
-   altitude/.style 2 args={execute at end picture={ \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi}},
+   altitude/.style 2 args={execute at end picture={\begin{scope}[shift={#2}] \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi \end{scope}}},
    altitude/.value required,
    faction=friendly,
    main=air defence,
@@ -1390,12 +1388,16 @@ line=solid,
   #1,
 } %
  \fontfamily{phv}\fontseries{bx}\selectfont
- \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
- \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
- \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
- \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
+\begin{scope}[shift={#2}]
+\pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
+\pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
+\pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
+\pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
 \fontsize{6}{0}\selectfont
 \node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\NATOSymb@symbE}; %Draw echelon
+\iftaskforce
+\draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);
+\fi
 \fontsize{8}{0}\selectfont
 \node [anchor=south west] at ($(M.north east)-(0, 0.15)$) {\NATOSymb@symbR}; %Draw status
 \def\friendly{friendly} % Draw headquarters
@@ -1407,6 +1409,7 @@ line=solid,
 \node [anchor=north] at (M.south) {\NATOSymb@symbHT};
 \fi
 \fi
+\end{scope}
 }
 
 
@@ -1417,7 +1420,9 @@ line=solid,
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post, altitude={Low}{Medium}]
+\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post, altitude={Low}{Medium}]{(5,1)};
+
+\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post]{(4,7)};
 
 %\pic at (0, -0.34) {NATOSymb land/lower/wheeled};
 
