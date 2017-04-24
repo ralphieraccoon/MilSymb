@@ -4,12 +4,11 @@
 \usepackage{fix-cm}
 \usepackage{arev}
 \usepackage{acronym}
-\usetikzlibrary{arrows.meta}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
 \definecolor{unknownA}{RGB}{255, 255, 128}
-\usetikzlibrary{shapes.geometric, positioning, calc}
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc}
 \tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
   (current bounding box.south east) --
   (current bounding box.south west) --
@@ -1411,8 +1410,22 @@ line=solid,
 \fi
 \end{scope}
 }
-
-
+\newcounter{exitem}
+\newenvironment{landheadquarters}{
+\setcounter{exitem}{0}
+\renewcommand\item{
+\ifnum \value{exitem}>0
+\draw ($([xshift=0.5\pgflinewidth]current bounding box.south west) + (0, 0.05)$) -- +(0,-0.33);
+\fi
+\stepcounter{exitem}\scoped[yshift=-\theexitem*45]}
+}{}
+\newenvironment{landgroup}{
+\setcounter{exitem}{0}
+\renewcommand\item{\stepcounter{exitem}\scoped[yshift=-\theexitem*40]}
+}{
+\draw ([shift={(5pt,0pt)}]current bounding box.north west) -| ([shift={(-3pt,-3pt)}]current bounding box.south west) -- ++(8pt,0)
+ (current bounding box.west) -- ++(-5pt,0);
+}
 \makeatother
 \begin{document}
 
@@ -1420,20 +1433,25 @@ line=solid,
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post, altitude={Low}{Medium}]{(5,1)};
+%\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post, altitude={Low}{Medium}]{(5,1)};
+%
+%\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post]{(4,7)};
 
-\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post]{(4,7)};
+\begin{landgroup}
+\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
+\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
+\end{landgroup}
 
 %\pic at (0, -0.34) {NATOSymb land/lower/wheeled};
 
-\begin{scope}[rotate=0, opacity=0.5]
-\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-\begin{scope}
-\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
-	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
-\end{scope}
-\end{scope}
+%\begin{scope}[rotate=0, opacity=0.5]
+%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+%\begin{scope}
+%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
+%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
+%\end{scope}
+%\end{scope}
 
 \end{tikzpicture}
 
