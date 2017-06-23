@@ -606,6 +606,34 @@ NATOSymb land/main/water purification/.pic={
 \fontsize{4}{0}\selectfont
 \node at (-0.1,-0.1) {PURE};
 },
+NATOSymb land/main/civilian police/.pic={
+\draw (0.225, 0.2) to[in=270, out=270, looseness=3] (-0.225, 0.2) to [in=270, out=270, looseness=1.5] (0,0.2) to [in=270, out=270, looseness=1.5] (0.225, 0.2) -- cycle;
+},
+NATOSymb land/main/environmental protection/.pic={
+\draw (0, 0.2) -- (0.1, 0.05) -- (0.05, 0.05) -- (0.15, -0.05) -- (0.1, -0.05) -- (0.2, -0.15) -- (0.15, -0.15) -- (0.05, -0.15) -- (0.05, -0.2) -- (-0.05, -0.2) -- (-0.05, -0.15) -- (-0.2, -0.15) -- (-0.1, -0.05) -- (-0.15, -0.05) -- (-0.05, 0.05) -- (-0.1, 0.05) -- cycle;
+},
+NATOSymb land/main/individual/.pic={
+\draw (0, 0.125) circle (0.075);
+\draw (0, 0.05) -- (0, -0.2);
+\draw (0.075,0) -- (-0.075,0);
+},
+NATOSymb land/main/organization or group/.pic={
+\pic [scale=0.9] at (0, -0.02) {NATOSymb land/main/individual};
+\pic [scale=0.9] at (0.2, 0.02) {NATOSymb land/main/individual};
+\pic [scale=0.9] at (-0.2, 0.02) {NATOSymb land/main/individual};
+},
+NATOSymb land/main/killing victim/.pic={
+\pic {NATOSymb land/main/individual};
+\draw (-0.41, 0.2) -- (0.41, -0.2);
+},
+NATOSymb land/main/killing victims/.pic={
+\pic {NATOSymb land/main/organization or group};
+\draw (-0.41, 0.2) -- (0.41, -0.2);
+},
+NATOSymb land/main/victim of an attempted crime/.pic={
+\pic {NATOSymb land/main/individual};
+\draw [dashed] (-0.41, 0.2) -- (0.41, -0.2);
+},
 % UPPER %
 NATOSymb land/upper/air assault/.pic={
 \draw (0.25, 0.05) -- (0, -0.1) -- (-0.25, 0.05);
@@ -1437,21 +1465,21 @@ line=solid,
 %
 %\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, headquarters=forward command post]{(4,7)};
 
-\begin{landgroup}
-\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
-\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
-\end{landgroup}
+%\begin{landgroup}
+%\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
+%\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
+%\end{landgroup}
 
-%\pic at (0, -0.34) {NATOSymb land/lower/wheeled};
+\pic at (0, 0) {NATOSymb land/main/victim of an attempted crime};
 
-%\begin{scope}[rotate=0, opacity=0.5]
-%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-%\begin{scope}
-%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
-%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
-%\end{scope}
-%\end{scope}
+\begin{scope}[rotate=0, opacity=0.5]
+\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+\begin{scope}
+\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
+	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
+\end{scope}
+\end{scope}
 
 \end{tikzpicture}
 
