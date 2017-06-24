@@ -1387,6 +1387,7 @@ line=solid,
    echelon/command/.style= {/NATOSymb/.cd, symbE=\raisebox{1pt}{+ \ +}},
    task force/.is if=taskforce,
    drawH/.store in= \NATOSymb@drawH,
+   %drawH/.forward to=/NATOSymb/offset,
    symbHT/.store in= \NATOSymb@symbHT,
    headquarters/.is choice,
    headquarters/none/.style= {/NATOSymb/.cd, drawH=false, symbHT=},
@@ -1405,7 +1406,7 @@ line=solid,
    status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr}},
    altitude/.style 2 args={execute at end picture={\begin{scope}[shift={#2}] \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi \end{scope}}},
    altitude/.value required,
-   offset/.code 2 args={\begin{scope}[shift={#2}]\draw (0,0) -- +(0, -##1) -- +##2;\end{scope}},
+   offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
    offset/.value required,
    faction=friendly,
    main=air defence,
@@ -1433,12 +1434,11 @@ line=solid,
 \def\true{true}
 \ifx\NATOSymb@selectedfaction\friendly
 \ifx\NATOSymb@drawH\true  
-\draw (M.south west) -- +(0, -0.25);
+\draw (-0.75, -0.5) -- +(0, -0.25);
 \fontsize{6}{0}\selectfont
 \node [anchor=north] at (M.south) {\NATOSymb@symbHT};
 \fi
 \fi
-\ifx\NATOSymb@drawH\true \node at (0,0)  \draw ($([xshift=0.5\pgflinewidth]M.south west) + (0, 0.05)$) -- +(0, -##1) -- +##2; \fi 
 \end{scope}
 }
 \newcounter{exitem}
@@ -1464,9 +1464,9 @@ line=solid,
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}, offset={0.5}{(-1.25, 0.2)}]{(5,1)};
+\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}, offset={2}{(-1.6, 1)}]{(5,1)};
 %
-\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  altitude={Low}{Medium}, , offset={2}{(-1.5, 0.2)}]{(4,7)};
+\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group,  altitude={Low}{Medium}, offset={2}{(-1.25, 0.2)}]{(4,7)};
 
 %\begin{landgroup}
 %\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
