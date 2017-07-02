@@ -38,6 +38,15 @@ NATOSymb land/unknown/.pic={
 \path [use as bounding box] (-0.705,-0.705) -- (-0.705, 0.705) -- (0.705, 0.705) -- (0.705, -0.705) -- cycle;
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle;
 },
+% EQUIPMENT %
+NATOSymb equipment/friendly/.pic={
+\draw [fill=NATOSymb@fill, \NATOSymb@line] circle (0.5);},
+NATOSymb equipment/hostile/.pic={
+\pic{NATOSymb land/hostile};},
+NATOSymb equipment/neutral/.pic={
+\pic{NATOSymb land/neutral};},
+NATOSymb equipment/unknown/.pic={ 
+\pic{NATOSymb land/unknown};},
 %% AIR SYMBOLS %%
 % MAIN %
 NATOSymb air/main/military/.pic={
@@ -773,6 +782,70 @@ NATOSymb land/lower/wheeled/.pic={
 \draw (0, 0.05) circle (0.08);
 \draw (-0.24, 0.05) circle (0.08);
 },
+%% EQUIPMENT SYMBOLS %%
+NATOSymb equipment/main/weapon/.pic={
+\draw (0, 0.35) -- (0, -0.35);
+},
+NATOSymb equipment/main/rifle/.pic={
+\pic {NATOSymb equipment/main/weapon};
+\draw (0.2, 0.1) -- (0, 0.35) -- (-0.2, 0.1);
+},
+NATOSymb equipment/main/single band/.pic={
+\draw [ultra thick] (0.2, -0.1) -- (-0.2, -0.1);
+},
+NATOSymb equipment/main/double band/.pic={
+\draw [ultra thick] (0.2, -0.1) -- (-0.2, -0.1);
+\draw [ultra thick] (0.2, -0.2) -- (-0.2, -0.2);
+},
+NATOSymb equipment/main/triple band/.pic={
+\draw [ultra thick] (0.2, 0) -- (-0.2, 0);
+\draw [ultra thick] (0.2, -0.1) -- (-0.2, -0.1);
+\draw [ultra thick] (0.2, -0.2) -- (-0.2, -0.2);
+},
+NATOSymb equipment/main/single shot rifle/.pic={
+\pic {NATOSymb equipment/main/rifle};
+\pic {NATOSymb equipment/main/single band};
+},
+NATOSymb equipment/main/semi automatic rifle/.pic={
+\pic {NATOSymb equipment/main/rifle};
+\pic {NATOSymb equipment/main/double band};
+},
+NATOSymb equipment/main/automatic rifle/.pic={
+\pic {NATOSymb equipment/main/rifle};
+\pic {NATOSymb equipment/main/triple band};
+},
+NATOSymb equipment/main/machine gun/.pic={
+\pic {NATOSymb equipment/main/rifle};
+\draw (0.2, -0.35) -- (-0.2, -0.35);
+},
+NATOSymb equipment/main/light machine gun/.pic={
+\pic {NATOSymb equipment/main/machine gun};
+\pic {NATOSymb equipment/main/single band};
+},
+NATOSymb equipment/main/medium machine gun/.pic={
+\pic {NATOSymb equipment/main/machine gun};
+\pic {NATOSymb equipment/main/double band};
+},
+NATOSymb equipment/main/heavy machine gun/.pic={
+\pic {NATOSymb equipment/main/machine gun};
+\pic {NATOSymb equipment/main/triple band};
+},
+NATOSymb equipment/main/grenade launcher/.pic={
+\pic {NATOSymb equipment/main/rifle};
+\draw (0,0) circle (0.1);
+},
+NATOSymb equipment/main/light grenade launcher/.pic={
+\pic {NATOSymb equipment/main/grenade launcher};
+\pic [yshift=-4]{NATOSymb equipment/main/single band};
+},
+NATOSymb equipment/main/medium grenade launcher/.pic={
+\pic {NATOSymb equipment/main/grenade launcher};
+\pic [yshift=-2]{NATOSymb equipment/main/double band};
+},
+NATOSymb equipment/main/heavy grenade launcher/.pic={
+\pic {NATOSymb equipment/main/grenade launcher};
+\pic [yshift=-5]{NATOSymb equipment/main/triple band};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1275,7 +1348,7 @@ line=solid,
    main/internal security force/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ISF},
    main/individual/.style={/NATOSymb/.cd, symbC=land/main/individual},
    main/organisation or group/.style={/NATOSymb/.cd, symbC=land/main/organisation or group},
-   main/killing victim/.style={/NATOSymb/.cd, symbC=land/main/killing victim,
+   main/killing victim/.style={/NATOSymb/.cd, symbC=land/main/killing victim},
    main/killing victims/.style={/NATOSymb/.cd, symbC=land/main/killing victims},
    main/victim of an attempted crime/.style={/NATOSymb/.cd, symbC=land/main/victim of an attempted crime},
    main/spy/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SPY},
@@ -1415,7 +1488,6 @@ line=solid,
    echelon/command/.style= {/NATOSymb/.cd, symbE=\raisebox{1pt}{+ \ +}},
    task force/.is if=taskforce,
    drawH/.store in= \NATOSymb@drawH,
-   %drawH/.forward to=/NATOSymb/offset,
    symbHT/.store in= \NATOSymb@symbHT,
    headquarters/.is choice,
    headquarters/none/.style= {/NATOSymb/.cd, drawH=false, symbHT=},
@@ -1432,9 +1504,9 @@ line=solid,
    status/reinforced/.style= {/NATOSymb/.cd, symbR=+},
    status/reduced/.style= {/NATOSymb/.cd, symbR=\textminus},
    status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr}},
-   altitude/.style 2 args={execute at end picture={\begin{scope}[shift={#2}] \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi \end{scope}}},
+   altitude/.style 2 args={execute at end scope={\begin{scope}[shift={#2}] \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi \end{scope}}},
    altitude/.value required,
-   offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
+   offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw ([xshift=0.5\pgflinewidth]-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
    offset/.value required,
    faction=friendly,
    main=air defence,
@@ -1471,19 +1543,22 @@ line=solid,
 }
 \newcounter{exitem}
 \newenvironment{landheadquarters}{
+\begin{scope}[local bounding box=G]
 \setcounter{exitem}{0}
 \renewcommand\item{
 \ifnum \value{exitem}>0
-\draw ($([xshift=0.5\pgflinewidth]current bounding box.south west) + (0, 0.05)$) -- +(0,-0.33);
+\draw ($([xshift=0.5\pgflinewidth]G.south west) + (0, 0.06)$) -- +(0,-0.34);
 \fi
 \stepcounter{exitem}\scoped[yshift=-\theexitem*45]}
-}{}
+}{\end{scope}}
 \newenvironment{landgroup}{
+\begin{scope}[local bounding box=G]
 \setcounter{exitem}{0}
 \renewcommand\item{\stepcounter{exitem}\scoped[yshift=-\theexitem*40]}
 }{
-\draw ([shift={(5pt,0pt)}]current bounding box.north west) -| ([shift={(-3pt,-3pt)}]current bounding box.south west) -- ++(8pt,0)
- (current bounding box.west) -- ++(-5pt,0);
+\draw ([shift={(5pt,0pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
+ (G.west) -- ++(-5pt,0);
+\end{scope}
 }
 \makeatother
 \begin{document}
@@ -1496,12 +1571,19 @@ line=solid,
 %
 \NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group,  altitude={Low}{Medium}, offset={2}{(-1.25, 0.2)}]{(4,7)};
 
+\begin{landheadquarters}
+\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group, altitude={Low}{Medium}]{(0,0)};
+\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group, altitude={Low}{Medium}]{(0,0)};
+\end{landheadquarters}
+
 %\begin{landgroup}
-%\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
-%\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
+%\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  altitude={Low}{Medium}]{(0,0)};
+%\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  altitude={Low}{Medium}]{(0,0)};
 %\end{landgroup}
 
-\pic at (0, 0) {NATOSymb land/main/victim of an attempted crime};
+
+\pic at (0, 0) {NATOSymb equipment/friendly};
+\pic at (0, 0) {NATOSymb equipment/main/heavy grenade launcher};
 
 \begin{scope}[rotate=0, opacity=0.5]
 \draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
