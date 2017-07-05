@@ -1,29 +1,25 @@
 import re
+import os
 
-#f = open('nato2.tex', 'r')
-f = open(r'C:\Users\UoM\Documents\NATOSymb\nato2.tex', 'r')
+dr = os.path.dirname(__file__)
+fn = os.path.join(dr, '../nato2.tex')
+f = open(fn, 'r')
 r = f.read()
 f.close()
-m = re.search('%% AIR SYMBOLS %%(.*)%% TEMPLATES %%', r, re.S) #find section containing symbol names.
-l = re.findall('NATOSymb (.*)/.pic', m.group(0)) #output a list of all symbol names.
-d = list()
-for i in l: #convert list to dictionary for grouping
-  t = re.split('/', i)
-  try:
-    c = {'fullstring' : i, 'type': t[0], 'position': t[1], 'name': t[2], 'faction': t[3]} 
-  except IndexError:
-        try:
-          c = {'fullstring' : i, 'type': t[0], 'position': t[1], 'name': t[2]}
-        except IndexError:
-          c = {'fullstring' : i, 'type': t[0], 'name': t[1]}
-  d.append(c)
-s = set([ i['type'] for i in d ])
-h = ['main', 'upper', 'lower']
-k = list()
-for i in s: #create table strings
-    if i != 'multi'
-        if i == 'supply'
+m = list()
+for i in ['Air','Missile','Land']:
+  if i != 'Missile':
+    t = re.search(r'\\newcommand\{\\NATO' + i + '\}\[\d\]\[\]\{.*?main\/.is choice,(.*?)upper\/.is choice,(.*?)lower\/.is choice,(.*?)^(?:(?!lower).)*$', r, re.S | re.M)
+    for j in re.split('},', t.group(1)):
+      pass
+  else:
+    t = re.search(r'\\newcommand\{\\NATOMissile\}\[\d\]\[\]\{.*?left\/.is choice,(.*?)right\/.is choice,(.*?)^(?:(?!right).)*$', r, re.S | re.M)
 
-        else
-            for j in h:
-                e = [j['name'] + '& \tikz{\pic{' + j['fullstring'] + '};}\\' for j in d if d['type'] == i and d['position'] == j]
+		
+def maketable(x):
+  return  '''\begin{tabular}{ |c|c|c| } 
+\hline
+\bfseries{Function} & \bferies{Icon} & \bfseries{Example} \\ 
+\hline'''
+  + ''.join[ k['name'].capitalize() + '''& \tikz{\pic{''' + k['icon'] + '''}} & \tikz{''' +  + '''\\''' for k in x] + '''\hline
+\end{tabular}'''
