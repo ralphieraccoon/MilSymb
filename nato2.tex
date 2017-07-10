@@ -846,6 +846,25 @@ NATOSymb equipment/main/heavy grenade launcher/.pic={
 \pic {NATOSymb equipment/main/grenade launcher};
 \pic [yshift=-5]{NATOSymb equipment/main/triple band};
 },
+NATOSymb equipment/main/flame thrower/.pic={
+\draw [ultra thick] (-0.1, -0.4) -- (-0.1, 0.3) to[out=90,in=90,looseness=2] (0.1, 0.3) -- (0.1, 0.275);
+},
+NATOSymb equipment/main/air defence/.pic={
+\draw (0.2, -0.4) to[out=90,in=90,looseness=1.7] (-0.2, -0.4) -- cycle;
+\draw (0, -0.2) -- (0, 0.35);
+},
+NATOSymb equipment/main/anti tank/.pic={
+\draw  (0.2, -0.4) -- (0, -0.2) -- (-0.2, -0.4);
+\draw (0, -0.2) -- (0, 0.35);
+},
+NATOSymb equipment/main/high trajectory indirect fire weapons system/.pic={
+\draw (0, -0.3) circle (0.1);
+\draw (0, -0.2) -- (0, 0.35);
+},
+NATOSymb equipment/main/side bands/.pic={
+\draw (0.2, -0.2) -- (0.2, 0.2);
+\draw (-0.2, -0.2) -- (-0.2, 0.2);
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1563,7 +1582,6 @@ line=solid,
 \makeatother
 \begin{document}
 
-
 \begin{tikzpicture}
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
 
@@ -1581,9 +1599,9 @@ line=solid,
 %\item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  altitude={Low}{Medium}]{(0,0)};
 %\end{landgroup}
 
-
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/heavy grenade launcher};
+\pic at (0, 0) {NATOSymb equipment/main/weapon};
+\pic at (0, 0) {NATOSymb equipment/main/side bands};
 
 \begin{scope}[rotate=0, opacity=0.5]
 \draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
