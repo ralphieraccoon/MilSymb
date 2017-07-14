@@ -885,6 +885,57 @@ NATOSymb equipment/main/howitzer/.pic={
 \pic {NATOSymb equipment/main/high trajectory indirect fire weapons system};
 \pic {NATOSymb equipment/main/side bands};
 },
+NATOSymb equipment/main/missile launcher/.pic={
+\pic {NATOSymb equipment/main/weapon};
+\draw (0.2, -0.4) -- (0.2, 0.15) to[out=90,in=90,looseness=1.75] (-0.2, 0.15) -- (-0.2, -0.4);
+},
+NATOSymb equipment/main/air defence missile launcher/.pic={
+\pic {NATOSymb equipment/main/air defence};
+\draw (0.2, -0.4) -- (0.2, 0.15) to[out=90,in=90,looseness=1.75] (-0.2, 0.15) -- (-0.2, -0.4);
+},
+NATOSymb equipment/main/anti tank missile launcher/.pic={
+\pic {NATOSymb equipment/main/anti tank};
+\draw (0.2, -0.2) -- (0.2, 0.15) to[out=90,in=90,looseness=1.75] (-0.2, 0.15) -- (-0.2, -0.2);
+},
+NATOSymb equipment/main/surface to surface missile launcher/.pic={
+\pic {NATOSymb equipment/main/weapon};
+\draw (0.2, -0.35) -- (0.2, 0.15) to[out=90,in=90,looseness=1.75] (-0.2, 0.15) -- (-0.2, -0.35) -- cycle;
+},
+NATOSymb equipment/main/mortar/.pic={
+\pic {NATOSymb equipment/main/high trajectory indirect fire weapons system};
+\draw (0.2, 0.1) -- (0, 0.35) -- (-0.2, 0.1);
+},
+NATOSymb equipment/main/single rocket launcher/.pic={
+\pic [yshift=-1.5]{NATOSymb equipment/main/rifle};
+\draw (0.2, 0.2) -- (0, 0.45) -- (-0.2, 0.2);
+},
+NATOSymb equipment/main/multiple rocket launcher/.pic={
+\pic {NATOSymb equipment/main/single rocket launcher};
+\pic {NATOSymb equipment/main/side bands};
+},
+NATOSymb equipment/main/anti tank rocket launcher/.pic={
+\begin{scope}[yshift=-1.5]
+\pic {NATOSymb equipment/main/anti tank};
+\draw (0.2, 0.1) -- (0, 0.35) -- (-0.2, 0.1);
+\end{scope}
+\draw (0.2, 0.2) -- (0, 0.45) -- (-0.2, 0.2);
+},
+NATOSymb equipment/main/non lethal weapon/.pic={
+\pic {NATOSymb equipment/main/weapon};
+\draw (0.2, 0.35) -- (-0.2, 0.35);
+},
+NATOSymb equipment/main/non leathal grenade launcher/.pic={
+\pic {NATOSymb equipment/main/non lethal weapon};
+\draw (0,0) circle (0.1);
+},
+NATOSymb equipment/main/tazer/.pic={
+\pic {NATOSymb equipment/main/non lethal weapon};
+\pic at (0, 0) {NATOSymb main/text={Z}};
+},
+NATOSymb equipment/main/water cannon/.pic={
+\pic {NATOSymb equipment/main/non lethal weapon};
+\pic at (0, 0) {NATOSymb main/text={W}};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1620,8 +1671,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/weapon};
-\pic at (0, 0) {NATOSymb equipment/main/side bands};
+\pic at (0, 0) {NATOSymb equipment/main/anti tank rocket launcher};
 
 \begin{scope}[rotate=0, opacity=0.5]
 \draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
