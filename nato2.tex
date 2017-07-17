@@ -89,19 +89,7 @@ NATOSymb air/main/air decoy/.pic={
 \begin{scope}[shift={(0.42,0)}]
 	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
 \end{scope}},
-NATOSymb air/main/medic/.pic={
-\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
-\begin{scope}[rotate=90]
-\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
-\end{scope}},
 % UPPER %
-NATOSymb air/upper/medic/.pic={
-\begin{scope}[scale=0.7]
-\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
-\begin{scope}[rotate=90]
-\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
-\end{scope}
-\end{scope}},
 %% LAND SYMBOLS %%
 % FULLFRAME %
 NATOSymb land/main/air assault with organic lift/friendly/.pic={
@@ -415,9 +403,6 @@ NATOSymb land/main/transportation/.pic={
 \draw (45:-0.2) -- (45:0.2);
 \draw (-45:-0.2) -- (-45:0.2);
 },
-NATOSymb land/main/armoured/.pic={
-\draw [rounded corners=6] (-0.45,-0.2) rectangle (0.45,0.2);
-},
 NATOSymb land/main/aviation composite fixed wing and rotary wing/.pic={
 \pic [xscale=0.45, yscale=0.75] {NATOSymb multi/main/aviation fixed wing};
 \pic [yscale=0.45, xscale=0.7, rotate=90] {NATOSymb multi/main/aviation rotary wing};
@@ -429,7 +414,7 @@ NATOSymb land/main/combat support/.pic={
 \fill (0.15, 0.2) -- (-0.15, 0.2) -- (-0.15, -0.05) -- (0, -0.2) -- (0.15, -0.05) -- cycle;
 },
 NATOSymb land/main/combined arms/.pic={
-\pic {NATOSymb land/main/armoured};
+\pic {NATOSymb multi/main/armoured};
 \draw (0.275, 0.2) -- (-0.275, -0.2);
 \draw (0.275, -0.2) -- (-0.275, 0.2);
 },
@@ -452,9 +437,9 @@ NATOSymb land/main/electronic ranging/.pic={
 \draw (0,0) -- (225:-0.225);
 \end{scope}
 },
-NATOSymb land/main/armoured engineer/.pic={
+NATOSymb multi/main/armoured engineer/.pic={
 \pic [scale=0.6] {NATOSymb multi/main/engineer};
-\pic {NATOSymb land/main/armoured};
+\pic {NATOSymb multi/main/armoured};
 },
 NATOSymb land/main/observer/.pic={
 \draw (0.25, -0.2) -- (-0.25, -0.2) -- (0, 0.2) -- cycle;
@@ -466,7 +451,7 @@ NATOSymb land/main/field artillery observer/.pic={
 },
 NATOSymb land/main/self propelled field artillery/.pic={
 \pic {NATOSymb multi/main/field artillery};
-\pic {NATOSymb land/main/armoured};
+\pic {NATOSymb multi/main/armoured};
 },
 NATOSymb land/main/finance/.pic={
 \draw (-0.3, -0.2) -- (-0.3, 0) -- (-0.15, 0.2) -- (0.15, 0.2) -- (0.3, 0) -- (0.3, -0.2) -- cycle;
@@ -508,7 +493,7 @@ NATOSymb land/main/mortar/.pic={
 },
 NATOSymb land/main/tactical mortar/.pic={
 \pic [scale=0.75] {NATOSymb land/main/mortar};
-\pic {NATOSymb land/main/armoured};
+\pic {NATOSymb multi/main/armoured};
 },
 NATOSymb land/main/mortuary affairs/.pic={
 \draw (0.1, -0.175) rectangle (-0.1, 0.175);
@@ -924,7 +909,7 @@ NATOSymb equipment/main/non lethal weapon/.pic={
 \pic {NATOSymb equipment/main/weapon};
 \draw (0.2, 0.35) -- (-0.2, 0.35);
 },
-NATOSymb equipment/main/non leathal grenade launcher/.pic={
+NATOSymb equipment/main/non lethal grenade launcher/.pic={
 \pic {NATOSymb equipment/main/non lethal weapon};
 \draw (0,0) circle (0.1);
 },
@@ -936,11 +921,40 @@ NATOSymb equipment/main/water cannon/.pic={
 \pic {NATOSymb equipment/main/non lethal weapon};
 \pic at (0, 0) {NATOSymb main/text={W}};
 },
+NATOSymb equipment/main/armoured fighting vehicle/.pic={
+\draw (0, 0.2) -- (0.25, 0) -- (0, -0.2) -- (-0.25, 0) -- cycle;
+\draw [ultra thick] (0.275, 0.2) -- (0.275, -0.2);
+\draw [ultra thick] (-0.275, 0.2) -- (-0.275, -0.2);
+},
+NATOSymb equipment/main/armoured fighting vehicle command and control/.pic={
+\pic {NATOSymb equipment/main/armoured fighting vehicle};
+\pic at (0, 0) {NATOSymb main/textsmall={C2}};
+},
+NATOSymb equipment/main/armoured personnel carrier/.pic={
+\draw (0.275, 0.275) -- (0.275, -0.275) -- (-0.275 , -0.275) -- (-0.275, 0.275);
+\draw (0.275, 0.15) -- (0, 0.275) -- (-0.275, 0.15);
+},
+NATOSymb equipment/main/armoured medical personnel carrier/.pic={
+\pic {NATOSymb equipment/main/armoured personnel carrier};
+\draw (0, 0.275) -- (0, -0.275);
+\draw (0.275, -0.05) -- (-0.275, -0.05);
+},
+NATOSymb equipment/main/armoured protected recovery vehicle/.pic={
+\pic {NATOSymb multi/main/armoured};
+\pic [yscale=0.5, xscale=0.75] {NATOSymb multi/main/maintenance};
+},
+NATOSymb equipment/main/medical evacuation armoured protected vehicle/.pic={
+\pic {NATOSymb multi/main/armoured};
+\pic {NATOSymb multi/main/medic};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
 \draw (0.175, -0.175) -- (-0.175,-0.175);
 \draw (0.125, -0.175) -- (0.125, 0) to[out=90,in=90,looseness=2.75] (-0.125, 0) -- (-0.125, -0.175);
+},
+NATOSymb multi/main/armoured/.pic={
+\draw [rounded corners=6] (-0.45,-0.2) rectangle (0.45,0.2);
 },
 NATOSymb multi/main/petroleum oil and lubricants/.pic={
 \draw (0, -0.175) -- (0, 0) -- (0.15, 0.175) -- (-0.15, 0.175) -- (0, 0);
@@ -967,6 +981,12 @@ NATOSymb multi/main/maintenance/.pic={
 \draw [ultra thick] (0.4, -0.15) .. controls (0.275, -0.145) .. (0.275, 0) .. controls (0.275, 0.145) .. (0.4, 0.15);
 \begin{scope} [xscale=-1]
 \draw [ultra thick] (0.4, -0.15) .. controls (0.275, -0.145) .. (0.275, 0) .. controls (0.275, 0.145) .. (0.4, 0.15);
+\end{scope}
+},
+NATOSymb multi/main/medic/.pic={
+\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
+\begin{scope}[rotate=90]
+\fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
 \end{scope}
 },
 NATOSymb multi/main/person/.pic={
@@ -1016,7 +1036,11 @@ NATOSymb multi/main/missile/.pic={
 },
 % UPPER %
 NATOSymb multi/upper/naval/.pic={
-\node at (0, 0) {$\anchor$};},
+\node at (0, 0) {$\anchor$};
+},
+NATOSymb multi/upper/medic/.pic={
+\pic [scale=0.7] {NATOSymb multi/main/medic};
+},
 % UPPER/LOWER %
 %% SUPPLY %%
 NATOSymb supply/class 1/.pic={
@@ -1152,7 +1176,7 @@ line=solid,
    main/civilian airship/.style={/NATOSymb/.cd, symbC=air/main/civilian airship},
    main/unmanned aerial vehicle/.style={/NATOSymb/.cd, symbC=multi/main/unmanned systems},
    main/air decoy/.style={/NATOSymb/.cd, symbC=air/main/air decoy},
-   main/medic/.style={/NATOSymb/.cd, symbC=air/main/medic},
+   main/medic/.style={/NATOSymb/.cd, symbC=multi/main/medic},
    main/attack/.style={/NATOSymb/.cd, symbC=main/text, symbCT=A},
    main/bomber/.style={/NATOSymb/.cd, symbC=main/text, symbCT=B},
    main/cargo/.style={/NATOSymb/.cd, symbC=main/text, symbCT=C},
@@ -1182,7 +1206,7 @@ line=solid,
    main/very important person/.style={/NATOSymb/.cd, symbC=main/text, symbCT=VIP},
    upper/.is choice,
    upper/none/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=}, 
-   upper/medical evacuation/.style= {/NATOSymb/.cd, symbU=air/upper/medic},
+   upper/medical evacuation/.style= {/NATOSymb/.cd, symbU=multi/upper/medic},
    upper/cargo/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=C}, 
    upper/jammer/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=J},
    upper/tanker/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=K},
@@ -1349,7 +1373,7 @@ line=solid,
    main/administrative/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ADM},
    main/air traffic services/.style={/NATOSymb/.cd, symbC=land/main/air traffic services},
    main/ammunition/.style={/NATOSymb/.cd, symbC=multi/main/ammunition},
-   main/armoured/.style={/NATOSymb/.cd, symbC=land/main/armoured},
+   main/armoured/.style={/NATOSymb/.cd, symbC=multi/main/armoured},
    main/aviation fixed wing/.style={/NATOSymb/.cd, symbC=multi/main/aviation fixed wing},
    main/aviation rotary wing/.style={/NATOSymb/.cd, symbC=multi/main/aviation rotary wing},
    main/aviation composite fixed wing and rotary wing/.style={/NATOSymb/.cd, symbC=land/main/aviation composite fixed wing and rotary wing},
@@ -1369,7 +1393,7 @@ line=solid,
    main/electronic ranging/.style={/NATOSymb/.cd, symbC=land/main/electronic ranging},
    main/electronic warfare/.style={/NATOSymb/.cd, symbC=main/text, symbCT=EW},
    main/engineer/.style={/NATOSymb/.cd, symbC=multi/main/engineer},
-   main/armoured engineer/.style={/NATOSymb/.cd, symbC=land/main/armoured engineer},
+   main/armoured engineer/.style={/NATOSymb/.cd, symbC=multi/main/armoured engineer},
    main/electronic ordinance disposal/.style={/NATOSymb/.cd, symbC=main/text, symbCT=EOD},
    main/field artillery/.style={/NATOSymb/.cd, symbC=multi/main/field artillery},
    main/field artillery observer/.style={/NATOSymb/.cd, symbC=land/main/field artillery observer},
@@ -1596,7 +1620,12 @@ line=solid,
    status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr}},
    altitude/.style 2 args={execute at end scope={\begin{scope}[shift={#2}] \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi \end{scope}}},
    altitude/.value required,
-   offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw ([xshift=0.5\pgflinewidth]-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
+   staff comments/.store in= \NATOSymb@symbA,
+   additional information/.store in=\NATOSymb@symbB,
+   evaluation rating/.store in=\NATOSymb@symbD,
+   nation/.store in= \NATOSymb@symbE,
+   additional information/.store in=\NATOSymb@symbF,
+   offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
    offset/.value required,
    faction=friendly,
    main=air defence,
@@ -1637,7 +1666,7 @@ line=solid,
 \setcounter{exitem}{0}
 \renewcommand\item{
 \ifnum \value{exitem}>0
-\draw ($([xshift=0.5\pgflinewidth]G.south west) + (0, 0.06)$) -- +(0,-0.34);
+\draw ($(G.south west) + (0, 0.06)$) -- +(0,-0.34);
 \fi
 \stepcounter{exitem}\scoped[yshift=-\theexitem*45]}
 }{\end{scope}}
@@ -1671,7 +1700,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/anti tank rocket launcher};
+\pic at (0, 0) {NATOSymb equipment/main/medical evacuation armoured protected vehicle};
 
 \begin{scope}[rotate=0, opacity=0.5]
 \draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
