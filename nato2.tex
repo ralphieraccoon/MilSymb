@@ -947,6 +947,31 @@ NATOSymb equipment/main/medical evacuation armoured protected vehicle/.pic={
 \pic {NATOSymb multi/main/armoured};
 \pic {NATOSymb multi/main/medic};
 },
+NATOSymb equipment/main/tank/.pic={
+\draw (-0.35, 0.3) -- (-0.35, -0.3);
+\draw (0.35, 0.3) -- (0.35, -0.3);
+\draw (0.35, 0.2) -- (-0.35, 0.2);
+\draw (0.35, -0.2) -- (-0.35, -0.2);
+},
+NATOSymb equipment/main/light tank/.pic={
+\pic {NATOSymb equipment/main/tank};
+\pic [rotate=90, yshift=3]{NATOSymb equipment/main/single band};
+},
+NATOSymb equipment/main/medium tank/.pic={
+\pic {NATOSymb equipment/main/tank};
+\pic [rotate=90]{NATOSymb equipment/main/single band};
+\pic [rotate=90, yshift=6]{NATOSymb equipment/main/single band};
+},
+NATOSymb equipment/main/heavy tank/.pic={
+\pic {NATOSymb equipment/main/tank};
+\pic [rotate=90, yshift=-2]{NATOSymb equipment/main/single band};
+\pic [rotate=90, yshift=3]{NATOSymb equipment/main/single band};
+\pic [rotate=90, yshift=8]{NATOSymb equipment/main/single band};
+},
+NATOSymb equipment/main/tank recovery vehicle/.pic={
+\pic {NATOSymb equipment/main/tank};
+\pic [yscale=0.5, xscale=0.75] {NATOSymb multi/main/maintenance};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1700,7 +1725,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/medical evacuation armoured protected vehicle};
+\pic at (0, 0) {NATOSymb equipment/main/tank recovery vehicle};
 
 \begin{scope}[rotate=0, opacity=0.5]
 \draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
