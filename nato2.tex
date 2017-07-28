@@ -633,8 +633,7 @@ NATOSymb land/upper/air assault/.pic={
 \draw (0.25, 0.05) -- (0, -0.1) -- (-0.25, 0.05);
 },
 NATOSymb land/upper/bridging/.pic={
-\draw (0.225, -0.125) -- (0.16, -0.06) -- (-0.16, -0.06) -- (-0.225, -0.125);
-\draw (0.225, 0.05) -- (0.16, -0.01) -- (-0.16, -0.01) -- (-0.225, 0.05);
+\pic[scale=0.625, yshift=-1.6] {NATOSymb multi/main/bridge};
 },
 NATOSymb land/upper/direct communications/.pic={
 \draw[{Stealth[inset=0pt,scale=0.5]}-{Stealth[inset=0pt,scale=0.5]}, very thick] (-0.215, -0.05) -- (0.215, -0.05);
@@ -972,6 +971,13 @@ NATOSymb equipment/main/tank recovery vehicle/.pic={
 \pic {NATOSymb equipment/main/tank};
 \pic [yscale=0.5, xscale=0.75] {NATOSymb multi/main/maintenance};
 },
+NATOSymb equipment/main/utility vehicle/.pic={
+\draw (-0.35, 0.3) -- (-0.35, -0.3) -- (0.35, -0.3) -- (0.35, 0.3) to[in=-90, out=-90, looseness=1] cycle;
+},
+NATOSymb equipment/main/bridge mounted on utility vehicle/.pic={
+\pic {NATOSymb equipment/main/utility vehicle};
+\pic [scale=0.75, yshift=-3] {NATOSymb multi/main/bridge};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -980,6 +986,10 @@ NATOSymb multi/main/ammunition/.pic={
 },
 NATOSymb multi/main/armoured/.pic={
 \draw [rounded corners=6] (-0.45,-0.2) rectangle (0.45,0.2);
+},
+NATOSymb multi/main/bridge/.pic={
+\draw (0.35, -0.15) -- (0.25, -0.05) -- (-0.25, -0.05) -- (-0.35, -0.15);
+\scoped[yscale=-1]{\draw (0.35, -0.15) -- (0.25, -0.05) -- (-0.25, -0.05) -- (-0.35, -0.15);} 
 },
 NATOSymb multi/main/petroleum oil and lubricants/.pic={
 \draw (0, -0.175) -- (0, 0) -- (0.15, 0.175) -- (-0.15, 0.175) -- (0, 0);
@@ -1725,7 +1735,8 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/tank recovery vehicle};
+\pic at (0, 0) {NATOSymb equipment/main/bridge mounted on utility vehicle};
+
 
 \begin{scope}[rotate=0, opacity=0.5]
 \draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
