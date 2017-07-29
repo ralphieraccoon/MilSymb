@@ -978,6 +978,18 @@ NATOSymb equipment/main/bridge mounted on utility vehicle/.pic={
 \pic {NATOSymb equipment/main/utility vehicle};
 \pic [scale=0.75, yshift=-3] {NATOSymb multi/main/bridge};
 },
+NATOSymb equipment/main/fixed bridge/.pic={
+\pic {NATOSymb multi/main/bridge};
+\draw (0, 0.15) -- (0, -0.15);
+},
+NATOSymb equipment/main/folding girder bridge/.pic={
+\pic {NATOSymb multi/main/bridge};
+\draw (0.1, 0.15) -- (-0.1, 0.15) -- (-0.1, -0.15) -- (0.1, -0.15);
+},
+NATOSymb equipment/main/hollow deck bridge/.pic={
+\pic {NATOSymb multi/main/bridge};
+\draw (0.1, 0.15) -- (-0.1, 0.15) -- (-0.1, -0.15) -- (0.1, -0.15) -- cycle;
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1735,7 +1747,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/bridge mounted on utility vehicle};
+\pic at (0, 0) {NATOSymb equipment/main/folding girder bridge};
 
 
 \begin{scope}[rotate=0, opacity=0.5]
