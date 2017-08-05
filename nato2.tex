@@ -428,7 +428,7 @@ NATOSymb land/main/diving/.pic={
 \draw (0, 0) -- (-0.075, -0.175) -- (0.075, -0.175) -- cycle;
 \end{scope}
 },
-NATOSymb land/main/drilling/.pic={
+NATOSymb multi/main/drilling/.pic={
 \fill (-0.1,-0.2) -- (0.1,-0.2) -- (0.2, 0.2) -- (-0.2, 0.2) -- cycle;
 },
 NATOSymb land/main/electronic ranging/.pic={
@@ -644,7 +644,7 @@ NATOSymb land/upper/diving/.pic={
 \pic [scale=0.75] {NATOSymb land/main/diving};
 },
 NATOSymb land/upper/drilling/.pic={
-\pic [scale=0.625, yshift=-0.5] {NATOSymb land/main/drilling};
+\pic [scale=0.625, yshift=-0.5] {NATOSymb multi/main/drilling};
 },
 NATOSymb land/upper/maintenance/.pic={
 \pic [scale=0.5, yshift=-1.75] {NATOSymb multi/main/maintenance};
@@ -990,6 +990,10 @@ NATOSymb equipment/main/hollow deck bridge/.pic={
 \pic {NATOSymb multi/main/bridge};
 \draw (0.1, 0.15) -- (-0.1, 0.15) -- (-0.1, -0.15) -- (0.1, -0.15) -- cycle;
 },
+NATOSymb equipment/main/drill mounted on vehicle/.pic={
+\pic [scale=0.75, yshift=-4] {NATOSymb multi/main/drill};
+\pic {NATOSymb equipment/main/utility vehicle};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1013,6 +1017,9 @@ NATOSymb multi/main/chemical biological radiological nuclear defence/.pic={
 \draw [ultra thick] (0.15,-0.2) arc(0:90:0.45 and 0.375);
 \draw [fill] (-0.29,0.1) circle(0.096);
 \end{scope}
+},
+NATOSymb multi/main/drill/.pic={
+\fill (-0.1,-0.2) -- (0.1,-0.2) -- (0.2, 0.2) -- (-0.2, 0.2) -- cycle;
 },
 NATOSymb multi/main/aviation fixed wing/.pic={
 \fill (-0.36,0.125) arc (77:275:0.075 and 0.125) -- (0,0) -- cycle;
@@ -1436,7 +1443,7 @@ line=solid,
    main/criminal investigation division/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CID},
    main/diving/.style={/NATOSymb/.cd, symbC=land/main/diving},
    main/dog/.style={/NATOSymb/.cd, symbC=main/text, symbCT=DOG},
-   main/drilling/.style={/NATOSymb/.cd, symbC=land/main/drilling},
+   main/drilling/.style={/NATOSymb/.cd, symbC=multi/main/drilling},
    main/electronic ranging/.style={/NATOSymb/.cd, symbC=land/main/electronic ranging},
    main/electronic warfare/.style={/NATOSymb/.cd, symbC=main/text, symbCT=EW},
    main/engineer/.style={/NATOSymb/.cd, symbC=multi/main/engineer},
@@ -1747,7 +1754,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/folding girder bridge};
+\pic at (0, 0) {NATOSymb equipment/main/drill mounted on vehicle};
 
 
 \begin{scope}[rotate=0, opacity=0.5]

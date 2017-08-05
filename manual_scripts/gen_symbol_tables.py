@@ -8,18 +8,20 @@ def maketable(x, y):
     del s[-1]
     for j in s:  # split up into each definition
         n = re.search('.*?/(.*?)/', j).group(1)  # get name
+        if n == 'none':
+            continue  # skip if a blank placeholder
         if re.search('symb[CUL]T=', j):  # detect if text based
             e = re.search('symb[CUL]T=(.*)$', j).group(1)  # get text
             if re.search('squashed', j):  # regular or squashed text
-                ro = n.title() + r' & \tikz{\pic{NATOSymb main/textsquashed={' + e + r'}} & ' + e + r' \\'
+                ro = n.title() + r' & \tikz{\pic{NATOSymb main/textsquashed={' + e + r'}} & ' + e + ' \\\\ \n\\hline'
             else:
-                ro = n.title() + r' & \tikz{\pic{NATOSymb main/text={' + e + r'}}} & ' + e + r' \\'
+                ro = n.title() + r' & \tikz{\pic{NATOSymb main/text={' + e + r'}}} & ' + e + ' \\\\ \n\\hline'
         else:
             p = re.search('symb[CUL]=(.*)(?:,|$)', j).group(1)  # get shape path
-            ro = n.title() + r' & \tikz{\pic{NATOSymb ' + p + r'}} & ' + p + r' \\'
+            ro = n.title() + r' & \tikz{\pic{NATOSymb ' + p + r'}} & ' + p + ' \\\\ \n\\hline'
         l.append(ro)
-    ta = '\\begin{tabular}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{Examples} \\\\' + '\n'.join(
-        l) + '\n\\hline\n\\end{tabular}'
+    ta = '\\begin{tabular}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{Examples} \\\\ ' \
+         '\n\\hline\n' + '\n'.join(l) + '\n\\end{tabular}'
     ofn = os.path.join(dr, y + '_' + re.match('^(.*?)/', x).group(1) + '_table.tex')
     of = open(ofn, 'w')
     of.write(ta)
