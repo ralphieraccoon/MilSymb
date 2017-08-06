@@ -472,16 +472,6 @@ NATOSymb land/main/laundry/.pic={
 \draw (0, 0.1) -- (-0.15, 0.1);
 \draw (0, 0.1) -- (-0.15, 0);
 },
-NATOSymb land/main/mine/.pic={
-\pic [yscale=0.5, xscale=0.6] {NATOSymb multi/main/field artillery};
-\draw [thick] (0, -0.2) -- (0, 0.2);
-\begin{scope}[rotate=25]
-\draw [thick] (0, -0.2) -- (0, 0.2);
-\end{scope}
-\begin{scope}[rotate=-25]
-\draw [thick] (0, -0.2) -- (0, 0.2);
-\end{scope}
-},
 NATOSymb land/main/missile/.pic={
 \draw (0, -0.2) -- (0, 0.2);
 \draw [rounded corners=3] (0.1, -0.2) -- (0.1, 0.2) -- (-0.1, 0.2) -- (-0.1, -0.2);
@@ -994,6 +984,52 @@ NATOSymb equipment/main/drill mounted on vehicle/.pic={
 \pic [scale=0.75, yshift=-4] {NATOSymb multi/main/drill};
 \pic {NATOSymb equipment/main/utility vehicle};
 },
+NATOSymb equipment/main/earthmover/.pic={
+\draw (-0.25, 0.25) -- (-0.25, -0.25);
+\draw (0.25, 0.25) -- (0.25, -0.25);
+\draw (0.25, 0.2) -- (-0.25, 0.2);
+\draw (0.25, -0.2) -- (-0.25, -0.2);
+\draw (0, 0.2) -- (0, 0.35);
+\draw (0.3, 0.3) -- (0.175, 0.35) -- (-0.175, 0.35) -- (-0.3, 0.3);
+},
+NATOSymb equipment/main/multifunctional earthmover/.pic={
+\pic {NATOSymb equipment/main/earthmover};
+\pic at (0, 0) {NATOSymb main/textsmall={MF}};
+},
+NATOSymb equipment/main/mine clearing equipment/.pic={
+\draw (0, 0.2) -- (0, 0) -- (0.35, -0.2) -- (-0.35, -0.2) -- (0, 0);
+},
+NATOSymb equipment/main/mine clearing vehicle/.pic={
+\pic [line join=bevel] {NATOSymb equipment/main/mine clearing equipment};
+\draw (0.35, -0.25) -- (0.35, 0.25);
+\draw (-0.35, -0.25) -- (-0.35, 0.25);
+\draw (0.35, 0.2) -- (-0.35, 0.2);
+},
+NATOSymb equipment/main/mine laying equipment/.pic={
+\pic {NATOSymb multi/main/mine};
+\draw [ultra thick] (0.1, 0.3) -- (-0.1, 0.3);
+},
+NATOSymb equipment/main/mine laying vehicle/.pic={
+\pic [scale=0.6, yshift=-7, transform shape] {NATOSymb equipment/main/mine laying equipment};
+\pic {NATOSymb equipment/main/utility vehicle};
+},
+NATOSymb equipment/main/medical vehicle/.pic={
+\draw (0.35, -0.1) -- (-0.35, -0.1);
+\draw (0, 0.1) -- (0, -0.3);
+\pic {NATOSymb equipment/main/utility vehicle};
+},
+NATOSymb equipment/main/medical evacuation/.pic={
+\pic [scale=0.75, yshift=-4] {NATOSymb multi/main/medic};
+\pic {NATOSymb equipment/main/utility vehicle};
+},
+NATOSymb equipment/main/mobile emergency physician/.pic={
+\draw (0.1, 0) -- (-0.1, 0);
+\pic {NATOSymb equipment/main/medical vehicle};
+},
+NATOSymb equipment/main/bus/.pic={
+\pic {NATOSymb equipment/main/utility vehicle};
+\pic at (0, -0.1) {NATOSymb main/text={B}};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1041,6 +1077,16 @@ NATOSymb multi/main/medic/.pic={
 \fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
 \begin{scope}[rotate=90]
 \fill (-0.075, -0.2) -- (0.075, -0.2) -- (0.075, 0.2) -- (-0.075, 0.2) -- cycle;
+\end{scope}
+},
+NATOSymb multi/main/mine/.pic={
+\pic [yscale=0.5, xscale=0.6] {NATOSymb multi/main/field artillery};
+\draw [thick] (0, -0.2) -- (0, 0.2);
+\begin{scope}[rotate=25]
+\draw [thick] (0, -0.2) -- (0, 0.2);
+\end{scope}
+\begin{scope}[rotate=-25]
+\draw [thick] (0, -0.2) -- (0, 0.2);
 \end{scope}
 },
 NATOSymb multi/main/person/.pic={
@@ -1467,7 +1513,7 @@ line=solid,
    main/meteological/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MET},
    main/military intelligence/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MI},
    main/military police/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MP},
-   main/mine/.style={/NATOSymb/.cd, symbC=land/main/mine},
+   main/mine/.style={/NATOSymb/.cd, symbC=multi/main/mine},
    main/missile/.style={/NATOSymb/.cd, symbC=land/main/missile},
    main/morale welfare and recreation/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MWE},
    main/mortar/.style={/NATOSymb/.cd, symbC=land/main/mortar},
@@ -1754,7 +1800,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/drill mounted on vehicle};
+\pic at (0, 0) {NATOSymb equipment/main/bus};
 
 
 \begin{scope}[rotate=0, opacity=0.5]
