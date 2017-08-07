@@ -580,13 +580,8 @@ NATOSymb land/main/video imagery/.pic={
 \draw (0.075, -0.15) -- (0.4, -0.15);
 \draw (0.16, 0.1) -- (0.4, 0.1);
 },
-NATOSymb land/main/water/.pic={
-\draw [rounded corners=7] (-0.3, 0.05) -- (0.3, 0.05) -- (0.3, -0.2);
-\draw (0, 0.05) -- (0, 0.2);
-\draw (0.075, 0.2) -- (-0.075, 0.2);
-},
 NATOSymb land/main/water purification/.pic={
-\pic {NATOSymb land/main/water};
+\pic {NATOSymb multi/main/water};
 \fontsize{4}{0}\selectfont
 \node at (-0.1,-0.1) {PURE};
 },
@@ -1030,6 +1025,19 @@ NATOSymb equipment/main/bus/.pic={
 \pic {NATOSymb equipment/main/utility vehicle};
 \pic at (0, -0.1) {NATOSymb main/text={B}};
 },
+NATOSymb equipment/main/semi trailer truck/.pic={
+\draw (0.21, -0.025) -- (0.35, -0.025);
+\draw (0.35, 0.05) -- (0.35, -0.1);
+\pic [scale=0.75, xshift=-2] {NATOSymb equipment/main/utility vehicle};
+},
+NATOSymb equipment/main/petroleum oil and lubricants vehicle/.pic={
+\pic {NATOSymb equipment/main/utility vehicle};
+\pic [scale=0.75, yshift=-4] {NATOSymb multi/main/petroleum oil and lubricants};
+},
+NATOSymb equipment/main/water vehicle/.pic={
+\pic {NATOSymb equipment/main/utility vehicle};
+\pic [scale=0.75, yshift=-4] {NATOSymb multi/main/water};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/ammunition/.pic={
@@ -1133,6 +1141,11 @@ NATOSymb multi/main/repair parts/.pic={
 NATOSymb multi/main/missile/.pic={
 \draw (0, 0.425) -- (0, -0.4);
 \draw (0.15, -0.4) -- (0.15, 0.25) to[out=90,in=90,looseness=2] (-0.15, 0.25) -- (-0.15, -0.4);
+},
+NATOSymb multi/main/water/.pic={
+\draw (-0.3, 0.05) -- (0, 0.05) to[in=90, out=0] (0.3, -0.2);
+\draw (0, 0.05) -- (0, 0.2);
+\draw (0.075, 0.2) -- (-0.075, 0.2);
 },
 % UPPER %
 NATOSymb multi/upper/naval/.pic={
@@ -1554,7 +1567,7 @@ line=solid,
    main/transportation/.style={/NATOSymb/.cd, symbC=land/main/transportation},
    main/unmanned systems/.style={/NATOSymb/.cd, symbC=multi/main/unmanned systems},
    main/video imagery/.style={/NATOSymb/.cd, symbC=land/main/video imagery},
-   main/water/.style={/NATOSymb/.cd, symbC=land/main/water},
+   main/water/.style={/NATOSymb/.cd, symbC=multi/main/water},
    main/water purification/.style={/NATOSymb/.cd, symbC=land/main/water purification},
    main/civilian police/.style={/NATOSymb/.cd, symbC=land/main/civilian police},
    main/environmental protection/.style={/NATOSymb/.cd, symbC=land/main/environmental protection},
@@ -1800,7 +1813,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/bus};
+\pic at (0, 0) {NATOSymb equipment/main/water vehicle};
 
 
 \begin{scope}[rotate=0, opacity=0.5]
