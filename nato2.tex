@@ -145,10 +145,6 @@ NATOSymb land/main/air and naval gunfire liason company/unknown/.pic={
 \pic {NATOSymb land/main/air and naval gunfire liason company};
 \pic {NATOSymb land/main/reconnaissance/unknown};
 },
-NATOSymb land/main/broadcast transmitter antenna/.pic={
-\draw (0, -0.3) -- (0, 0.3);
-\draw (-0.125, 0.3) -- (0, 0.2) -- (0.125, 0.3);
-},
 NATOSymb land/main/amphibious/.pic={
 \draw (0.81, 0) to[out=90,in=90,looseness=2.25] (0.63, 0) to[out=-90,in=-90,looseness=2.25] (0.45, 0) to[out=90,in=90,looseness=2.25] (0.27, 0) to[out=-90,in=-90,looseness=2.25] (0.09, 0) to[out=90,in=90,looseness=2.25] (-0.09, 0) to[out=-90,in=-90,looseness=2.25] (-0.27, 0) to[out=90,in=90,looseness=2.25] (-0.45, 0) to[out=-90,in=-90,looseness=2.25] (-0.63, 0) to[out=90,in=90,looseness=2.25] (-0.81, 0);
 },
@@ -514,21 +510,9 @@ NATOSymb land/main/pipeline/.pic={
 NATOSymb land/main/postal/.pic={
 \draw (0.1, 0.2) arc(180:225:0.565) arc(270:197:0.565) -- cycle; 
 },
-NATOSymb land/main/psychological operations/.pic={
-\draw [line join=round] (0.15, 0.2) -- (0.15, -0.2) -- (0.025, -0.08) -- (-0.15, -0.08) -- (-0.15, 0.08) -- (0.025, 0.08) -- cycle;
-\draw (0.15, -0.1) -- (0.225, -0.1);
-\draw (0.15, -0.0325) -- (0.225, -0.0325);
-\draw (0.15, 0.0325) -- (0.225, 0.0325);
-\draw (0.15, 0.1) -- (0.225, 0.1);
-},
-NATOSymb land/main/radar/.pic={
-\begin{scope} [yshift=1]
-\draw (135:0.225) arc (150:290:0.26);
-\begin{scope}
-\clip (190:0.2) rectangle (0.3, 0.2);
-\draw (180:0.2) -- (0,0.16) -- (0,0) -- (0.2, 0.16);
-\end{scope}
-\end{scope}
+NATOSymb land/main/psychological operations broadcast/.pic={
+\pic {NATOSymb multi/main/antenna};
+\pic {NATOSymb multi/main/psychological operations filled};
 },
 NATOSymb land/main/radio/.pic={
 \draw (0, -0.125) circle (0.075);
@@ -545,9 +529,6 @@ NATOSymb land/main/radio teletype centre/.pic={
 \draw (0.15, 0.2) -- (-0.15, 0.2);
 \draw (0.1, 0.15) -- (-0.1, 0.15);
 \pic at (0, -0.1) {NATOSymb main/textsmall={C}};
-},
-NATOSymb land/main/sensor/.pic={
-\fill (0, -0.2) arc (180:90:0.2) arc (270:180:0.2) arc (0:-90:0.2) arc (90:0:0.2) -- cycle;
 },
 NATOSymb land/main/sniper/.pic={
 \draw (0, -0.2) -- (0, 0.15);
@@ -647,10 +628,10 @@ NATOSymb land/upper/multiple rocket launcher/.pic={
 \draw (0.175, -0.14) -- (0, 0.01) -- (-0.175, -0.14);
 },
 NATOSymb land/upper/radar/.pic={
-\pic [scale=0.5] {NATOSymb land/main/radar};
+\pic [scale=0.5] {NATOSymb multi/main/radar};
 },
 NATOSymb land/upper/sensor/.pic={
-\pic [scale=0.5] {NATOSymb land/main/sensor};
+\pic [scale=0.5] {NATOSymb multi/main/sensor};
 },
 NATOSymb land/upper/signals intelligence/.pic={
 \begin{scope}[scale=0.75, yshift=-2.5] 
@@ -1050,8 +1031,36 @@ NATOSymb equipment/main/laser/.pic={
 \draw [line join=round, line cap=round] (0.1, -0.25) -- (-0.1, -0.225) -- (0.1, -0.2) -- (-0.1, -0.175) -- (0.1, -0.15) -- (0, -0.1375) -- (0, -0.0125) -- (-0.1, 0) -- (0.1, 0.025) -- (-0.1, 0.05) -- (0.1, 0.075) -- (0, 0.0875) -- (0, 0.25);
 \draw [line join=round, line cap=round] (0.1, 0.2) -- (0, 0.25) -- (-0.1, 0.2);
 },
+NATOSymb equipment/main/land mine/.pic={
+\draw (0, 0) circle(0.25);
+},
+NATOSymb equipment/main/antipersonnel land mine/.pic={
+\fill (0, 0) circle(0.25);
+\draw (135:0.35) -- (0, 0) -- (45:0.35);
+},
+NATOSymb equipment/main/antitank land mine/.pic={
+\fill (0, 0) circle(0.25);
+},
+NATOSymb equipment/main/sensor/.pic={
+\pic [scale=1.75] {NATOSymb multi/main/sensor};
+},
+NATOSymb equipment/main/sensor embedded/.pic={
+\pic [scale=1.5] {NATOSymb multi/main/sensor};
+\draw (0.15, 0.3) -- (0.1, 0.35) -- (0.05, 0.3) -- (0, 0.35) -- (-0.05, 0.3) -- (-0.1, 0.35) -- (-0.15, 0.3);
+},
+NATOSymb equipment/main/booby trap/.pic={
+\draw (0, -0.2) ellipse(0.2 and 0.065);
+\begin{scope}
+\clip (0, -0.2) ellipse(0.2 and 0.065) [reverseclip];
+\draw (-0.2, -0.2) -- (0, 0.2) -- (0.2, -0.2);
+\end{scope}
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
+NATOSymb multi/main/antenna/.pic={
+\draw (0, -0.3) -- (0, 0.3);
+\draw (-0.125, 0.3) -- (0, 0.2) -- (0.125, 0.3);
+},
 NATOSymb multi/main/ammunition/.pic={
 \draw (0.175, -0.175) -- (-0.175,-0.175);
 \draw (0.125, -0.175) -- (0.125, 0) to[out=90,in=90,looseness=2.75] (-0.125, 0) -- (-0.125, -0.175);
@@ -1115,6 +1124,29 @@ NATOSymb multi/main/person/.pic={
 \draw (0.05, -0.2) -- (0, -0.1) -- (-0.05, -0.2);
 \draw (0.075,0) -- (-0.075,0);
 },
+NATOSymb multi/main/psychological operations/.pic={
+\draw [line join=round] (0.15, 0.2) -- (0.15, -0.2) -- (0.025, -0.08) -- (-0.15, -0.08) -- (-0.15, 0.08) -- (0.025, 0.08) -- cycle;
+\draw (0.15, -0.1) -- (0.225, -0.1);
+\draw (0.15, -0.0325) -- (0.225, -0.0325);
+\draw (0.15, 0.0325) -- (0.225, 0.0325);
+\draw (0.15, 0.1) -- (0.225, 0.1);
+},
+NATOSymb multi/main/psychological operations filled/.pic={
+\draw [line join=round, fill] (0.15, 0.2) -- (0.15, -0.2) -- (0.025, -0.08) -- (-0.15, -0.08) -- (-0.15, 0.08) -- (0.025, 0.08) -- cycle;
+\draw (0.15, -0.1) -- (0.225, -0.1);
+\draw (0.15, -0.0325) -- (0.225, -0.0325);
+\draw (0.15, 0.0325) -- (0.225, 0.0325);
+\draw (0.15, 0.1) -- (0.225, 0.1);
+},
+NATOSymb multi/main/radar/.pic={
+\begin{scope} [yshift=1]
+\draw (135:0.225) arc (150:290:0.26);
+\begin{scope}
+\clip (190:0.2) rectangle (0.3, 0.2);
+\draw (180:0.2) -- (0,0.16) -- (0,0) -- (0.2, 0.16);
+\end{scope}
+\end{scope}
+},
 NATOSymb multi/main/naval/.pic={
 \fontsize{15}{0}\selectfont
 \node at (0, 0) {$\anchor$};},
@@ -1153,6 +1185,9 @@ NATOSymb multi/main/repair parts/.pic={
 NATOSymb multi/main/missile/.pic={
 \draw (0, 0.425) -- (0, -0.4);
 \draw (0.15, -0.4) -- (0.15, 0.25) to[out=90,in=90,looseness=2] (-0.15, 0.25) -- (-0.15, -0.4);
+},
+NATOSymb multi/main/sensor/.pic={
+\fill (0, -0.2) arc (180:90:0.2) arc (270:180:0.2) arc (0:-90:0.2) arc (90:0:0.2) -- cycle;
 },
 NATOSymb multi/main/water/.pic={
 \draw (-0.3, 0.05) -- (0, 0.05) to[in=90, out=0] (0.3, -0.2);
@@ -1466,8 +1501,8 @@ line=solid,
    main/air assualt with organic lift/.style={/NATOSymb/.cd, symbC=land/air assault with organic lift/\NATOSymb@selectedfaction},
    main/air defence/.style={/NATOSymb/.cd, symbC=land/main/air defence/\NATOSymb@selectedfaction},
    main/air and naval gunfire liason company/.style={/NATOSymb/.cd, symbC=land/main/air and naval gunfire liason company/\NATOSymb@selectedfaction},
-   main/broadcast transmitter antenna/.style={/NATOSymb/.cd, symbC=land/main/broadcast transmitter antenna},
-   main/psychological operations broadcast/.style={/NATOSymb/.cd, symbC=land/main/broadcast transmitter antenna psychological operations},
+   main/broadcast transmitter antenna/.style={/NATOSymb/.cd, symbC=multi/main/antenna},
+   main/psychological operations broadcast/.style={/NATOSymb/.cd, symbC=land/main/psychological operations broadcast},
    main/amphibious/.style={/NATOSymb/.cd, symbC=land/main/amphibious/\NATOSymb@selectedfaction},
    main/analysis/.style={/NATOSymb/.cd, symbC=land/main/analysis},
    main/analysis electronic warfare/.style={/NATOSymb/.cd, symbC=land/main/analysis electronic warfare},
@@ -1552,9 +1587,9 @@ line=solid,
    main/pipeline/.style={/NATOSymb/.cd, symbC=land/main/pipeline},
    main/postal/.style={/NATOSymb/.cd, symbC=land/main/postal},
    main/public affairs/.style={/NATOSymb/.cd, symbC=main/text, symbCT=PA},
-   main/psychological operations/.style={/NATOSymb/.cd, symbC=land/main/psychological operations},
+   main/psychological operations/.style={/NATOSymb/.cd, symbC=multi/main/psychological operations},
    main/quartermaster/.style={/NATOSymb/.cd, symbC=multi/main/quartermaster},
-   main/radar/.style={/NATOSymb/.cd, symbC=land/main/radar},
+   main/radar/.style={/NATOSymb/.cd, symbC=multi/main/radar},
    main/radio/.style={/NATOSymb/.cd, symbC=land/main/radio},
    main/signal radio/.style={/NATOSymb/.cd, symbC=land/main/signal radio},
    main/radio relay/.style={/NATOSymb/.cd, symbC=land/main/radio relay},
@@ -1565,7 +1600,7 @@ line=solid,
    main/replacment holding unit/.style={/NATOSymb/.cd, symbC=main/text, symbCT=RHU},
    main/sea air land/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=SEAL},
    main/security/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SEC},
-   main/sensor/.style={/NATOSymb/.cd, symbC=land/main/sensor},
+   main/sensor/.style={/NATOSymb/.cd, symbC=multi/main/sensor},
    main/shore patrol security police/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SP},
    main/sniper/.style={/NATOSymb/.cd, symbC=land/main/sniper},
    main/special forces/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SF},
@@ -1825,7 +1860,7 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/laser};
+\pic at (0, 0) {NATOSymb equipment/main/booby trap};
 
 
 \begin{scope}[rotate=0, opacity=0.5]
