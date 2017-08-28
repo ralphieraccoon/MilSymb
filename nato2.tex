@@ -1315,7 +1315,7 @@ line=solid,
 \acrodef{HighS}[H]{}
 \acrodef{MediumS}[M]{}
 \acrodef{LowS}[L]{}
-\newcommand{\NATOAir}[1][]{
+\newcommand{\NATOAir}[2][]{
 \tikzset{%	
    /NATOSymb/.cd,
    faction/.is choice,
@@ -1424,6 +1424,7 @@ line=solid,
    #1,
  }%
  \fontfamily{phv}\fontseries{bx}\selectfont
+\begin{scope}[shift={#2}]
  \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -1434,8 +1435,9 @@ line=solid,
  \node [anchor=west] at (M.east) {\NATOSymb@symbD};
  \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
  \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
+\end{scope}
 }
-\newcommand{\NATOMissile}[1][]{
+\newcommand{\NATOMissile}[2][]{
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
@@ -1475,6 +1477,7 @@ line=solid,
    right=none,
    #1,
 }%
+\begin{scope}[shift={#2}]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
 \fontfamily{phv}\fontseries{bx}\selectfont
@@ -1486,6 +1489,7 @@ line=solid,
 \node [anchor=west] at (M.east) {\NATOSymb@symbD};
 \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
 \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
+\end{scope}
 }
 \newif\iftaskforce
 \newcommand{\NATOLand}[2][]{
@@ -1775,16 +1779,25 @@ line=solid,
    headquarters/tactical command post/.style= {/NATOSymb/.cd,  drawH=true, symbHT=TAC},
    status/.is choice,
    status/none/.style= {/NATOSymb/.cd, symbR=},
-   status/reinforced/.style= {/NATOSymb/.cd, symbR=+},
-   status/reduced/.style= {/NATOSymb/.cd, symbR=\textminus},
-   status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr}},
+   status/reinforced/.style= {/NATOSymb/.cd, symbR=+ \ },
+   status/reduced/.style= {/NATOSymb/.cd, symbR=\textminus \ },
+   status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr} \ },
    altitude/.style 2 args={execute at end scope={\begin{scope}[shift={#2}] \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi \end{scope}}},
    altitude/.value required,
-   staff comments/.store in= \NATOSymb@symbA,
-   additional information/.store in=\NATOSymb@symbB,
-   evaluation rating/.store in=\NATOSymb@symbD,
-   nation/.store in= \NATOSymb@symbE,
-   additional information/.store in=\NATOSymb@symbF,
+   staff comments/.store in=\NATOSymb@symbG,
+   additional information/.store in=\NATOSymb@symbH,
+   higher formation/.store in=\NATOSymb@symbM,
+   evaluation rating/.store in=\NATOSymb@symbJ,
+   country indicator/.store in=\NATOSymb@symbAC,
+   combat effectiveness/.store in=\NATOSymb@symbK,
+   identification/.store in=\NATOSymb@symbP,
+   unique designation/.store in=\NATOSymb@symbT,
+   type of equipment/.store in=\NATOSymb@symbV,
+   date-time group/.store in=\NATOSymb@symbW,
+   altitude value/.store in=\NATOSymb@symbX,
+   location/.store in=\NATOSymb@symbY,
+   common identifier/.store in=\NATOSymb@symbAF,
+   speed/.store in=\NATOSymb@symbZ,
    offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
    offset/.value required,
    faction=friendly,
@@ -1794,6 +1807,20 @@ line=solid,
    echelon=none,
    status=none,
    headquarters=none,
+   country indicator=,
+   staff comments=,
+   additional information=,
+   higher formation=,
+   evaluation rating=,
+   combat effectiveness=,
+   identification=,
+   unique designation=,
+   type of equipment=,
+   date-time group=,
+   altitude value=,
+   location=,
+   common identifier=,
+   speed=,
   #1,
 } %
  \fontfamily{phv}\fontseries{bx}\selectfont
@@ -1807,8 +1834,7 @@ line=solid,
 \iftaskforce
 \draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);
 \fi
-\fontsize{8}{0}\selectfont
-\node [anchor=south west] at ($(M.north east)-(0, 0.15)$) {\NATOSymb@symbR}; %Draw status
+\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\fontsize{8}{0}\selectfont \NATOSymb@symbR \fontsize{6}{0}\selectfont \NATOSymb@symbAC}; %Draw status
 \def\friendly{friendly} % Draw headquarters
 \def\true{true}
 \ifx\NATOSymb@selectedfaction\friendly
@@ -1818,22 +1844,32 @@ line=solid,
 \node [anchor=north] at (M.south) {\NATOSymb@symbHT};
 \fi
 \fi
+ \fontsize{6}{0}\selectfont
+ \node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbG};
+ \node [anchor=west] at (M.east) {\NATOSymb@symbH};
+ \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbM};
+ \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbJ\NATOSymb@symbK\NATOSymb@symbP};
+ \node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\NATOSymb@symbW};
+ \node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\NATOSymb@symbX\NATOSymb@symbY};
+ \node [anchor=east] at (M.west) {\NATOSymb@symbV\NATOSymb@symbAF};
+ \node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\NATOSymb@symbT};
+ \node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\NATOSymb@symbZ};
 \end{scope}
 }
 \newcounter{exitem}
 \newenvironment{landheadquarters}{
-\begin{scope}[local bounding box=G]
+\begin{scope}
 \setcounter{exitem}{0}
 \renewcommand\item{
 \ifnum \value{exitem}>0
-\draw ($(G.south west) + (0, 0.06)$) -- +(0,-0.34);
+\draw ($(M.south west) + (0, -0.25)$) -- +(0,-0.34);
 \fi
 \stepcounter{exitem}\scoped[yshift=-\theexitem*45]}
 }{\end{scope}}
 \newenvironment{landgroup}{
 \begin{scope}[local bounding box=G]
 \setcounter{exitem}{0}
-\renewcommand\item{\stepcounter{exitem}\scoped[yshift=-\theexitem*40]}
+\renewcommand\item{\stepcounter{exitem}\scoped[yshift=-\theexitem*45]}
 }{
 \draw ([shift={(5pt,0pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
  (G.west) -- ++(-5pt,0);
@@ -1843,11 +1879,11 @@ line=solid,
 \begin{document}
 
 \begin{tikzpicture}
-%\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE];
+\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]{(8, 6)};
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}, offset={2}{(-1.6, 1)}]{(5,1)};
+\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced, upper=mobile advisor and support, country indicator=CAN, altitude={Low}{Medium}, offset={2}{(-1.6, 1)}]{(5,1)};
 %
-\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group,  altitude={Low}{Medium}, offset={2}{(-1.25, 0.2)}]{(4,7)};
+%\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group,  altitude={Low}{Medium}, offset={2}{(-1.25, 0.2)}]{(4,7)};
 
 \begin{landheadquarters}
 \item \NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group, altitude={Low}{Medium}]{(0,0)};
