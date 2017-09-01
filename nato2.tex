@@ -145,24 +145,21 @@ NATOSymb land/main/air and naval gunfire liason company/unknown/.pic={
 \pic {NATOSymb land/main/air and naval gunfire liason company};
 \pic {NATOSymb land/main/reconnaissance/unknown};
 },
-NATOSymb land/main/amphibious/.pic={
-\draw (0.81, 0) to[out=90,in=90,looseness=2.25] (0.63, 0) to[out=-90,in=-90,looseness=2.25] (0.45, 0) to[out=90,in=90,looseness=2.25] (0.27, 0) to[out=-90,in=-90,looseness=2.25] (0.09, 0) to[out=90,in=90,looseness=2.25] (-0.09, 0) to[out=-90,in=-90,looseness=2.25] (-0.27, 0) to[out=90,in=90,looseness=2.25] (-0.45, 0) to[out=-90,in=-90,looseness=2.25] (-0.63, 0) to[out=90,in=90,looseness=2.25] (-0.81, 0);
-},
 NATOSymb land/main/amphibious/friendly/.pic={
 \clip \clipfriendly;
-\pic {NATOSymb land/amphibious};
+\pic {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/amphibious/hostile/.pic={
 \clip \cliphostile;
-\pic [xscale=0.9] {NATOSymb land/amphibious};
+\pic [xscale=0.9] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/amphibious/neutral/.pic={
 \clip \clipneutral;
-\pic [xscale=0.9] {NATOSymb land/amphibious};
+\pic [xscale=0.9] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/amphibious/unknown/.pic={
 \clip \clipunknown;
-\pic [xscale=0.9] {NATOSymb land/amphibious};
+\pic [xscale=0.9] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/analysis/.pic={
 \draw (-0.3,-0.2) -- (0.3, -0.2) -- (0, -0.4) -- cycle;
@@ -270,28 +267,28 @@ NATOSymb land/main/infantry/unknown/.pic={
 },
 NATOSymb land/main/jamming/friendly/.pic={
 \clip \clipfriendly;
-\pic at (0, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (0.936, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (-0.936, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (0, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (0.936, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (-0.936, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
+\pic at (0, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (0.936, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (-0.936, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (0, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (0.936, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (-0.936, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/jamming/hostile/.pic={
 \clip \cliphostile;
-\pic at (0, 0.4) [xscale=0.75, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (0, 0.3) [xscale=0.75, yscale=0.5] {NATOSymb land/main/amphibious};
+\pic at (0, 0.4) [xscale=0.75, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (0, 0.3) [xscale=0.75, yscale=0.5] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/jamming/neutral/.pic={
 \clip \clipneutral;
-\pic at (0, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (0, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb land/main/amphibious};
+\pic at (0, 0.4) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (0, 0.3) [xscale=0.65, yscale=0.5] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/jamming/unknown/.pic={
 \clip \clipunknown;
 \clip (-0.45, 0.2) rectangle (0.45, 0.5);
-\pic at (0, 0.4) [xscale=0.6, yscale=0.5] {NATOSymb land/main/amphibious};
-\pic at (0, 0.3) [xscale=0.6, yscale=0.5] {NATOSymb land/main/amphibious};
+\pic at (0, 0.4) [xscale=0.6, yscale=0.5] {NATOSymb multi/main/amphibious};
+\pic at (0, 0.3) [xscale=0.6, yscale=0.5] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/jamming electronic warfare/.pic={
 \pic at (0, 0) {NATOSymb main/textfull={EW}};
@@ -733,6 +730,7 @@ NATOSymb land/lower/wheeled/.pic={
 \draw (-0.24, 0.05) circle (0.08);
 },
 %% EQUIPMENT SYMBOLS %%
+% MAIN %
 NATOSymb equipment/main/weapon/.pic={
 \draw (0, 0.35) -- (0, -0.35);
 },
@@ -1055,8 +1053,21 @@ NATOSymb equipment/main/booby trap/.pic={
 \draw (-0.2, -0.2) -- (0, 0.2) -- (0.2, -0.2);
 \end{scope}
 },
+% MOBILITY %
+NATOSymb equipment/mobility/amphibious/.pic={
+\pic [scale=0.6] {NATOSymb multi/main/amphibious};
+},
+NATOSymb equipment/mobility/barge/.pic={
+\draw (0.5, 0) -- (-0.5, 0) to [out=-90,in=-90,looseness=0.5] (0.5, 0) -- cycle;
+},
+NATOSymb equipment/mobility/over snow/.pic={
+\draw (-0.5, 0.2) to[in=180, out=-90] (-0.3, 0) -- (0.5, 0);
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
+NATOSymb multi/main/amphibious/.pic={
+\draw (0.81, 0) to[out=90,in=90,looseness=2.25] (0.63, 0) to[out=-90,in=-90,looseness=2.25] (0.45, 0) to[out=90,in=90,looseness=2.25] (0.27, 0) to[out=-90,in=-90,looseness=2.25] (0.09, 0) to[out=90,in=90,looseness=2.25] (-0.09, 0) to[out=-90,in=-90,looseness=2.25] (-0.27, 0) to[out=90,in=90,looseness=2.25] (-0.45, 0) to[out=-90,in=-90,looseness=2.25] (-0.63, 0) to[out=90,in=90,looseness=2.25] (-0.81, 0);
+},
 NATOSymb multi/main/antenna/.pic={
 \draw (0, -0.3) -- (0, 0.3);
 \draw (-0.125, 0.3) -- (0, 0.2) -- (0.125, 0.3);
@@ -1802,6 +1813,8 @@ line=solid,
    speed/.store in=\NATOSymb@symbZ,
    offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
    offset/.value required,
+   movement/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
+   movement/.value required,
    faction=friendly,
    main=air defence,
    upper=none,
@@ -1888,7 +1901,7 @@ line=solid,
 \begin{tikzpicture}
 \NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]{(8, 6)};
 
-\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced, upper=mobile advisor and support, feint or dummy, country indicator=CAN, altitude={Low}{Medium}, offset={2}{(-1.6, 1)}]{(5,1)};
+\NATOLand[faction=friendly, main=above corps support, echelon=platoon, task force, status=reinforced, upper=mobile advisor and support, feint or dummy, country indicator=CAN, altitude={Low}{Medium}, movement={2}{(-1.6, 1)}]{(5,1)};
 %
 %\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group,  altitude={Low}{Medium}, offset={2}{(-1.25, 0.2)}]{(4,7)};
 
@@ -1903,8 +1916,8 @@ line=solid,
 %\end{landgroup}
 
 \pic at (0, 0) {NATOSymb equipment/friendly};
-\pic at (0, 0) {NATOSymb equipment/main/booby trap};
-
+%\pic at (0, 0) {NATOSymb equipment/main/booby trap};
+\pic at (0, 0) {NATOSymb equipment/mobility/over snow};
 
 \begin{scope}[rotate=0, opacity=0.5]
 \draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
