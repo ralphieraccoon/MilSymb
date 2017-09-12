@@ -13,15 +13,18 @@ def maketable(x, y):
         if re.search('symb[CUL]T=', j):  # detect if text based
             e = re.search('symb[CUL]T=(.*)$', j).group(1)  # get text
             if re.search('squashed', j):  # regular or squashed text
-                ro = n.title() + r' & \tikz{\pic{NATOSymb main/textsquashed={' + e + r'}} & ' + e + ' \\\\ \n\\hline'
+                ro = n.title() + r'& \trimbox{-1cm -1cm -1cm -1cm}{\tikz[baseline=-0.5ex]{\pic[scale=2, transform ' \
+                                 r'shape]{NATOSymb main/textsquashed={' + e + r'}};}} & ' + e + ' \\\\ \n\\hline'
             else:
-                ro = n.title() + r' & \tikz{\pic{NATOSymb main/text={' + e + r'}}} & ' + e + ' \\\\ \n\\hline'
+                ro = n.title() + r'& \trimbox{-1cm -1cm -1cm -1cm}{\tikz[baseline=-0.5ex]{\pic[scale=2, transform ' \
+                                 r'shape]{NATOSymb main/text={' + e + r'}};}} & ' + e + ' \\\\ \n\\hline'
         else:
             p = re.search('symb[CUL]=(.*)(?:,|$)', j).group(1)  # get shape path
-            ro = n.title() + r' & \tikz{\pic{NATOSymb ' + p + r'}} & ' + p + ' \\\\ \n\\hline'
+            ro = n.title() + r'& \trimbox{-1cm -1cm -1cm -1cm}{\begin{tikzpicture}[baseline=-0.5ex]\pic[scale=2]{' \
+                             r'NATOSymb ' + p + r'};\end{tikzpicture}} & ' + p + ' \\\\ \n\\hline'
         l.append(ro)
-    ta = '\\begin{tabular}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{Examples} \\\\ ' \
-         '\n\\hline\n' + '\n'.join(l) + '\n\\end{tabular}'
+    ta = '\\begin{longtable}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
+         'Examples} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{longtable}'
     ofn = os.path.join(dr, y + '_' + re.match('^(.*?)/', x).group(1) + '_table.tex')
     of = open(ofn, 'w')
     of.write(ta)
@@ -29,7 +32,7 @@ def maketable(x, y):
 
 
 dr = os.path.dirname(__file__)
-fn = os.path.join(dr, '../nato2.tex')
+fn = os.path.join(dr, '../milsymb.sty')
 f = open(fn, 'r')
 r = f.read()
 f.close()
