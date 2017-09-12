@@ -19,6 +19,7 @@
 ]
 \tikzset{
 %% FRAMES %%
+NATOSymb blank/.pic={},
 % AIR %
 NATOSymb air/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
@@ -66,6 +67,7 @@ NATOSymb air/main/military balloon/.pic={
 \fill (0, 0.025) circle (0.175);
 \fill (-0.05, 0) -- (-0.05,-0.2) -- (0.05, -0.2) -- (0.05,0) -- cycle;},
 NATOSymb air/main/civilian balloon/.pic={
+\path (0.175, 0.2) rectangle (-0.175, -0.2); 
 \draw (0, 0.025) circle (0.175);
 \begin{scope}
 \clip (0, 0.025) circle (0.175) [reverseclip];
@@ -75,6 +77,7 @@ NATOSymb air/main/military airship/.pic={
 \fill (0, 0) ellipse (0.45 and 0.15);
 \fill (0.2, 0) -- (0.3, 0.175) -- (0.4,0.175) -- (0.375,0) -- (0.4,-0.175) -- (0.3, -0.175) -- cycle;},
 NATOSymb air/main/civilian airship/.pic={
+\path (0.45, 0.175) rectangle (-0.45, -0.175);
 \draw (0, 0) ellipse (0.45 and 0.15);
 \begin{scope}
 \clip (0, 0) ellipse (0.45 and 0.15) [reverseclip];
@@ -1348,6 +1351,7 @@ line=solid,
 \tikzset{%	
    /NATOSymb/.cd,
    faction/.is choice,
+   faction/none/.style={/NATOSymb/.cd, shape=, fill=},
    faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
    faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
@@ -1470,6 +1474,7 @@ line=solid,
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
+   faction/none/.style={/NATOSymb/.cd, shape=, fill=},
    faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
    faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
@@ -1527,12 +1532,13 @@ line=solid,
   /NATOSymb/.cd,
    selectedfaction/.store in=\NATOSymb@selectedfaction,
    faction/.is choice,
+   faction/none/.style={/NATOSymb/.cd, shape=blank, fill=friendlyA, selectedfaction=friendly},
    faction/friendly/.style={/NATOSymb/.cd, shape=land/friendly, fill=friendlyA, selectedfaction=friendly},
    faction/hostile/.style={/NATOSymb/.cd, shape=land/hostile, fill=hostileA, selectedfaction=hostile},
    faction/neutral/.style={/NATOSymb/.cd, shape=land/neutral, fill=neutralA, selectedfaction=neutral},
    faction/unknown/.style={/NATOSymb/.cd, shape=land/unknown, fill=unknownA, selectedfaction=unknown},
    main/.is choice,
-   main/air assualt with organic lift/.style={/NATOSymb/.cd, symbC=land/air assault with organic lift/\NATOSymb@selectedfaction},
+   main/air assault with organic lift/.style={/NATOSymb/.cd, symbC=land/main/air assault with organic lift/\NATOSymb@selectedfaction},
    main/air defence/.style={/NATOSymb/.cd, symbC=land/main/air defence/\NATOSymb@selectedfaction},
    main/air and naval gunfire liason company/.style={/NATOSymb/.cd, symbC=land/main/air and naval gunfire liason company/\NATOSymb@selectedfaction},
    main/broadcast transmitter antenna/.style={/NATOSymb/.cd, symbC=multi/main/antenna},
@@ -1752,7 +1758,7 @@ line=solid,
    upper/terrorist or terrorist organisation/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=TER},
    lower/.is choice,
    lower/none/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
-   lower/airbourne/.style= {/NATOSymb/.cd, symbL=land/lower/airbourne},
+   lower/airbourne/.style= {/NATOSymb/.cd, symbL=land/lower/airborne},
    lower/arctic/.style= {/NATOSymb/.cd, symbL=land/lower/arctic},
    lower/battle damage repair/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=BDR}
    lower/bicycle equipped/.style= {/NATOSymb/.cd, symbL=land/lower/bicycle equipped},
