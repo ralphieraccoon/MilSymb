@@ -6,13 +6,13 @@ def maketable(x, y):
     l = list()
     s = re.split('}(?:\n|, *\n) *', x)
     del s[-1]
-    c = re.match('^(.*?)/', x).group(1) # get type
+    c = re.match('^(.*?)/', x).group(1)  # get type
     for j in s:  # split up into each definition
         n = re.search('.*?/(.*?)/', j).group(1)  # get name
         if n == 'none':
             continue  # skip if a blank placeholder
-        ro = n.title() + r' & \trimbox{-0.5cm, -0.5cm, -0.5cm, -0.5cm}{\tikz{\NATO' + y + r'[scale=2, faction=none, ' \
-             + c + r'=' + n + r']{(0,0)}}} \\ \hline'
+        ro = n.title() + r' & \trimbox{0cm, 0.25cm, 0.275cm, 0.25cm}{\tikz[baseline=-0.5ex]{\NATO' + y + \
+             r'[scale=2, faction=none, ' + c + r'=' + n + r']{(0,0)}}} \\ \hline'
         l.append(ro)
     ta = '\\begin{longtable}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
          'Examples} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{longtable}'
