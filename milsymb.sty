@@ -19,8 +19,9 @@
 ]
 \tikzset{
 %% FRAMES %%
-NATOSymb blank/.pic={},
 % AIR %
+NATOSymb air/none/.pic={
+\path (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
 NATOSymb air/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
 NATOSymb air/hostile/.pic={
@@ -31,6 +32,8 @@ NATOSymb air/unknown/.pic={
 \path [use as bounding box] (-0.705,-0.355) -- (-0.705, 0.705) -- (0.705, 0.705) -- (0.705, -0.355) -- cycle;
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5);},
 % LAND %
+NATOSymb land/none/.pic={
+\path (-0.75, -0.5) rectangle (0.75, 0.5);},
 NATOSymb land/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.75, -0.5) rectangle (0.75, 0.5);},
 NATOSymb land/hostile/.pic={
@@ -1316,7 +1319,8 @@ NATOSymb main/textsmallsquashed/.pic={
 /NATOSymb/.search also={/tikz},
 /NATOSymb/.cd,
 fill/.code={\colorlet{NATOSymb@fill}{#1}},
-line/.store in= \NATOSymb@line,
+scale/.store in=\NATOSymb@scale, 
+line/.store in=\NATOSymb@line,
 shape/.store in=\NATOSymb@shape,
 symbC/.store in=\NATOSymb@symbC,
 symbCT/.store in=\NATOSymb@symbCT,
@@ -1328,6 +1332,7 @@ monochrome/.style={/NATOSymb/fill=white},
 unclear/.style={/NATOSymb/line=densely dotted},
 fill=gray,
 line=solid,
+scale=1,
 }
 \newcommand*{\clipfriendly}{
    (-0.75, -0.5) rectangle (0.75, 0.5)
@@ -1351,7 +1356,7 @@ line=solid,
 \tikzset{%	
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=, fill=},
+   faction/none/.style={/NATOSymb/.cd, shape=air/none, fill=friendlyA},
    faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
    faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
@@ -1457,7 +1462,7 @@ line=solid,
    #1,
  }%
  \fontfamily{phv}\fontseries{bx}\selectfont
-\begin{scope}[shift={#2}]
+\begin{scope}[shift={#2}, scale=\NATOSymb@scale, transform shape]
  \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -1511,7 +1516,7 @@ line=solid,
    right=none,
    #1,
 }%
-\begin{scope}[shift={#2}]
+\begin{scope}[shift={#2}, scale=\NATOSymb@scale, transform shape]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
 \fontfamily{phv}\fontseries{bx}\selectfont
@@ -1532,7 +1537,7 @@ line=solid,
   /NATOSymb/.cd,
    selectedfaction/.store in=\NATOSymb@selectedfaction,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=blank, fill=friendlyA, selectedfaction=friendly},
+   faction/none/.style={/NATOSymb/.cd, shape=land/none, fill=friendlyA, selectedfaction=friendly},
    faction/friendly/.style={/NATOSymb/.cd, shape=land/friendly, fill=friendlyA, selectedfaction=friendly},
    faction/hostile/.style={/NATOSymb/.cd, shape=land/hostile, fill=hostileA, selectedfaction=hostile},
    faction/neutral/.style={/NATOSymb/.cd, shape=land/neutral, fill=neutralA, selectedfaction=neutral},
@@ -1666,7 +1671,7 @@ line=solid,
    main/killing victims/.style={/NATOSymb/.cd, symbC=land/main/killing victims},
    main/victim of an attempted crime/.style={/NATOSymb/.cd, symbC=land/main/victim of an attempted crime},
    main/spy/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SPY},
-   supply/.style 2 args={execute at end picture={ \begin{scope}[shift={#2}] \ifx&##2& \pic at (0,0) {NATOSymb supply/class ##1};\else \node at (0,0) {\uppercase\expandafter{\romannumeral##1\relax} \& \uppercase\expandafter{\romannumeral##2\relax}}; \fi \end{scope}}},
+   supply/.style 2 args={/NATOSymb/.cd, \ifx&##2&symbC=supply/class ##1, \else symbC=main/text, symbCT=\uppercase\expandafter{\romannumeral##1\relax} \& \uppercase\expandafter{\romannumeral##2\relax}\fi},
    supply/.value required,
    upper/.is choice,
    upper/none/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
@@ -1840,7 +1845,7 @@ line=solid,
    status/reinforced/.style= {/NATOSymb/.cd, symbR=+ \ },
    status/reduced/.style= {/NATOSymb/.cd, symbR=\textminus \ },
    status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr} \ },
-   altitude/.style 2 args={execute at end scope={\begin{scope}[shift={#2}] \fontsize{6}{0}\selectfont \ifx&##2& \node at (0,-0.34) {\acs{##1}}; \else  \node at (0,-0.34) [xscale=0.8] {\acs{##1S}/\acs{##2}}; \fi \end{scope}}},
+   altitude/.style 2 args={/NATOSymb/.cd, symbL=main/textsmall, symbLT={\fontsize{6}{0}\selectfont \ifx&##2&  \acs{##1} \else \acs{##1S}/\acs{##2} \fi }},
    altitude/.value required,
    staff comments/.store in=\NATOSymb@symbG,
    additional information/.store in=\NATOSymb@symbH,
@@ -1856,9 +1861,9 @@ line=solid,
    location/.store in=\NATOSymb@symbY,
    common identifier/.store in=\NATOSymb@symbAF,
    speed/.store in=\NATOSymb@symbZ,
-   offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
+   offset/.code 2 args={\begin{scope}[shift={#2}, scale=\NATOSymb@scale]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
    offset/.value required,
-   movement/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
+   movement/.code 2 args={\begin{scope}[shift={#2}, scale=\NATOSymb@scale]\def\true{true} \ifx\NATOSymb@drawH\true \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
    movement/.value required,
    faction=friendly,
    main=air defence,
@@ -1886,7 +1891,7 @@ line=solid,
   #1,
 } %
  \fontfamily{phv}\fontseries{bx}\selectfont
-\begin{scope}[shift={#2}]
+\begin{scope}[shift={#2},  scale=\NATOSymb@scale, transform shape]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
 \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol

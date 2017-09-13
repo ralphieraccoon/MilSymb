@@ -6,26 +6,17 @@ def maketable(x, y):
     l = list()
     s = re.split('}(?:\n|, *\n) *', x)
     del s[-1]
+    c = re.match('^(.*?)/', x).group(1) # get type
     for j in s:  # split up into each definition
         n = re.search('.*?/(.*?)/', j).group(1)  # get name
         if n == 'none':
             continue  # skip if a blank placeholder
-        if re.search('symb[CUL]T=', j):  # detect if text based
-            e = re.search('symb[CUL]T=(.*)$', j).group(1)  # get text
-            if re.search('squashed', j):  # regular or squashed text
-                ro = n.title() + r'& \trimbox{-1cm -1cm -1cm -1cm}{\tikz[baseline=-0.5ex]{\pic[scale=2, transform ' \
-                                 r'shape]{NATOSymb main/textsquashed={' + e + r'}};}} & ' + e + ' \\\\ \n\\hline'
-            else:
-                ro = n.title() + r'& \trimbox{-1cm -1cm -1cm -1cm}{\tikz[baseline=-0.5ex]{\pic[scale=2, transform ' \
-                                 r'shape]{NATOSymb main/text={' + e + r'}};}} & ' + e + ' \\\\ \n\\hline'
-        else:
-            p = re.search('symb[CUL]=(.*)(?:,|$)', j).group(1)  # get shape path
-            ro = n.title() + r'& \trimbox{-1cm -1cm -1cm -1cm}{\begin{tikzpicture}[baseline=-0.5ex]\pic[scale=2]{' \
-                             r'NATOSymb ' + p + r'};\end{tikzpicture}} & ' + p + ' \\\\ \n\\hline'
+        ro = n.title() + r' & \trimbox{-0.5cm, -0.5cm, -0.5cm, -0.5cm}{\tikz{\NATO' + y + r'[scale=2, faction=none, ' \
+             + c + r'=' + n + r']{(0,0)}}} \\ \hline'
         l.append(ro)
     ta = '\\begin{longtable}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
          'Examples} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{longtable}'
-    ofn = os.path.join(dr, y + '_' + re.match('^(.*?)/', x).group(1) + '_table.tex')
+    ofn = os.path.join(dr, y + '_' + c + '_table.tex')
     of = open(ofn, 'w')
     of.write(ta)
     of.close()
