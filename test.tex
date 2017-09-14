@@ -2,14 +2,16 @@
 \usepackage{milsymb}
 \begin{document}
 
-\begin{tikzpicture}
-\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]{(8, 6)}
+\begin{tikzpicture}[scale=2, transform shape]
+%\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]{(8, 6)}
 
-\NATOLand[faction=friendly, echelon=platoon, task force, status=reinforced, upper=mobile advisor and support, feint or dummy, country indicator=CAN, altitude={Low}{Medium}, movement={2}{(-1.6, 1)}]{(5,1)}
+%\NATOLand[faction=friendly, echelon=platoon, task force, status=reinforced, upper=mobile advisor and support, feint or dummy, country indicator=CAN, altitude={Low}{Medium}, movement={2}{(-1.6, 1)}]{(5,1)}
 %
 %\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group,  altitude={Low}{Medium}, offset={2}{(-1.25, 0.2)}]{(4,7)};
 
-\NATOAir[scale=2, faction=friendly, main=military airship]{(0,0)}
+%\NATOAir[scale=2, faction=friendly, main=military airship]{(0,0)}
+
+\NATOLand[faction=unknown, main=main gun system, lower=bicycle equipped]{(0,0)}
 
 %\begin{landgroup}
 %\item \NATOLand[faction=friendly, main=above corps support, echelon=team, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};
@@ -25,14 +27,14 @@
 %\pic at (0, 0) {NATOSymb equipment/main/booby trap};
 %\pic at (0, 0) {NATOSymb equipment/mobility/railroad};
 
-%\begin{scope}[rotate=0, opacity=0.5]
+
 %\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
 %\begin{scope}
 %\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
 %	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
 %	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
 %\end{scope}
-%\end{scope}
+
 
 \end{tikzpicture}
 
