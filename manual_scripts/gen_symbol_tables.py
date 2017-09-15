@@ -11,11 +11,10 @@ def maketable(x, y):
         n = re.search('.*?/(.*?)/', j).group(1)  # get name
         if n == 'none':
             continue  # skip if a blank placeholder
-        ro = n.title() + r' & \trimbox{0.25cm, 0.25cm, 0.25cm, 0.25cm}' \
-                         r'{\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATO' + y + \
-                         r'[faction=none, ' + c + r'=' + n + r']{(0,0)}}} \\ \hline'
+        ro = n.title() + r' & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATO' + y + \
+                         r'[faction=none, ' + c + r'=' + n + r']{(0,0)}}} & \\ \hline'
         l.append(ro)
-    ta = '\\begin{longtable}{|c|m{2cm}|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
+    ta = '\\begin{longtable}{|n|c|e|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
          'Examples} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{longtable}'
     ofn = os.path.join(dr, y + '_' + c + '_table.tex')
     of = open(ofn, 'w')

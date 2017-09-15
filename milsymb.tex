@@ -4,18 +4,20 @@
 \usepackage{adjustbox}
 \usepackage{array}
 \usepackage[a4paper, top=4.5cm, bottom=1.75cm, left=2cm, right=2cm, headsep=2cm]{geometry}
-
+\usetikzlibrary{backgrounds}
+\newcolumntype{n}{>{\raggedright\arraybackslash}m{3cm}}
+\newcolumntype{e}{>{\raggedright\arraybackslash}p{3cm}}
 \title{MilSymb}
 \author{Damian Crosby}
 
 \begin{document}
 \maketitle
 
-%\input{manual_scripts/Air_Main_table.tex}
+\input{manual_scripts/Air_Main_table.tex}
 %\input{manual_scripts/Air_Upper_table.tex}
 %\input{manual_scripts/Air_Lower_table.tex}
 
-%\input{manual_scripts/Land_Main_table.tex}
+\input{manual_scripts/Land_Main_table.tex}
 %\input{manual_scripts/Land_Upper_table.tex}
 %\input{manual_scripts/Land_Lower_table.tex}
 %
