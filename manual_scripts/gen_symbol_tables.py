@@ -15,7 +15,7 @@ def maketable(x, y):
                          r'{\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATO' + y + \
                          r'[faction=none, ' + c + r'=' + n + r']{(0,0)}}} \\ \hline'
         l.append(ro)
-    ta = '\\begin{longtable}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
+    ta = '\\begin{longtable}{|c|m{2cm}|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
          'Examples} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{longtable}'
     ofn = os.path.join(dr, y + '_' + c + '_table.tex')
     of = open(ofn, 'w')

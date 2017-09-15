@@ -1279,52 +1279,68 @@ NATOSymb multi/upperlower/maintenance/.pic={
 },
 %% SUPPLY %%
 NATOSymb supply/class 1/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb main/text={I}};
 },
 NATOSymb supply/class 2/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb main/text={II}};
 },
 NATOSymb supply/class 3/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/petroleum oil and lubricants};
 },
 NATOSymb supply/class 4/.pic={
+\pic {NATOSymb land/main/supply\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb main/text={IV}};
 },
 NATOSymb supply/class 5/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/ammunition};
 },
 NATOSymb supply/class all/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb main/text={ALL}};
 },
 NATOSymb supply/class US 1/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb main/text={S}};
 },
 NATOSymb supply/class US 2/.pic={
+\pic {NATOSymb land/main/supply\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/quartermaster};
 },
 NATOSymb supply/class US 3/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/petroleum oil and lubricants};
 },
 NATOSymb supply/class US 4/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/engineer};
 },
 NATOSymb supply/class US 5/.pic={
+\pic {NATOSymb land/main/supply\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/ammunition};
 },
 NATOSymb supply/class US 6/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/person};
 },
 NATOSymb supply/class US 7/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/major end};
 },
 NATOSymb supply/class US 8/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \draw (0, -0.2) -- (M.north);
 \pic at (0, 0) {NATOSymb supply/medicalbar/\NATOSymb@selectedfaction};
 },
 NATOSymb supply/class US 9/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb multi/main/repair parts};
 },
 NATOSymb supply/class US 10/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \pic at (0, 0) {NATOSymb main/text={CA}};
 },
 NATOSymb supply/medicalbar/friendly/.pic={
@@ -1338,6 +1354,11 @@ NATOSymb supply/medicalbar/neutral/.pic={
 },
 NATOSymb supply/medicalbar/unknown/.pic={
 \draw (0.65, 0.2) -- (-0.65, 0.2);
+},
+NATOSymb supply/text/.pic={
+\pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
+\fontsize{10}{0}\selectfont
+\node at (0,0) {#1};
 },
 %% TEMPLATES %%
 NATOSymb main/text/.pic={
@@ -1711,8 +1732,6 @@ line=solid,
    main/killing victims/.style={/NATOSymb/.cd, symbC=land/main/killing victims},
    main/victim of an attempted crime/.style={/NATOSymb/.cd, symbC=land/main/victim of an attempted crime},
    main/spy/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SPY},
-   supply/.style 2 args={/NATOSymb/.cd, \ifx&##2&symbC=supply/class ##1, \else symbC=main/text, symbCT=\uppercase\expandafter{\romannumeral##1\relax} \& \uppercase\expandafter{\romannumeral##2\relax}\fi},
-   supply/.value required,
    upper/.is choice,
    upper/none/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
    upper/air assault/.style= {/NATOSymb/.cd, symbU=land/upper/air assault},
@@ -1886,6 +1905,8 @@ line=solid,
    status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr} \ },
    altitude/.style 2 args={/NATOSymb/.cd, symbL=main/textsmall, symbLT={\fontsize{6}{0}\selectfont \ifx&##2&  \acs{##1} \else \acs{##1S}/\acs{##2} \fi }},
    altitude/.value required,
+   supply/.style 2 args={/NATOSymb/.cd, symbC={\ifx&##2&supply/class ##1\else supply/text\fi}, symbCT={\ifx&##2&\else\uppercase\expandafter{\romannumeral##1\relax}\&\uppercase\expandafter{\romannumeral##2\relax}\fi}},
+   supply/.value required,
    staff comments/.store in=\NATOSymb@symbG,
    additional information/.store in=\NATOSymb@symbH,
    higher formation/.store in=\NATOSymb@symbM,
