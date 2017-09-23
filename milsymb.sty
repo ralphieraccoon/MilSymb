@@ -6,6 +6,7 @@
 \RequirePackage{arev}
 \RequirePackage{acronym}
 \RequirePackage{amssymb}
+\RequirePackage{xifthen}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
@@ -22,7 +23,7 @@
 %% FRAMES %%
 % AIR %
 NATOSymb air/none/.pic={
-\path (0.6, 0.6) rectangle (-0.6, -0.6);
+\path (0.5, 0.5) rectangle (-0.5, -0.5);
 \draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
 \begin{scope}
 \clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
@@ -47,7 +48,7 @@ NATOSymb air/unknown/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5);},
 % LAND %
 NATOSymb land/none/.pic={
-\path (0.6, 0.6) rectangle (-0.6, -0.6);
+\path (0.5, 0.5) rectangle (-0.5, -0.5);
 \draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
 \begin{scope}
 \clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
@@ -1390,7 +1391,6 @@ symbU/.store in=\NATOSymb@symbU,
 symbUT/.store in=\NATOSymb@symbUT,
 symbL/.store in=\NATOSymb@symbL,
 symbLT/.store in=\NATOSymb@symbLT,
-isnone/.store in=\NATOSymb@isnone,
 monochrome/.style={/NATOSymb/fill=white},
 unclear/.style={/NATOSymb/line=densely dotted},
 fill=gray,
@@ -1418,11 +1418,11 @@ line=solid,
 \tikzset{%	
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=air/none, fill=neutralA,  isnone=true},
-   faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA,  isnone=false},
-   faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA,  isnone=false},
-   faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA,  isnone=false},
-   faction/unknown/.style={/NATOSymb/.cd, shape=air/unknown, fill=unknownA,  isnone=false},
+   faction/none/.style={/NATOSymb/.cd, shape=air/none, fill=neutralA},
+   faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
+   faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
+   faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
+   faction/unknown/.style={/NATOSymb/.cd, shape=air/unknown, fill=unknownA},
    main/.is choice,
    main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=}, 
    main/military/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MIL},
@@ -1530,27 +1530,24 @@ line=solid,
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
  \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
-\ifx\NATOSymb@isnone\true
-\else
  \fontfamily{phv}\fontseries{bx}\selectfont
  \fontsize{6}{0}\selectfont
- \node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};
- \node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};
- \node [anchor=west] at (M.east) {\NATOSymb@symbD};
- \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
- \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
-\fi
+ \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbD};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
 }
 \newcommand{\NATOMissile}[2][]{
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=air/missile, fill=neutralA, isnone=true},
-   faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA,  isnone=false},
-   faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA,  isnone=false},
-   faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA,  isnone=false},
-   faction/unknown/.style={/NATOSymb/.cd, shape=air/unknown, fill=unknownA,  isnone=false},
+   faction/none/.style={/NATOSymb/.cd, shape=air/missile, fill=neutralA},
+   faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
+   faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
+   faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
+   faction/unknown/.style={/NATOSymb/.cd, shape=air/unknown, fill=unknownA},
    left/.is choice,
    left/none/.style= {/NATOSymb/.cd, symbUT=}, 
    left/air/.style= {/NATOSymb/.cd, symbUT=A}, 
@@ -1591,15 +1588,11 @@ line=solid,
 \fontsize{6}{0}\selectfont
 \node at (0.34, 0) {\NATOSymb@symbLT};
 \node at (-0.34, 0) {\NATOSymb@symbUT};
-\ifx\NATOSymb@isnone\true
-\else
-\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};
-\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};
-\node [anchor=west] at (M.east) {\NATOSymb@symbD};
-\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};
-\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};
-\draw (M.north west) rectangle (M.south east);
-\fi
+ \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbD};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
 }
 \newif\iftaskforce
@@ -1609,11 +1602,11 @@ line=solid,
   /NATOSymb/.cd,
    selectedfaction/.store in=\NATOSymb@selectedfaction,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=land/none, fill=friendlyA, selectedfaction=neutral,  isnone=true},
-   faction/friendly/.style={/NATOSymb/.cd, shape=land/friendly, fill=friendlyA, selectedfaction=friendly,  isnone=false},
-   faction/hostile/.style={/NATOSymb/.cd, shape=land/hostile, fill=hostileA, selectedfaction=hostile,  isnone=false},
-   faction/neutral/.style={/NATOSymb/.cd, shape=land/neutral, fill=neutralA, selectedfaction=neutral,  isnone=false},
-   faction/unknown/.style={/NATOSymb/.cd, shape=land/unknown, fill=unknownA, selectedfaction=unknown,  isnone=false},
+   faction/none/.style={/NATOSymb/.cd, shape=land/none, fill=friendlyA, selectedfaction=neutral},
+   faction/friendly/.style={/NATOSymb/.cd, shape=land/friendly, fill=friendlyA, selectedfaction=friendly},
+   faction/hostile/.style={/NATOSymb/.cd, shape=land/hostile, fill=hostileA, selectedfaction=hostile},
+   faction/neutral/.style={/NATOSymb/.cd, shape=land/neutral, fill=neutralA, selectedfaction=neutral},
+   faction/unknown/.style={/NATOSymb/.cd, shape=land/unknown, fill=unknownA, selectedfaction=unknown},
    main/.is choice,
    main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=}, 
    main/air assault with organic lift/.style={/NATOSymb/.cd, symbC=land/main/air assault with organic lift/\NATOSymb@selectedfaction},
@@ -1915,9 +1908,9 @@ line=solid,
    status/reinforced/.style= {/NATOSymb/.cd, symbR=+ \ },
    status/reduced/.style= {/NATOSymb/.cd, symbR=\textminus \ },
    status/reinforced and reduced/.style= {/NATOSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr} \ },
-   altitude/.style 2 args={/NATOSymb/.cd, symbL=main/textsmall, symbLT={\fontsize{6}{0}\selectfont \ifx&##2&  \acs{##1} \else \acs{##1S}/\acs{##2} \fi }},
+   altitude/.style 2 args={/NATOSymb/.cd, symbL=main/textsmall, symbLT={\fontsize{6}{0}\selectfont \ifthenelse{\isempty{##2}}{\acs{##1}}{\acs{##1S}/\acs{##2}}}},
    altitude/.value required,
-   supply/.style 2 args={/NATOSymb/.cd, symbC={\ifx&##2&supply/class ##1\else supply/text\fi}, symbCT={\ifx&##2&\else\uppercase\expandafter{\romannumeral##1\relax}\&\uppercase\expandafter{\romannumeral##2\relax}\fi}},
+   supply/.style 2 args={/NATOSymb/.cd, symbC={\ifx\\##2\\supply/class ##1\else supply/text\fi}, symbCT={\ifthenelse{\isempty{##2}}{}{\uppercase\expandafter{\romannumeral##1\relax}\&\uppercase\expandafter{\romannumeral##2\relax}}}},
    supply/.value required,
    staff comments/.store in=\NATOSymb@symbG,
    additional information/.store in=\NATOSymb@symbH,
@@ -1933,9 +1926,9 @@ line=solid,
    location/.store in=\NATOSymb@symbY,
    common identifier/.store in=\NATOSymb@symbAF,
    speed/.store in=\NATOSymb@symbZ,
-   offset/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
+   offset/.code 2 args={\begin{scope}[shift={#2}]\ifthenelse{\equal{\NATOSymb@drawH}{true}}{\draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2;}{\draw (0,0)  -- +(0, -##1) -- +##2;}\end{scope}},
    offset/.value required,
-   movement/.code 2 args={\begin{scope}[shift={#2}]\def\true{true} \ifx\NATOSymb@drawH\true \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2; \else \draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +##2; \fi\end{scope}},
+   movement/.code 2 args={\begin{scope}[shift={#2}]\ifthenelse{\equal{\NATOSymb@drawH}{true}}{ \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +##2;}{\draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +##2;}\end{scope}},
    movement/.value required,
    faction=friendly,
    main=none,
@@ -1969,36 +1962,29 @@ line=solid,
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
 \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
 \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
-\ifx\NATOSymb@isnone\true
-\else
 \fontsize{6}{0}\selectfont
-\node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\NATOSymb@symbE}; %Draw echelon
+\ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\NATOSymb@symbE}}; %Draw echelon
 \iftaskforce
 \draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);
 \fi
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
 \fi
-\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\fontsize{8}{0}\selectfont \NATOSymb@symbR \fontsize{6}{0}\selectfont \NATOSymb@symbAC}; %Draw status
-\def\friendly{friendly} % Draw headquarters
-\ifx\NATOSymb@selectedfaction\friendly
-\ifx\NATOSymb@drawH\true  
+\ifthenelse{\isequivalentto{\NATOSymb@symbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\fontsize{8}{0}\selectfont \NATOSymb@symbR \fontsize{6}{0}\selectfont \NATOSymb@symbAC};} %Draw status
+\ifthenelse{\equal{\NATOSymb@drawH}{true} \AND \equal{\NATOSymb@selectedfaction}{friendly}}{
 \draw (-0.75, -0.5) -- +(0, -0.25);
 \fontsize{6}{0}\selectfont
-\node [anchor=north] at (M.south) {\NATOSymb@symbHT};
-\fi
-\fi
- \fontsize{6}{0}\selectfont
- \node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbG};
- \node [anchor=west] at (M.east) {\NATOSymb@symbH};
- \node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbM};
- \node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbJ\NATOSymb@symbK\NATOSymb@symbP};
- \node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\NATOSymb@symbW};
- \node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\NATOSymb@symbX\NATOSymb@symbY};
- \node [anchor=east] at (M.west) {\NATOSymb@symbV\NATOSymb@symbAF};
- \node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\NATOSymb@symbT};
- \node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\NATOSymb@symbZ};
-\fi
+\node [anchor=north] at (M.south) {\NATOSymb@symbHT};}{}
+\fontsize{6}{0}\selectfont
+\ifthenelse{\isequivalentto{\NATOSymb@symbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbG};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbH}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbH};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbM}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbM};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbJ}{\empty} \AND \isequivalentto{\NATOSymb@symbK}{\empty} \AND \isequivalentto{\NATOSymb@symbP}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbJ\NATOSymb@symbK\NATOSymb@symbP};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\NATOSymb@symbW};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbX}{\empty} \AND \isequivalentto{\NATOSymb@symbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\NATOSymb@symbX\NATOSymb@symbY};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbV}{\empty} \AND \isequivalentto{\NATOSymb@symbAF}{\empty}}{}{\node [anchor=east] at (M.west) {\NATOSymb@symbV\NATOSymb@symbAF};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbT}{\empty}}{}{\node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\NATOSymb@symbT};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbZ}{\empty}}{}{\node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\NATOSymb@symbZ};}
 \end{scope}
 }
 \newcounter{exitem}
