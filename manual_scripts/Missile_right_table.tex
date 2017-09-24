@@ -1,11 +1,11 @@
-\begin{longtable}{|c|c|c|}
+\begin{tabularx}{\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}
 \hline
-\bfseries{Name} & \bfseries{Symbol} & \bfseries{Examples} \\ 
+ \thead{Name} & \thead{Symbol} & \multicolumn{4}{c|}{\thead{Examples}} \\ 
 \hline
-Air & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATOMissile[faction=none, right=air]{(0,0)}}} & \\ \hline
-Surface & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATOMissile[faction=none, right=surface]{(0,0)}}} & \\ \hline
-Sub Surface & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATOMissile[faction=none, right=sub surface]{(0,0)}}} & \\ \hline
-Space & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATOMissile[faction=none, right=space]{(0,0)}}} & \\ \hline
-Launched & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATOMissile[faction=none, right=launched]{(0,0)}}} & \\ \hline
-Missile & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATOMissile[faction=none, right=missile]{(0,0)}}} & \\ \hline
-\end{longtable}
+Air & \tikz[baseline=-0.5ex]{\NATOMissile[faction=none, right=air]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=friendly, right=air]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=hostile, right=air]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=neutral, right=air]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=unknown, right=air]{(0,0)}}&\\[1.25cm] \hline
+Surface & \tikz[baseline=-0.5ex]{\NATOMissile[faction=none, right=surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=friendly, right=surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=hostile, right=surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=neutral, right=surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=unknown, right=surface]{(0,0)}}&\\[1.25cm] \hline
+Sub Surface & \tikz[baseline=-0.5ex]{\NATOMissile[faction=none, right=sub surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=friendly, right=sub surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=hostile, right=sub surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=neutral, right=sub surface]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=unknown, right=sub surface]{(0,0)}}&\\[1.25cm] \hline
+Space & \tikz[baseline=-0.5ex]{\NATOMissile[faction=none, right=space]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=friendly, right=space]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=hostile, right=space]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=neutral, right=space]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=unknown, right=space]{(0,0)}}&\\[1.25cm] \hline
+Launched & \tikz[baseline=-0.5ex]{\NATOMissile[faction=none, right=launched]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=friendly, right=launched]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=hostile, right=launched]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=neutral, right=launched]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=unknown, right=launched]{(0,0)}}&\\[1.25cm] \hline
+Missile & \tikz[baseline=-0.5ex]{\NATOMissile[faction=none, right=missile]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=friendly, right=missile]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=hostile, right=missile]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=neutral, right=missile]{(0,0)}} & \tikz[baseline=-0.5ex]{\NATOMissile[faction=unknown, right=missile]{(0,0)}}&\\[1.25cm] \hline
+\end{tabularx}

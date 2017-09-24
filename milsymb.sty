@@ -1963,7 +1963,7 @@ line=solid,
 \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
 \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
 \fontsize{6}{0}\selectfont
-\ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\NATOSymb@symbE}}; %Draw echelon
+\ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\NATOSymb@symbE};} %Draw echelon
 \iftaskforce
 \draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);
 \fi

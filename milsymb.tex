@@ -1,12 +1,15 @@
+% WARNING! Typsesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typsetting or texmf.cnf
+
 \documentclass[a4paper, titlepage]{article}
 \usepackage{milsymb}
-\usepackage{longtable}
-\usepackage{adjustbox}
-\usepackage{array}
+\usepackage{ltablex}
+\usepackage{makecell}
+\usepackage{multirow}
 \usepackage[a4paper, top=4.5cm, bottom=1.75cm, left=2cm, right=2cm, headsep=2cm]{geometry}
 \usetikzlibrary{backgrounds}
-\newcolumntype{n}{>{\raggedright\arraybackslash}m{3cm}}
-\newcolumntype{e}{>{\raggedright\arraybackslash}p{3cm}}
+\newcolumntype{n}{>{\raggedright\arraybackslash}m{5cm}}
+\newcolumntype{s}{>{\centering\arraybackslash}m{1.75cm}}
+\renewcommand\theadfont{\bfseries}
 \title{MilSymb}
 \author{Damian Crosby}
 
@@ -14,14 +17,14 @@
 \maketitle
 
 \input{manual_scripts/Air_Main_table.tex}
-%\input{manual_scripts/Air_Upper_table.tex}
-%\input{manual_scripts/Air_Lower_table.tex}
+\input{manual_scripts/Air_Upper_table.tex}
+\input{manual_scripts/Air_Lower_table.tex}
 
 \input{manual_scripts/Land_Main_table.tex}
-%\input{manual_scripts/Land_Upper_table.tex}
-%\input{manual_scripts/Land_Lower_table.tex}
+\input{manual_scripts/Land_Upper_table.tex}
+\input{manual_scripts/Land_Lower_table.tex}
 %
-%\input{manual_scripts/Missile_Left_table.tex}
-%\input{manual_scripts/Missile_Right_table.tex}
+\input{manual_scripts/Missile_Left_table.tex}
+\input{manual_scripts/Missile_Right_table.tex}
 
 \end{document}

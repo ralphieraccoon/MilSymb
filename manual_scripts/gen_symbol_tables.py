@@ -11,11 +11,21 @@ def maketable(x, y):
         n = re.search('.*?/(.*?)/', j).group(1)  # get name
         if n == 'none':
             continue  # skip if a blank placeholder
-        ro = n.title() + r' & {\tikz[baseline=-0.5ex, scale=2, transform shape]{\NATO' + y + \
-                         r'[faction=none, ' + c + r'=' + n + r']{(0,0)}}} & \\ \hline'
+        ro = n.title() + r' & \tikz[baseline=-0.5ex]{' \
+                         r'\NATO' + y + r'[faction=none, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r' & \tikz[baseline=-0.5ex]{' \
+                         r'\NATO' + y + r'[faction=friendly, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r' & \tikz[baseline=-0.5ex]{' \
+                         r'\NATO' + y + r'[faction=hostile, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r' & \tikz[baseline=-0.5ex]{' \
+                         r'\NATO' + y + r'[faction=neutral, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r' & \tikz[baseline=-0.5ex]{' \
+                         r'\NATO' + y + r'[faction=unknown, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r'&\\[1.25cm] \hline'
         l.append(ro)
-    ta = '\\begin{longtable}{|c|c|c|}\n\\hline\n\\bfseries{Name} & \\bfseries{Symbol} & \\bfseries{' \
-         'Examples} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{longtable}'
+    ta = '\\begin{tabularx}{\\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}\n\\hline\n \\thead{Name} & ' \
+         '\\thead{Symbol} & \multicolumn{4}{c|}' \
+         '{\\thead{Examples}} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{tabularx}'
     ofn = os.path.join(dr, y + '_' + c + '_table.tex')
     of = open(ofn, 'w')
     of.write(ta)
