@@ -66,6 +66,10 @@ NATOSymb land/unknown/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle;
 },
 % EQUIPMENT %
+NATOSymb equipment/none/.pic={
+\path (0.5, 0.5) rectangle (-0.5, -0.5);
+\draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+},
 NATOSymb equipment/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] circle (0.5);},
 NATOSymb equipment/hostile/.pic={
@@ -1088,13 +1092,13 @@ NATOSymb equipment/main/booby trap/.pic={
 },
 % MOBILITY %
 NATOSymb equipment/mobility/amphibious/.pic={
-\pic [scale=0.6] {NATOSymb multi/main/amphibious};
+\pic [scale=0.75] {NATOSymb multi/main/amphibious};
 },
 NATOSymb equipment/mobility/barge/.pic={
-\draw (0.5, 0) -- (-0.5, 0) to [out=-90,in=-90,looseness=0.5] (0.5, 0) -- cycle;
+\draw (0.6, 0) -- (-0.6, 0) to [out=-90,in=-90,looseness=0.5] (0.6, 0) -- cycle;
 },
 NATOSymb equipment/mobility/over snow/.pic={
-\draw (-0.5, 0.2) to[in=180, out=-90] (-0.3, 0) -- (0.5, 0);
+\draw (-0.6, 0.2) to[in=180, out=-90] (-0.4, 0) -- (0.6, 0);
 },
 NATOSymb equipment/mobility/pack animal/.pic={
 \pic [yscale=1.5] {NATOSymb multi/lower/pack animal};
@@ -1102,14 +1106,14 @@ NATOSymb equipment/mobility/pack animal/.pic={
 NATOSymb equipment/mobility/railroad/.pic={
 \pic [scale=1.65] {NATOSymb multi/lower/railroad};
 },
-NATOSymb equipment/mobility/over snow/.pic={
-\draw (-0.5, 0.2) to[in=180, out=-90] (-0.3, 0) -- (0.5, 0);
-},
 NATOSymb equipment/mobility/sled/.pic={
-\draw (-0.5, 0.2) to[in=180, out=-90] (-0.3, 0) -- (0.3, 0) to[in=-90, out=0] (0.5, 0.2);
+\draw (-0.6, 0.2) to[in=180, out=-90] (-0.4, 0) -- (0.4, 0) to[in=-90, out=0] (0.6, 0.2);
 },
 NATOSymb equipment/mobility/towed/.pic={
-\pic [scale=2.25, yshift=-1.25] {NATOSymb multi/lower/towed};
+\pic [scale=2, yshift=-1.25] {NATOSymb multi/lower/towed};
+},
+NATOSymb equipment/mobility/tracked/.pic={
+\draw (-0.6, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.55, -0.1) arc(270:180:0.05) -- cycle;
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
@@ -1525,7 +1529,6 @@ line=solid,
    #1,
  }%
 \begin{scope}[shift={#2}]
-\def\true{true}
  \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -1581,7 +1584,6 @@ line=solid,
    #1,
 }%
 \begin{scope}[shift={#2}]
-\def\true{true}
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
 \fontfamily{phv}\fontseries{bx}\selectfont
@@ -1957,7 +1959,6 @@ line=solid,
 } %
  \fontfamily{phv}\fontseries{bx}\selectfont
 \begin{scope}[shift={#2}]
-\def\true{true}
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
 \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -2004,6 +2005,68 @@ line=solid,
 }{
 \draw ([shift={(5pt,0pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
  (G.west) -- ++(-5pt,0);
+\end{scope}
+}
+\newcommand{\NATOEquipment}[2][]{
+\tikzset{%
+   /NATOSymb/.cd,
+   faction/.is choice,
+   faction/none/.style={/NATOSymb/.cd, shape=equipment/none, fill=neutralA},
+   faction/friendly/.style={/NATOSymb/.cd, shape=equipment/friendly, fill=friendlyA},
+   faction/hostile/.style={/NATOSymb/.cd, shape=equipment/hostile, fill=hostileA},
+   faction/neutral/.style={/NATOSymb/.cd, shape=equipment/neutral, fill=neutralA},
+   faction/unknown/.style={/NATOSymb/.cd, shape=equipment/unknown, fill=unknownA},
+   main/.is choice,
+   main/rifle/.style= {/NATOSymb/.cd, symbC=equipment/main/rifle},
+   main/single shot rifle/.style= {/NATOSymb/.cd, symbC=equipment/main/single shot rifle},
+   main/semi automatic rifle/.style= {/NATOSymb/.cd, symbC=equipment/main/semi automatic rifle},
+   main/automatic rifle/.style= {/NATOSymb/.cd, symbC=equipment/main/automatic rifle},
+   main/machine gun/.style= {/NATOSymb/.cd, symbC=equipment/main/machine gun},
+   main/heavy machine gun/.style= {/NATOSymb/.cd, symbC=equipment/main/heavy machine gun},
+   main/grenade launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/grenade launcher},
+   main/light grenade launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/light grenade launcher},
+   main/medium grenade launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/medium grenade launcher},
+   main/heavy grenade launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/heavy grenade launcher},
+   main/flame thrower/.style= {/NATOSymb/.cd, symbC=equipment/main/flame thrower},
+   main/air defence gun/.style= {/NATOSymb/.cd, symbC=equipment/main/air defence gun},
+   main/anti tank gun/.style= {/NATOSymb/.cd, symbC=equipment/main/anti tank gun},
+   main/direct fire gun/.style= {/NATOSymb/.cd, symbC=equipment/main/direct fire gun},
+   main/recoilless gun/.style= {/NATOSymb/.cd, symbC=equipment/main/recoilless gun},
+   main/howitzer/.style= {/NATOSymb/.cd, symbC=equipment/main/howitzer},
+   main/missile launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/missile launcher},
+   main/air defence missile launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/air defence missile launcher},
+   main/anti tank missile launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/anti tank missile launcher},
+   main/surface to surface missile launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/surface to surface missile launcher},
+   main/mortar/.style= {/NATOSymb/.cd, symbC=equipment/main/mortar},
+   main/single rocket launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/single rocket launcher},
+   main/multiple rocket launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/multiple rocket launcher},
+   main/anti tank rocket launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/anti tank rocket launcher},
+   main/non lethal weapon/.style= {/NATOSymb/.cd, symbC=equipment/main/non lethal weapon},
+   main/non lethal grenade launcher/.style= {/NATOSymb/.cd, symbC=equipment/main/non lethal grenade launcher},
+   main/taser/.style= {/NATOSymb/.cd, symbC=equipment/main/taser},
+   main/water cannon/.style= {/NATOSymb/.cd, symbC=equipment/main/water cannon},
+   main/armoured fighting vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured fighting vehicle},
+   main/armoured fighting vehicle command and control/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured fighting vehicle command and control},
+   main/armoured peronnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured personnel carrier},
+   main/amphibious armoured peronnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/amphibious armoured peronnel carrier},
+   mobility/.is choice,
+   mobility/none/.style= {/NATOSymb/.cd, symbLT=}, 
+   faction=none,
+   left=none,
+   right=none,
+   #1,
+}%
+\begin{scope}[shift={#2}]
+\pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
+\pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
+\pic at (0, -0.6) {NATOSymb \NATOSymb@symbL}; %Draw mobility
+\fontfamily{phv}\fontseries{bx}\selectfont
+\fontsize{6}{0}\selectfont
+% \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
+% \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}
+% \ifthenelse{\isequivalentto{\NATOSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbD};}
+% \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
+% \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
 }
 \endinput
