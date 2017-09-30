@@ -12,15 +12,15 @@ def maketable(x, y):
         if n == 'none':
             continue  # skip if a blank placeholder
         ro = n.title() + r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=none, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r'\NATO' + y + r'[faction=none, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=friendly, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r'\NATO' + y + r'[faction=friendly, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=hostile, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r'\NATO' + y + r'[faction=hostile, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=neutral, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r'\NATO' + y + r'[faction=neutral, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=unknown, ' + c + r'=' + n + r']{(0,0)}}' \
+                         r'\NATO' + y + r'[faction=unknown, ' + c + r'=' + n + r']}' \
                          r'&\\[1.25cm] \hline'
         l.append(ro)
     ta = '\\begin{tabularx}{\\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}\n\\hline\n \\thead{Name} & ' \
@@ -40,16 +40,16 @@ f.close()
 for i in ['Air', 'Missile', 'Land']:
     if i != 'Missile':
         t = re.search(
-            r'\\newcommand{\\NATO' + i + '\}\[\d\]\[\]{.*?main/\.is choice,\n *(.*?)^(?! *main)'
-                                         r'.*?upper/\.is choice,\n *(.*?)^(?! *upper)'
-                                         r'.*?lower/\.is choice,\n *(.*?)^(?! *lower)',
+            r'\\NewDocumentCommand\\NATO' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
+                                                r'.*?upper/\.is choice,\n *(.*?)^(?! *upper)'
+                                                r'.*?lower/\.is choice,\n *(.*?)^(?! *lower)',
             r, re.S | re.M)  # extract all main, upper, lower
         maketable(t.group(1), i)  # main
         maketable(t.group(2), i)  # upper
         maketable(t.group(3), i)  # lower
     else:
         t = re.search(
-            r'\\newcommand{\\NATOMissile\}\[\d\]\[\]{'
+            r'\\NewDocumentCommand\\NATOMissile{ o D\(\)\{0,0} d\(\) g}{'
             r'.*left/\.is choice,\n *?(.*?)^(?! *left)'
             r'.*right/\.is choice,\n *?(.*?)^(?! *right)',
             r, re.S | re.M)

@@ -9,10 +9,11 @@
 %
 %\NATOLand[faction=friendly, main=supply, supply={3}{}, echelon=platoon, task force, status=reinforced and reduced, upper=mobile advisor and support,  headquarters=command group,  altitude={Low}{Medium}, offset={2}{(-1.25, 0.2)}]{(4,7)};
 
-\NATOAir[faction=friendly, main=military airship]{(0,0)}
+\NATOAir[faction=friendly, main=military airship](1,2)(A)
+\NATOAir[faction=friendly, main=military balloon](8,4)(B)
+\NATOLand[faction=friendly, supply={1}{2}](0,0)(C)
 
-
-%\NATOLand[faction=unknown, supply={1}{2}]{(1,7)}
+\draw [->] (C.east) -- (B.west);
 
 %\begin{landgroup}
 %\item \NATOLand[faction=friendly, main=above corps support, echelon=team, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]{(0,0)};

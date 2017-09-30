@@ -7,6 +7,7 @@
 \RequirePackage{acronym}
 \RequirePackage{amssymb}
 \RequirePackage{xifthen}
+\RequirePackage{xparse}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
@@ -1418,7 +1419,7 @@ line=solid,
 \acrodef{HighS}[H]{}
 \acrodef{MediumS}[M]{}
 \acrodef{LowS}[L]{}
-\newcommand{\NATOAir}[2][]{
+\NewDocumentCommand\NATOAir{ o D(){0,0} d() g}{
 \tikzset{%	
    /NATOSymb/.cd,
    faction/.is choice,
@@ -1528,7 +1529,7 @@ line=solid,
    lower=none,
    #1,
  }%
-\begin{scope}[shift={#2}]
+\begin{scope}[shift={(#2)}, local bounding box=#3]
  \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -1541,8 +1542,9 @@ line=solid,
  \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
  \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
-\newcommand{\NATOMissile}[2][]{
+\NewDocumentCommand\NATOMissile{ o D(){0,0} d() g}{
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
@@ -1583,7 +1585,7 @@ line=solid,
    right=none,
    #1,
 }%
-\begin{scope}[shift={#2}]
+\begin{scope}[shift={(#2)}, local bounding box=#3]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
 \fontfamily{phv}\fontseries{bx}\selectfont
@@ -1596,10 +1598,11 @@ line=solid,
  \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
  \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
 \newif\iftaskforce
 \newif\iffeintdummy
-\newcommand{\NATOLand}[2][]{
+\NewDocumentCommand\NATOLand{ o D(){0,0} d() g}{
 \tikzset{
   /NATOSymb/.cd,
    selectedfaction/.store in=\NATOSymb@selectedfaction,
@@ -1958,7 +1961,7 @@ line=solid,
   #1,
 } %
  \fontfamily{phv}\fontseries{bx}\selectfont
-\begin{scope}[shift={#2}]
+\begin{scope}[shift={(#2)}, local bounding box=#3]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
 \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -1987,6 +1990,7 @@ line=solid,
 \ifthenelse{\isequivalentto{\NATOSymb@symbT}{\empty}}{}{\node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\NATOSymb@symbT};}
 \ifthenelse{\isequivalentto{\NATOSymb@symbZ}{\empty}}{}{\node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\NATOSymb@symbZ};}
 \end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
 \newcounter{exitem}
 \newenvironment{landheadquarters}{
