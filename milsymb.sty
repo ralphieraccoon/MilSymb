@@ -1993,24 +1993,37 @@ line=solid,
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
 \newcounter{exitem}
-\newenvironment{landheadquarters}{
+\newlength{\itemlength}
+\NewDocumentEnvironment{landheadquarters}{}{
 \begin{scope}
 \setcounter{exitem}{0}
-\renewcommand\item{
+\RenewDocumentCommand\item{m}{
+\scoped[yshift=-\itemlength, local bounding box=T]
+##1;
 \ifnum \value{exitem}>0
-\draw ($(M.south west) + (0, -0.25)$) -- +(0,-0.68);
+\pgfmathtruncatemacro\result{\value{exitem}-1}
+\draw ($(M.south west) + (0, -0.25)$) -- (F\result);
 \fi
-\stepcounter{exitem}\scoped[yshift=-\theexitem*55]}
+\coordinate (F\arabic{exitem}) at (M.north west);
+\pgfpointdiff{\pgfpointanchor{T}{north west}}{\pgfpointanchor{T}{south west}}
+\setlength{\itemlength}{\pgf@y-5pt}
+\stepcounter{exitem}}
 }{\end{scope}}
-\newenvironment{landgroup}{
+
+\NewDocumentEnvironment{landgroup}{}{
 \begin{scope}[local bounding box=G]
 \setcounter{exitem}{0}
-\renewcommand\item{\stepcounter{exitem}\scoped[yshift=-\theexitem*50]}
+\RenewDocumentCommand\item{m}{
+\scoped[yshift=-\itemlength, local bounding box=T]
+##1;
+\pgfpointdiff{\pgfpointanchor{T}{north west}}{\pgfpointanchor{T}{south west}}
+\setlength{\itemlength}{\pgf@y-5pt}
+\stepcounter{exitem}}
 }{
-\draw ([shift={(5pt,0pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
+\draw ([shift={(5pt,3pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
  (G.west) -- ++(-5pt,0);
-\end{scope}
-}
+\end{scope}}
+
 \newcommand{\NATOEquipment}[2][]{
 \tikzset{%
    /NATOSymb/.cd,
@@ -2054,7 +2067,7 @@ line=solid,
    main/armoured peronnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured personnel carrier},
    main/amphibious armoured peronnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/amphibious armoured peronnel carrier},
    mobility/.is choice,
-   mobility/none/.style= {/NATOSymb/.cd, symbLT=}, 
+   mobility/none/.style= {/NATOSymb/.cd, symbLT=},
    faction=none,
    left=none,
    right=none,
