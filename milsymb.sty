@@ -2006,7 +2006,7 @@ line=solid,
 \fi
 \coordinate (F\arabic{exitem}) at (M.north west);
 \pgfpointdiff{\pgfpointanchor{T}{north west}}{\pgfpointanchor{T}{south west}}
-\setlength{\itemlength}{\pgf@y-5pt}
+\addtolength{\itemlength}{\pgf@y-5pt}
 \stepcounter{exitem}}
 }{\end{scope}}
 
@@ -2017,7 +2017,7 @@ line=solid,
 \scoped[yshift=-\itemlength, local bounding box=T]
 ##1;
 \pgfpointdiff{\pgfpointanchor{T}{north west}}{\pgfpointanchor{T}{south west}}
-\setlength{\itemlength}{\pgf@y-5pt}
+\addtolength{\itemlength}{\pgf@y-5pt}
 \stepcounter{exitem}}
 }{
 \draw ([shift={(5pt,3pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
