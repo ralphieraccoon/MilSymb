@@ -865,7 +865,7 @@ NATOSymb equipment/main/direct fire gun/.pic={
 },
 NATOSymb equipment/main/recoilless gun/.pic={
 \pic {NATOSymb equipment/main/rifle};
-\pic {NATOSymb equipment/main/side bands};
+\pic [yshift=-4] {NATOSymb equipment/main/side bands};
 },
 NATOSymb equipment/main/howitzer/.pic={
 \pic {NATOSymb equipment/main/high trajectory indirect fire weapons system};
@@ -897,7 +897,7 @@ NATOSymb equipment/main/single rocket launcher/.pic={
 },
 NATOSymb equipment/main/multiple rocket launcher/.pic={
 \pic {NATOSymb equipment/main/single rocket launcher};
-\pic {NATOSymb equipment/main/side bands};
+\pic [yshift=-5] {NATOSymb equipment/main/side bands};
 },
 NATOSymb equipment/main/anti tank rocket launcher/.pic={
 \begin{scope}[yshift=-1.5]
@@ -914,7 +914,7 @@ NATOSymb equipment/main/non lethal grenade launcher/.pic={
 \pic {NATOSymb equipment/main/non lethal weapon};
 \draw (0,0) circle (0.1);
 },
-NATOSymb equipment/main/tazer/.pic={
+NATOSymb equipment/main/taser/.pic={
 \pic {NATOSymb equipment/main/non lethal weapon};
 \pic at (0, 0) {NATOSymb main/text={Z}};
 },
@@ -1080,7 +1080,7 @@ NATOSymb equipment/main/antitank land mine/.pic={
 NATOSymb equipment/main/sensor/.pic={
 \pic [scale=1.75] {NATOSymb multi/main/sensor};
 },
-NATOSymb equipment/main/sensor embedded/.pic={
+NATOSymb equipment/main/sensor emplaced/.pic={
 \pic [scale=1.5] {NATOSymb multi/main/sensor};
 \draw (0.15, 0.3) -- (0.1, 0.35) -- (0.05, 0.3) -- (0, 0.35) -- (-0.05, 0.3) -- (-0.1, 0.35) -- (-0.15, 0.3);
 },
@@ -1139,7 +1139,7 @@ NATOSymb multi/main/bridge/.pic={
 NATOSymb multi/main/petroleum oil and lubricants/.pic={
 \draw (0, -0.175) -- (0, 0) -- (0.15, 0.175) -- (-0.15, 0.175) -- (0, 0);
 },
-NATOSymb multi/main/chemical biological radiological nuclear defence/.pic={
+NATOSymb multi/main/chemical biological radiological nuclear/.pic={
 \draw [ultra thick] (0.15,-0.2) arc(0:90:0.45 and 0.375);
 \draw [fill] (-0.29,0.1) circle(0.096);
 \begin{scope}[xscale=-1]
@@ -1654,7 +1654,7 @@ line=solid,
    main/aviation rotary wing/.style={/NATOSymb/.cd, symbC=multi/main/aviation rotary wing},
    main/aviation composite fixed wing and rotary wing/.style={/NATOSymb/.cd, symbC=land/main/aviation composite fixed wing and rotary wing},
    main/band/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=BAND},
-   main/chemical biological radiological nuclear defence/.style={/NATOSymb/.cd, symbC=multi/main/chemical biological radiological nuclear defence},
+   main/chemical biological radiological nuclear defence/.style={/NATOSymb/.cd, symbC=multi/main/chemical biological radiological nuclear},
    main/civil affairs/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CA},
    main/civilian military cooperation/.style={/NATOSymb/.cd, symbC=land/main/civilian military cooperation},
    main/combat/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CBT},
@@ -1969,7 +1969,7 @@ line=solid,
 \fontsize{6}{0}\selectfont
 \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\NATOSymb@symbE};} %Draw echelon
 \iftaskforce
-\draw ($(E.south west)+(0,0.04)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.04)$);
+\draw ($(E.south west)+(0,0.03)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.03)$);
 \fi
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
@@ -1994,8 +1994,9 @@ line=solid,
 }
 \newcounter{exitem}
 \newlength{\itemlength}
-\NewDocumentEnvironment{landheadquarters}{}{
-\begin{scope}
+\NewDocumentEnvironment{landheadquarters}{D(){0,0}}{
+\setlength{\itemlength}{0pt}
+\begin{scope}[shift={(#1)}]
 \setcounter{exitem}{0}
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
@@ -2009,22 +2010,19 @@ line=solid,
 \addtolength{\itemlength}{\pgf@y-5pt}
 \stepcounter{exitem}}
 }{\end{scope}}
-
-\NewDocumentEnvironment{landgroup}{}{
-\begin{scope}[local bounding box=G]
-\setcounter{exitem}{0}
+\NewDocumentEnvironment{landgroup}{D(){0,0}}{
+\setlength{\itemlength}{0pt}
+\begin{scope}[local bounding box=G, shift={(#1)}]
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
 ##1;
 \pgfpointdiff{\pgfpointanchor{T}{north west}}{\pgfpointanchor{T}{south west}}
-\addtolength{\itemlength}{\pgf@y-5pt}
-\stepcounter{exitem}}
+\addtolength{\itemlength}{\pgf@y-5pt}}
 }{
 \draw ([shift={(5pt,3pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
  (G.west) -- ++(-5pt,0);
 \end{scope}}
-
-\newcommand{\NATOEquipment}[2][]{
+\NewDocumentCommand\NATOEquipment{ o D(){0,0} d() g}{
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
@@ -2034,6 +2032,7 @@ line=solid,
    faction/neutral/.style={/NATOSymb/.cd, shape=equipment/neutral, fill=neutralA},
    faction/unknown/.style={/NATOSymb/.cd, shape=equipment/unknown, fill=unknownA},
    main/.is choice,
+   main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=}, 
    main/rifle/.style= {/NATOSymb/.cd, symbC=equipment/main/rifle},
    main/single shot rifle/.style= {/NATOSymb/.cd, symbC=equipment/main/single shot rifle},
    main/semi automatic rifle/.style= {/NATOSymb/.cd, symbC=equipment/main/semi automatic rifle},
@@ -2065,15 +2064,58 @@ line=solid,
    main/armoured fighting vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured fighting vehicle},
    main/armoured fighting vehicle command and control/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured fighting vehicle command and control},
    main/armoured peronnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured personnel carrier},
-   main/amphibious armoured peronnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/amphibious armoured peronnel carrier},
+   main/armoured medical personnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured medical personnel carrier},
+   main/armoured protected vehicle/.style= {/NATOSymb/.cd, symbC=multi/main/armoured},
+   main/armoured protected recovery vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured protected recovery vehicle},
+   main/medical evacuation armoured protected vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/medical evacuation armoured protected vehicle},
+   main/tank/.style= {/NATOSymb/.cd, symbC=equipment/main/tank},
+   main/light tank/.style= {/NATOSymb/.cd, symbC=equipment/main/light tank},
+   main/medium tank/.style= {/NATOSymb/.cd, symbC=equipment/main/medium tank},
+   main/heavy tank/.style= {/NATOSymb/.cd, symbC=equipment/main/heavy tank},
+   main/tank recovery vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/tank recovery vehicle},
+   main/bridge/.style= {/NATOSymb/.cd, symbC=multi/main/bridge},
+   main/bridge mounted on utility vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/bridge mounted on utility vehicle},
+   main/fixed bridge/.style= {/NATOSymb/.cd, symbC=equipment/main/fixed bridge},
+   main/folding girder bridge/.style= {/NATOSymb/.cd, symbC=equipment/main/folding girder bridge},
+   main/hollow deck bridge/.style= {/NATOSymb/.cd, symbC=equipment/main/hollow deck bridge},
+   main/drill/.style= {/NATOSymb/.cd, symbC=multi/main/drill},
+   main/drill mounted on vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/drill mounted on vehicle},
+   main/earthmover/.style= {/NATOSymb/.cd, symbC=equipment/main/earthmover},
+   main/multifunctional earthmover/.style= {/NATOSymb/.cd, symbC=equipment/main/multifunctional earthmover},
+   main/mine clearing equipment/.style= {/NATOSymb/.cd, symbC=equipment/main/mine clearing equipment},
+   main/mine laying equipment/.style= {/NATOSymb/.cd, symbC=equipment/main/mine laying equipment},
+   main/utility vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/utility vehicle},
+   main/medical vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/medical vehicle},
+   main/medical evacuation/.style= {/NATOSymb/.cd, symbC=equipment/main/medical evacuation},
+   main/mobile emergency physician/.style= {/NATOSymb/.cd, symbC=equipment/main/mobile emergency physician},
+   main/bus/.style= {/NATOSymb/.cd, symbC=equipment/main/bus},
+   main/semi trailer truck/.style= {/NATOSymb/.cd, symbC=equipment/main/semi trailer truck},
+   main/petroleum oil and lubricants vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/petroleum oil and lubricants vehicle},
+   main/water vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/water vehicle},
+   main/train locomotive/.style= {/NATOSymb/.cd, symbC=equipment/main/train locomotive},
+   main/chemical biological radiological nuclear equipment/.style= {/NATOSymb/.cd, symbC=multi/main/chemical biological radiological nuclear},
+   main/computer system/.style= {/NATOSymb/.cd, symbC=equipment/main/computer system},
+   main/laser/.style= {/NATOSymb/.cd, symbC=equipment/main/laser},
+   main/land mine/.style= {/NATOSymb/.cd, symbC=equipment/main/land mine},
+   main/antipersonnel land mine/.style= {/NATOSymb/.cd, symbC=equipment/main/antipersonnel land mine},
+   main/antitank land mine/.style= {/NATOSymb/.cd, symbC=equipment/main/antitank land mine},
+   main/improvised explosive device/.style= {/NATOSymb/.cd, symbC=main/text, symbCT=IED},
+   main/sensor/.style= {/NATOSymb/.cd, symbC= equipment/main/sensor},
+   main/sensor emplaced/.style= {/NATOSymb/.cd, symbC=equipment/main/sensor emplaced},
+   main/radar/.style= {/NATOSymb/.cd, symbC=multi/main/radar},
+   main/antennae/.style= {/NATOSymb/.cd, symbC=multi/main/antenna},
+   main/generator set/.style= {/NATOSymb/.cd, symbC=main/text, symbCT=G},
+   main/psychological operations equipment/.style= {/NATOSymb/.cd, symbC=multi/main/psychological operations},
+   main/bomb/.style= {/NATOSymb/.cd, symbC=main/textsquashed, symbCT=BOMB},
+   main/booby trap/.style= {/NATOSymb/.cd, symbC=equipment/main/booby trap},
    mobility/.is choice,
-   mobility/none/.style= {/NATOSymb/.cd, symbLT=},
+   mobility/none/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
    faction=none,
-   left=none,
-   right=none,
+   main=none,
+   mobility=none,
    #1,
 }%
-\begin{scope}[shift={#2}]
+\begin{scope}[shift={(#2)}]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
 \pic at (0, -0.6) {NATOSymb \NATOSymb@symbL}; %Draw mobility

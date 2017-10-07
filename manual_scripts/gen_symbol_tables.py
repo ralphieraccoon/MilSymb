@@ -37,8 +37,24 @@ fn = os.path.join(dr, '../milsymb.sty')
 f = open(fn, 'r')
 r = f.read()
 f.close()
-for i in ['Air', 'Missile', 'Land']:
-    if i != 'Missile':
+for i in ['Air', 'Missile', 'Land', 'Equipment']:
+    if i == 'Missile':
+        t = re.search(
+            r'\\NewDocumentCommand\\NATOMissile{ o D\(\)\{0,0} d\(\) g}{'
+            r'.*left/\.is choice,\n *?(.*?)^(?! *left)'
+            r'.*right/\.is choice,\n *?(.*?)^(?! *right)',
+            r, re.S | re.M)
+        maketable(t.group(1), i)  # left
+        maketable(t.group(2), i)  # right
+    elif i == 'Equipment':
+        t = re.search(
+            r'\\NewDocumentCommand\\NATOEquipment{ o D\(\)\{0,0} d\(\) g}{'
+            r'.*main/\.is choice,\n *?(.*?)^(?! *main)'
+            r'.*mobility/\.is choice,\n *?(.*?)^(?! *mobility)',
+            r, re.S | re.M)
+        maketable(t.group(1), i)  # main
+        maketable(t.group(2), i)  # mobility
+    else:
         t = re.search(
             r'\\NewDocumentCommand\\NATO' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
                                                 r'.*?upper/\.is choice,\n *(.*?)^(?! *upper)'
@@ -47,11 +63,3 @@ for i in ['Air', 'Missile', 'Land']:
         maketable(t.group(1), i)  # main
         maketable(t.group(2), i)  # upper
         maketable(t.group(3), i)  # lower
-    else:
-        t = re.search(
-            r'\\NewDocumentCommand\\NATOMissile{ o D\(\)\{0,0} d\(\) g}{'
-            r'.*left/\.is choice,\n *?(.*?)^(?! *left)'
-            r'.*right/\.is choice,\n *?(.*?)^(?! *right)',
-            r, re.S | re.M)
-        maketable(t.group(1), i)  # left
-        maketable(t.group(2), i)  # right

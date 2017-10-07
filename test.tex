@@ -2,7 +2,7 @@
 \usepackage{milsymb}
 \begin{document}
 
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=2, transform shape]
 %\NATOAir[faction=unknown, main=military fixed wing, upper=search and rescue, lower=heavy, track number=TN 177, call sign=CZ178, position and movement=277/16, nation=MUM, additional information=CHEESE]{(8, 6)}
 
 %\NATOLand[faction=friendly, echelon=platoon, task force, status=reinforced, upper=mobile advisor and support, feint or dummy, country indicator=CAN, altitude={Low}{Medium}, movement={2}{(-1.6, 1)}]{(5,1)}
@@ -13,12 +13,24 @@
 
 %\NATOLand[faction=unknown, supply={1}{2}]{(1,7)}
 
-\begin{landgroup}
-\item{\NATOLand[faction=friendly, main=above corps support, echelon=team, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]}
-\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-\end{landgroup}
+%\begin{landgroup}
+%\item{\NATOLand[faction=friendly, main=above corps support, echelon=team, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\end{landgroup}
+%
+%
+%
+%\begin{landgroup}(5, 5)
+%\item{\NATOLand[faction=friendly, main=above corps support, echelon=team, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
+%\end{landgroup}
+
+
+\NATOEquipment[faction=friendly, main=recoilless gun]
 
 %\pic at (0, 0) {NATOSymb equipment/friendly};
 %\pic at (0, 0) {NATOSymb equipment/main/booby trap};
