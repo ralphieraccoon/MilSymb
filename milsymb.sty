@@ -1995,7 +1995,7 @@ line=solid,
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
 \fi
-\ifthenelse{\isequivalentto{\NATOSymb@symbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\fontsize{8}{0}\selectfont \NATOSymb@symbR \fontsize{6}{0}\selectfont \NATOSymb@symbAC};} %Draw status
+\ifthenelse{\isequivalentto{\NATOSymb@symbAC}{\empty} \AND \isequivalentto{\NATOSymb@symbR}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\fontsize{8}{0}\selectfont \NATOSymb@symbR \fontsize{6}{0}\selectfont \NATOSymb@symbAC};} %Draw status
 \ifthenelse{\equal{\NATOSymb@drawH}{true} \AND \equal{\NATOSymb@selectedfaction}{friendly}}{
 \draw (-0.75, -0.5) -- +(0, -0.25);
 \fontsize{6}{0}\selectfont
@@ -2151,13 +2151,44 @@ line=solid,
    quantity/.store in=\NATOSymb@symbQ,
    staff comments/.store in=\NATOSymb@symbG,
    additional information/.store in=\NATOSymb@symbH,
+   evaluation rating/.store in=\NATOSymb@symbJ,
+   combat effectiveness/.store in=\NATOSymb@symbK,
+   signature equipment/.store in=\NATOSymb@symbSE,
+   higher formation/.store in=\NATOSymb@symbM,
+   identification/.store in=\NATOSymb@symbP,
+   unique designation/.store in=\NATOSymb@symbT,
+   type of equipment/.store in=\NATOSymb@symbV,
+   date-time group/.store in=\NATOSymb@symbW,
+   altitude value/.store in=\NATOSymb@symbX,
+   location/.store in=\NATOSymb@symbY,
+   country indicator/.store in=\NATOSymb@symbAC,
+   platform type/.store in=\NATOSymb@symbAD,
+   equipment teardown time/.store in=\NATOSymb@symbAE,
+   common identifier/.store in=\NATOSymb@symbAF,
+   speed/.store in=\NATOSymb@symbZ,
    faction=none,
    main=none,
    mobility=none,
-   feint or dummy=false,
    quantity=,
    staff comments=,
    additional information=,
+   evaluation rating=,
+   higher formation=,
+   evaluation rating=,
+   combat effectiveness=,
+   signature equipment=,
+   identification=,
+   unique designation=,
+   type of equipment=,
+   date-time group=,
+   altitude value=,
+   location=,
+   country indicator=,
+   platform type=,
+   equipment teardown time=,
+   common identifier=,
+   speed=,
+   feint or dummy=false,
    #1,
 }%
 \begin{scope}[shift={(#2)}, local bounding box=#3]
@@ -2171,11 +2202,17 @@ line=solid,
 \fi
 \fontfamily{phv}\fontseries{bx}\selectfont
 \fontsize{6}{0}\selectfont
-\ifthenelse{\isequivalentto{\NATOSymb@symbQ}{\empty}}{}{\node [anchor=south] at (M.north) {\NATOSymb@symbQ};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbQ}{\empty}}{}{\node [anchor=south] at ($(M.north) + (0, 0.02)$) {\NATOSymb@symbQ};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbAC}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!-0.17!(M.south east)$}) {\NATOSymb@symbAC};}
 \ifthenelse{\isequivalentto{\NATOSymb@symbG}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!.17!(M.south east)$}) {\NATOSymb@symbG};}
-\ifthenelse{\isequivalentto{\NATOSymb@symbH}{\empty}}{}{\node [anchor=west] at (Q.east |- M.east) {\NATOSymb@symbH};}
-%\ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbM};}
-%\ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbH}{\empty} \AND \isequivalentto{\NATOSymb@symbAE}{\empty}}{}{\node [anchor=west] at (Q.east |- M.east) {\NATOSymb@symbH\NATOSymb@symbAE};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbM}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!0.83!(M.south east)$}) {\NATOSymb@symbM};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbJ}{\empty} \AND \isequivalentto{\NATOSymb@symbK}{\empty} \AND \isequivalentto{\NATOSymb@symbSE}{\empty} \AND \isequivalentto{\NATOSymb@symbP}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!1.17!(M.south east)$}) {\NATOSymb@symbJ\NATOSymb@symbK\NATOSymb@symbSE\NATOSymb@symbP};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbW}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!-0.17!(M.south west)$}) {\NATOSymb@symbW};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbX}{\empty} \AND \isequivalentto{\NATOSymb@symbY}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!.17!(M.south west)$}) {\NATOSymb@symbX\NATOSymb@symbY};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbV}{\empty} \AND \isequivalentto{\NATOSymb@symbAD}{\empty} \AND \isequivalentto{\NATOSymb@symbAF}{\empty}}{}{\node [anchor=east] at (Q.west |- M.west) {\NATOSymb@symbV\NATOSymb@symbAD\NATOSymb@symbAF};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbT}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!0.83!(M.south west)$}) {\NATOSymb@symbT};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbZ}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!1.17!(M.south west)$}) {\NATOSymb@symbZ};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
