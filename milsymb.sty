@@ -1096,25 +1096,46 @@ NATOSymb equipment/mobility/amphibious/.pic={
 \pic [scale=0.75] {NATOSymb multi/main/amphibious};
 },
 NATOSymb equipment/mobility/barge/.pic={
-\draw (0.6, 0) -- (-0.6, 0) to [out=-90,in=-90,looseness=0.5] (0.6, 0) -- cycle;
+\draw (0.6, 0.1) -- (-0.6, 0.1) to [out=-90,in=-90,looseness=0.5] (0.6, 0.1) -- cycle;
 },
 NATOSymb equipment/mobility/over snow/.pic={
-\draw (-0.6, 0.2) to[in=180, out=-90] (-0.4, 0) -- (0.6, 0);
+\draw (-0.7, 0.3) to[in=180, out=-90] (-0.5, 0.1) -- (0.6, 0.1);
 },
 NATOSymb equipment/mobility/pack animal/.pic={
-\pic [yscale=1.5] {NATOSymb multi/lower/pack animal};
+\pic [yscale=1.5, yshift=-1.85] {NATOSymb multi/lower/pack animal};
 },
 NATOSymb equipment/mobility/railroad/.pic={
-\pic [scale=1.65] {NATOSymb multi/lower/railroad};
+\pic [scale=1.65, yshift=-1.7] {NATOSymb multi/lower/railroad};
 },
 NATOSymb equipment/mobility/sled/.pic={
-\draw (-0.6, 0.2) to[in=180, out=-90] (-0.4, 0) -- (0.4, 0) to[in=-90, out=0] (0.6, 0.2);
+\draw (-0.7, 0.3) to[in=180, out=-90] (-0.5, 0.1) -- (0.5, 0.1) to[in=-90, out=0] (0.7, 0.3);
 },
 NATOSymb equipment/mobility/towed/.pic={
-\pic [scale=2, yshift=-1.25] {NATOSymb multi/lower/towed};
+\pic [scale=2] {NATOSymb multi/lower/towed};
 },
 NATOSymb equipment/mobility/tracked/.pic={
 \draw (-0.6, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.55, -0.1) arc(270:180:0.05) -- cycle;
+},
+NATOSymb equipment/mobility/wheeled cross country/.pic={
+\draw (-0.5, 0) circle (0.1);
+\draw (0, 0) circle (0.1);
+\draw (0.5, 0) circle (0.1);
+\draw (-0.6, 0.1) -- (0.6, 0.1);
+},
+NATOSymb equipment/mobility/wheeled limited mobility/.pic={
+\draw (-0.5, 0) circle (0.1);
+\draw (0.5, 0) circle (0.1);
+\draw (-0.6, 0.1) -- (0.6, 0.1);
+},
+NATOSymb equipment/mobility/wheeled semi trailer/.pic={
+\draw (-0.5, 0) circle (0.1);
+\draw (-0.3, 0) circle (0.1);
+\draw (0.5, 0) circle (0.1);
+\draw (-0.6, 0.1) -- (0.6, 0.1);
+},
+NATOSymb equipment/mobility/wheeled and tracked/.pic={
+\draw (-0.25, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.2, -0.1) arc(270:180:0.05) -- cycle;
+\draw (-0.5, 0) circle (0.1);
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
@@ -1275,11 +1296,11 @@ NATOSymb multi/lower/towed/.pic={
 \draw (-0.3, 0.05) circle (0.05);
 },
 NATOSymb multi/lower/railroad/.pic={
-\draw (0.36, 0.125) -- (-0.35, 0.125);
+\draw (0.36, 0.12) -- (-0.36, 0.12);
 \draw (0.3, 0.06) circle (0.06);
-\draw (0.175, 0.06) circle (0.06);
+\draw (0.18, 0.06) circle (0.06);
 \draw (-0.3, 0.06) circle (0.06);
-\draw (-0.175, 0.06) circle (0.06);
+\draw (-0.18, 0.06) circle (0.06);
 },
 % UPPER/LOWER %
 NATOSymb multi/upperlower/maintenance/.pic={
@@ -2109,16 +2130,28 @@ line=solid,
    main/bomb/.style= {/NATOSymb/.cd, symbC=main/textsquashed, symbCT=BOMB},
    main/booby trap/.style= {/NATOSymb/.cd, symbC=equipment/main/booby trap},
    mobility/.is choice,
-   mobility/none/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
+   mobility/none/.style= {/NATOSymb/.cd, symbL=, symbLT=},
+   mobility/amphibious/.style= {/NATOSymb/.cd, symbL=equipment/mobility/amphibious},
+   mobility/barge/.style= {/NATOSymb/.cd, symbL=equipment/mobility/barge},
+   mobility/over snow/.style= {/NATOSymb/.cd, symbL=equipment/mobility/over snow},
+   mobility/pack animal/.style= {/NATOSymb/.cd, symbL=equipment/mobility/pack animal},
+   mobility/railroad/.style= {/NATOSymb/.cd, symbL=equipment/mobility/railroad},
+   mobility/sled/.style= {/NATOSymb/.cd, symbL=equipment/mobility/sled},
+   mobility/towed/.style= {/NATOSymb/.cd, symbL=equipment/mobility/towed},
+   mobility/tracked/.style= {/NATOSymb/.cd, symbL=equipment/mobility/tracked},
+   mobility/wheeled cross country/.style= {/NATOSymb/.cd, symbL=equipment/mobility/wheeled cross country},
+   mobility/wheeled limited mobility/.style= {/NATOSymb/.cd, symbL=equipment/mobility/wheeled limited mobility},
+   mobility/wheeled semi trailer/.style= {/NATOSymb/.cd, symbL=equipment/mobility/wheeled semi trailer},
+   mobility/wheeled and tracked/.style= {/NATOSymb/.cd, symbL=equipment/mobility/wheeled and tracked},
    faction=none,
    main=none,
    mobility=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}]
+\begin{scope}[shift={(#2)}, local bounding box=#3]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
-\pic at (0, -0.6) {NATOSymb \NATOSymb@symbL}; %Draw mobility
+\ifthenelse{\isequivalentto{\NATOSymb@symbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {NATOSymb \NATOSymb@symbL};} %Draw mobility
 \fontfamily{phv}\fontseries{bx}\selectfont
 \fontsize{6}{0}\selectfont
 % \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
@@ -2127,5 +2160,6 @@ line=solid,
 % \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
 % \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
 \endinput

@@ -2,7 +2,7 @@ import re
 import os
 
 
-def maketable(x, y):
+def maketable(x, y, z=1.25):
     l = list()
     s = re.split('}(?:\n|, *\n) *', x)
     del s[-1]
@@ -21,7 +21,7 @@ def maketable(x, y):
                          r'\NATO' + y + r'[faction=neutral, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
                          r'\NATO' + y + r'[faction=unknown, ' + c + r'=' + n + r']}' \
-                         r'&\\[1.25cm] \hline'
+                         r'&\\[' + str(z) + 'cm] \hline'
         l.append(ro)
     ta = '\\begin{tabularx}{\\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}\n\\hline\n \\thead{Name} & ' \
          '\\thead{Symbol} & \multicolumn{4}{c|}' \
@@ -53,7 +53,7 @@ for i in ['Air', 'Missile', 'Land', 'Equipment']:
             r'.*mobility/\.is choice,\n *?(.*?)^(?! *mobility)',
             r, re.S | re.M)
         maketable(t.group(1), i)  # main
-        maketable(t.group(2), i)  # mobility
+        maketable(t.group(2), i, 1.5)  # mobility
     else:
         t = re.search(
             r'\\NewDocumentCommand\\NATO' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
