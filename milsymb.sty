@@ -32,12 +32,7 @@ NATOSymb air/none/.pic={
 	\draw[lightgray, dashed] (0.5, -0.2) -- (-0.5, -0.2);
 \end{scope}},
 NATOSymb air/missile/.pic={
-\draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-\begin{scope}[rotate=90]
-\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-	\draw[lightgray, dashed] (0.5, 0.2) -- (-0.5, 0.2);
-	\draw[lightgray, dashed] (0.5, -0.2) -- (-0.5, -0.2);
-\end{scope}},
+\pic[rotate=90]{NATOSymb air/none};},
 NATOSymb air/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.555, -0.5) arc (180:0:0.555 and 1.37);},
 NATOSymb air/hostile/.pic={
@@ -49,13 +44,7 @@ NATOSymb air/unknown/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5);},
 % LAND %
 NATOSymb land/none/.pic={
-\path (0.5, 0.5) rectangle (-0.5, -0.5);
-\draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-\begin{scope}
-\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-	\draw[lightgray, dashed] (0.5, 0.2) -- (-0.5, 0.2);
-	\draw[lightgray, dashed] (0.5, -0.2) -- (-0.5, -0.2);
-\end{scope}},
+\pic{NATOSymb air/none};},
 NATOSymb land/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] (-0.75, -0.5) rectangle (0.75, 0.5);},
 NATOSymb land/hostile/.pic={
@@ -68,9 +57,7 @@ NATOSymb land/unknown/.pic={
 },
 % EQUIPMENT %
 NATOSymb equipment/none/.pic={
-\path (0.5, 0.5) rectangle (-0.5, -0.5);
-\draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-},
+\pic{NATOSymb air/none};},
 NATOSymb equipment/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] circle (0.5);},
 NATOSymb equipment/hostile/.pic={
@@ -78,6 +65,21 @@ NATOSymb equipment/hostile/.pic={
 NATOSymb equipment/neutral/.pic={
 \pic{NATOSymb land/neutral};},
 NATOSymb equipment/unknown/.pic={ 
+\pic{NATOSymb land/unknown};},
+% INSTALLATION %
+NATOSymb installation/none/.pic={
+\pic{NATOSymb air/none};},
+NATOSymb installation/friendly/.pic={
+\fill (0.2, 0.65) rectangle (-0.2, 0.5);
+\pic{NATOSymb land/friendly};},
+NATOSymb installation/hostile/.pic={
+\fill (0.2, 0.825) rectangle(-0.2, 0.4);
+\pic{NATOSymb land/hostile};},
+NATOSymb installation/neutral/.pic={
+\fill (0.2, 0.65) rectangle (-0.2, 0.5);
+\pic{NATOSymb land/neutral};},
+NATOSymb installation/unknown/.pic={ 
+\fill (0.2, 0.825) rectangle(-0.2, 0.4);
 \pic{NATOSymb land/unknown};},
 %% AIR SYMBOLS %%
 % MAIN %
@@ -1154,6 +1156,11 @@ NATOSymb equipment/mobility/wheeled semi trailer/.pic={
 NATOSymb equipment/mobility/wheeled and tracked/.pic={
 \draw [fill=white] (-0.25, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.2, -0.1) arc(270:180:0.05) -- cycle;
 \draw [fill=white] (-0.5, 0) circle (0.1);
+},
+%% INSTALLATION SYMBOLS %%
+% MAIN %
+NATOSymb installation/mobility/wheeled and tracked/.pic={
+
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
