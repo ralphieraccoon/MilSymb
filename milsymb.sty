@@ -745,6 +745,13 @@ NATOSymb land/lower/mountain/unknown/.pic={
 \clip [yshift=9.6] \clipunknown;
 \pic [yshift=-6.5]  {NATOSymb land/lower/mountain};
 },
+NATOSymb land/lower/railroad/.pic={
+\draw (0.36, 0.12) -- (-0.36, 0.12);
+\draw (0.3, 0.06) circle (0.06);
+\draw (0.18, 0.06) circle (0.06);
+\draw (-0.3, 0.06) circle (0.06);
+\draw (-0.18, 0.06) circle (0.06);
+},
 NATOSymb land/lower/radio relay line of sight/.pic={
 \draw circle(0.125);
 \clip circle(0.125);
@@ -761,6 +768,11 @@ NATOSymb land/lower/ski/.pic={
 \draw (0.1, -0.05) -- (0.04, -0.1);
 \draw (-0.05, 0.125) -- (0.075, -0.075);
 \draw (-0.1, -0.05) -- (-0.04, -0.1);
+},
+NATOSymb land/lower/towed/.pic={
+\draw (-0.25, 0.05) -- (0.25,0.05);
+\draw (0.3, 0.05) circle (0.05);
+\draw (-0.3, 0.05) circle (0.05);
 },
 NATOSymb land/lower/wheeled/.pic={
 \draw (0.24, 0.05) circle (0.08);
@@ -1096,7 +1108,7 @@ NATOSymb equipment/mobility/amphibious/.pic={
 \pic [scale=0.75] {NATOSymb multi/main/amphibious};
 },
 NATOSymb equipment/mobility/barge/.pic={
-\draw (0.6, 0.1) -- (-0.6, 0.1) to [out=-90,in=-90,looseness=0.5] (0.6, 0.1) -- cycle;
+\draw [fill=white] (0.6, 0.1) -- (-0.6, 0.1) to [out=-90,in=-90,looseness=0.5] (0.6, 0.1) -- cycle;
 },
 NATOSymb equipment/mobility/over snow/.pic={
 \draw (-0.7, 0.3) to[in=180, out=-90] (-0.5, 0.1) -- (0.6, 0.1);
@@ -1105,37 +1117,43 @@ NATOSymb equipment/mobility/pack animal/.pic={
 \pic [yscale=1.5, yshift=-1.85] {NATOSymb multi/lower/pack animal};
 },
 NATOSymb equipment/mobility/railroad/.pic={
-\pic [scale=1.65, yshift=-1.7] {NATOSymb multi/lower/railroad};
+\draw (-0.6, 0.1) -- (0.6, 0.1);
+\draw [fill=white] (-0.5, 0) circle (0.1);
+\draw [fill=white] (-0.3, 0) circle (0.1);
+\draw [fill=white] (0.5, 0) circle (0.1);
+\draw [fill=white] (0.3, 0) circle (0.1);
 },
 NATOSymb equipment/mobility/sled/.pic={
 \draw (-0.7, 0.3) to[in=180, out=-90] (-0.5, 0.1) -- (0.5, 0.1) to[in=-90, out=0] (0.7, 0.3);
 },
 NATOSymb equipment/mobility/towed/.pic={
-\pic [scale=2] {NATOSymb multi/lower/towed};
+\draw (-0.6, 0.1) -- (0.6, 0.1);
+\draw [fill=white] (-0.7, 0.1) circle (0.1);
+\draw [fill=white] (0.7, 0.1) circle (0.1);
 },
 NATOSymb equipment/mobility/tracked/.pic={
-\draw (-0.6, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.55, -0.1) arc(270:180:0.05) -- cycle;
+\draw [fill=white] (-0.6, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.55, -0.1) arc(270:180:0.05) -- cycle;
 },
 NATOSymb equipment/mobility/wheeled cross country/.pic={
-\draw (-0.5, 0) circle (0.1);
-\draw (0, 0) circle (0.1);
-\draw (0.5, 0) circle (0.1);
+\draw [fill=white] (-0.5, 0) circle (0.1);
+\draw [fill=white] (0, 0) circle (0.1);
+\draw [fill=white] (0.5, 0) circle (0.1);
 \draw (-0.6, 0.1) -- (0.6, 0.1);
 },
 NATOSymb equipment/mobility/wheeled limited mobility/.pic={
-\draw (-0.5, 0) circle (0.1);
-\draw (0.5, 0) circle (0.1);
+\draw [fill=white] (-0.5, 0) circle (0.1);
+\draw [fill=white] (0.5, 0) circle (0.1);
 \draw (-0.6, 0.1) -- (0.6, 0.1);
 },
 NATOSymb equipment/mobility/wheeled semi trailer/.pic={
-\draw (-0.5, 0) circle (0.1);
-\draw (-0.3, 0) circle (0.1);
-\draw (0.5, 0) circle (0.1);
-\draw (-0.6, 0.1) -- (0.6, 0.1);
+\draw [fill=white] (-0.5, 0) circle (0.1);
+\draw [fill=white] (-0.3, 0) circle (0.1);
+\draw [fill=white] (0.5, 0) circle (0.1);
+\draw [fill=white] (-0.6, 0.1) -- (0.6, 0.1);
 },
 NATOSymb equipment/mobility/wheeled and tracked/.pic={
-\draw (-0.25, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.2, -0.1) arc(270:180:0.05) -- cycle;
-\draw (-0.5, 0) circle (0.1);
+\draw [fill=white] (-0.25, 0.05) arc(180:90:0.05) -- (0.55, 0.1) arc(90:0:0.05) -- (0.6, -0.05) arc(0:-90:0.05) -- (-0.2, -0.1) arc(270:180:0.05) -- cycle;
+\draw [fill=white] (-0.5, 0) circle (0.1);
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
@@ -1289,18 +1307,6 @@ NATOSymb multi/upper/medic/.pic={
 % LOWER %
 NATOSymb multi/lower/pack animal/.pic={
 \draw (-0.25,-0.05) -- (-0.125,0.125) -- (0, -0.05) -- (0.125, 0.125) -- (0.25, -0.05);
-},
-NATOSymb multi/lower/towed/.pic={
-\draw (-0.25, 0.05) -- (0.25,0.05);
-\draw (0.3, 0.05) circle (0.05);
-\draw (-0.3, 0.05) circle (0.05);
-},
-NATOSymb multi/lower/railroad/.pic={
-\draw (0.36, 0.12) -- (-0.36, 0.12);
-\draw (0.3, 0.06) circle (0.06);
-\draw (0.18, 0.06) circle (0.06);
-\draw (-0.3, 0.06) circle (0.06);
-\draw (-0.18, 0.06) circle (0.06);
 },
 % UPPER/LOWER %
 NATOSymb multi/upperlower/maintenance/.pic={
@@ -1881,7 +1887,7 @@ line=solid,
    lower/preventative maintenance/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=PM},
    lower/psychological/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=P},
    lower/radio relay line of sight/.style= {/NATOSymb/.cd, symbL=land/lower/radio relay line of sight},
-   lower/railroad/.style= {/NATOSymb/.cd, symbL=multi/lower/railroad},
+   lower/railroad/.style= {/NATOSymb/.cd, symbL=land/lower/railroad},
    lower/recovery unmanned systems/.style= {/NATOSymb/.cd, symbL=land/lower/recovery unmanned systems},
    lower/recovery maintenance/.style= {/NATOSymb/.cd, symbL=multi/upperlower/maintenance},
    lower/rescue coordination centre/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=RCC},
@@ -1892,7 +1898,7 @@ line=solid,
    lower/strategic/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=STR},
    lower/support/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=SPT},
    lower/tactical/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=TAC},
-   lower/towed/.style= {/NATOSymb/.cd, symbL=multi/lower/towed},
+   lower/towed/.style= {/NATOSymb/.cd, symbL=land/lower/towed},
    lower/troop/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=T},
    lower/vertical of short takeoff and landing/.style= {/NATOSymb/.cd, symbL=main/textsmallsquashed, symbLT=VSTOL},
    lower/veterinary/.style= {/NATOSymb/.cd, symbL=main/textsmall, symbLT=\ \ \ \ V},
