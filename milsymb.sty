@@ -4,6 +4,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fix-cm}
 \RequirePackage{arev}
+\RequirePackage{marvosym}
 \RequirePackage{acronym}
 \RequirePackage{amssymb}
 \RequirePackage{xifthen}
@@ -1162,6 +1163,27 @@ NATOSymb equipment/mobility/wheeled and tracked/.pic={
 NATOSymb installation/main/electric power/.pic={
 \draw (-0.05, 0) .. controls (-0.06, 0.14) .. (0, 0.09) .. controls (0.03, 0.06) .. (0, 0.06) .. controls(-0.03, 0.06) .. (0, 0.09) .. controls(0.06, 0.14) .. (0.05, 0);
 \draw ($(-55:0.125) + (0, 0.075)$) arc (-55:235:0.125) arc (415:360:0.05) -- +(0, -0.08) arc(180:360:0.05035) -- +(0, 0.08) arc (180:125:0.05) -- cycle;
+},
+NATOSymb installation/main/mine/.pic={
+\draw (-0.2, -0.2) -- (0.2, 0.15);
+\draw [line cap=round, thick] ($(65:0.1) + (0.1, 0.1)$) arc (65:25:0.2); 
+\begin{scope} [xscale=-1]
+\draw (-0.2, -0.2) -- (0.2, 0.15);
+\draw [line cap=round, thick] ($(65:0.1) + (0.1, 0.1)$) arc (65:25:0.2); 
+\end{scope}
+},
+NATOSymb installation/main/nuclear/.pic={
+\fontsize{15}{0}\selectfont
+\node at (0, 0) {\Radioactivity};},
+NATOSymb installation/main/printed media/.pic={
+\draw (0.2, 0) -- (-0.2, 0);
+\draw [ultra thick] (0, 0.1) circle (0.085);
+\draw [ultra thick] (0, -0.1) circle (0.085);
+},
+NATOSymb installation/main/civilian telecommunications/.pic={
+\draw [line join=bevel] (0.075, -0.2) -- (0, 0.1) -- (-0.075, -0.2);
+\draw (0.065, -0.05) -- (-0.065, -0.05);
+\draw (-0.325, 0.2) -- (-0.15, 0.125) -- (-0.15, 0.175) -- (0, 0.1) -- (0.15, 0.175) -- (0.15, 0.125) -- (0.325, 0.2);
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %

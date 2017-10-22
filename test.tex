@@ -6,45 +6,14 @@
 
 %\NATOEquipment[faction=friendly, main=rifle, mobility=railroad, quantity=2000, movement={1}{8,6}]
 
-%\begin{landgroup}
-%\item{\NATOLand[faction=friendly, main=above corps support, echelon=team, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\end{landgroup}
-%
-%
-%
-%\begin{landgroup}(5, 5)
-%\item{\NATOLand[faction=friendly, main=above corps support, echelon=team, status=reinforced and reduced, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\item{\NATOLand[faction=friendly, main=supply, echelon=platoon, task force, status=reinforced and reduced, feint or dummy, upper=mobile advisor and support, altitude={Low}{Medium}]}
-%\end{landgroup}
+\draw[gray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+\begin{scope}
+\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
+	\draw[gray, dashed] (0.5, 0.2) -- (-0.5, 0.2);
+	\draw[gray, dashed] (0.5, -0.2) -- (-0.5, -0.2);
+\end{scope}
 
-\pic at (0, 0) {NATOSymb installation/unknown};
-\pic at (0, 2) {NATOSymb installation/friendly};
-\pic at (0, 4) {NATOSymb installation/hostile};
-\pic at (0, 6) {NATOSymb installation/neutral};
-
-%%\pic at (0, 0) {NATOSymb equipment/main/booby trap};
-%\pic at (0, 0) {NATOSymb equipment/mobility/wheeled and tracked};
-%\pic at (0, 1) {NATOSymb equipment/mobility/towed};
-%\pic at (0, 2) {NATOSymb equipment/mobility/railroad};
-%\pic at (0, 3) {NATOSymb equipment/mobility/sled};
-%\pic at (0, 4) {NATOSymb equipment/mobility/wheeled cross country};
-%\pic at (0, 5) {NATOSymb equipment/mobility/wheeled limited mobility};
-%\pic at (0, 6) {NATOSymb equipment/mobility/wheeled semi trailer};
-
-
-
-%\draw[gray] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-%\begin{scope}
-%\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-%	\draw[gray] (0.5, 0.2) -- (-0.5, 0.2);
-%	\draw[gray] (0.5, -0.2) -- (-0.5, -0.2);
-%\end{scope}
-
+\pic at (0, 0) {NATOSymb installation/main/civilian telecommunications};
 
 \end{tikzpicture}
 
