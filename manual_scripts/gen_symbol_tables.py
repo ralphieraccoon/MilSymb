@@ -6,6 +6,7 @@ def maketable(x, y, z=1.25):
     l = list()
     s = re.split('}(?:\n|, *\n) *', x)
     del s[-1]
+    s.sort()
     c = re.match('^ *(.*?)/', x).group(1)  # get type
     for j in s:  # split up into each definition
         n = re.search('.*?/(.*?)/', j).group(1)  # get name

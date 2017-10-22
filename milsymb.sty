@@ -1159,8 +1159,9 @@ NATOSymb equipment/mobility/wheeled and tracked/.pic={
 },
 %% INSTALLATION SYMBOLS %%
 % MAIN %
-NATOSymb installation/mobility/wheeled and tracked/.pic={
-
+NATOSymb installation/main/electric power/.pic={
+\draw (-0.05, 0) .. controls (-0.06, 0.14) .. (0, 0.09) .. controls (0.03, 0.06) .. (0, 0.06) .. controls(-0.03, 0.06) .. (0, 0.09) .. controls(0.06, 0.14) .. (0.05, 0);
+\draw ($(-55:0.125) + (0, 0.075)$) arc (-55:235:0.125) arc (415:360:0.05) -- +(0, -0.08) arc(180:360:0.05035) -- +(0, 0.08) arc (180:125:0.05) -- cycle;
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
@@ -1311,6 +1312,10 @@ NATOSymb multi/upper/naval/.pic={
 NATOSymb multi/upper/medic/.pic={
 \pic [scale=0.7] {NATOSymb multi/main/medic};
 },
+NATOSymb multi/upper/runway/.pic={
+\draw (-0.1, -0.125) -- (0.025, 0.1);
+\draw (-0.15, -0.075) -- (0.15, -0.075);
+}
 % LOWER %
 NATOSymb multi/lower/pack animal/.pic={
 \draw (-0.25,-0.05) -- (-0.125,0.125) -- (0, -0.05) -- (0.125, 0.125) -- (0.25, -0.05);
@@ -1829,6 +1834,7 @@ line=solid,
    upper/operations/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=OPS},
    upper/radar/.style= {/NATOSymb/.cd, symbU=land/upper/radar},
    upper/radiological/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=RAD},
+   upper/runway/.style= {/NATOSymb/.cd, symbU=multi/upper/runway},
    upper/search and rescue/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=SAR},
    upper/security/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=SEC},
    upper/sensor/.style= {/NATOSymb/.cd, symbU=land/upper/sensor},
