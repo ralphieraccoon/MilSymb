@@ -6,14 +6,13 @@
 
 %\NATOEquipment[faction=friendly, main=rifle, mobility=railroad, quantity=2000, movement={1}{8,6}]
 
-\draw[gray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
-\begin{scope}
-\clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
-	\draw[gray, dashed] (0.5, 0.2) -- (-0.5, 0.2);
-	\draw[gray, dashed] (0.5, -0.2) -- (-0.5, -0.2);
-\end{scope}
 
-\pic at (0, 0) {NATOSymb installation/main/civilian telecommunications};
+
+\NATOInstallation[faction=friendly, main=grey list location]
+
+
+
+
 
 \end{tikzpicture}
 
