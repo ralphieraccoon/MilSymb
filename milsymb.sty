@@ -3,7 +3,7 @@
 \RequirePackage{tikz}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fix-cm}
-\RequirePackage{arev}
+\RequirePackage{arevmath}
 \RequirePackage{marvosym}
 \RequirePackage{acronym}
 \RequirePackage{amssymb}
@@ -1613,11 +1613,11 @@ line=solid,
    #1,
  }%
 \begin{scope}[shift={(#2)}, local bounding box=#3]
+ \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
  \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
- \fontfamily{phv}\fontseries{bx}\selectfont
  \fontsize{6}{0}\selectfont
  \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
  \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}
@@ -1669,9 +1669,9 @@ line=solid,
    #1,
 }%
 \begin{scope}[shift={(#2)}, local bounding box=#3]
+\fontfamily{phv}\fontseries{bx}\selectfont
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
-\fontfamily{phv}\fontseries{bx}\selectfont
 \fontsize{6}{0}\selectfont
 \node at (0.34, 0) {\NATOSymb@symbLT};
 \node at (-0.34, 0) {\NATOSymb@symbUT};
@@ -2044,8 +2044,8 @@ line=solid,
    feint or dummy=false,
   #1,
 } %
- \fontfamily{phv}\fontseries{bx}\selectfont
 \begin{scope}[shift={(#2)}, local bounding box=#3]
+\fontfamily{phv}\fontseries{bx}\selectfont
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
 \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -2255,6 +2255,7 @@ line=solid,
    #1,
 }%
 \begin{scope}[shift={(#2)}, local bounding box=#3]
+\fontfamily{phv}\fontseries{bx}\selectfont
 \begin{scope} [local bounding box=Q]
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
@@ -2263,7 +2264,6 @@ line=solid,
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
 \fi
-\fontfamily{phv}\fontseries{bx}\selectfont
 \fontsize{6}{0}\selectfont
 \ifthenelse{\isequivalentto{\NATOSymb@symbQ}{\empty}}{}{\node [anchor=south] at ($(M.north) + (0, 0.02)$) {\NATOSymb@symbQ};}
 \ifthenelse{\isequivalentto{\NATOSymb@symbAC}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!-0.17!(M.south east)$}) {\NATOSymb@symbAC};}
@@ -2367,6 +2367,8 @@ line=solid,
    #1,
 }%
 \begin{scope}[shift={(#2)}, local bounding box=#3]
+\fontfamily{phv}\fontseries{bx}\selectfont
+\fontsize{6}{0}\selectfont
 \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
 \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
 \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
@@ -2375,8 +2377,6 @@ line=solid,
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
 \fi
-\fontfamily{phv}\fontseries{bx}\selectfont
-\fontsize{6}{0}\selectfont
 \ifthenelse{\isequivalentto{\NATOSymb@symbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbAC};}
 \ifthenelse{\isequivalentto{\NATOSymb@symbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbG};}
 \ifthenelse{\isequivalentto{\NATOSymb@symbH}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbH};}
