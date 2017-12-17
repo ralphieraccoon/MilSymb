@@ -14,7 +14,7 @@
 \definecolor{neutralA}{RGB}{170, 255, 170}
 \definecolor{unknownA}{RGB}{255, 255, 128}
 \definecolor{lightgray}{gray}{0.75}
-\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc}
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc, fadings}
 \tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
   (current bounding box.south east) --
   (current bounding box.south west) --
@@ -1224,6 +1224,40 @@ NATOSymb seasurface/main/mine warfare vessel/.pic={
 NATOSymb seasurface/main/patrol/.pic={
 \fill (0, -0.2) -- (0.3, 0) -- (0.125, 0) -- (0, 0.2) -- (-0.125, 0) -- (-0.3, 0) -- cycle;
 },
+NATOSymb seasurface/main/military speedboat/.pic={
+\fill (-0.2, -0.2) -- (0.2, -0.2) -- (0.35, 0.05) -- (-0.15, 0.05) -- (-0.075, 0.2) -- (-0.175, 0.2) -- (-0.25, 0.05) -- (-0.35, 0.05) -- cycle;
+},
+NATOSymb seasurface/main/military rigid hull inflatable boat/.pic={
+\pic {NATOSymb seasurface/main/military speedboat};
+\fontsize{6}{0}\selectfont
+\node [text=NATOSymb@fill] at (0, -0.075) {RB};
+},
+NATOSymb seasurface/main/military jetski/.pic={
+\fill (0.3, -0.2) -- (-0.3, -0.2) -- (-0.35, -0.1) -- (-0.1, 0.2) -- (0, 0.2) -- (0, 0.1) -- (-0.05, 0.1) -- (-0.1, -0.05) -- (0.3, -0.05) -- (0.3, -0.2) -- cycle;
+},
+NATOSymb seasurface/main/navy task organization unit/.pic={
+\draw (-0.25, -0.2) -- (-0.25, 0.1) -- (-0.15, 0.2);
+\draw (0.25, -0.2) -- (0.25, 0.1) -- (0.15, 0.2);
+},
+NATOSymb seasurface/main/convoy/.pic={
+\fill (0.35, 0.175) --  (-0.35, 0.175) -- (-0.35, -0.175) -- (-0.2, -0.175) -- (-0.2, 0.025) -- (0.2, 0.025) -- (0.2, -0.175) -- (0.35, -0.175) -- cycle;
+},
+NATOSymb seasurface/main/non combatant/.pic={
+\fill (-0.25, -0.2) -- (-0.25, 0.05) -- (-0.15, 0.05) -- (-0.15, 0.2) -- (0.15, 0.2) -- (0.15, 0.05) -- (0.25, 0.05) -- (0.25, -0.2) -- cycle;
+},
+NATOSymb seasurface/main/ship/.pic={
+\draw (-0.2, -0.2) -- (0.2, -0.2) -- (0.35, 0.05) -- (0.15, 0.05) -- (0.15, 0.2) -- (-0.15, 0.2) -- (-0.15, 0.05) -- (-0.35, 0.05) -- cycle;
+},
+NATOSymb seasurface/main/fishing vessel/.pic={
+\draw (-0.15, -0.2) -- (0.15, -0.2) -- (0.25, 0.025) -- (-0.05, 0.025) -- (-0.05, 0.125) -- (-0.2, 0.125) -- (-0.2, 0.025) -- (-0.25, 0.025) -- cycle;
+\draw (0.025, 0.025) -- (0.025, 0.2);
+\draw (0.025, 0.025) -- +(45:0.2);
+},
+NATOSymb seasurface/main/sailing boat/.pic={
+\draw (-0.15, -0.2) -- (0.15, -0.2) -- (0.25, -0.025) -- (-0.25, -0.025) -- cycle;
+\draw (0, -0.025) -- (0, 0.2);
+\draw (0.025, 0) -- (0.025, 0.19) -- (0.225, 0) -- cycle;
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/amphibious/.pic={
@@ -1552,7 +1586,7 @@ line=solid,
 \tikzset{%	
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=air/none, fill=neutralA},
+   faction/none/.style={/NATOSymb/.cd, shape=air/none, fill=white},
    faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
    faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
@@ -1677,7 +1711,7 @@ line=solid,
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=air/missile, fill=neutralA},
+   faction/none/.style={/NATOSymb/.cd, shape=air/missile, fill=white},
    faction/friendly/.style={/NATOSymb/.cd, shape=air/friendly, fill=friendlyA},
    faction/hostile/.style={/NATOSymb/.cd, shape=air/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=air/neutral, fill=neutralA},
@@ -1736,7 +1770,7 @@ line=solid,
   /NATOSymb/.cd,
    selectedfaction/.store in=\NATOSymb@selectedfaction,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=land/none, fill=friendlyA, selectedfaction=neutral},
+   faction/none/.style={/NATOSymb/.cd, shape=land/none, fill=white, selectedfaction=neutral},
    faction/friendly/.style={/NATOSymb/.cd, shape=land/friendly, fill=friendlyA, selectedfaction=friendly},
    faction/hostile/.style={/NATOSymb/.cd, shape=land/hostile, fill=hostileA, selectedfaction=hostile},
    faction/neutral/.style={/NATOSymb/.cd, shape=land/neutral, fill=neutralA, selectedfaction=neutral},
@@ -2156,7 +2190,7 @@ line=solid,
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=equipment/none, fill=neutralA},
+   faction/none/.style={/NATOSymb/.cd, shape=equipment/none, fill=white},
    faction/friendly/.style={/NATOSymb/.cd, shape=equipment/friendly, fill=friendlyA},
    faction/hostile/.style={/NATOSymb/.cd, shape=equipment/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=equipment/neutral, fill=neutralA},
@@ -2331,7 +2365,7 @@ line=solid,
    /NATOSymb/.cd,
    selectedfaction/.store in=\NATOSymb@selectedfaction,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=installation/none, fill=friendlyA, selectedfaction=neutral},
+   faction/none/.style={/NATOSymb/.cd, shape=installation/none, fill=white, selectedfaction=neutral},
    faction/friendly/.style={/NATOSymb/.cd, shape=installation/friendly, fill=friendlyA, selectedfaction=friendly},
    faction/hostile/.style={/NATOSymb/.cd, shape=installation/hostile, fill=hostileA, selectedfaction=hostile},
    faction/neutral/.style={/NATOSymb/.cd, shape=installation/neutral, fill=neutralA, selectedfaction=neutral},
@@ -2440,7 +2474,7 @@ line=solid,
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=equipment/none, fill=friendlyA},
+   faction/none/.style={/NATOSymb/.cd, shape=equipment/none, fill=white},
    faction/friendly/.style={/NATOSymb/.cd, shape=equipment/friendly, fill=friendlyA},
    faction/hostile/.style={/NATOSymb/.cd, shape=equipment/hostile, fill=hostileA},
    faction/neutral/.style={/NATOSymb/.cd, shape=equipment/neutral, fill=neutralA},
