@@ -1368,6 +1368,10 @@ NATOSymb seasurface/main/civilian jetski/.pic={
 NATOSymb seasurface/main/unmanned surface water vehicle/.pic={
 \draw (0, -0.1) -- (0.45, 0.05) -- (0.45,0.1) -- (0, 0.025) -- (-0.45, 0.1) -- (-0.45, 0.05) -- cycle;
 },
+% UPPER %
+NATOSymb seasurface/upper/drone equipped/.pic={
+\pic [xscale=0.6, yscale=0.9, yshift=-1.5] {NATOSymb multi/main/unmanned systems};
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/amphibious/.pic={
@@ -2690,13 +2694,47 @@ line=solid,
    main/civilian unmanned surface water vehicle/.style={/NATOSymb/.cd, symbC=seasurface/main/unmanned surface water vehicle},
    upper/.is choice,
    upper/none/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
+   upper/anti air warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=AAW},
+   upper/anti submarine warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ASW},
+   upper/escort/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=E},
+   upper/electronic warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=EW},
+   upper/intelligence surviellance reconnaissance/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ISR},
+   upper/mine counter measures/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MCM},
+   upper/missile defence/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MD},
+   upper/medical/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ME},
+   upper/mine warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MW},
+   upper/remote multi mission vehicle/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=RMV},
+   upper/special operations force/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=SOF},
+   upper/surface warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=SUW},
+   upper/ballistic missile/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=B},
+   upper/guided missile/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=G},
+   upper/other guided missile/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=M},
+   upper/torpedo/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=T},
+   upper/drone equipped/.style={/NATOSymb/.cd, symbU=seasurface/upper/drone equipped},
+   upper/helicopter equipped/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=H},
    lower/.is choice,
    lower/none/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
+   lower/nuclear powered/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N},
+   lower/heavy/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=H},
+   lower/light/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=L},
+   lower/medium/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=M},
+   lower/dock/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D},
+   lower/logistics/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=LOG},
+   lower/tank/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=T},
+   lower/vehicle/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=V},
+   lower/fast/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=F},
+   lower/air cushioned/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=J},
+   lower/air cushioned alternate/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AC},
+   lower/hydrofoil/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=K},
+   lower/autonomus control/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AUT},
+   lower/remotely piloted/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=RP},
+   lower/expendable/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=EXP},
    track number/.store in=\NATOSymb@symbA,
    call sign/.store in=\NATOSymb@symbB,
    position and movement/.store in=\NATOSymb@symbD,
-   nation/.store in= \NATOSymb@symbE,
+   identification/.store in= \NATOSymb@symbE,
    additional information/.store in=\NATOSymb@symbF,
+   date-time group/.store in= \NATOSymb@symbG,
    speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
    speed leader/.value required,
    track number=,
@@ -2718,7 +2756,7 @@ line=solid,
  \fontsize{6}{0}\selectfont
  \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
  \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}
- \ifthenelse{\isequivalentto{\NATOSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbD};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbD}{\empty} \AND \isequivalentto{\NATOSymb@symbG}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbD\NATOSymb@symbG};}
  \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
  \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
