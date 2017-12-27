@@ -1248,15 +1248,113 @@ NATOSymb seasurface/main/non combatant/.pic={
 NATOSymb seasurface/main/ship/.pic={
 \draw (-0.2, -0.2) -- (0.2, -0.2) -- (0.35, 0.05) -- (0.15, 0.05) -- (0.15, 0.2) -- (-0.15, 0.2) -- (-0.15, 0.05) -- (-0.35, 0.05) -- cycle;
 },
+NATOSymb seasurface/main/cargo/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {A};
+},
+NATOSymb seasurface/main/container ship/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {C};
+},
+NATOSymb seasurface/main/dredge/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {D};
+},
+NATOSymb seasurface/main/roll on roll off/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {E};
+},
+NATOSymb seasurface/main/ferry/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {F};
+},
+NATOSymb seasurface/main/heavy lift/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {H};
+},
+NATOSymb seasurface/main/hovercraft/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {J};
+},
+NATOSymb seasurface/main/lash carrier/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {L};
+},
+NATOSymb seasurface/main/tanker/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {O};
+},
+NATOSymb seasurface/main/passenger ship/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {P};
+},
+NATOSymb seasurface/main/tug/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\node at (0,0) {T};
+},
+NATOSymb seasurface/main/tow/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\fontsize{7}{0}\selectfont
+\node at (0,-0.08) {TW};
+},
+NATOSymb seasurface/main/hazardous material transport ship/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\fontsize{7}{0}\selectfont
+\node at (0,-0.08) {HZ};
+},
+NATOSymb seasurface/main/junk/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\fontsize{7}{0}\selectfont
+\node at (0,-0.08) {QJ};
+},
+NATOSymb seasurface/main/barge/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\fontsize{7}{0}\selectfont
+\node at (0,-0.08) {YB};
+},
 NATOSymb seasurface/main/fishing vessel/.pic={
 \draw (-0.15, -0.2) -- (0.15, -0.2) -- (0.25, 0.025) -- (-0.05, 0.025) -- (-0.05, 0.125) -- (-0.2, 0.125) -- (-0.2, 0.025) -- (-0.25, 0.025) -- cycle;
 \draw (0.025, 0.025) -- (0.025, 0.2);
 \draw (0.025, 0.025) -- +(45:0.2);
 },
+NATOSymb seasurface/main/drifter/.pic={
+\pic {NATOSymb seasurface/main/fishing vessel};
+\fontsize{6}{0}\selectfont
+\node at (0,-0.09) {DF};
+},
+NATOSymb seasurface/main/trawler/.pic={
+\pic {NATOSymb seasurface/main/fishing vessel};
+\fontsize{6}{0}\selectfont
+\node at (0,-0.09) {TR};
+},
+NATOSymb seasurface/main/law enforcement vessel/.pic={
+\pic {NATOSymb seasurface/main/ship};
+\draw (0.15, 0.05) -- (0, -0.2);
+\draw (0.2, 0.05) -- (0.05, -0.2);
+},
 NATOSymb seasurface/main/sailing boat/.pic={
 \draw (-0.15, -0.2) -- (0.15, -0.2) -- (0.25, -0.025) -- (-0.25, -0.025) -- cycle;
 \draw (0, -0.025) -- (0, 0.2);
 \draw (0.025, 0) -- (0.025, 0.19) -- (0.225, 0) -- cycle;
+},
+NATOSymb seasurface/main/civilian boat/.pic={
+\draw (-0.2, -0.2) -- (0.2, -0.2) -- (0.35, 0.05) -- (-0.15, 0.05) -- (-0.075, 0.2) -- (-0.175, 0.2) -- (-0.25, 0.05) -- (-0.35, 0.05) -- cycle;
+},
+NATOSymb seasurface/main/civilian rigid hull inflatable boat/.pic={
+\pic {NATOSymb seasurface/main/civilian boat};
+\fontsize{6}{0}\selectfont
+\node at (0, -0.075) {RB};
+},
+NATOSymb seasurface/main/civilian speedboat/.pic={
+\pic {NATOSymb seasurface/main/civilian boat};
+\fontsize{6}{0}\selectfont
+\node at (0, -0.075) {SP};
+},
+NATOSymb seasurface/main/civilian jetski/.pic={
+\draw (0.3, -0.2) -- (-0.3, -0.2) -- (-0.35, -0.1) -- (-0.1, 0.2) -- (0, 0.2) -- (0, 0.1) -- (-0.05, 0.1) -- (-0.1, -0.05) -- (0.3, -0.05) -- (0.3, -0.2) -- cycle;
+},
+NATOSymb seasurface/main/unmanned surface water vehicle/.pic={
+\draw (0, -0.1) -- (0.45, 0.05) -- (0.45,0.1) -- (0, 0.025) -- (-0.45, 0.1) -- (-0.45, 0.05) -- cycle;
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
@@ -2516,5 +2614,10 @@ line=solid,
  \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
+}
+\NewDocumentCommand\OwnShip{}{
+\draw [ultra thick, friendlyA] (0, 0) circle (0.5);
+\draw [ultra thick, friendlyA] (0.5, 0) -- (-0.5, 0);
+\draw [ultra thick, friendlyA] (0, 0.5) -- (0, -0.5);
 }
 \endinput
