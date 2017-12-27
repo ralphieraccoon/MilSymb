@@ -112,16 +112,9 @@ NATOSymb air/main/civilian airship/.pic={
 	\draw (0.2, 0) -- (0.3, 0.175) -- (0.4,0.175) -- (0.375,0) -- (0.4,-0.175) -- (0.3, -0.175) -- cycle;
 \end{scope}},
 NATOSymb air/main/air decoy/.pic={
-\fill (0.42, -0.2) -- (0.42, -0.175) --  (-0.42, -0.175) --  (-0.42, -0.2) -- cycle;
-\begin{scope}[shift={(-0.18,0)}]
-	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
-\end{scope}
-\begin{scope}[shift={(0.12,0)}]
-	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
-\end{scope}
-\begin{scope}[shift={(0.42,0)}]
-	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
-\end{scope}},
+\pic{NATOSymb multi/main/decoy};
+\draw [thick] (0.42, -0.2) --  (-0.42, -0.2);
+},
 % UPPER %
 %% LAND SYMBOLS %%
 % FULLFRAME %
@@ -1221,6 +1214,9 @@ NATOSymb seasurface/main/mine warfare vessel/.pic={
 \draw[ultra thick] (0, 0.025) -- (135:0.2);
 \draw[ultra thick] (0, 0.025) -- (45:0.2);
 },
+NATOSymb seasurface/main/sea surface decoy/.pic={
+\pic [xscale=0.75, yscale=0.75, xshift=-1, yshift=-0.5]{NATOSymb multi/main/decoy};
+},
 NATOSymb seasurface/main/patrol/.pic={
 \fill (0, -0.2) -- (0.3, 0) -- (0.125, 0) -- (0, 0.2) -- (-0.125, 0) -- (-0.3, 0) -- cycle;
 },
@@ -1238,6 +1234,22 @@ NATOSymb seasurface/main/military jetski/.pic={
 NATOSymb seasurface/main/navy task organization unit/.pic={
 \draw (-0.25, -0.2) -- (-0.25, 0.1) -- (-0.15, 0.2);
 \draw (0.25, -0.2) -- (0.25, 0.1) -- (0.15, 0.2);
+},
+NATOSymb seasurface/main/navy task force/.pic={
+\pic {NATOSymb seasurface/main/navy task organization unit};
+\node at (0, -0.05) {TF};
+},
+NATOSymb seasurface/main/navy task group/.pic={
+\pic {NATOSymb seasurface/main/navy task organization unit};
+\node at (0, -0.05) {TG};
+},
+NATOSymb seasurface/main/navy task unit/.pic={
+\pic {NATOSymb seasurface/main/navy task organization unit};
+\node at (0, -0.05) {TU};
+},
+NATOSymb seasurface/main/navy task element/.pic={
+\pic {NATOSymb seasurface/main/navy task organization unit};
+\node at (0, -0.05) {TE};
 },
 NATOSymb seasurface/main/convoy/.pic={
 \fill (0.35, 0.175) --  (-0.35, 0.175) -- (-0.35, -0.175) -- (-0.2, -0.175) -- (-0.2, 0.025) -- (0.2, 0.025) -- (0.2, -0.175) -- (0.35, -0.175) -- cycle;
@@ -1389,6 +1401,17 @@ NATOSymb multi/main/chemical biological radiological nuclear/.pic={
 },
 NATOSymb multi/main/drill/.pic={
 \fill (-0.1,-0.2) -- (0.1,-0.2) -- (0.2, 0.2) -- (-0.2, 0.2) -- cycle;
+},
+NATOSymb multi/main/decoy/.pic={
+\begin{scope}[shift={(-0.18,0)}]
+	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
+\end{scope}
+\begin{scope}[shift={(0.12,0)}]
+	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
+\end{scope}
+\begin{scope}[shift={(0.42,0)}]
+	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
+\end{scope}
 },
 NATOSymb multi/main/aviation fixed wing/.pic={
 \fill (-0.36,0.125) arc (77:275:0.075 and 0.125) -- (0,0) -- cycle;
@@ -2579,6 +2602,92 @@ line=solid,
    faction/unknown/.style={/NATOSymb/.cd, shape=equipment/unknown, fill=unknownA},
    main/.is choice,
    main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=},
+   main/military/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MIL},
+   main/combatant/.style={/NATOSymb/.cd, symbC=seasurface/main/combatant},
+   main/surface combatant/.style={/NATOSymb/.cd, symbC=seasurface/main/surface combatant},
+   main/carrier/.style={/NATOSymb/.cd, symbC=seasurface/main/carrier},
+   main/battleship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=BB},
+   main/cruiser guided missile/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CG},
+   main/destroyer/.style={/NATOSymb/.cd, symbC=main/text, symbCT=DD},
+   main/frigate/.style={/NATOSymb/.cd, symbC=main/text, symbCT=FF},
+   main/corvette/.style={/NATOSymb/.cd, symbC=main/text, symbCT=FS},
+   main/littoral combatant ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LCS},
+   main/amphibious warfare ship/.style={/NATOSymb/.cd, symbC=seasurface/main/amphibious warfare ship},
+   main/amphibious command ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LCC},
+   main/amphibious assault/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LA},
+   main/amphibious assault ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LHA},
+   main/multi purpose amphibious assualt ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LHD},
+   main/amphibious transport/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LPD},
+   main/amphibious assualt ship helicopter/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LPH},
+   main/landing ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LS},
+   main/landing craft/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LC},
+   main/mine warfare vessel/.style={/NATOSymb/.cd, symbC=seasurface/main/mine warfare vessel},
+   main/minelayer/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ML},
+   main/minesweeper/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MS},
+   main/minesweeper drone/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MSD},
+   main/minehunter/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MH},
+   main/mine countermeasure support ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MCS},
+   main/mine countermeasures/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MCM},
+   main/sea surface decoy/.style={/NATOSymb/.cd, symbC=seasurface/main/sea surface decoy},
+   main/patrol/.style={/NATOSymb/.cd, symbC=seasurface/main/patrol},
+   main/patrol craft/.style={/NATOSymb/.cd, symbC=main/text, symbCT=PC},
+   main/patrol ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=PG},
+   main/military speedboat/.style={/NATOSymb/.cd, symbC=seasurface/main/military speedboat},
+   main/military rigid hull inflatable boat/.style={/NATOSymb/.cd, symbC=seasurface/main/military rigid hull inflatable boat},
+   main/military jetski/.style={/NATOSymb/.cd, symbC=seasurface/main/military jetski},
+   main/military unmanned surface water vehicle/.style={/NATOSymb/.cd, symbC=multi/main/unmanned systems},
+   main/navy task organisation unit/.style={/NATOSymb/.cd, symbC=seasurface/main/navy task organization unit},
+   main/navy task force/.style={/NATOSymb/.cd, symbC=seasurface/main/navy task force},
+   main/navy task unit/.style={/NATOSymb/.cd, symbC=seasurface/main/navy task unit},
+   main/navy task element/.style={/NATOSymb/.cd, symbC=seasurface/main/navy task element},
+   main/convoy/.style={/NATOSymb/.cd, symbC=seasurface/main/convoy},
+   main/non combatant/.style={/NATOSymb/.cd, symbC=seasurface/main/non combatant},
+   main/auxiliary ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AA},
+   main/ammunition ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AE},
+   main/stores ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AF},
+   main/auxiliary flag ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AGF},
+   main/intelligence collector/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AGI},
+   main/ocean research ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AGO},
+   main/survey ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AGS},
+   main/hospital ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AH},
+   main/naval cargo ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AK},
+   main/combat support ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AOE},
+   main/oiler/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AOR},
+   main/repair ship/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AR},
+   main/submarine tender/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AS},
+   main/ocean going tug/.style={/NATOSymb/.cd, symbC=main/text, symbCT=AT},
+   main/service craft/.style={/NATOSymb/.cd, symbC=main/text, symbCT=YY},
+   main/non self propelled barge/.style={/NATOSymb/.cd, symbC=main/text, symbCT=YB},
+   main/self propelled barge/.style={/NATOSymb/.cd, symbC=main/text, symbCT=YS},
+   main/harbour tug/.style={/NATOSymb/.cd, symbC=main/text, symbCT=YT},
+   main/launch/.style={/NATOSymb/.cd, symbC=main/text, symbCT=YFT},
+   main/civilian/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CIV},
+   main/ship/.style={/NATOSymb/.cd, symbC=seasurface/main/ship},
+   main/cargo/.style={/NATOSymb/.cd, symbC=seasurface/main/cargo},
+   main/container ship/.style={/NATOSymb/.cd, symbC=seasurface/main/container ship},
+   main/dredge/.style={/NATOSymb/.cd, symbC=seasurface/main/dredge},
+   main/roll on roll off/.style={/NATOSymb/.cd, symbC=seasurface/main/roll on roll off},
+   main/ferry/.style={/NATOSymb/.cd, symbC=seasurface/main/ferry},
+   main/heavy lift/.style={/NATOSymb/.cd, symbC=seasurface/main/heavy lift},
+   main/hovercraft/.style={/NATOSymb/.cd, symbC=seasurface/main/hovercraft},
+   main/lash carrier/.style={/NATOSymb/.cd, symbC=seasurface/main/lash carrier},
+   main/tanker/.style={/NATOSymb/.cd, symbC=seasurface/main/tanker},
+   main/passenger ship/.style={/NATOSymb/.cd, symbC=seasurface/main/passenger ship},
+   main/tug/.style={/NATOSymb/.cd, symbC=seasurface/main/tug},
+   main/tow/.style={/NATOSymb/.cd, symbC=seasurface/main/tow},
+   main/hazardous material transport ship/.style={/NATOSymb/.cd, symbC=seasurface/main/hazardous material transport ship},
+   main/junk/.style={/NATOSymb/.cd, symbC=seasurface/main/junk},
+   main/barge/.style={/NATOSymb/.cd, symbC=seasurface/main/barge},
+   main/fishing vessel/.style={/NATOSymb/.cd, symbC=seasurface/main/fishing vessel},
+   main/drifter/.style={/NATOSymb/.cd, symbC=seasurface/main/drifter},
+   main/trawler/.style={/NATOSymb/.cd, symbC=seasurface/main/trawler},
+   main/law enforcement vessel/.style={/NATOSymb/.cd, symbC=seasurface/main/law enforcement vessel},
+   main/sailing boat/.style={/NATOSymb/.cd, symbC=seasurface/main/sailing boat},
+   main/civilian boat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian boat},
+   main/civilian rigid hull inflatable boat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian rigid hull inflatable boat},
+   main/civilian speedboat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian speedboat},
+   main/civilian jetski/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian jetski},
+   main/civilian unmanned surface water vehicle/.style={/NATOSymb/.cd, symbC=seasurface/main/unmanned surface water vehicle},
    upper/.is choice,
    upper/none/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
    lower/.is choice,
