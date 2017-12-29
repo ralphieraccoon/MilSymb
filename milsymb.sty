@@ -453,16 +453,6 @@ NATOSymb land/main/combined arms/.pic={
 \draw (0.275, 0.2) -- (-0.275, -0.2);
 \draw (0.275, -0.2) -- (-0.275, 0.2);
 },
-NATOSymb land/main/diving/.pic={
-\draw (0, 0) circle (0.1);
-\draw (0, 0) circle (0.15);
-\begin{scope}
-\path [use as bounding box] (0.3, 0.2) rectangle (-0.3, -0.2);
-\clip (0, 0) circle (0.15) [reverseclip];
-\draw (-0.175, -0.05) rectangle (0.175, 0.05);
-\draw (0, 0) -- (-0.075, -0.175) -- (0.075, -0.175) -- cycle;
-\end{scope}
-},
 NATOSymb multi/main/drilling/.pic={
 \fill (-0.1,-0.2) -- (0.1,-0.2) -- (0.2, 0.2) -- (-0.2, 0.2) -- cycle;
 },
@@ -641,7 +631,7 @@ NATOSymb land/upper/direct communications/.pic={
 \draw [semithick] (0.285, -0.05) circle (0.075);
 },
 NATOSymb land/upper/diving/.pic={
-\pic [scale=0.75] {NATOSymb land/main/diving};
+\pic [scale=0.75] {NATOSymb multi/main/diver};
 },
 NATOSymb land/upper/drilling/.pic={
 \pic [scale=0.625, yshift=-0.5] {NATOSymb multi/main/drilling};
@@ -1405,6 +1395,31 @@ NATOSymb seasubsurface/main/snorkelling submarine/.pic={
 \pic [yshift=3.75, scale=0.75]{NATOSymb seasubsurface/main/sea surface};
 \fill (0.025, 0) rectangle (-0.025, 0.2);
 },
+NATOSymb seasubsurface/main/other submersible/.pic={
+\fill (0, -0.05) circle (0.35 and 0.15);
+\fill (0.1, 0) rectangle (-0.1, 0.2);
+},
+NATOSymb seasubsurface/main/non submarine/.pic={
+\fontsize{6}{0}\selectfont
+\node at (0, 0.1) {NON};
+\node at (0, -0.1) {SUB};
+},
+NATOSymb seasubsurface/main/military diver/.pic={
+\begin{scope}
+\path [use as bounding box] (0.3, 0.2) rectangle (-0.3, -0.2);
+\clip (0, 0.016) circle (0.075) [reverseclip];
+\fill (0, 0.016) circle (0.185);
+\fill (-0.25, -0.06) rectangle (0.25, 0.09);
+\fill (0, 0) -- (-0.2, -0.2) -- (0.2, -0.2) -- cycle;
+\end{scope}
+\fill (0, 0.016) circle (0.06);
+},
+NATOSymb seasubsurface/main/civilian submarine/.pic={
+\draw ($(0, -0.05) + (106.6:0.35 and 0.15)$) arc (106.6:433.4:0.35 and 0.15) |- (0, 0.2) -| cycle;
+},
+NATOSymb seasubsurface/main/torpedo/.pic={
+\fill (-0.35, 0) -- (-0.3, 0.075) -- (0.25, 0.075) -- (0.35, -0.075) -- (0.35, 0.075) -- (0.25, -0.075) -- (-0.3, -0.075) -- cycle; 
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/amphibious/.pic={
@@ -1448,6 +1463,16 @@ NATOSymb multi/main/decoy/.pic={
 \end{scope}
 \begin{scope}[shift={(0.42,0)}]
 	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
+\end{scope}
+},
+NATOSymb multi/main/diver/.pic={
+\draw (0, 0.016) circle (0.075);
+\draw (0, 0.016) circle (0.185);
+\begin{scope}
+\path [use as bounding box] (0.3, 0.2) rectangle (-0.3, -0.2);
+\clip (0, 0.016) circle (0.185) [reverseclip];
+\draw (-0.25, -0.06) rectangle (0.25, 0.09);
+\draw (0, 0) -- (-0.2, -0.2) -- (0.2, -0.2) -- cycle;
 \end{scope}
 },
 NATOSymb multi/main/aviation fixed wing/.pic={
@@ -1984,7 +2009,7 @@ line=solid,
    main/combined arms/.style={/NATOSymb/.cd, symbC=land/main/combined arms},
    main/counter intelligence/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CI},
    main/criminal investigation division/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CID},
-   main/diving/.style={/NATOSymb/.cd, symbC=land/main/diving},
+   main/diving/.style={/NATOSymb/.cd, symbC=multi/main/diver},
    main/dog/.style={/NATOSymb/.cd, symbC=main/text, symbCT=DOG},
    main/drilling/.style={/NATOSymb/.cd, symbC=multi/main/drilling},
    main/electronic ranging/.style={/NATOSymb/.cd, symbC=land/main/electronic ranging},
