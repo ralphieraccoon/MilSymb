@@ -123,8 +123,8 @@ NATOSymb air/main/civilian airship/.pic={
 	\draw (0.2, 0) -- (0.3, 0.175) -- (0.4,0.175) -- (0.375,0) -- (0.4,-0.175) -- (0.3, -0.175) -- cycle;
 \end{scope}},
 NATOSymb air/main/air decoy/.pic={
-\pic{NATOSymb multi/main/decoy};
-\draw [thick] (0.42, -0.2) --  (-0.42, -0.2);
+\pic [yshift=1.5] {NATOSymb multi/main/decoy};
+\fill (0.4, -0.2) rectangle (-0.4, -0.15);
 },
 % UPPER %
 %% LAND SYMBOLS %%
@@ -1420,6 +1420,36 @@ NATOSymb seasubsurface/main/civilian submarine/.pic={
 NATOSymb seasubsurface/main/torpedo/.pic={
 \fill (-0.35, 0) -- (-0.3, 0.075) -- (0.25, 0.075) -- (0.35, -0.075) -- (0.35, 0.075) -- (0.25, -0.075) -- (-0.3, -0.075) -- cycle; 
 },
+NATOSymb seasubsurface/main/underwater decoy/.pic={
+\pic [yscale=-1] {NATOSymb air/main/air decoy};
+},
+NATOSymb seasubsurface/main/half sea mine/.pic={
+\fill (0.2 ,0) arc (10:170:0.2 and 0.175) -- cycle;
+\fill (0.03, 0) rectangle (-0.03, 0.2);
+\scoped [shift={(150:0.1)}, rotate=45] {\fill (0.03, 0) -- (0.0125, 0.2) -- (-0.0125, 0.2) -- (-0.03, 0) -- cycle;}
+\scoped [shift={(30:0.1)}, rotate=315] {\fill (0.03, 0) -- (0.0125, 0.2) -- (-0.0125, 0.2) -- (-0.03, 0) -- cycle;}
+},
+NATOSymb seasubsurface/main/sea mine decoy/.pic={
+\pic {NATOSymb seasubsurface/main/half sea mine};
+\pic [scale=0.5, yshift=-7] {NATOSymb multi/main/decoy};
+},
+NATOSymb seasubsurface/main/bottomed sea mine decoy/.pic={
+\pic {NATOSymb seasubsurface/main/half sea mine};
+\pic [scale=0.5, yshift=-5] {NATOSymb multi/main/decoy};
+\fill (0.2, -0.2) rectangle (-0.2, -0.175);
+},
+NATOSymb seasubsurface/main/moored sea mine decoy/.pic={
+\pic {NATOSymb seasubsurface/main/half sea mine};
+\pic [scale=0.5, yshift=-5] {NATOSymb multi/main/decoy};
+\draw [thick] (0.15, -0.2) -- (-0.15, -0.2);
+\draw [thick] (0, -0.2) -- (0, 0);
+},
+NATOSymb seasubsurface/main/military seabed installation/.pic={
+\fill (-0.25, -0.2) -- (0.25, -0.2) -- (0.25, -0.075) -- (0.05, -0.075) -- (0.05, 0.025) -- (-0.125, 0.025) -- (-0.125, 0.2) -- (-0.25, 0.2) -- cycle;
+},
+NATOSymb seasubsurface/main/civilian seabed installation/.pic={
+\draw (-0.25, -0.2) -- (0.25, -0.2) -- (0.25, -0.075) -- (0.05, -0.075) -- (0.05, 0.025) -- (-0.125, 0.025) -- (-0.125, 0.2) -- (-0.25, 0.2) -- cycle;
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/amphibious/.pic={
@@ -1455,15 +1485,9 @@ NATOSymb multi/main/drill/.pic={
 \fill (-0.1,-0.2) -- (0.1,-0.2) -- (0.2, 0.2) -- (-0.2, 0.2) -- cycle;
 },
 NATOSymb multi/main/decoy/.pic={
-\begin{scope}[shift={(-0.18,0)}]
-	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
-\end{scope}
-\begin{scope}[shift={(0.12,0)}]
-	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
-\end{scope}
-\begin{scope}[shift={(0.42,0)}]
-	\fill (-0.24, 0.025) -- (-0.0, 0.2) -- (-0.0, -0.15) -- cycle;
-\end{scope}
+\fill (0.2, 0) -- (0.4, 0.15) -- (0.4, -0.15) -- cycle;
+\fill (-0.1, 0) -- (0.1, 0.15) -- (0.1, -0.15) -- cycle;
+\fill (-0.4, 0) -- (-0.2, 0.15) -- (-0.2, -0.15) -- cycle;
 },
 NATOSymb multi/main/diver/.pic={
 \draw (0, 0.016) circle (0.075);
