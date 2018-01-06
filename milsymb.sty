@@ -1374,7 +1374,6 @@ NATOSymb seasurface/upper/drone equipped/.pic={
 \pic [xscale=0.6, yscale=0.9, yshift=-1.5] {NATOSymb multi/main/unmanned systems};
 },
 %% SEA SUBSURFACE %%
-% FULLFRAME %
 % MAIN %
 NATOSymb seasubsurface/main/submarine/.pic={
 \fill (0.4, 0) -- (0.25, 0.15) -- (-0.25, 0.15) -- (-0.4, 0) -- (-0.25, -0.15) -- (0.25, -0.15) -- cycle;
@@ -1449,6 +1448,71 @@ NATOSymb seasubsurface/main/military seabed installation/.pic={
 },
 NATOSymb seasubsurface/main/civilian seabed installation/.pic={
 \draw (-0.25, -0.2) -- (0.25, -0.2) -- (0.25, -0.075) -- (0.05, -0.075) -- (0.05, 0.025) -- (-0.125, 0.025) -- (-0.125, 0.2) -- (-0.25, 0.2) -- cycle;
+},
+% MINES %
+NATOSymb seasubsurface/mine/sea mine/.pic={
+\fill (0, -0.05) circle(0.25);
+\fill (0.05, 0) rectangle (-0.05, 0.25);
+\scoped [shift={(150:0.1)}, rotate=45] {\fill (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
+\scoped [shift={(30:0.1)}, rotate=315] {\fill (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
+},
+NATOSymb seasubsurface/mine/sea mine neutralised/.pic={
+\begin{scope} [even odd rule]
+\clip [shift={(150:0.1)}, rotate=45] (0.015, 0.26) rectangle (-0.015, -0.39) [reverseclip];
+\clip [shift={(30:0.1)}, rotate=315] (0.015, 0.26) rectangle (-0.015, -0.39) [reverseclip];
+\pic {NATOSymb seasubsurface/mine/sea mine};
+\end{scope}
+},
+NATOSymb seasubsurface/mine/bottomed sea mine/.pic={
+\pic [yshift=1.5] {NATOSymb seasubsurface/mine/sea mine};
+\fill (0.25, -0.225) rectangle (-0.25, -0.3);
+},
+NATOSymb seasubsurface/mine/bottomed sea mine neutralized/.pic={
+\pic [yshift=1.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+\fill (0.25, -0.225) rectangle (-0.25, -0.3);
+},
+NATOSymb seasubsurface/mine/moored sea mine/.pic={
+\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine};
+\draw [thick] (0, -0.2) -- (0, -0.35);
+\draw [thick] (0.175, -0.35) -- (-0.175, -0.35);
+},
+NATOSymb seasubsurface/mine/moored sea mine neutralised/.pic={
+\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+\draw [thick] (0, -0.2) -- (0, -0.35);
+\draw [thick] (0.175, -0.35) -- (-0.175, -0.35);
+},
+NATOSymb seasubsurface/mine/floating sea mine/.pic={
+\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine};
+\draw [thick] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
+},
+NATOSymb seasubsurface/mine/floating sea mine neutralised/.pic={
+\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+\draw [thick] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
+},
+NATOSymb seasubsurface/mine/sea mine in other position/.pic={
+\pic {NATOSymb seasubsurface/mine/sea mine};
+\draw [thick] (0.3, -0.05) -- (0.2, -0.05);
+\draw [thick] (-0.3, -0.05) -- (-0.2, -0.05);
+},
+NATOSymb seasubsurface/mine/sea mine in other position neutralised/.pic={
+\pic {NATOSymb seasubsurface/mine/sea mine neutralised};
+\draw [thick] (0.3, -0.05) -- (0.2, -0.05);
+\draw [thick] (-0.3, -0.05) -- (-0.2, -0.05);
+},
+NATOSymb seasubsurface/mine/rising sea mine/.pic={
+\pic [yshift=3.5] {NATOSymb seasubsurface/mine/sea mine};
+\draw [thick] (0, -0.15) -- (0, -0.35);
+\fill (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
+},
+NATOSymb seasubsurface/mine/rising sea mine neutralised/.pic={
+\pic [yshift=3.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+\draw [thick] (0, -0.15) -- (0, -0.35);
+\fill (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
+},
+NATOSymb seasubsurface/mine/unexploded explosive ordanance/.pic={
+\fill (0, 0) circle(0.25);
+\fontsize{6}{0}\selectfont
+\node [text=NATOSymb@fill] {UXO};
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
