@@ -1366,9 +1366,6 @@ NATOSymb seasurface/main/civilian speedboat/.pic={
 NATOSymb seasurface/main/civilian jetski/.pic={
 \draw (0.3, -0.2) -- (-0.3, -0.2) -- (-0.35, -0.1) -- (-0.1, 0.2) -- (0, 0.2) -- (0, 0.1) -- (-0.05, 0.1) -- (-0.1, -0.05) -- (0.3, -0.05) -- (0.3, -0.2) -- cycle;
 },
-NATOSymb seasurface/main/unmanned surface water vehicle/.pic={
-\draw (0, -0.1) -- (0.45, 0.05) -- (0.45,0.1) -- (0, 0.025) -- (-0.45, 0.1) -- (-0.45, 0.05) -- cycle;
-},
 % UPPER %
 NATOSymb seasurface/upper/drone equipped/.pic={
 \pic [xscale=0.6, yscale=0.9, yshift=-1.5] {NATOSymb multi/main/unmanned systems};
@@ -1413,14 +1410,15 @@ NATOSymb seasubsurface/main/military diver/.pic={
 \end{scope}
 \fill (0, 0.016) circle (0.06);
 },
-NATOSymb seasubsurface/main/civilian submarine/.pic={
+NATOSymb seasubsurface/main/civilian submersible/.pic={
 \draw ($(0, -0.05) + (106.6:0.35 and 0.15)$) arc (106.6:433.4:0.35 and 0.15) |- (0, 0.2) -| cycle;
 },
 NATOSymb seasubsurface/main/torpedo/.pic={
 \fill (-0.35, 0) -- (-0.3, 0.075) -- (0.25, 0.075) -- (0.35, -0.075) -- (0.35, 0.075) -- (0.25, -0.075) -- (-0.3, -0.075) -- cycle; 
 },
 NATOSymb seasubsurface/main/underwater decoy/.pic={
-\pic [yscale=-1] {NATOSymb air/main/air decoy};
+\pic [yshift=-1.5] {NATOSymb multi/main/decoy};
+\fill (0.4, 0.2) rectangle (-0.4, 0.15);
 },
 NATOSymb seasubsurface/main/half sea mine/.pic={
 \fill (0.2 ,0) arc (10:170:0.2 and 0.175) -- cycle;
@@ -1456,7 +1454,7 @@ NATOSymb seasubsurface/mine/sea mine/.pic={
 \scoped [shift={(150:0.1)}, rotate=45] {\fill (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
 \scoped [shift={(30:0.1)}, rotate=315] {\fill (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
 },
-NATOSymb seasubsurface/mine/sea mine neutralised/.pic={
+NATOSymb seasubsurface/mine/sea mine-neutralised/.pic={
 \begin{scope} [even odd rule]
 \clip [shift={(150:0.1)}, rotate=45] (0.015, 0.26) rectangle (-0.015, -0.39) [reverseclip];
 \clip [shift={(30:0.1)}, rotate=315] (0.015, 0.26) rectangle (-0.015, -0.39) [reverseclip];
@@ -1467,8 +1465,8 @@ NATOSymb seasubsurface/mine/bottomed sea mine/.pic={
 \pic [yshift=1.5] {NATOSymb seasubsurface/mine/sea mine};
 \fill (0.25, -0.225) rectangle (-0.25, -0.3);
 },
-NATOSymb seasubsurface/mine/bottomed sea mine neutralized/.pic={
-\pic [yshift=1.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+NATOSymb seasubsurface/mine/bottomed sea mine-neutralised/.pic={
+\pic [yshift=1.5] {NATOSymb seasubsurface/mine/sea mine-neutralised};
 \fill (0.25, -0.225) rectangle (-0.25, -0.3);
 },
 NATOSymb seasubsurface/mine/moored sea mine/.pic={
@@ -1476,8 +1474,8 @@ NATOSymb seasubsurface/mine/moored sea mine/.pic={
 \draw [thick] (0, -0.2) -- (0, -0.35);
 \draw [thick] (0.175, -0.35) -- (-0.175, -0.35);
 },
-NATOSymb seasubsurface/mine/moored sea mine neutralised/.pic={
-\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+NATOSymb seasubsurface/mine/moored sea mine-neutralised/.pic={
+\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine-neutralised};
 \draw [thick] (0, -0.2) -- (0, -0.35);
 \draw [thick] (0.175, -0.35) -- (-0.175, -0.35);
 },
@@ -1485,8 +1483,8 @@ NATOSymb seasubsurface/mine/floating sea mine/.pic={
 \pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine};
 \draw [thick] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
 },
-NATOSymb seasubsurface/mine/floating sea mine neutralised/.pic={
-\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+NATOSymb seasubsurface/mine/floating sea mine-neutralised/.pic={
+\pic [yshift=2.5] {NATOSymb seasubsurface/mine/sea mine-neutralised};
 \draw [thick] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
 },
 NATOSymb seasubsurface/mine/sea mine in other position/.pic={
@@ -1494,8 +1492,8 @@ NATOSymb seasubsurface/mine/sea mine in other position/.pic={
 \draw [thick] (0.3, -0.05) -- (0.2, -0.05);
 \draw [thick] (-0.3, -0.05) -- (-0.2, -0.05);
 },
-NATOSymb seasubsurface/mine/sea mine in other position neutralised/.pic={
-\pic {NATOSymb seasubsurface/mine/sea mine neutralised};
+NATOSymb seasubsurface/mine/sea mine in other position-neutralised/.pic={
+\pic {NATOSymb seasubsurface/mine/sea mine-neutralised};
 \draw [thick] (0.3, -0.05) -- (0.2, -0.05);
 \draw [thick] (-0.3, -0.05) -- (-0.2, -0.05);
 },
@@ -1504,12 +1502,12 @@ NATOSymb seasubsurface/mine/rising sea mine/.pic={
 \draw [thick] (0, -0.15) -- (0, -0.35);
 \fill (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
 },
-NATOSymb seasubsurface/mine/rising sea mine neutralised/.pic={
-\pic [yshift=3.5] {NATOSymb seasubsurface/mine/sea mine neutralised};
+NATOSymb seasubsurface/mine/rising sea mine-neutralised/.pic={
+\pic [yshift=3.5] {NATOSymb seasubsurface/mine/sea mine-neutralised};
 \draw [thick] (0, -0.15) -- (0, -0.35);
 \fill (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
 },
-NATOSymb seasubsurface/mine/unexploded explosive ordanance/.pic={
+NATOSymb seasubsurface/mine/unexploded ordanance/.pic={
 \fill (0, 0) circle(0.25);
 \fontsize{6}{0}\selectfont
 \node [text=NATOSymb@fill] {UXO};
@@ -1646,6 +1644,8 @@ NATOSymb multi/main/naval/.pic={
 \node at (0, 0) {$\anchor$};},
 NATOSymb multi/main/unmanned systems/.pic={
 \fill (0, -0.1) -- (0.45, 0.05) -- (0.45,0.1) -- (0, 0.025) -- (-0.45, 0.1) -- (-0.45, 0.05) -- cycle;},
+NATOSymb multi/main/civilian unmanned systems/.pic={
+\draw (0, -0.1) -- (0.45, 0.05) -- (0.45,0.1) -- (0, 0.025) -- (-0.45, 0.1) -- (-0.45, 0.05) -- cycle;},
 NATOSymb multi/main/quartermaster/.pic={
 \draw (0.325, 0.05) circle (0.125);
 \draw (0.2, 0.05) -- (-0.45, 0.05);
@@ -2837,7 +2837,7 @@ line=solid,
    main/civilian rigid hull inflatable boat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian rigid hull inflatable boat},
    main/civilian speedboat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian speedboat},
    main/civilian jetski/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian jetski},
-   main/civilian unmanned surface water vehicle/.style={/NATOSymb/.cd, symbC=seasurface/main/unmanned surface water vehicle},
+   main/civilian unmanned surface water vehicle/.style={/NATOSymb/.cd, symbC=multi/main/civilian unmanned systems},
    upper/.is choice,
    upper/none/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
    upper/anti air warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=AAW},
@@ -2876,7 +2876,7 @@ line=solid,
    lower/remotely piloted/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=RP},
    lower/expendable/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=EXP},
    track number/.store in=\NATOSymb@symbA,
-   call sign/.store in=\NATOSymb@symbB,
+   name/.store in=\NATOSymb@symbB,
    position and movement/.store in=\NATOSymb@symbD,
    identification/.store in= \NATOSymb@symbE,
    additional information/.store in=\NATOSymb@symbF,
@@ -2884,11 +2884,12 @@ line=solid,
    speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
    speed leader/.value required,
    track number=,
-   call sign=,
+   name=,
    position and movement=,
    identification=,
    additional information=,
    date-time group=,     
+   faction=none,
    main=none,
    upper=none,
    lower=none,
@@ -2918,19 +2919,76 @@ line=solid,
 \tikzset{%
    /NATOSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/NATOSymb/.cd, shape=equipment/none, fill=white},
-   faction/friendly/.style={/NATOSymb/.cd, shape=equipment/friendly, fill=friendlyA},
-   faction/hostile/.style={/NATOSymb/.cd, shape=equipment/hostile, fill=hostileA},
-   faction/neutral/.style={/NATOSymb/.cd, shape=equipment/neutral, fill=neutralA},
-   faction/unknown/.style={/NATOSymb/.cd, shape=equipment/unknown, fill=unknownA},
+   faction/none/.style={/NATOSymb/.cd, shape=seasubsurface/none, fill=white},
+   faction/friendly/.style={/NATOSymb/.cd, shape=seasubsurface/friendly, fill=friendlyA},
+   faction/hostile/.style={/NATOSymb/.cd, shape=seasubsurface/hostile, fill=hostileA},
+   faction/neutral/.style={/NATOSymb/.cd, shape=seasubsurface/neutral, fill=neutralA},
+   faction/unknown/.style={/NATOSymb/.cd, shape=seasubsurface/unknown, fill=unknownA},
    main/.is choice,
    main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=},
+   main/military/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MIL},
+   main/submarine/.style={/NATOSymb/.cd, symbC=seasubsurface/main/submarine},
+   main/surfaced submarine/.style={/NATOSymb/.cd, symbC=seasubsurface/main/surfaced submarine},
+   main/bottomed submarine/.style={/NATOSymb/.cd, symbC=seasubsurface/main/bottomed submarine},
+   main/snorkelling submarine/.style={/NATOSymb/.cd, symbC=seasubsurface/main/snorkelling submarine},
+   main/other submersible/.style={/NATOSymb/.cd, symbC=seasubsurface/main/other submersible},
+   main/autonomous underwater vehicle/.style={/NATOSymb/.cd, symbC=multi/main/unmanned systems},
+   main/non submarine/.style={/NATOSymb/.cd, symbC=seasubsurface/main/non submarine},
+   main/military diver/.style={/NATOSymb/.cd, symbC=seasubsurface/main/military diver},
+   main/civilian/.style={/NATOSymb/.cd, symbC=main/text, symbCT=CIV},
+   main/civilian submersible/.style={/NATOSymb/.cd, symbC=seasubsurface/main/civilian submersible},
+   main/civilian autonomous underwatervehicle/.style={/NATOSymb/.cd,  symbC=multi/main/civilian unmanned systems},
+   main/civilian diver/.style={/NATOSymb/.cd, symbC=multi/main/diver},
+   main/underwater weapon/.style={/NATOSymb/.cd, symbC=main/text, symbCT=WPN},
+   main/torpedo/.style={/NATOSymb/.cd, symbC=seasubsurface/main/torpedo},
+   main/improvised explosive device/.style={/NATOSymb/.cd, symbC=main/text, symbCT=IED},
+   main/underwater decoy/.style={/NATOSymb/.cd, symbC=seasubsurface/main/underwater decoy},
+   main/sea mine decoy/.style={/NATOSymb/.cd, symbC=seasubsurface/main/sea mine decoy},
+   main/bottomed sea mine decoy/.style={/NATOSymb/.cd, symbC=seasubsurface/main/bottomed sea mine decoy},
+   main/moored sea mine decoy/.style={/NATOSymb/.cd, symbC=seasubsurface/main/moored sea mine decoy},
+   main/unexploded ordanance/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/unexploded ordanance},
+   main/military seabed installation/.style={/NATOSymb/.cd, symbC=seasubsurface/main/military seabed installation},
+   main/civilian seabed installation/.style={/NATOSymb/.cd, symbC=seasubsurface/main/civilian seabed installation},
    upper/.is choice,
    upper/none/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
+   upper/anti submarine warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ASW},
+   upper/auxiliary/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=AUX},
+   upper/command and control/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=C2},
+   upper/intelligence surveillance reconnaissance/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ISR},
+   upper/mine countermeasures/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MCM},
+   upper/mine warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MW},
+   upper/surface warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=SUW},
+   upper/attack/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=A},
+   upper/ballistic missile/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=B},
+   upper/guided missile/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=G},
+   upper/other guided missile/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=M},
+   upper/special operations force/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=SOF},
+   upper/possible submarine low 1/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=P1},
+   upper/possible submarine low 2/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=P2},
+   upper/possible submarine high 3/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=P3},
+   upper/possible submarine high 4/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=P4},
+   upper/probable submarine/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=PB},
+   upper/certain submarine/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=CT},
    lower/.is choice,
    lower/none/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
+   lower/air independant propulsion/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AI},
+   lower/diesel propulsion/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D},
+   lower/diesel type 1/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D1},
+   lower/diesel type 2/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D2},
+   lower/diesel type 3/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D3},
+   lower/nuclear propulsion/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N},
+   lower/nuclear type 1/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N1},
+   lower/nuclear type 2/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N2},
+   lower/nuclear type 3/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N3},
+   lower/nuclear type 4/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N4},
+   lower/nuclear type 5/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N5},
+   lower/nuclear type 6/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N6},
+   lower/nuclear type 7/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=N7},
+   lower/autonomous control/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AUT},
+   lower/remotely piloted/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=RP},
+   lower/expendable/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=EXP},
    track number/.store in=\NATOSymb@symbA,
-   call sign/.store in=\NATOSymb@symbB,
+   name/.store in=\NATOSymb@symbB,
    position and movement/.store in=\NATOSymb@symbD,
    identification/.store in= \NATOSymb@symbE,
    additional information/.store in=\NATOSymb@symbF,
@@ -2938,11 +2996,12 @@ line=solid,
    speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
    speed leader/.value required,
    track number=,
-   call sign=,
+   name=,
    position and movement=,
    identification=,
    additional information=,
-   date-time group=,     
+   date-time group=,
+   faction=none,     
    main=none,
    upper=none,
    lower=none,
@@ -2954,6 +3013,59 @@ line=solid,
  \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
  \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
  \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
+ \fontsize{6}{0}\selectfont
+ \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbD}{\empty} \AND \isequivalentto{\NATOSymb@symbG}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbD\NATOSymb@symbG};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
+\end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
+}
+\newif\ifneutralised
+\NewDocumentCommand\NATOMine{ o D(){0,0} d() g}{
+\tikzset{%
+   /NATOSymb/.cd,
+   faction/.is choice,
+   faction/none/.style={/NATOSymb/.cd, shape=seasubsurface/none, fill=white},
+   faction/noframe/.style={/NATOSymb/.cd, shape=main/text, fill=transparent},
+   faction/friendly/.style={/NATOSymb/.cd, shape=seasubsurface/friendly, fill=friendlyA},
+   faction/hostile/.style={/NATOSymb/.cd, shape=seasubsurface/hostile, fill=hostileA},
+   faction/neutral/.style={/NATOSymb/.cd, shape=seasubsurface/neutral, fill=neutralA},
+   faction/unknown/.style={/NATOSymb/.cd, shape=seasubsurface/unknown, fill=unknownA},
+   mine/.is choice,
+   mine/normal/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/sea mine},
+   mine/bottomed/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/bottomed sea mine},
+   mine/moored/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/moored sea mine},
+   mine/floating/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/floating sea mine},
+   mine/in other position/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/sea mine in other position},
+   mine/rising/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/rising sea mine},
+   neutralised/.is if=neutralised,
+   track number/.store in=\NATOSymb@symbA,
+   name/.store in=\NATOSymb@symbB,
+   position and movement/.store in=\NATOSymb@symbD,
+   identification/.store in= \NATOSymb@symbE,
+   additional information/.store in=\NATOSymb@symbF,
+   date-time group/.store in= \NATOSymb@symbG,
+   track number=,
+   call sign=,
+   position and movement=,
+   identification=,
+   additional information=,
+   date-time group=, 
+   faction=none,    
+   mine=normal,
+   neutralised=false,
+   #1,
+}%
+\begin{scope}[shift={(#2)}, local bounding box=#3]
+ \fontfamily{phv}\fontseries{bx}\selectfont
+ \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
+ \ifneutralised
+ \pic {NATOSymb \NATOSymb@symbC-neutralised}; %Draw neutralised mine
+ \else
+ \pic {NATOSymb \NATOSymb@symbC}; %Draw mine
+ \fi
  \fontsize{6}{0}\selectfont
  \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
  \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}

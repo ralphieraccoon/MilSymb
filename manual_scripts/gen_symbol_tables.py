@@ -38,7 +38,7 @@ fn = os.path.join(dr, '../milsymb.sty')
 f = open(fn, 'r')
 r = f.read()
 f.close()
-for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'Sea']:
+for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', 'SeaSubsurface']:
     if i == 'Missile':
         t = re.search(
             r'\\NewDocumentCommand\\NATOMissile{ o D\(\)\{0,0} d\(\) g}{'
