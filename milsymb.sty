@@ -14,7 +14,7 @@
 \definecolor{neutralA}{RGB}{170, 255, 170}
 \definecolor{unknownA}{RGB}{255, 255, 128}
 \definecolor{lightgray}{gray}{0.75}
-\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc, fadings}
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc}
 \tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
   (current bounding box.south east) --
   (current bounding box.south west) --
@@ -93,6 +93,63 @@ NATOSymb seasubsurface/neutral/.pic={
 \pic [rotate=180] {NATOSymb air/neutral};},
 NATOSymb seasubsurface/unknown/.pic={
 \pic [rotate=180] {NATOSymb air/unknown};},
+% SPACE %
+NATOSymb space/none/.pic={
+\pic {NATOSymb air/none};},
+NATOSymb space/friendly/.pic={
+\pic {NATOSymb air/friendly};
+\begin{scope}
+\clip (-0.555, -0.5) arc (180:0:0.555 and 1.37);
+\fill (0.5, 0.87) rectangle (-0.5, 0.72);
+\end{scope}},
+NATOSymb space/hostile/.pic={
+\pic {NATOSymb air/hostile};
+\begin{scope}
+\clip (0.5, -0.5) -- (0.5, 0.21) -- (0, 0.71) --  (-0.5, 0.21) --  (-0.5, -0.5);
+\fill (0.5, 0.71) rectangle (-0.5, 0.56);
+\end{scope}},
+NATOSymb space/neutral/.pic={
+\pic {NATOSymb air/neutral};
+\filldraw (0.5, 0.65) rectangle (-0.5, 0.5);},
+NATOSymb space/unknown/.pic={
+\pic {NATOSymb air/unknown};
+\begin{scope}
+\clip (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5);
+\fill (0.5, 0.73) rectangle (-0.5, 0.58);
+\end{scope}},
+% ACTIVITY %
+NATOSymb activity/none/.pic={
+\pic{NATOSymb air/none};},
+NATOSymb activity/friendly/.pic={
+\pic {NATOSymb land/friendly};
+\fill (0.75, 0.5) rectangle (0.6, 0.35);
+\fill (-0.75, 0.5) rectangle (-0.6, 0.35);
+\fill (0.75, -0.5) rectangle (0.6, -0.35);
+\fill (-0.75, -0.5) rectangle (-0.6, -0.35);
+},
+NATOSymb activity/hostile/.pic={
+\pic {NATOSymb land/hostile};
+\fill (0, 0.705) -- ++(315:0.15) -- ++(225:0.15) -- ++(135:0.15) -- cycle;
+\fill (0, -0.705) -- ++(45:0.15) -- ++(135:0.15) -- ++(225:0.15) -- cycle;
+\fill (0.705, 0) -- ++(135:0.15) -- ++(225:0.15) -- ++(315:0.15) -- cycle;
+\fill (-0.705, 0) -- ++(45:0.15) -- ++(315:0.15) -- ++(225:0.15) -- cycle;
+},
+NATOSymb activity/neutral/.pic={
+\pic {NATOSymb land/neutral};
+\fill (0.5, 0.5) rectangle (0.35, 0.35);
+\fill (-0.5, 0.5) rectangle (-0.35, 0.35);
+\fill (0.5, -0.5) rectangle (0.35, -0.35);
+\fill (-0.5, -0.5) rectangle (-0.35, -0.35);
+},
+NATOSymb activity/unknown/.pic={ 
+\pic {NATOSymb land/unknown};
+\begin{scope}
+\clip (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle;
+\fill (0.075, 0.705) rectangle (-0.075, 0.555);
+\fill (0.075, -0.705) rectangle (-0.075, -0.555);
+\fill (0.705, 0.075) rectangle (0.555, -0.075);
+\fill (-0.705, 0.075) rectangle (-0.555, -0.075);
+\end{scope}}, 
 %% AIR SYMBOLS %%
 % MAIN %
 NATOSymb air/main/civilian fixed wing/.pic={
