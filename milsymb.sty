@@ -109,7 +109,7 @@ NATOSymb space/hostile/.pic={
 \fill (0.5, 0.71) rectangle (-0.5, 0.56);
 \end{scope}},
 NATOSymb space/neutral/.pic={
-\pic {NATOSymb air/neutral};
+\pic [local bounding box=M]{NATOSymb air/neutral};
 \filldraw (0.5, 0.65) rectangle (-0.5, 0.5);},
 NATOSymb space/unknown/.pic={
 \pic {NATOSymb air/unknown};
@@ -1582,7 +1582,7 @@ NATOSymb space/main/military capsule/.pic={
 \fill ($(0.25, -0.2)!0.1!(0, 0.5)$) -- ($(0.25, -0.2)!0.5!(0, 0.5)$) to[in=75, out=105, looseness=0.75] ($(0, 0.5)!0.5!(-0.25, -0.2)$) -- ($(0, 0.5)!0.9!(-0.25, -0.2)$) to[in=285, out=255, looseness=0.55] cycle;
 },
 NATOSymb space/main/civilian capsule/.pic={
-\fill ($(0.25, -0.2)!0.1!(0, 0.5)$) -- ($(0.25, -0.2)!0.5!(0, 0.5)$) to[in=75, out=105, looseness=0.75] ($(0, 0.5)!0.5!(-0.25, -0.2)$) -- ($(0, 0.5)!0.9!(-0.25, -0.2)$) to[in=285, out=255, looseness=0.55] cycle;
+\draw ($(0.25, -0.2)!0.1!(0, 0.5)$) -- ($(0.25, -0.2)!0.5!(0, 0.5)$) to[in=75, out=105, looseness=0.75] ($(0, 0.5)!0.5!(-0.25, -0.2)$) -- ($(0, 0.5)!0.9!(-0.25, -0.2)$) to[in=285, out=255, looseness=0.55] cycle;
 },
 NATOSymb space/main/military satellite/.pic={
 \fill (0.45, 0.075) rectangle (0.15, -0.075);
@@ -1666,7 +1666,7 @@ NATOSymb space/main/military navigational satellite/.pic={
 \draw (-0.1, 0.15) arc (180:360:0.1);
 },
 NATOSymb space/main/civilian navigational satellite/.pic={
-\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/civilian satellite};
 \draw (0.1, -0.03) -- (0, 0.2) -- (-0.1, -0.03);
 \draw (-0.1, 0.15) arc (180:360:0.1);
 },
@@ -1692,7 +1692,7 @@ NATOSymb space/main/military weather satellite/.pic={
 \node at (0, 0.07) {WX};
 },
 NATOSymb space/main/civilian weather satellite/.pic={
-\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/civilian satellite};
 \node at (0, 0.07) {WX};
 },
 NATOSymb space/main/civilian space station/.pic={
@@ -1710,6 +1710,24 @@ NATOSymb space/main/civilian space station/.pic={
 NATOSymb space/main/military space station/.pic={
 \fill [even odd rule] (0, 0) circle (0.15 and 0.06) (0, -0.0125) circle (0.25 and 0.1);
 \fill (0.025, 0) -- (0.025, 0.175) arc(0:180:0.025) -- (-0.025, -0.175) arc(180:360:0.025) -- cycle;
+},
+NATOSymb space/debris/small/.pic={
+\begin{scope}
+\clip circle (0.5);
+\draw (0.15, 0.5) -- (0, 0.2) -- (-0.15, 0.5);
+\draw (0.15, -0.5) -- (0, -0.2) -- (-0.15, -0.5);
+\draw (0.5, 0.15) -- (0.2, 0) -- (0.5, -0.15);
+\draw (-0.5, 0.15) -- (-0.2, 0) -- (-0.5, -0.15);
+\end{scope}
+},
+NATOSymb space/debris/large/.pic={
+\begin{scope}
+\clip circle (0.5);
+\draw (0.15, 0.2) -- (0, 0.5) -- (-0.15, 0.2);
+\draw (0.15, -0.2) -- (0, -0.5) -- (-0.15, -0.2);
+\draw (-0.2, 0.15) -- (-0.5, 0) -- (-0.2, -0.15);
+\draw (0.2, 0.15) -- (0.5, 0) -- (0.2, -0.15);
+\end{scope}
 },
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
@@ -3247,7 +3265,7 @@ line=solid,
    additional information/.store in=\NATOSymb@symbF,
    date-time group/.store in= \NATOSymb@symbG,
    track number=,
-   call sign=,
+   name=,
    position and movement=,
    identification=,
    additional information=,
@@ -3274,4 +3292,116 @@ line=solid,
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
+\NewDocumentCommand\NATOSpace{ o D(){0,0} d() g}{
+\tikzset{%
+   /NATOSymb/.cd,
+   faction/.is choice,
+   faction/none/.style={/NATOSymb/.cd, shape=space/none, fill=white},
+   faction/friendly/.style={/NATOSymb/.cd, shape=space/friendly, fill=friendlyA},
+   faction/hostile/.style={/NATOSymb/.cd, shape=space/hostile, fill=hostileA},
+   faction/neutral/.style={/NATOSymb/.cd, shape=space/neutral, fill=neutralA},
+   faction/unknown/.style={/NATOSymb/.cd, shape=space/unknown, fill=unknownA},
+   main/.is choice,
+   main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=},
+   main/space vehicle/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SV},
+   main/reentry vehicle/.style={/NATOSymb/.cd, symbC=main/text, symbCT=RV},
+   main/planet lander/.style={/NATOSymb/.cd, symbC=main/text, symbCT=PL},
+   main/military orbiter shuttle/.style={/NATOSymb/.cd, symbC=space/main/military orbiter shuttle},
+   main/civilian orbiter shuttle/.style={/NATOSymb/.cd, symbC=space/main/civilian orbiter shuttle},
+   main/military capsule/.style={/NATOSymb/.cd, symbC=space/main/military capsule},
+   main/civilian capsule/.style={/NATOSymb/.cd, symbC=space/main/civilian capsule},
+   main/satellite/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SAT},
+   main/military satellite/.style={/NATOSymb/.cd, symbC=space/main/military satellite},
+   main/civilian satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian satellite},
+   main/anti satellite weapon/.style={/NATOSymb/.cd, symbC=space/main/anti satellite weapon},
+   main/military astronomical satellite/.style={/NATOSymb/.cd, symbC=space/main/military astronomical satellite},
+   main/civilian astronomical satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian astronomical satellite},
+   main/military bio satellite/.style={/NATOSymb/.cd, symbC=space/main/military bio satellite},
+   main/civilian bio satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian bio satellite},
+   main/military communications satellite/.style={/NATOSymb/.cd, symbC=space/main/military communications satellite},
+   main/civilian communications satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian communications satellite},
+   main/military earth observation satellite/.style={/NATOSymb/.cd, symbC=space/main/military earth observation satellite},
+   main/civilian earth observation satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian earth observation satellite},
+   main/military minaturised satellite/.style={/NATOSymb/.cd, symbC=space/main/military minaturised satellite},
+   main/civilian minaturised satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian minaturised satellite},
+   main/military navigational satellite/.style={/NATOSymb/.cd, symbC=space/main/military navigational satellite},
+   main/civilian navigational satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian navigational satellite},
+   main/reconnaissance satellite/.style={/NATOSymb/.cd, symbC=space/main/reconnaissance satellite},
+   main/military space station/.style={/NATOSymb/.cd, symbC=space/main/military space station},
+   main/civilian space station/.style={/NATOSymb/.cd, symbC=space/main/civilian space station},
+   main/military tether satellite/.style={/NATOSymb/.cd, symbC=space/main/military tether satellite},
+   main/civilian tether satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian tether satellite},
+   main/military weather satellite/.style={/NATOSymb/.cd, symbC=space/main/military weather satellite},
+   main/civilian weather satellite/.style={/NATOSymb/.cd, symbC=space/main/civilian weather satellite},
+   upper/.is choice,
+   upper/none/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
+   upper/low earth orbit/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=LEO},
+   upper/medium earth orbit/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MEO},
+   upper/high earth orbit/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=HEO},
+   upper/geosynchronous orbit/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=GSO},
+   upper/geostationary orbit/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=GO},
+   upper/molinya orbit/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MO},
+   lower/.is choice,
+   lower/none/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
+   lower/optical/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=O},
+   lower/infra red/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=IR},
+   lower/radar/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=R},
+   lower/signals intelligence/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=SI},
+   track number/.store in=\NATOSymb@symbA,
+   name/.store in=\NATOSymb@symbB,
+   position and movement/.store in=\NATOSymb@symbD,
+   nation/.store in= \NATOSymb@symbE,
+   additional information/.store in=\NATOSymb@symbF,
+   speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
+   speed leader/.value required,
+   track number=,
+   name=,
+   position and movement=,
+   nation=,
+   additional information=,
+   faction=none,     
+   main=none,
+   upper=none,
+   lower=none,
+   #1,
+}%
+\begin{scope}[shift={(#2)}, local bounding box=#3]
+ \fontfamily{phv}\fontseries{bx}\selectfont
+ \pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
+ \pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
+ \pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
+ \pic at (0,-0.34) {NATOSymb \NATOSymb@symbL={\NATOSymb@symbLT}}; %Draw lower symbol
+ \fontsize{6}{0}\selectfont
+ \ifthenelse{\isequivalentto{\NATOSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbA};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbB};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbD};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\NATOSymb@symbE};}
+ \ifthenelse{\isequivalentto{\NATOSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbF};}
+\end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
+}
+\newif\ifmanmade
+\NewDocumentCommand\NATODebris{ o D(){0,0} d() g}{
+\tikzset{%
+  /NATOSymb/.cd,
+  size/.is choice,
+  size/small/.style={/NATOSymb/.cd, shape=space/debris/small},
+  size/medium/.style={/NATOSymb/.cd, shape=},
+  size/large/.style={/NATOSymb/.cd, shape=space/debris/large},
+  man made/.is if=manmade,
+  size=small,
+  man made=false,
+  #1,
+}%
+\begin{scope}[shift={(#2)}, local bounding box=#3]
+\draw circle (0.5);
+\ifmanmade
+\fill circle (0.15);
+\else
+\draw circle (0.15);
+\fi
+\pic {NATOSymb \NATOSymb@shape}; %Draw debris modifier  
+\end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
+ }
 \endinput
