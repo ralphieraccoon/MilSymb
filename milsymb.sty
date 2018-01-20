@@ -1577,7 +1577,140 @@ NATOSymb space/main/military orbiter shuttle/.pic={
 NATOSymb space/main/civilian orbiter shuttle/.pic={
 \draw ($(0, 0.3)!0.35!(0.125, -0.15)$) -- (0.125, -0.15) -- (-0.125, -0.15) -- ($(-0.125, -0.15)!0.65!(0, 0.3)$) to[in=105, out=75] cycle;
 \draw (0, -0.20) -- (0, -0.15); 
-}
+},
+NATOSymb space/main/military capsule/.pic={
+\fill ($(0.25, -0.2)!0.1!(0, 0.5)$) -- ($(0.25, -0.2)!0.5!(0, 0.5)$) to[in=75, out=105, looseness=0.75] ($(0, 0.5)!0.5!(-0.25, -0.2)$) -- ($(0, 0.5)!0.9!(-0.25, -0.2)$) to[in=285, out=255, looseness=0.55] cycle;
+},
+NATOSymb space/main/civilian capsule/.pic={
+\fill ($(0.25, -0.2)!0.1!(0, 0.5)$) -- ($(0.25, -0.2)!0.5!(0, 0.5)$) to[in=75, out=105, looseness=0.75] ($(0, 0.5)!0.5!(-0.25, -0.2)$) -- ($(0, 0.5)!0.9!(-0.25, -0.2)$) to[in=285, out=255, looseness=0.55] cycle;
+},
+NATOSymb space/main/military satellite/.pic={
+\fill (0.45, 0.075) rectangle (0.15, -0.075);
+\fill (0.075, 0.075) rectangle (-0.075, -0.075);
+\fill (-0.45, 0.075) rectangle (-0.15, -0.075);
+\draw (0.15, 0) -- (0.075, 0);
+\draw (-0.15, 0) -- (-0.075, 0);
+},
+NATOSymb space/main/civilian satellite/.pic={
+\draw (0.45, 0.075) rectangle (0.15, -0.075);
+\draw (0.075, 0.075) rectangle (-0.075, -0.075);
+\draw (-0.45, 0.075) rectangle (-0.15, -0.075);
+\draw (0.15, 0) -- (0.075, 0);
+\draw (-0.15, 0) -- (-0.075, 0);
+},
+NATOSymb space/main/anti satellite weapon/.pic={
+\pic {NATOSymb space/main/military satellite};
+\draw [-{Stealth[scale=0.75]}] (0, -0.2) -- (0, 0.2);
+},
+NATOSymb space/main/military astronomical satellite/.pic={
+\pic {NATOSymb space/main/military satellite};
+\fill (0.04, 0.075) rectangle (-0.04, 0.2);
+\fill (0.02, -0.075) rectangle (-0.02, -0.2);
+},
+NATOSymb space/main/civilian astronomical satellite/.pic={
+\pic {NATOSymb space/main/civilian satellite};
+\draw (0.04, 0.075) -- (0.04, 0.2) -- (-0.04, 0.2) -- (-0.04, 0.075);
+\draw (0.02, -0.075) -- (0.02, -0.2) -- (-0.02, -0.2) -- (-0.02, -0.075);
+},
+NATOSymb space/main/military bio satellite/.pic={
+\pic [yshift=-1] {NATOSymb space/main/military satellite};
+\fill (-0.075, 0.13) circle (0.07);
+\fill ($(-0.075, 0.13) + (60:0.07)$) -- ++(-30:0.22) -- ++(0, -0.025) -- (-0.005, 0.13) -- cycle;
+},
+NATOSymb space/main/civilian bio satellite/.pic={
+\pic [yshift=-1] {NATOSymb space/main/civilian satellite};
+\draw (-0.075, 0.13) circle (0.07);
+\draw ($(-0.075, 0.13) + (60:0.07)$) -- ++(-30:0.22) -- ++(0, -0.025) -- (-0.005, 0.13);
+},
+NATOSymb space/main/military communications satellite/.pic={
+\pic {NATOSymb space/main/military satellite};
+\draw (0, 0.075) -- (0, 0.125);
+\draw (0, 0.125) arc (270:340:0.25 and 0.1);
+\draw (0, 0.125) arc (270:200:0.25 and 0.1);  
+},
+NATOSymb space/main/civilian communications satellite/.pic={
+\pic {NATOSymb space/main/civilian satellite};
+\draw (0, 0.075) -- (0, 0.125);
+\draw (0, 0.125) arc (270:340:0.25 and 0.1);
+\draw (0, 0.125) arc (270:200:0.25 and 0.1);  
+},
+NATOSymb space/main/military earth observation satellite/.pic={
+\pic [yshift=3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\draw (0, 0.065) -- +(315:0.125);
+\draw (0, 0.065) -- +(225:0.125);
+\fill (0, -0.12) circle (0.08);
+},
+NATOSymb space/main/civilian earth observation satellite/.pic={
+\pic [yshift=3.75, scale=0.9] {NATOSymb space/main/civilian satellite};
+\draw (0, 0.065) -- +(315:0.125);
+\draw (0, 0.065) -- +(225:0.125);
+\draw (0, -0.12) circle (0.08);
+},
+NATOSymb space/main/military minaturised satellite/.pic={
+\pic [scale=0.6] {NATOSymb space/main/military satellite};
+\draw (0.05, 0.2) -- (0, 0.1) -- (-0.05, 0.2); 
+\draw (0.05, -0.2) -- (0, -0.1) -- (-0.05, -0.2); 
+\draw (-0.4, 0.05) -- (-0.3, 0) -- (-0.4, -0.05); 
+\draw (0.4, 0.05) -- (0.3, 0) -- (0.4, -0.05); 
+},
+NATOSymb space/main/civilian minaturised satellite/.pic={
+\pic [scale=0.6] {NATOSymb space/main/civilian satellite};
+\draw (0.05, 0.2) -- (0, 0.1) -- (-0.05, 0.2); 
+\draw (0.05, -0.2) -- (0, -0.1) -- (-0.05, -0.2); 
+\draw (-0.4, 0.05) -- (-0.3, 0) -- (-0.4, -0.05); 
+\draw (0.4, 0.05) -- (0.3, 0) -- (0.4, -0.05); 
+},
+NATOSymb space/main/military navigational satellite/.pic={
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\draw (0.1, -0.03) -- (0, 0.2) -- (-0.1, -0.03);
+\draw (-0.1, 0.15) arc (180:360:0.1);
+},
+NATOSymb space/main/civilian navigational satellite/.pic={
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\draw (0.1, -0.03) -- (0, 0.2) -- (-0.1, -0.03);
+\draw (-0.1, 0.15) arc (180:360:0.1);
+},
+NATOSymb space/main/reconnaissance satellite/.pic={
+\pic [yshift=1] {NATOSymb space/main/military satellite};
+\draw (-0.075, -0.05) -- +(250:0.1);
+\draw (-0.025, -0.05) -- +(260:0.1);
+\draw (0.025, -0.05) -- +(280:0.1);
+\draw (0.075, -0.05) -- +(290:0.1);
+},
+NATOSymb space/main/military tether satellite/.pic={
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\draw (0, -0.066) -- +(30:0.3);
+\fill (0, -0.066) +(30:0.375) circle(0.075);
+},
+NATOSymb space/main/civilian tether satellite/.pic={
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/civilian satellite};
+\draw (0, -0.065) -- +(30:0.3);
+\draw (0, -0.065) +(30:0.375) circle(0.075);
+},
+NATOSymb space/main/military weather satellite/.pic={
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\node at (0, 0.07) {WX};
+},
+NATOSymb space/main/civilian weather satellite/.pic={
+\pic [yshift=-3.75, scale=0.9] {NATOSymb space/main/military satellite};
+\node at (0, 0.07) {WX};
+},
+NATOSymb space/main/civilian space station/.pic={
+\begin{scope}
+\clip (0.025, 0) rectangle (-0.025, 0.2) [reverseclip];
+\draw (0, 0) circle (0.15 and 0.06);
+\draw (0, -0.0125) circle (0.25 and 0.1);
+\end{scope}
+\draw (0.025, 0) -- (0.025, 0.175) arc(0:180:0.025) -- (-0.025, 0);
+\begin{scope}
+\clip (0, 0) circle (0.15 and 0.06) (0, -0.0125) circle (0.25 and 0.1) [reverseclip];
+\draw (0.025, 0) -- (0.025, -0.175) arc(360:180:0.025) -- (-0.025, 0);
+\end{scope}
+},
+NATOSymb space/main/military space station/.pic={
+\fill [even odd rule] (0, 0) circle (0.15 and 0.06) (0, -0.0125) circle (0.25 and 0.1);
+\fill (0.025, 0) -- (0.025, 0.175) arc(0:180:0.025) -- (-0.025, -0.175) arc(180:360:0.025) -- cycle;
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
 NATOSymb multi/main/amphibious/.pic={
