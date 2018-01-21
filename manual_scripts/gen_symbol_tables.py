@@ -38,7 +38,7 @@ fn = os.path.join(dr, '../milsymb.sty')
 f = open(fn, 'r')
 r = f.read()
 f.close()
-for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', 'SeaSubsurface', 'Space']:
+for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', 'SeaSubsurface', 'Space', 'Activity']:
     if i == 'Missile':
         t = re.search(
             r'\\NewDocumentCommand\\NATOMissile{ o D\(\)\{0,0} d\(\) g}{'
@@ -55,7 +55,7 @@ for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', '
             r, re.S | re.M)  # extract all main, mobility
         maketable(t.group(1), i)  # main
         maketable(t.group(2), i, 1.5)  # mobility
-    elif i == 'Installation':
+    elif i == 'Installation' or 'Activity':
         t = re.search(
             r'\\NewDocumentCommand\\NATO' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
             r'.*?upper/\.is choice,\n *(.*?)^(?! *upper)',

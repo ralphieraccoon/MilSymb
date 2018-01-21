@@ -219,25 +219,25 @@ NATOSymb land/main/air defence/unknown/.pic={
 \clip \clipunknown;
 \draw (225:0.5) to[out=45,in=135,looseness=0.725] (315:0.5);
 },
-NATOSymb land/main/air and naval gunfire liason company/.pic={
+NATOSymb land/main/air and naval gunfire liaison company/.pic={
 \pic{NATOSymb multi/main/field artillery};
 \pic [xscale=0.75, yscale=1.4] {NATOSymb multi/main/aviation rotary wing};
 \pic at (0, 0.345) {NATOSymb multi/upper/naval};
 },
-NATOSymb land/main/air and naval gunfire liason company/friendly/.pic={
-\pic {NATOSymb land/main/air and naval gunfire liason company};
+NATOSymb land/main/air and naval gunfire liaison company/friendly/.pic={
+\pic {NATOSymb land/main/air and naval gunfire liaison company};
 \pic {NATOSymb land/main/reconnaissance/friendly};
 },
-NATOSymb land/main/air and naval gunfire liason company/hostile/.pic={
-\pic {NATOSymb land/main/air and naval gunfire liason company};
+NATOSymb land/main/air and naval gunfire liaison company/hostile/.pic={
+\pic {NATOSymb land/main/air and naval gunfire liaison company};
 \pic {NATOSymb land/main/reconnaissance/hostile};
 },
-NATOSymb land/main/air and naval gunfire liason company/neutral/.pic={
-\pic {NATOSymb land/main/air and naval gunfire liason company};
+NATOSymb land/main/air and naval gunfire liaison company/neutral/.pic={
+\pic {NATOSymb land/main/air and naval gunfire liaison company};
 \pic {NATOSymb land/main/reconnaissance/neutral};
 },
-NATOSymb land/main/air and naval gunfire liason company/unknown/.pic={
-\pic {NATOSymb land/main/air and naval gunfire liason company};
+NATOSymb land/main/air and naval gunfire liaison company/unknown/.pic={
+\pic {NATOSymb land/main/air and naval gunfire liaison company};
 \pic {NATOSymb land/main/reconnaissance/unknown};
 },
 NATOSymb land/main/amphibious/friendly/.pic={
@@ -388,8 +388,8 @@ NATOSymb land/main/jamming/unknown/.pic={
 \pic at (0, 0.3) [xscale=0.6, yscale=0.5] {NATOSymb multi/main/amphibious};
 },
 NATOSymb land/main/jamming electronic warfare/.pic={
-\pic at (0, 0) {NATOSymb main/textfull={EW}};
-\pic at (0, 0) {NATOSymb land/main/jamming/\NATOSymb@selectedfaction};
+\pic {NATOSymb main/textfull={EW}};
+\pic {NATOSymb land/main/jamming/\NATOSymb@selectedfaction};
 },
 NATOSymb land/main/main gun system/friendly/.pic={
 \clip \clipfriendly;
@@ -426,37 +426,21 @@ NATOSymb land/main/reconnaissance/unknown/.pic={
 \clip \clipunknown;
 \draw (0.5, 0.5) -- (-0.5, -0.5);
 },
-NATOSymb land/main/signal/friendly/.pic={
-\clip \clipfriendly;
-\draw (-0.75, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.75, -0.5);
-},
-NATOSymb land/main/signal/hostile/.pic={
-\clip \cliphostile;
-\draw (-0.6, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.6, -0.5);
-},
-NATOSymb land/main/signal/neutral/.pic={
-\clip \clipneutral;
-\draw (-0.5, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.5, -0.5);
-},
-NATOSymb land/main/signal/unknown/.pic={
-\clip \clipunknown;
-\draw (-0.75, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.75, -0.5);
-},
 NATOSymb land/main/signal radio/.pic={
-\pic at (0, 0) {NATOSymb land/main/signal/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb land/main/radio};
+\pic {NATOSymb multi/main/signal/\NATOSymb@selectedfaction};
+\pic {NATOSymb land/main/radio};
 },
 NATOSymb land/main/signal radio relay/.pic={
-\pic at (0, 0) {NATOSymb land/main/signal/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb land/main/radio relay};
+\pic {NATOSymb multi/main/signal/\NATOSymb@selectedfaction};
+\pic {NATOSymb land/main/radio relay};
 },
 NATOSymb land/main/signal radio teletype centre/.pic={
-\pic at (0, 0) {NATOSymb land/main/signal/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb land/main/radio teletype centre};
+\pic {NATOSymb multi/main/signal/\NATOSymb@selectedfaction};
+\pic {NATOSymb land/main/radio teletype centre};
 },
 NATOSymb land/main/signal tactical satellite/.pic={
-\pic at (0, 0) {NATOSymb land/main/signal/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb land/main/tactical satellite};
+\pic {NATOSymb multi/main/signal/\NATOSymb@selectedfaction};
+\pic {NATOSymb land/main/tactical satellite};
 },
 NATOSymb land/main/supply/friendly/.pic={
 \draw (0.75, -0.25) -- (-0.75, -0.25);
@@ -659,17 +643,9 @@ NATOSymb land/main/organisation or group/.pic={
 \pic [scale=0.9] at (0.2, 0.02) {NATOSymb multi/main/individual};
 \pic [scale=0.9] at (-0.2, 0.02) {NATOSymb multi/main/individual};
 },
-NATOSymb land/main/killing victim/.pic={
-\pic {NATOSymb multi/main/individual};
-\draw (-0.41, 0.2) -- (0.41, -0.2);
-},
 NATOSymb land/main/killing victims/.pic={
 \pic {NATOSymb land/main/organisation or group};
 \draw (-0.41, 0.2) -- (0.41, -0.2);
-},
-NATOSymb land/main/victim of an attempted crime/.pic={
-\pic {NATOSymb multi/main/individual};
-\draw [dashed] (-0.41, 0.2) -- (0.41, -0.2);
 },
 % UPPER %
 NATOSymb land/upper/air assault/.pic={
@@ -945,11 +921,11 @@ NATOSymb equipment/main/non lethal grenade launcher/.pic={
 },
 NATOSymb equipment/main/taser/.pic={
 \pic {NATOSymb equipment/main/non lethal weapon};
-\pic at (0, 0) {NATOSymb main/text={Z}};
+\pic {NATOSymb main/text={Z}};
 },
 NATOSymb equipment/main/water cannon/.pic={
 \pic {NATOSymb equipment/main/non lethal weapon};
-\pic at (0, 0) {NATOSymb main/text={W}};
+\pic {NATOSymb main/text={W}};
 },
 NATOSymb equipment/main/armoured fighting vehicle/.pic={
 \draw (0, 0.2) -- (0.25, 0) -- (0, -0.2) -- (-0.25, 0) -- cycle;
@@ -958,7 +934,7 @@ NATOSymb equipment/main/armoured fighting vehicle/.pic={
 },
 NATOSymb equipment/main/armoured fighting vehicle command and control/.pic={
 \pic {NATOSymb equipment/main/armoured fighting vehicle};
-\pic at (0, 0) {NATOSymb main/textsmall={C2}};
+\pic {NATOSymb main/textsmall={C2}};
 },
 NATOSymb equipment/main/armoured personnel carrier/.pic={
 \draw (0.275, 0.275) -- (0.275, -0.275) -- (-0.275 , -0.275) -- (-0.275, 0.275);
@@ -1035,7 +1011,7 @@ NATOSymb equipment/main/earthmover/.pic={
 },
 NATOSymb equipment/main/multifunctional earthmover/.pic={
 \pic {NATOSymb equipment/main/earthmover};
-\pic at (0, 0) {NATOSymb main/textsmall={MF}};
+\pic {NATOSymb main/textsmall={MF}};
 },
 NATOSymb equipment/main/mine clearing equipment/.pic={
 \draw (0, 0.2) -- (0, 0) -- (0.35, -0.2) -- (-0.35, -0.2) -- (0, 0);
@@ -1316,47 +1292,47 @@ NATOSymb seasurface/main/ship/.pic={
 },
 NATOSymb seasurface/main/cargo/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {A};
+\node {A};
 },
 NATOSymb seasurface/main/container ship/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {C};
+\node {C};
 },
 NATOSymb seasurface/main/dredge/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {D};
+\node {D};
 },
 NATOSymb seasurface/main/roll on roll off/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {E};
+\node {E};
 },
 NATOSymb seasurface/main/ferry/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {F};
+\node {F};
 },
 NATOSymb seasurface/main/heavy lift/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {H};
+\node {H};
 },
 NATOSymb seasurface/main/hovercraft/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {J};
+\node {J};
 },
 NATOSymb seasurface/main/lash carrier/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {L};
+\node {L};
 },
 NATOSymb seasurface/main/tanker/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {O};
+\node {O};
 },
 NATOSymb seasurface/main/passenger ship/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {P};
+\node {P};
 },
 NATOSymb seasurface/main/tug/.pic={
 \pic {NATOSymb seasurface/main/ship};
-\node at (0,0) {T};
+\node {T};
 },
 NATOSymb seasurface/main/tow/.pic={
 \pic {NATOSymb seasurface/main/ship};
@@ -1397,11 +1373,6 @@ NATOSymb seasurface/main/law enforcement vessel/.pic={
 \pic {NATOSymb seasurface/main/ship};
 \draw (0.15, 0.05) -- (0, -0.2);
 \draw (0.2, 0.05) -- (0.05, -0.2);
-},
-NATOSymb seasurface/main/sailing boat/.pic={
-\draw (-0.15, -0.2) -- (0.15, -0.2) -- (0.25, -0.025) -- (-0.25, -0.025) -- cycle;
-\draw (0, -0.025) -- (0, 0.2);
-\draw (0.025, 0) -- (0.025, 0.19) -- (0.225, 0) -- cycle;
 },
 NATOSymb seasurface/main/civilian boat/.pic={
 \draw (-0.2, -0.2) -- (0.2, -0.2) -- (0.35, 0.05) -- (-0.15, 0.05) -- (-0.075, 0.2) -- (-0.175, 0.2) -- (-0.25, 0.05) -- (-0.35, 0.05) -- cycle;
@@ -1728,6 +1699,19 @@ NATOSymb space/debris/large/.pic={
 \end{scope}
 },
 %% ACTIVITY %%
+% FULLFRAME %
+NATOSymb activity/main/explosion/.pic={
+\node [starburst, draw, minimum width=0.9cm, minimum height=0.9cm, starburst point height=0.25cm, starburst points=12] {};
+},
+NATOSymb activity/main/improvised explosive device explosion/.pic={
+\node [starburst, draw, minimum width=0.9cm, minimum height=0.9cm, starburst point height=0.25cm, starburst points=12] {};
+\fontsize{6}{0}\selectfont
+\node {IED};
+},
+NATOSymb activity/main/radio and television psychological operations/.pic={
+\pic {NATOSymb multi/main/signal/\NATOSymb@selectedfaction};
+\pic {NATOSymb multi/main/psychological operations};
+},
 % MAIN %
 NATOSymb activity/main/arrest/.pic={
 \pic [scale=0.75] {NATOSymb multi/main/individual};
@@ -1749,14 +1733,6 @@ NATOSymb activity/main/drive by shooting/.pic={
 \draw (0, -0.1) -- (0, 0.2);
 \draw (0.075, 0.1) -- (0, 0.2) -- (-0.075, 0.1);
 },
-NATOSymb activity/main/explosion/.pic={
-\node [starburst, draw, minimum width=0.9cm, minimum height=0.9cm, starburst point height=0.25cm, starburst points=12] {};
-},
-NATOSymb activity/main/improvised explosive device explosion/.pic={
-\node [starburst, draw, minimum width=0.9cm, minimum height=0.9cm, starburst point height=0.25cm, starburst points=12] {};
-\fontsize{6}{0}\selectfont
-\node {IED};
-},
 NATOSymb activity/main/graffiti/.pic={
 \draw (0.05, 0.2) arc (90:270:0.05) arc (450:270:0.05) arc (90:270:0.05) arc (450:270:0.05);
 \draw (-0.05, 0.2) arc (90:270:0.05) arc (450:270:0.05) arc (90:270:0.05) arc (450:270:0.05);
@@ -1776,9 +1752,31 @@ NATOSymb activity/main/searching/.pic={
 \draw (-0.4, 0) arc (180:0:0.1) arc (180:360:0.1) arc (180:0:0.1) arc (180:270:0.1) -- +(0.1, 0);
 \draw (0.3, -0.05) -- (0.4, -0.1) -- (0.3, -0.15); 
 },
+% UPPER %
+NATOSymb activity/upper/house to house/.pic={
+\draw (-0.075, -0.1) rectangle (0.075, 0.05);
+\draw (-0.075, 0.05) -- (-0.1, 0.05) -- (0, 0.125) -- (0.1, 0.05) -- (0.075, 0.05);
+},
 %% MULTIPLE CLASS SYMBOLS %%
+% FULLFRAME %
+NATOSymb multi/main/signal/friendly/.pic={
+\clip \clipfriendly;
+\draw (-0.75, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.75, -0.5);
+},
+NATOSymb multi/main/signal/hostile/.pic={
+\clip \cliphostile;
+\draw (-0.6, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.6, -0.5);
+},
+NATOSymb multi/main/signal/neutral/.pic={
+\clip \clipneutral;
+\draw (-0.5, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.5, -0.5);
+},
+NATOSymb multi/main/signal/unknown/.pic={
+\clip \clipunknown;
+\draw (-0.75, 0.5) -- (0, -0.1) -- (0, 0.1) -- (0.75, -0.5);
+},
 % MAIN %
-NATOSymb multi/main/.pic={
+NATOSymb multi/main/amphibious/.pic={
 \draw (0.81, 0) to[out=90,in=90,looseness=2.25] (0.63, 0) to[out=-90,in=-90,looseness=2.25] (0.45, 0) to[out=90,in=90,looseness=2.25] (0.27, 0) to[out=-90,in=-90,looseness=2.25] (0.09, 0) to[out=90,in=90,looseness=2.25] (-0.09, 0) to[out=-90,in=-90,looseness=2.25] (-0.27, 0) to[out=90,in=90,looseness=2.25] (-0.45, 0) to[out=-90,in=-90,looseness=2.25] (-0.63, 0) to[out=90,in=90,looseness=2.25] (-0.81, 0);
 },
 NATOSymb multi/main/antenna/.pic={
@@ -1839,6 +1837,14 @@ NATOSymb multi/main/aviation rotary wing/.pic={
 \fill (0.44, 0.15) -- (0.44, -0.15) -- (-0.44, 0.15) -- (-0.44, -0.15) -- cycle;},
 NATOSymb multi/main/field artillery/.pic={
 \fill circle(0.2);},
+NATOSymb multi/main/killing victim/.pic={
+\pic {NATOSymb multi/main/individual};
+\draw (-0.41, 0.2) -- (0.41, -0.2);
+},
+NATOSymb multi/main/victim of an attempted crime/.pic={
+\pic {NATOSymb multi/main/individual};
+\draw [dashed] (-0.41, 0.2) -- (0.41, -0.2);
+},
 NATOSymb multi/main/maintenance/.pic={
 \draw [ultra thick] (0.275, 0) -- (-0.275, 0);
 \draw [ultra thick] (0.4, -0.15) .. controls (0.275, -0.145) .. (0.275, 0) .. controls (0.275, 0.145) .. (0.4, 0.15);
@@ -1900,6 +1906,11 @@ NATOSymb multi/main/radar/.pic={
 \draw (180:0.2) -- (0,0.16) -- (0,0) -- (0.2, 0.16);
 \end{scope}
 \end{scope}
+},
+NATOSymb multi/main/sailing boat/.pic={
+\draw (-0.15, -0.2) -- (0.15, -0.2) -- (0.25, -0.025) -- (-0.25, -0.025) -- cycle;
+\draw (0, -0.025) -- (0, 0.2);
+\draw (0.025, 0) -- (0.025, 0.19) -- (0.225, 0) -- cycle;
 },
 NATOSymb multi/main/transportation/.pic={
 \draw (0, 0) circle (0.2);
@@ -1991,27 +2002,27 @@ NATOSymb multi/upperlower/railroad/.pic={
 %% SUPPLY %%
 NATOSymb supply/class 1/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb main/text={I}};
+\pic {NATOSymb main/text={I}};
 },
 NATOSymb supply/class 2/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb main/text={II}};
+\pic {NATOSymb main/text={II}};
 },
 NATOSymb supply/class 3/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/petroleum oil and lubricants};
+\pic {NATOSymb multi/main/petroleum oil and lubricants};
 },
 NATOSymb supply/class 4/.pic={
 \pic {NATOSymb land/main/supply\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb main/text={IV}};
+\pic {NATOSymb main/text={IV}};
 },
 NATOSymb supply/class 5/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/ammunition};
+\pic {NATOSymb multi/main/ammunition};
 },
 NATOSymb supply/class all/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb main/text={ALL}};
+\pic {NATOSymb main/text={ALL}};
 },
 NATOSymb supply/class US 1/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
@@ -2019,40 +2030,40 @@ NATOSymb supply/class US 1/.pic={
 },
 NATOSymb supply/class US 2/.pic={
 \pic {NATOSymb land/main/supply\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/quartermaster};
+\pic {NATOSymb multi/main/quartermaster};
 },
 NATOSymb supply/class US 3/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/petroleum oil and lubricants};
+\pic {NATOSymb multi/main/petroleum oil and lubricants};
 },
 NATOSymb supply/class US 4/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/engineer};
+\pic {NATOSymb multi/main/engineer};
 },
 NATOSymb supply/class US 5/.pic={
 \pic {NATOSymb land/main/supply\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/ammunition};
+\pic {NATOSymb multi/main/ammunition};
 },
 NATOSymb supply/class US 6/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/person};
+\pic {NATOSymb multi/main/person};
 },
 NATOSymb supply/class US 7/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/major end};
+\pic {NATOSymb multi/main/major end};
 },
 NATOSymb supply/class US 8/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \draw (0, -0.2) -- (M.north);
-\pic at (0, 0) {NATOSymb supply/medicalbar/\NATOSymb@selectedfaction};
+\pic {NATOSymb supply/medicalbar/\NATOSymb@selectedfaction};
 },
 NATOSymb supply/class US 9/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb multi/main/repair parts};
+\pic {NATOSymb multi/main/repair parts};
 },
 NATOSymb supply/class US 10/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
-\pic at (0, 0) {NATOSymb main/text={CA}};
+\pic {NATOSymb main/text={CA}};
 },
 NATOSymb supply/medicalbar/friendly/.pic={
 \draw (0.75, 0.15) -- (-0.75, 0.15);
@@ -2069,24 +2080,24 @@ NATOSymb supply/medicalbar/unknown/.pic={
 NATOSymb supply/text/.pic={
 \pic {NATOSymb land/main/supply/\NATOSymb@selectedfaction};
 \fontsize{10}{0}\selectfont
-\node at (0,0) {#1};
+\node {#1};
 },
 %% TEMPLATES %%
 NATOSymb main/text/.pic={
 \fontsize{10}{0}\selectfont
-\node at (0,0) {#1};},
+\node {#1};},
 NATOSymb main/textfull/.pic={
 \fontsize{15}{0}\selectfont
-\node at (0,0) {#1};},
+\node {#1};},
 NATOSymb main/textsquashed/.pic={
 \fontsize{10}{0}\selectfont
-\node at (0,0) [xscale=0.7] {#1};},
+\node [xscale=0.7] {#1};},
 NATOSymb main/textsmall/.pic={
 \fontsize{6}{0}\selectfont
-\node at (0,0) {#1};},
+\node {#1};},
 NATOSymb main/textsmallsquashed/.pic={
 \fontsize{6}{0}\selectfont
-\node at (0,0) [xscale=0.7] {#1};},
+\node [xscale=0.7] {#1};},
 %% BOILERPLATE %%
 /NATOSymb/.search also={/tikz},
 /NATOSymb/.cd,
@@ -2319,7 +2330,7 @@ line=solid,
    main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=}, 
    main/air assault with organic lift/.style={/NATOSymb/.cd, symbC=land/main/air assault with organic lift/\NATOSymb@selectedfaction},
    main/air defence/.style={/NATOSymb/.cd, symbC=land/main/air defence/\NATOSymb@selectedfaction},
-   main/air and naval gunfire liason company/.style={/NATOSymb/.cd, symbC=land/main/air and naval gunfire liason company/\NATOSymb@selectedfaction},
+   main/air and naval gunfire liaison company/.style={/NATOSymb/.cd, symbC=land/main/air and naval gunfire liaison company/\NATOSymb@selectedfaction},
    main/broadcast transmitter antenna/.style={/NATOSymb/.cd, symbC=multi/main/antenna},
    main/psychological operations broadcast/.style={/NATOSymb/.cd, symbC=land/main/psychological operations broadcast},
    main/amphibious/.style={/NATOSymb/.cd, symbC=land/main/amphibious/\NATOSymb@selectedfaction},
@@ -2329,7 +2340,7 @@ line=solid,
    main/intercept electronic warfare/.style={/NATOSymb/.cd, symbC=land/main/intercept electronic warfare},
    main/anti tank anti armour/.style={/NATOSymb/.cd, symbC=land/main/anti tank anti armour/\NATOSymb@selectedfaction},
    main/corps support/.style={/NATOSymb/.cd, symbC=land/main/corps support/\NATOSymb@selectedfaction},
-   main/signal/.style={/NATOSymb/.cd, symbC=land/main/signal/\NATOSymb@selectedfaction},
+   main/signal/.style={/NATOSymb/.cd, symbC=multi/main/signal/\NATOSymb@selectedfaction},
    main/signal radio/.style={/NATOSymb/.cd, symbC=land/main/signal radio},
    main/signal radio relay/.style={/NATOSymb/.cd, symbC=land/main/signal radio relay},
    main/signal radio teletype centre/.style={/NATOSymb/.cd, symbC=land/main/signal radio teletype centre},
@@ -2386,10 +2397,10 @@ line=solid,
    main/judge advocate general/.style={/NATOSymb/.cd, symbC=main/text, symbCT=JAG},
    main/labour/.style={/NATOSymb/.cd, symbC=land/main/labour},
    main/laundry/.style={/NATOSymb/.cd, symbC=land/main/laundry},
-   main/liason/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LO},
+   main/liaison/.style={/NATOSymb/.cd, symbC=main/text, symbCT=LO},
    main/maintenance/.style={/NATOSymb/.cd, symbC=multi/main/maintenance},
    main/material/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MAT},
-   main/meteological/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MET},
+   main/meteorological/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MET},
    main/military intelligence/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MI},
    main/military police/.style={/NATOSymb/.cd, symbC=main/text, symbCT=MP},
    main/mine/.style={/NATOSymb/.cd, symbC=multi/main/mine},
@@ -2410,13 +2421,10 @@ line=solid,
    main/quartermaster/.style={/NATOSymb/.cd, symbC=multi/main/quartermaster},
    main/radar/.style={/NATOSymb/.cd, symbC=multi/main/radar},
    main/radio/.style={/NATOSymb/.cd, symbC=land/main/radio},
-   main/signal radio/.style={/NATOSymb/.cd, symbC=land/main/signal radio},
    main/radio relay/.style={/NATOSymb/.cd, symbC=land/main/radio relay},
-   main/signal radio relay/.style={/NATOSymb/.cd, symbC=land/main/signal radio relay},
    main/radio teletype centre/.style={/NATOSymb/.cd, symbC=land/main/radio teletype centre},
-   main/signal radio teletype centre/.style={/NATOSymb/.cd, symbC=land/main/signal radio teletype centre},
    main/religious support/.style={/NATOSymb/.cd, symbC=main/text, symbCT=REL},
-   main/replacment holding unit/.style={/NATOSymb/.cd, symbC=main/text, symbCT=RHU},
+   main/replacement holding unit/.style={/NATOSymb/.cd, symbC=main/text, symbCT=RHU},
    main/sea air land/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=SEAL},
    main/security/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SEC},
    main/sensor/.style={/NATOSymb/.cd, symbC=multi/main/sensor},
@@ -2427,8 +2435,7 @@ line=solid,
    main/surveillance/.style={/NATOSymb/.cd, symbC=land/main/surveillance},
    main/survey/.style={/NATOSymb/.cd, symbC=land/main/survey},
    main/sustainment/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=SUST},
-   main/tactical sattelite/.style={/NATOSymb/.cd, symbC=land/main/tactical satellite},
-   main/signal tactical sattelite/.style={/NATOSymb/.cd, symbC=land/main/signal tactical satellite},
+   main/tactical satellite/.style={/NATOSymb/.cd, symbC=land/main/tactical satellite},
    main/topographic/.style={/NATOSymb/.cd, symbC=land/main/topographic},
    main/transportation/.style={/NATOSymb/.cd, symbC=multi/main/transportation},
    main/unmanned systems/.style={/NATOSymb/.cd, symbC=multi/main/unmanned systems},
@@ -2441,9 +2448,9 @@ line=solid,
    main/internal security force/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ISF},
    main/individual/.style={/NATOSymb/.cd, symbC=multi/main/individual},
    main/organisation or group/.style={/NATOSymb/.cd, symbC=land/main/organisation or group},
-   main/killing victim/.style={/NATOSymb/.cd, symbC=land/main/killing victim},
+   main/killing victim/.style={/NATOSymb/.cd, symbC=multi/main/killing victim},
    main/killing victims/.style={/NATOSymb/.cd, symbC=land/main/killing victims},
-   main/victim of an attempted crime/.style={/NATOSymb/.cd, symbC=land/main/victim of an attempted crime},
+   main/victim of an attempted crime/.style={/NATOSymb/.cd, symbC=multi/main/victim of an attempted crime},
    main/spy/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SPY},
    upper/.is choice,
    upper/none/.style= {/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
@@ -2589,7 +2596,7 @@ line=solid,
    echelon/section/.style= {/NATOSymb/.cd, symbE=\textbullet \  \textbullet},
    echelon/platoon/.style= {/NATOSymb/.cd, symbE=\textbullet \  \textbullet \  \textbullet},
    echelon/company/.style= {/NATOSymb/.cd, symbE=\textbar},
-   echelon/batallion/.style= {/NATOSymb/.cd, symbE=\textbar \  \textbar},
+   echelon/battalion/.style= {/NATOSymb/.cd, symbE=\textbar \  \textbar},
    echelon/regiment/.style= {/NATOSymb/.cd, symbE=\textbar \  \textbar \  \textbar},
    echelon/brigade/.style= {/NATOSymb/.cd, symbE=X},
    echelon/division/.style= {/NATOSymb/.cd, symbE=XX},
@@ -2767,7 +2774,7 @@ line=solid,
    main/water cannon/.style= {/NATOSymb/.cd, symbC=equipment/main/water cannon},
    main/armoured fighting vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured fighting vehicle},
    main/armoured fighting vehicle command and control/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured fighting vehicle command and control},
-   main/armoured peronnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured personnel carrier},
+   main/armoured personnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured personnel carrier},
    main/armoured medical personnel carrier/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured medical personnel carrier},
    main/armoured protected vehicle/.style= {/NATOSymb/.cd, symbC=multi/main/armoured},
    main/armoured protected recovery vehicle/.style= {/NATOSymb/.cd, symbC=equipment/main/armoured protected recovery vehicle},
@@ -3101,7 +3108,7 @@ line=solid,
    main/drifter/.style={/NATOSymb/.cd, symbC=seasurface/main/drifter},
    main/trawler/.style={/NATOSymb/.cd, symbC=seasurface/main/trawler},
    main/law enforcement vessel/.style={/NATOSymb/.cd, symbC=seasurface/main/law enforcement vessel},
-   main/sailing boat/.style={/NATOSymb/.cd, symbC=seasurface/main/sailing boat},
+   main/sailing boat/.style={/NATOSymb/.cd, symbC=multi/main/sailing boat},
    main/civilian boat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian boat},
    main/civilian rigid hull inflatable boat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian rigid hull inflatable boat},
    main/civilian speedboat/.style={/NATOSymb/.cd, symbC=seasurface/main/civilian speedboat},
@@ -3113,7 +3120,7 @@ line=solid,
    upper/anti submarine warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ASW},
    upper/escort/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=E},
    upper/electronic warfare/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=EW},
-   upper/intelligence surviellance reconnaissance/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ISR},
+   upper/intelligence surveillance reconnaissance/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ISR},
    upper/mine counter measures/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MCM},
    upper/missile defence/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MD},
    upper/medical/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=ME},
@@ -3141,7 +3148,7 @@ line=solid,
    lower/air cushioned/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=J},
    lower/air cushioned alternate/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AC},
    lower/hydrofoil/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=K},
-   lower/autonomus control/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AUT},
+   lower/autonomous control/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AUT},
    lower/remotely piloted/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=RP},
    lower/expendable/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=EXP},
    track number/.store in=\NATOSymb@symbA,
@@ -3179,10 +3186,13 @@ line=solid,
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
-\NewDocumentCommand\OwnShip{}{
+\NewDocumentCommand\OwnShip{D(){0,0} d() g}{
+\begin{scope}[shift={(#1)}, local bounding box=#2]
 \draw [ultra thick, friendlyA] (0, 0) circle (0.5);
 \draw [ultra thick, friendlyA] (0.5, 0) -- (-0.5, 0);
 \draw [ultra thick, friendlyA] (0, 0.5) -- (0, -0.5);
+\end{scope}
+ \IfNoValueF{#3}{\node [anchor=west] at (#2.east) {#3};}
 }
 \NewDocumentCommand\NATOSeaSubsurface{ o D(){0,0} d() g}{
 \tikzset{%
@@ -3215,7 +3225,7 @@ line=solid,
    main/sea mine decoy/.style={/NATOSymb/.cd, symbC=seasubsurface/main/sea mine decoy},
    main/bottomed sea mine decoy/.style={/NATOSymb/.cd, symbC=seasubsurface/main/bottomed sea mine decoy},
    main/moored sea mine decoy/.style={/NATOSymb/.cd, symbC=seasubsurface/main/moored sea mine decoy},
-   main/unexploded ordanance/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/unexploded ordanance},
+   main/unexploded ordnance/.style={/NATOSymb/.cd, symbC=seasubsurface/mine/unexploded ordanance},
    main/military seabed installation/.style={/NATOSymb/.cd, symbC=seasubsurface/main/military seabed installation},
    main/civilian seabed installation/.style={/NATOSymb/.cd, symbC=seasubsurface/main/civilian seabed installation},
    upper/.is choice,
@@ -3240,7 +3250,7 @@ line=solid,
    upper/certain submarine/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=CT},
    lower/.is choice,
    lower/none/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=},
-   lower/air independant propulsion/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AI},
+   lower/air independent propulsion/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=AI},
    lower/diesel propulsion/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D},
    lower/diesel type 1/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D1},
    lower/diesel type 2/.style={/NATOSymb/.cd, symbL=main/textsmall, symbLT=D2},
@@ -3455,5 +3465,87 @@ line=solid,
 \pic {NATOSymb \NATOSymb@shape}; %Draw debris modifier  
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
- }
+}
+\NewDocumentCommand\NATOActivity{ o D(){0,0} d() g}{
+\tikzset{
+  /NATOSymb/.cd,
+   selectedfaction/.store in=\NATOSymb@selectedfaction,
+   faction/.is choice,
+   faction/none/.style={/NATOSymb/.cd, shape=activity/none, fill=white, selectedfaction=neutral},
+   faction/friendly/.style={/NATOSymb/.cd, shape=activity/friendly, fill=friendlyA, selectedfaction=friendly},
+   faction/hostile/.style={/NATOSymb/.cd, shape=activity/hostile, fill=hostileA, selectedfaction=hostile},
+   faction/neutral/.style={/NATOSymb/.cd, shape=activity/neutral, fill=neutralA, selectedfaction=neutral},
+   faction/unknown/.style={/NATOSymb/.cd, shape=activity/unknown, fill=unknownA, selectedfaction=unknown},
+   main/.is choice,
+   main/none/.style={/NATOSymb/.cd, symbC=main/textsmall, symbCT=},
+   main/arrest/.style={/NATOSymb/.cd, symbC=activity/main/arrest},
+   main/fire/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=FIRE},  
+   main/attempted criminal activity/.style={/NATOSymb/.cd, symbC=multi/main/victim of an attempted crime},
+   main/demonstration/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=MASS},   
+   main/drive by shooting/.style={/NATOSymb/.cd, symbC=activity/main/drive by shooting},
+   main/drug related activites/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=DRUG},  
+   main/explosion/.style={/NATOSymb/.cd, symbC=activity/main/explosion},
+   main/improvised explosive device explosion/.style={/NATOSymb/.cd, symbC=activity/main/improvised explosive device explosion},
+   main/extortion 1/.style={/NATOSymb/.cd, symbC=main/text, symbCT=\$},  
+   main/extortion 2/.style={/NATOSymb/.cd, symbC=main/text, symbCT=\pounds},  
+   main/extortion 3/.style={/NATOSymb/.cd, symbC=main/text, symbCT=\texteuro},  
+   main/extortion 4/.style={/NATOSymb/.cd, symbC=main/text, symbCT=\textyen},
+   main/graffiti/.style={/NATOSymb/.cd, symbC=activity/main/graffiti},
+   main/killing/.style={/NATOSymb/.cd, symbC=multi/main/killing victim},
+   main/patrolling/.style={/NATOSymb/.cd, symbC=activity/main/patrolling},
+   main/poisoning/.style={/NATOSymb/.cd, symbC=activity/main/poisoning},
+   main/psychological operations/.style={/NATOSymb/.cd, symbC=multi/main/psychological operations},
+   main/radio and television psychological operations/.style={/NATOSymb/.cd, symbC=activity/main/radio and television psychological operations},
+   main/riot/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=RIOT},
+   main/searching/.style={/NATOSymb/.cd, symbC=activity/main/searching},
+   main/automobile/.style={/NATOSymb/.cd, symbC=activity/main/automobile},
+   main/pleasure craft/.style={/NATOSymb/.cd, symbC=multi/main/sailing boat},
+   main/individual/.style={/NATOSymb/.cd, symbC=multi/main/individual},
+   upper/.is choice,
+   upper/none/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=},
+   upper/assassination/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=AS},
+   upper/execution/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=EX},
+   upper/hijack/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=H},
+   upper/house to house/.style={/NATOSymb/.cd, symbU=activity/upper/house to house},
+   upper/kidnapping/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=K},
+   upper/murder/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=MU},
+   upper/piracy/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=PI},
+   upper/rape/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=RA},
+   upper/written/.style={/NATOSymb/.cd, symbU=main/textsmall, symbUT=W},
+   staff comments/.store in=\NATOSymb@symbG,
+   additional information/.store in=\NATOSymb@symbH,
+   evaluation rating/.store in=\NATOSymb@symbJ,
+   country indicator/.store in=\NATOSymb@symbAC,
+   date-time group/.store in=\NATOSymb@symbW,
+   location/.store in=\NATOSymb@symbY,
+   offset/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\NATOSymb@drawH}{true}\AND \equal{\NATOSymb@selectedfaction}{friendly}}{\draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
+   offset/.value required,
+   movement/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\NATOSymb@drawH}{true}\AND \equal{\NATOSymb@selectedfaction}{friendly}}{ \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
+   movement/.value required,
+   faction=friendly,
+   main=none,
+   upper=none,
+   staff comments=,
+   additional information=,
+   evaluation rating=,
+   date-time group=,
+   location=,
+   country indicator=,
+  #1,
+} %
+\begin{scope}[shift={(#2)}, local bounding box=#3]
+\fontfamily{phv}\fontseries{bx}\selectfont
+\pic [local bounding box=M] {NATOSymb \NATOSymb@shape}; %Draw background shape
+\pic {NATOSymb \NATOSymb@symbC={\NATOSymb@symbCT}}; %Draw main symbol
+\pic at (0,0.34) {NATOSymb \NATOSymb@symbU={\NATOSymb@symbUT}}; %Draw upper symbol
+\fontsize{6}{0}\selectfont
+\ifthenelse{\isequivalentto{\NATOSymb@symbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\NATOSymb@symbAC};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\NATOSymb@symbG};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbH}{\empty}}{}{\node [anchor=west] at (M.east) {\NATOSymb@symbH};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbJ}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\NATOSymb@symbJ};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\NATOSymb@symbW};}
+\ifthenelse{\isequivalentto{\NATOSymb@symbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\NATOSymb@symbY};}
+\end{scope}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
+}
 \endinput
