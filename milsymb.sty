@@ -14,7 +14,7 @@
 \definecolor{neutralA}{RGB}{170, 255, 170}
 \definecolor{unknownA}{RGB}{255, 255, 128}
 \definecolor{lightgray}{gray}{0.75}
-\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc}
+\usetikzlibrary{arrows.meta, shapes.geometric, shapes.symbols, positioning, calc}
 \tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
   (current bounding box.south east) --
   (current bounding box.south west) --
@@ -58,7 +58,8 @@ NATOSymb land/unknown/.pic={
 },
 % EQUIPMENT/SEA SURFACE %
 NATOSymb equipment/none/.pic={
-\pic{NATOSymb air/none};},
+\path (0.5, 0.5) rectangle (-0.5, -0.5);
+\draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;},
 NATOSymb equipment/friendly/.pic={
 \draw [fill=NATOSymb@fill, \NATOSymb@line] circle (0.5);},
 NATOSymb equipment/hostile/.pic={
@@ -653,18 +654,13 @@ NATOSymb land/main/civilian police/.pic={
 NATOSymb land/main/environmental protection/.pic={
 \draw (0, 0.2) -- (0.1, 0.05) -- (0.05, 0.05) -- (0.15, -0.05) -- (0.1, -0.05) -- (0.2, -0.15) -- (0.15, -0.15) -- (0.05, -0.15) -- (0.05, -0.2) -- (-0.05, -0.2) -- (-0.05, -0.15) -- (-0.2, -0.15) -- (-0.1, -0.05) -- (-0.15, -0.05) -- (-0.05, 0.05) -- (-0.1, 0.05) -- cycle;
 },
-NATOSymb land/main/individual/.pic={
-\draw (0, 0.125) circle (0.075);
-\draw (0, 0.05) -- (0, -0.2);
-\draw (0.075,0) -- (-0.075,0);
-},
 NATOSymb land/main/organisation or group/.pic={
-\pic [scale=0.9] at (0, -0.02) {NATOSymb land/main/individual};
-\pic [scale=0.9] at (0.2, 0.02) {NATOSymb land/main/individual};
-\pic [scale=0.9] at (-0.2, 0.02) {NATOSymb land/main/individual};
+\pic [scale=0.9] at (0, -0.02) {NATOSymb multi/main/individual};
+\pic [scale=0.9] at (0.2, 0.02) {NATOSymb multi/main/individual};
+\pic [scale=0.9] at (-0.2, 0.02) {NATOSymb multi/main/individual};
 },
 NATOSymb land/main/killing victim/.pic={
-\pic {NATOSymb land/main/individual};
+\pic {NATOSymb multi/main/individual};
 \draw (-0.41, 0.2) -- (0.41, -0.2);
 },
 NATOSymb land/main/killing victims/.pic={
@@ -672,7 +668,7 @@ NATOSymb land/main/killing victims/.pic={
 \draw (-0.41, 0.2) -- (0.41, -0.2);
 },
 NATOSymb land/main/victim of an attempted crime/.pic={
-\pic {NATOSymb land/main/individual};
+\pic {NATOSymb multi/main/individual};
 \draw [dashed] (-0.41, 0.2) -- (0.41, -0.2);
 },
 % UPPER %
@@ -1569,7 +1565,8 @@ NATOSymb seasubsurface/mine/unexploded ordanance/.pic={
 \fontsize{6}{0}\selectfont
 \node [text=NATOSymb@fill] {UXO};
 },
-% SPACE %
+%% SPACE %%
+% MAIN %
 NATOSymb space/main/military orbiter shuttle/.pic={
 \fill ($(0, 0.3)!0.35!(0.125, -0.15)$) -- (0.125, -0.15) -- (-0.125, -0.15) -- ($(-0.125, -0.15)!0.65!(0, 0.3)$) to[in=105, out=75] cycle;
 \draw (0, -0.20) -- (0, -0.15); 
@@ -1711,6 +1708,7 @@ NATOSymb space/main/military space station/.pic={
 \fill [even odd rule] (0, 0) circle (0.15 and 0.06) (0, -0.0125) circle (0.25 and 0.1);
 \fill (0.025, 0) -- (0.025, 0.175) arc(0:180:0.025) -- (-0.025, -0.175) arc(180:360:0.025) -- cycle;
 },
+% DEBRIS %
 NATOSymb space/debris/small/.pic={
 \begin{scope}
 \clip circle (0.5);
@@ -1729,9 +1727,58 @@ NATOSymb space/debris/large/.pic={
 \draw (0.2, 0.15) -- (0.5, 0) -- (0.2, -0.15);
 \end{scope}
 },
+%% ACTIVITY %%
+% MAIN %
+NATOSymb activity/main/arrest/.pic={
+\pic [scale=0.75] {NATOSymb multi/main/individual};
+\draw circle (0.2);
+},
+NATOSymb activity/main/automobile/.pic={
+\begin{scope}
+\clip (0.2, -0.15) circle (0.05) (-0.2, -0.15) circle (0.05) [reverseclip];
+\draw (0.3, -0.15) -- (-0.3, -0.15) -- (-0.3, 0.025) -- (-0.1, 0.025) -- (-0.1, 0.2) -- (0.1, 0.2) -- (0.1, 0.025) -- (0.3, 0.025) -- cycle;
+\draw (0.075, 0.025) rectangle (-0.075, 0.175);  
+\end{scope}
+\draw (0.2, -0.15) circle (0.05);
+\draw (-0.2, -0.15) circle (0.05);
+},
+NATOSymb activity/main/drive by shooting/.pic={
+\draw (0.25, -0.15) circle (0.05);
+\draw (-0.25, -0.15) circle (0.05);
+\draw (0.3, -0.1) -- (-0.3, -0.1);
+\draw (0, -0.1) -- (0, 0.2);
+\draw (0.075, 0.1) -- (0, 0.2) -- (-0.075, 0.1);
+},
+NATOSymb activity/main/explosion/.pic={
+\node [starburst, draw, minimum width=0.9cm, minimum height=0.9cm, starburst point height=0.25cm, starburst points=12] {};
+},
+NATOSymb activity/main/improvised explosive device explosion/.pic={
+\node [starburst, draw, minimum width=0.9cm, minimum height=0.9cm, starburst point height=0.25cm, starburst points=12] {};
+\fontsize{6}{0}\selectfont
+\node {IED};
+},
+NATOSymb activity/main/graffiti/.pic={
+\draw (0.05, 0.2) arc (90:270:0.05) arc (450:270:0.05) arc (90:270:0.05) arc (450:270:0.05);
+\draw (-0.05, 0.2) arc (90:270:0.05) arc (450:270:0.05) arc (90:270:0.05) arc (450:270:0.05);
+},
+NATOSymb activity/main/patrolling/.pic={
+\draw (0.3, 0.05) -- (-0.05, 0.05) -- (0.05, -0.05) -- (-0.4, -0.05);
+\draw (-0.3, 0) -- (-0.4, -0.05) -- (-0.3, -0.1); 
+\fontsize{4}{0}\selectfont
+\node [anchor=west] at (0.3, 0.05) {P}; 
+},
+NATOSymb activity/main/poisoning/.pic={
+\draw (0, 0.055) circle (0.145);
+\draw (0.3, 0) -- (-0.3, -0.2);
+\draw (-0.3, 0) -- (0.3, -0.2);
+},
+NATOSymb activity/main/searching/.pic={
+\draw (-0.4, 0) arc (180:0:0.1) arc (180:360:0.1) arc (180:0:0.1) arc (180:270:0.1) -- +(0.1, 0);
+\draw (0.3, -0.05) -- (0.4, -0.1) -- (0.3, -0.15); 
+},
 %% MULTIPLE CLASS SYMBOLS %%
 % MAIN %
-NATOSymb multi/main/amphibious/.pic={
+NATOSymb multi/main/.pic={
 \draw (0.81, 0) to[out=90,in=90,looseness=2.25] (0.63, 0) to[out=-90,in=-90,looseness=2.25] (0.45, 0) to[out=90,in=90,looseness=2.25] (0.27, 0) to[out=-90,in=-90,looseness=2.25] (0.09, 0) to[out=90,in=90,looseness=2.25] (-0.09, 0) to[out=-90,in=-90,looseness=2.25] (-0.27, 0) to[out=90,in=90,looseness=2.25] (-0.45, 0) to[out=-90,in=-90,looseness=2.25] (-0.63, 0) to[out=90,in=90,looseness=2.25] (-0.81, 0);
 },
 NATOSymb multi/main/antenna/.pic={
@@ -1777,6 +1824,11 @@ NATOSymb multi/main/diver/.pic={
 \draw (-0.25, -0.06) rectangle (0.25, 0.09);
 \draw (0, 0) -- (-0.2, -0.2) -- (0.2, -0.2) -- cycle;
 \end{scope}
+},
+NATOSymb multi/main/individual/.pic={
+\draw (0, 0.125) circle (0.075);
+\draw (0, 0.05) -- (0, -0.2);
+\draw (0.075,0) -- (-0.075,0);
 },
 NATOSymb multi/main/aviation fixed wing/.pic={
 \fill (-0.36,0.125) arc (77:275:0.075 and 0.125) -- (0,0) -- cycle;
@@ -2387,7 +2439,7 @@ line=solid,
    main/environmental protection/.style={/NATOSymb/.cd, symbC=land/main/environmental protection},
    main/government organization/.style={/NATOSymb/.cd, symbC=main/text, symbCT=GO},
    main/internal security force/.style={/NATOSymb/.cd, symbC=main/text, symbCT=ISF},
-   main/individual/.style={/NATOSymb/.cd, symbC=land/main/individual},
+   main/individual/.style={/NATOSymb/.cd, symbC=multi/main/individual},
    main/organisation or group/.style={/NATOSymb/.cd, symbC=land/main/organisation or group},
    main/killing victim/.style={/NATOSymb/.cd, symbC=land/main/killing victim},
    main/killing victims/.style={/NATOSymb/.cd, symbC=land/main/killing victims},
@@ -2867,7 +2919,7 @@ line=solid,
    main/chemical biological radiological nuclear/.style={/NATOSymb/.cd, symbC=multi/main/chemical biological radiological nuclear},
    main/electric power/.style={/NATOSymb/.cd, symbC=installation/main/electric power},
    main/food distribution/.style={/NATOSymb/.cd, symbC=supply/class US 1},
-   main/grey list location/.style={/NATOSymb/.cd, symbC=main/text, symbCT=GRAY},
+   main/grey list location/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=GRAY},
    main/mass grave site/.style={/NATOSymb/.cd, symbC=installation/main/mass grave site},
    main/medical/.style={/NATOSymb/.cd, symbC=multi/main/medical},
    main/medical treatment facility/.style={/NATOSymb/.cd, symbC=multi/main/medical treatment facility},
@@ -2876,7 +2928,7 @@ line=solid,
    main/printed media/.style={/NATOSymb/.cd, symbC=installation/main/printed media},
    main/transportation/.style={/NATOSymb/.cd, symbC=multi/main/transportation},
    main/naval/.style={/NATOSymb/.cd, symbC=multi/main/naval},
-   main/safe house/.style={/NATOSymb/.cd, symbC=main/text, symbCT=SAFE},
+   main/safe house/.style={/NATOSymb/.cd, symbC=main/textsquashed, symbCT=SAFE},
    main/civilian telecommunications/.style={/NATOSymb/.cd, symbC=installation/main/civilian telecommunications},
    main/water/.style={/NATOSymb/.cd, symbC=multi/main/water},
    main/water treatment/.style={/NATOSymb/.cd, symbC=multi/main/water purification},
