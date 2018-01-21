@@ -1,19 +1,14 @@
-\documentclass[tikz,border=5pt]{standalone}
+\documentclass[a4paper, titlepage]{article}
 \usepackage{milsymb}
 \begin{document}
 
-\begin{tikzpicture}[scale=2, transform shape]
+\begin{tikzpicture}
 
 %\NATOEquipment[faction=friendly, main=rifle, mobility=railroad, quantity=2000, movement={1}{8,6}]
 %\fontfamily{phv}\fontseries{bx}\selectfont
 %\NATOMine[faction=hostile, mine=in other position, neutralised]
 
-
-\fontfamily{phv}\fontseries{bx}\selectfont
-\pic{NATOSymb activity/none};
-\pic{NATOSymb activity/main/automobile};
-\pic at (0,0.34) {NATOSymb activity/upper/house to house};
-%\OwnShip
+(4,5) \NATOLand[faction=friendly, main=infantry, echelon=team]
 
 
 

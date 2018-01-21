@@ -1,52 +1,55 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb}
-\usepackage{arev}
-\usepackage{ltablex}
-\usepackage{makecell}
-\usepackage{multirow}
-\usepackage[a4paper, top=4.5cm, bottom=1.75cm, left=2cm, right=2cm, headsep=2cm]{geometry}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes}
+\usepackage[a4paper, top=1.75cm, bottom=1.75cm, left=1.75cm, right=1.75cm, headsep=2cm]{geometry}
 \usetikzlibrary{backgrounds}
 \newcolumntype{n}{>{\raggedright\arraybackslash}m{5cm}}
 \newcolumntype{s}{>{\centering\arraybackslash}m{1.75cm}}
 \renewcommand\theadfont{\bfseries}
 \title{MilSymb}
-%\author{Damian Crosby}
-
+\author{Damian Crosby}
 \begin{document}
-\maketitle
 
-\input{manual_scripts/Air_Main_table.tex}
-\input{manual_scripts/Air_Upper_table.tex}
-\input{manual_scripts/Air_Lower_table.tex}
+\begin{tikzpicture}[remember picture] 
+\node at (current page.north east) {A};
 
-\input{manual_scripts/Land_Main_table.tex}
-\input{manual_scripts/Land_Upper_table.tex}
-\input{manual_scripts/Land_Lower_table.tex}
+\end{tikzpicture}
 
-\input{manual_scripts/Missile_Left_table.tex}
-\input{manual_scripts/Missile_Right_table.tex}
+{\let\newpage\relax\maketitle}
 
-\input{manual_scripts/Equipment_Main_table.tex}
-\input{manual_scripts/Equipment_Mobility_table.tex}
+\clearpage
 
-\input{manual_scripts/Installation_Main_table.tex}
-\input{manual_scripts/Installation_Upper_table.tex}
-
-\input{manual_scripts/SeaSurface_Main_table.tex}
-\input{manual_scripts/SeaSurface_Upper_table.tex}
-\input{manual_scripts/SeaSurface_Lower_table.tex}
-
-\input{manual_scripts/SeaSubsurface_Main_table.tex}
-\input{manual_scripts/SeaSubsurface_Upper_table.tex}
-\input{manual_scripts/SeaSubsurface_Lower_table.tex}
-
-\input{manual_scripts/Space_Main_table.tex}
-\input{manual_scripts/Space_Upper_table.tex}
-\input{manual_scripts/Space_Lower_table.tex}
-
-\input{manual_scripts/Activity_Main_table.tex}
-\input{manual_scripts/Activity_Upper_table.tex}
+%\input{manual_scripts/Air_Main_table.tex}
+%\input{manual_scripts/Air_Upper_table.tex}
+%\input{manual_scripts/Air_Lower_table.tex}
+%
+%\input{manual_scripts/Land_Main_table.tex}
+%\input{manual_scripts/Land_Upper_table.tex}
+%\input{manual_scripts/Land_Lower_table.tex}
+%
+%\input{manual_scripts/Missile_Left_table.tex}
+%\input{manual_scripts/Missile_Right_table.tex}
+%
+%\input{manual_scripts/Equipment_Main_table.tex}
+%\input{manual_scripts/Equipment_Mobility_table.tex}
+%
+%\input{manual_scripts/Installation_Main_table.tex}
+%\input{manual_scripts/Installation_Upper_table.tex}
+%
+%\input{manual_scripts/SeaSurface_Main_table.tex}
+%\input{manual_scripts/SeaSurface_Upper_table.tex}
+%\input{manual_scripts/SeaSurface_Lower_table.tex}
+%
+%\input{manual_scripts/SeaSubsurface_Main_table.tex}
+%\input{manual_scripts/SeaSubsurface_Upper_table.tex}
+%\input{manual_scripts/SeaSubsurface_Lower_table.tex}
+%
+%\input{manual_scripts/Space_Main_table.tex}
+%\input{manual_scripts/Space_Upper_table.tex}
+%\input{manual_scripts/Space_Lower_table.tex}
+%
+%\input{manual_scripts/Activity_Main_table.tex}
+%\input{manual_scripts/Activity_Upper_table.tex}
 
 \end{document}
