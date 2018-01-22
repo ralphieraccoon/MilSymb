@@ -1,18 +1,20 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes}
-%\usepackage{showframe}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec}
 \usepackage[a4paper, margin=1.75cm]{geometry}
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
 \usetikzlibrary{calc}
 \newcolumntype{n}{>{\raggedright\arraybackslash}m{5cm}}
 \newcolumntype{s}{>{\centering\arraybackslash}m{1.75cm}}
 \renewcommand\theadfont{\bfseries}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4} 
 \title{MilSymb}
 \author{Damian Crosby}
 \begin{document}
 \thispagestyle{empty}
-\centering
+\begin{center}
 \begin{tikzpicture}[remember picture]
 
 \coordinate (NE) at ($(current page text area.north east)-(1.5, 1.5)$);
@@ -21,9 +23,25 @@
 \coordinate (SW) at ($(current page text area.south west)-(-1.5, -1.5)$);
 
 \MilLand[faction=hostile, echelon=team, main=infantry, scale=2](NE)
-\MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=2](SW)
+\MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=2](NW)
+\MilSeaSurface[faction=neutral, main=hazardous material transport ship, lower=fast, scale=2](SE)
+\MilActivity[faction=unknown, main=searching, upper=house to house, scale=2](SW)
 
+\MilLand[faction=unknown, echelon=battalion, main=armoured, upper=missile, lower=long range, scale=2]($(NE)!0.33!(NW)$)
+\MilEquipment[faction=neutral, main=heavy machine gun, mobility=pack animal, scale=2]($(NE)!0.66!(NW)$)
 
+\MilSpace[faction=hostile, main=military earth observation satellite, upper=low earth orbit, lower=radar, scale=2]($(SE)!0.33!(SW)$)
+\MilInstallation[faction=friendly, main=electric power, upper=nuclear energy, scale=2]($(SE)!0.66!(SW)$)
+
+\MilSeaSubsurface[faction=friendly, main=snorkelling submarine, upper=auxiliary, lower=nuclear type 5, scale=2]($(NE)!0.2!(SE)$)
+\MilLand[faction=neutral, echelon=platoon, main=supply, supply={2}{4}, scale=2]($(NE)!0.4!(SE)$)
+\MilActivity[faction=hostile, main=attempted criminal activity, upper=rape, scale=2]($(NE)!0.6!(SE)$)
+\MilEquipment[faction=unknown, main=tank recovery vehicle, mobility=wheeled semi trailer, scale=2]($(NE)!0.8!(SE)$)
+
+\MilMissile[faction=hostile, left=sub surface, right=launched, scale=2]($(NW)!0.2!(SW)$)
+\MilInstallation[faction=unknown, main=civilian telecommunications, upper=television, scale=2]($(NW)!0.4!(SW)$)
+\MilSpace[faction=friendly, main=civilian space station, upper=geosynchronous orbit, scale=2]($(NW)!0.6!(SW)$)
+\MilLand[faction=neutral, echelon=corps, main=armoured, upper=missile, lower=long range, scale=2]($(NW)!0.8!(SW)$)
 
 \pgfresetboundingbox
 \path[use as bounding box] (0,0);
@@ -31,6 +49,171 @@
 \end{tikzpicture}
 
 {\let\newpage\relax\maketitle}
+\end{center}
+
+\clearpage
+
+\begin{versionhistory}
+\renewcommand \vhAuthorColWidth{6cm}
+\vhEntry{1.0}{22/01/2018}{Damian Crosby}{Creation}
+\end{versionhistory}
+
+\clearpage
+
+\section*{Acknowledgments}
+
+The author would particularly like to thank the following members of the \TeX\  stack exchange community for their solutions to problems during this package\rq{}s development:
+
+\begin{itemize}
+\item \href{https://tex.stackexchange.com/users/39222}{cfr}
+\item \href{https://tex.stackexchange.com/users/9335}{Kpym}
+\item \href{https://tex.stackexchange.com/users/586}{Torbj\o rn T.}
+\item \href{https://tex.stackexchange.com/users/2388}{Ulrike Fischer}
+\end{itemize}
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
+\section{Introduction}
+
+\subsection{Package Summary}
+
+\subsection{Package Dependencies}
+
+\subsection{Using \textbf{\texttt{MilSymb}}}
+
+\subsubsection{Package Options}
+
+\section{Commands}
+
+\subsection{General Structure}
+
+\subsection{Air Command (\textbf{\texttt{MilAir}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Upper}}
+
+\paragraph{\texttt{Lower}}
+
+\subsubsection{Additional Features}
+
+\paragraph{Speed Leader}
+
+\subsection{Missile Command (\textbf{\texttt{MilMissile}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Left}}
+
+\paragraph{\texttt{Right}}
+
+\subsubsection{Additional Features}
+
+\paragraph{Speed Leader}
+
+\subsection{Land Command (\textbf{\texttt{MilLand}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Upper}}
+
+\paragraph{\texttt{Lower}}
+
+\subsubsection{Text Fields}
+
+\subsubsection{Additional Features}
+
+\paragraph{Position and Movement}
+
+\paragraph{Echelon}
+
+\paragraph{Status}
+
+\paragraph{Headquarters}
+
+\paragraph{Grouping}
+
+\paragraph{Supply Class}
+
+\subsection{Equipment Command (\textbf{\texttt{MilEquipment}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Mobility}}
+
+\subsection{Installation Command (\textbf{\texttt{MilInstallation}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Upper}}
+
+\subsection{Sea Surface Command (\textbf{\texttt{MilSeaSurface}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Upper}}
+
+\paragraph{\texttt{Lower}}
+
+\subsubsection{Additional Features}
+
+\paragraph{Speed Leader}
+
+\subsection{Own Ship Command (\textbf{\texttt{OwnShip}})}
+
+\subsection{Sea Subsurface Command (\textbf{\texttt{MilSeaSubsurface}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Upper}}
+
+\paragraph{\texttt{Lower}}
+
+\subsubsection{Additional Features}
+
+\paragraph{Speed Leader}
+
+\subsection{Mine Command (\textbf{\texttt{MilMine}})}
+
+\subsection{Space Command (\textbf{\texttt{MilSpace}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Upper}}
+
+\paragraph{\texttt{Lower}}
+
+\subsubsection{Additional Features}
+
+\paragraph{Speed Leader}
+
+\subsection{Activity Command (\textbf{\texttt{MilActivity}})}
+
+\subsubsection{Symbol Tables}
+
+\paragraph{\texttt{Main}}
+
+\paragraph{\texttt{Upper}}
+
+\section{Examples}
 
 %\input{manual_scripts/Air_Main_table.tex}
 %\input{manual_scripts/Air_Upper_table.tex}
