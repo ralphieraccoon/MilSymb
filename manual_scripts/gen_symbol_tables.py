@@ -13,15 +13,15 @@ def maketable(x, y, z=1.25):
         if n == 'none':
             continue  # skip if a blank placeholder
         ro = n.title() + r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=none, ' + c + r'=' + n + r']}' \
+                         r'\Mil' + y + r'[faction=none, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=friendly, ' + c + r'=' + n + r']}' \
+                         r'\Mil' + y + r'[faction=friendly, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=hostile, ' + c + r'=' + n + r']}' \
+                         r'\Mil' + y + r'[faction=hostile, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=neutral, ' + c + r'=' + n + r']}' \
+                         r'\Mil' + y + r'[faction=neutral, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
-                         r'\NATO' + y + r'[faction=unknown, ' + c + r'=' + n + r']}' \
+                         r'\Mil' + y + r'[faction=unknown, ' + c + r'=' + n + r']}' \
                          r'&\\[' + str(z) + 'cm] \hline'
         l.append(ro)
     ta = '\\begin{tabularx}{\\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}\n\\hline\n \\thead{Name} & ' \
@@ -41,7 +41,7 @@ f.close()
 for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', 'SeaSubsurface', 'Space', 'Activity']:
     if i == 'Missile':
         t = re.search(
-            r'\\NewDocumentCommand\\NATOMissile{ o D\(\)\{0,0} d\(\) g}{'
+            r'\\NewDocumentCommand\\MilMissile{ o D\(\)\{0,0} d\(\) g}{'
             r'.*left/\.is choice,\n *?(.*?)^(?! *left)'
             r'.*right/\.is choice,\n *?(.*?)^(?! *right)',
             r, re.S | re.M)
@@ -49,7 +49,7 @@ for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', '
         maketable(t.group(2), i)  # right
     elif i == 'Equipment':
         t = re.search(
-            r'\\NewDocumentCommand\\NATOEquipment{ o D\(\)\{0,0} d\(\) g}{'
+            r'\\NewDocumentCommand\\MilEquipment{ o D\(\)\{0,0} d\(\) g}{'
             r'.*main/\.is choice,\n *?(.*?)^(?! *main)'
             r'.*mobility/\.is choice,\n *?(.*?)^(?! *mobility)',
             r, re.S | re.M)  # extract all main, mobility
@@ -57,14 +57,14 @@ for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', '
         maketable(t.group(2), i, 1.5)  # mobility
     elif i == 'Installation' or 'Activity':
         t = re.search(
-            r'\\NewDocumentCommand\\NATO' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
+            r'\\NewDocumentCommand\\Mil' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
             r'.*?upper/\.is choice,\n *(.*?)^(?! *upper)',
             r, re.S | re.M)  # extract all main, upper
         maketable(t.group(1), i)  # main
         maketable(t.group(2), i)  # upper
     else:
         t = re.search(
-            r'\\NewDocumentCommand\\NATO' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
+            r'\\NewDocumentCommand\\Mil' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'
             r'.*?upper/\.is choice,\n *(.*?)^(?! *upper)'
             r'.*?lower/\.is choice,\n *(.*?)^(?! *lower)',
             r, re.S | re.M)  # extract all main, upper, lower

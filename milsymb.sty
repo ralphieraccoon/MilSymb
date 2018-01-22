@@ -2104,6 +2104,7 @@ MilSymb main/textsmallsquashed/.pic={
 fill/.code={\colorlet{MilSymb@fill}{#1}},
 line/.store in=\MilSymb@line,
 shape/.store in=\MilSymb@shape,
+scale/.store in=\MilSymb@scale,
 symbC/.store in=\MilSymb@symbC,
 symbCT/.store in=\MilSymb@symbCT,
 symbU/.store in=\MilSymb@symbU,
@@ -2114,6 +2115,7 @@ monochrome/.style={/MilSymb/fill=white},
 unclear/.style={/MilSymb/line=densely dotted},
 fill=gray,
 line=solid,
+scale=1,
 }
 \newcommand*{\clipfriendly}{
    (-0.75, -0.5) rectangle (0.75, 0.5)
@@ -2243,7 +2245,7 @@ line=solid,
    lower=none,
    #1,
  }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
  \pic {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol
@@ -2299,7 +2301,7 @@ line=solid,
    right=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
@@ -2671,7 +2673,7 @@ line=solid,
    feint or dummy=false,
   #1,
 } %
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
 \pic {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol
@@ -2881,7 +2883,7 @@ line=solid,
    feint or dummy=false,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \begin{scope} [local bounding box=Q]
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
@@ -2993,7 +2995,7 @@ line=solid,
    speed=,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \fontsize{6}{0}\selectfont
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
@@ -3171,7 +3173,7 @@ line=solid,
    lower=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
  \pic {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol
@@ -3187,7 +3189,7 @@ line=solid,
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
 \NewDocumentCommand\OwnShip{D(){0,0} d() g}{
-\begin{scope}[shift={(#1)}, local bounding box=#2]
+\begin{scope}[shift={(#1)}, local bounding box=#2, scale=\MilSymb@scale, transform shape]
 \draw [ultra thick, friendlyA] (0, 0) circle (0.5);
 \draw [ultra thick, friendlyA] (0.5, 0) -- (-0.5, 0);
 \draw [ultra thick, friendlyA] (0, 0.5) -- (0, -0.5);
@@ -3286,7 +3288,7 @@ line=solid,
    lower=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
  \pic {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol
@@ -3337,7 +3339,7 @@ line=solid,
    neutralised=false,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
  \ifneutralised
@@ -3427,7 +3429,7 @@ line=solid,
    lower=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
  \pic {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol
@@ -3533,7 +3535,7 @@ line=solid,
    country indicator=,
   #1,
 } %
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
 \pic {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol

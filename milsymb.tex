@@ -1,26 +1,27 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
-\documentclass[a4paper, titlepage]{article}
+\documentclass[a4paper]{article}
 \usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes}
-\usepackage[a4paper, top=1.75cm, bottom=1.75cm, left=1.75cm, right=1.75cm, headsep=2cm]{geometry}
-\usetikzlibrary{backgrounds}
+\usepackage{showframe}
+\usepackage[a4paper, margin=1.75cm]{geometry}
+\usetikzlibrary{calc}
 \newcolumntype{n}{>{\raggedright\arraybackslash}m{5cm}}
 \newcolumntype{s}{>{\centering\arraybackslash}m{1.75cm}}
 \renewcommand\theadfont{\bfseries}
 \title{MilSymb}
 \author{Damian Crosby}
 \begin{document}
-
-\begin{tikzpicture}[remember picture] 
-\node at (current page.north east) {A};
-
+\centering
+\begin{tikzpicture}[remember picture, overlay]
+\node (SW) at (current page text area.north east) {A};
+\begin{scope}
+\MilAir[faction=friendly, main=military fixed wing, scale=2](SW)
+\end{scope}
 \end{tikzpicture}
-
-{\let\newpage\relax\maketitle}
 
 \clearpage
 
-%\input{manual_scripts/Air_Main_table.tex}
+\input{manual_scripts/Air_Main_table.tex}
 %\input{manual_scripts/Air_Upper_table.tex}
 %\input{manual_scripts/Air_Lower_table.tex}
 %
