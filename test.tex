@@ -1,17 +1,13 @@
-\documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb}
+\documentclass[a4paper]{article}
+\usepackage{tikz}
 \begin{document}
 
-\begin{tikzpicture}
+\begin{tikzpicture}[overlay]
 
-%\NATOEquipment[faction=friendly, main=rifle, mobility=railroad, quantity=2000, movement={1}{8,6}]
-%\fontfamily{phv}\fontseries{bx}\selectfont
-%\NATOMine[faction=hostile, mine=in other position, neutralised]
-
-\MilLand[faction=friendly, main=infantry, echelon=team, task force, scale=2](2, 2)
-
-
-
+\begin{scope} [local bounding box=M]
+\draw (0, 0) rectangle (1, 1);
+\end{scope}
+\node [anchor=east] at (M.north west) {A};
 \end{tikzpicture}
 
 \end{document}

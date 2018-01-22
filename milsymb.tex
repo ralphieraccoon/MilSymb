@@ -1,8 +1,8 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
-\documentclass[a4paper]{article}
+\documentclass[a4paper, titlepage]{article}
 \usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes}
-\usepackage{showframe}
+%\usepackage{showframe}
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usetikzlibrary{calc}
 \newcolumntype{n}{>{\raggedright\arraybackslash}m{5cm}}
@@ -11,17 +11,28 @@
 \title{MilSymb}
 \author{Damian Crosby}
 \begin{document}
+\thispagestyle{empty}
 \centering
-\begin{tikzpicture}[remember picture, overlay]
-\node (SW) at (current page text area.north east) {A};
-\begin{scope}
-\MilAir[faction=friendly, main=military fixed wing, scale=2](SW)
-\end{scope}
+\begin{tikzpicture}[remember picture]
+
+\coordinate (NE) at ($(current page text area.north east)-(1.5, 1.5)$);
+\coordinate (NW) at ($(current page text area.north west)-(-1.5, 1.5)$);
+\coordinate (SE) at ($(current page text area.south east)-(1.5, -1.5)$);
+\coordinate (SW) at ($(current page text area.south west)-(-1.5, -1.5)$);
+
+\MilLand[faction=hostile, echelon=team, main=infantry, scale=2](NE)
+\MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=2](SW)
+
+
+
+\pgfresetboundingbox
+\path[use as bounding box] (0,0);
+
 \end{tikzpicture}
 
-\clearpage
+{\let\newpage\relax\maketitle}
 
-\input{manual_scripts/Air_Main_table.tex}
+%\input{manual_scripts/Air_Main_table.tex}
 %\input{manual_scripts/Air_Upper_table.tex}
 %\input{manual_scripts/Air_Lower_table.tex}
 %
