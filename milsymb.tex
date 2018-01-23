@@ -84,21 +84,27 @@ The author would particularly like to thank the following members of the \TeX\  
 
 \subsection{Package Dependencies}
 
-The \MilSymb package uses the following \TeX\ packages as dependancies:
+The \MilSymb package uses the following packages as dependancies:
 
 \begin{itemize}
 \item \texttt{tikz}
+\item \texttt{fontenc}
+\item \texttt{fix-cm}
+\item \texttt{arevmath}
+\item \texttt{marvosym}
+\item \texttt{acronym}
+\item \texttt{amssymb}
+\item \texttt{xifthen}
+\item \texttt{xparse}
 \end{itemize}
 
 \subsection{Using \MilSymb}
 
-To use \MilSymb in your document, just include \texttt{\textbackslash usepackage\{milsymb\}} or {} in your preamble, depending on your \TeX\  compiler. All \MilSymb symbols must be placed inside a TikZ environment, either as part of an inline \texttt{tikz} command or an \texttt{tikzpicture} enviroment. 
+To use \MilSymb in your document, just include \texttt{\textbackslash usepackage\{milsymb\}} in your preamble. \MilSymb has only been tested on \LaTeX, other \TeX\  flavours will probably not work. All \MilSymb symbols must be placed inside a TikZ environment, either as part of an inline \texttt{tikz} command or an \texttt{tikzpicture} enviroment. 
 
 \subsubsection{Package Options}
 
 \section{Symbol Commands}
-
-
 
 \subsection{General Command Structure}
 
