@@ -107,8 +107,9 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \texttt{\textbackslash command[key, key=value]\textit{(location)(name)\{label\}}}
 
 \begin{itemize}
-\item \texttt{command} is the name of the command. All are prefixed with \texttt{Mil}-, and end with \texttt{Air}, \texttt{Missile}, \texttt{Land}, \texttt{Equipment}, \texttt{Installation}, \texttt{SeaSurface}, \texttt{SeaSubsurface}, \texttt{Mine}, \texttt{Space}, \texttt{Debris} and\\ \texttt{Activity}. These mostly correspond to the categories found in \href{https://www.awl.edu.pl/images/en/APP_6_C.pdf}{APP6-(C)}, except for \texttt{Missile}, \texttt{Mine} and \texttt{Debris}, which have been broken off from \texttt{Air}, \texttt{SeaSubsurface} and \texttt{Space} for convenience.
-\item \texttt{key} and \texttt{key=value} are the options used to build the symbol, such as faction, main/upper/lower glyphs and additional text fields. Keys with no value define boolean options, such as \texttt{unclear} which gives the symbol a dashed border. Keys with values can have one parameter, such as \texttt{faction}, or two parameters, such as \texttt{speed leader}. In the latter case, the syntax is \texttt{key=\{value1\}\{value2\}}.
+\item \texttt{command} is the name of the command. All are prefixed with \texttt{Mil}-, and end with \texttt{Air}, \texttt{Missile}, \texttt{Land}, \texttt{Equipment}, \texttt{Installation}, \texttt{SeaSurface}, \texttt{SeaSubsurface}, \texttt{Mine}, \texttt{Space}, \texttt{Debris} and\\ \texttt{Activity}. These mostly correspond to the categories found in \href{https://www.awl.edu.pl/images/en/APP_6_C.pdf}{APP6-(C)}, except for \texttt{Missile}, \texttt{Mine} and \texttt{Debris}, which have been broken off from \texttt{Air}, \texttt{SeaSubsurface} and \texttt{Space} for convenience. The \texttt{OwnShip} command is an exception to this rule, and does not have the \texttt{Mil}- prefix.
+
+\item \texttt{key} and \texttt{key=value} are the options used to build the symbol, such as faction, main/upper/lower glyphs and additional text fields. Keys with no value define boolean switches, such as \texttt{unclear}. Keys with values can have one parameter, such as \texttt{faction}, or two parameters, such as \texttt{speed leader}. In the latter case, the syntax is \texttt{key=\{value1\}\{value2\}}.
 \item \texttt{location} is an optional coordinate or coordinate reference to place the symbol. This is generally needed when placing multiple symbols in one \texttt{tikzpicture}.
 \item \texttt{name} is an optional reference label that acts just like the \texttt{name} property of a node in TikZ. It exposes standard rectangle node anchors such as \texttt{north} and \texttt{south}, allowing connectors to be drawn between symbols. This is useful when drawing organisation charts and similar (see Example \ref{}).
 \item \texttt{label} is an optional text label that is added to the right of the symbol.
@@ -121,10 +122,13 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/Air_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
+%\input{manual_scripts/Air_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}
+%\input{manual_scripts/Air_Lower_table.tex}
 
 \subsubsection{Additional Features}
 
@@ -135,8 +139,10 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Left}}
+%\input{manual_scripts/Missile_Left_table.tex}
 
 \paragraph{\texttt{Right}}
+%\input{manual_scripts/Missile_Right_table.tex}
 
 \subsubsection{Additional Features}
 
@@ -147,10 +153,13 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/Land_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
+%\input{manual_scripts/Land_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}
+%\input{manual_scripts/Land_Lower_table.tex}
 
 \subsubsection{Text Fields}
 
@@ -173,26 +182,33 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/Equipment_Main_table.tex}
 
 \paragraph{\texttt{Mobility}}
+%\input{manual_scripts/Equipment_Mobility_table.tex}
 
 \subsection{Installation Command (\textbf{\texttt{MilInstallation}})}
 
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/Installation_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
+%\input{manual_scripts/Installation_Upper_table.tex}
 
 \subsection{Sea Surface Command (\textbf{\texttt{MilSeaSurface}})}
 
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/SeaSurface_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
+%\input{manual_scripts/SeaSurface_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}
+%\input{manual_scripts/SeaSurface_Lower_table.tex}
 
 \subsubsection{Additional Features}
 
@@ -205,10 +221,13 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/SeaSubsurface_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
+%\input{manual_scripts/SeaSubsurface_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}
+%\input{manual_scripts/SeaSubsurface_Lower_table.tex}
 
 \subsubsection{Additional Features}
 
@@ -221,10 +240,13 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/Space_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
+%\input{manual_scripts/Space_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}
+%\input{manual_scripts/Space_Lower_table.tex}
 
 \subsubsection{Additional Features}
 
@@ -237,45 +259,15 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
+%\input{manual_scripts/Activity_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
+%\input{manual_scripts/Activity_Upper_table.tex}
 
 \section{Examples}
 
 \section{Control Measures}
 
 Control Measures are planned to be included in the next major version of \textbf{\texttt{MilSymb}}. Please see the \href{https://github.com/ralphieraccoon/MilSymb}{GitHub} repository for further information.
-
-%\input{manual_scripts/Air_Main_table.tex}
-%\input{manual_scripts/Air_Upper_table.tex}
-%\input{manual_scripts/Air_Lower_table.tex}
-%
-%\input{manual_scripts/Land_Main_table.tex}
-%\input{manual_scripts/Land_Upper_table.tex}
-%\input{manual_scripts/Land_Lower_table.tex}
-%
-%\input{manual_scripts/Missile_Left_table.tex}
-%\input{manual_scripts/Missile_Right_table.tex}
-%
-%\input{manual_scripts/Equipment_Main_table.tex}
-%\input{manual_scripts/Equipment_Mobility_table.tex}
-%
-%\input{manual_scripts/Installation_Main_table.tex}
-%\input{manual_scripts/Installation_Upper_table.tex}
-%
-%\input{manual_scripts/SeaSurface_Main_table.tex}
-%\input{manual_scripts/SeaSurface_Upper_table.tex}
-%\input{manual_scripts/SeaSurface_Lower_table.tex}
-%
-%\input{manual_scripts/SeaSubsurface_Main_table.tex}
-%\input{manual_scripts/SeaSubsurface_Upper_table.tex}
-%\input{manual_scripts/SeaSubsurface_Lower_table.tex}
-%
-%\input{manual_scripts/Space_Main_table.tex}
-%\input{manual_scripts/Space_Upper_table.tex}
-%\input{manual_scripts/Space_Lower_table.tex}
-%
-%\input{manual_scripts/Activity_Main_table.tex}
-%\input{manual_scripts/Activity_Upper_table.tex}
 
 \end{document}
