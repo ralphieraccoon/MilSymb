@@ -1,7 +1,7 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float}
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
 \usetikzlibrary{calc}
@@ -117,7 +117,7 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \begin{itemize}
 \item \texttt{command} is the name of the command. All are prefixed with \texttt{Mil}-, and end with \texttt{Air}, \texttt{Missile}, \texttt{Land}, \texttt{Equipment}, \texttt{Installation}, \texttt{SeaSurface}, \texttt{SeaSubsurface}, \texttt{Mine}, \texttt{Space}, \texttt{Debris} and\\ \texttt{Activity}. These mostly correspond to the categories found in \href{https://www.awl.edu.pl/images/en/APP_6_C.pdf}{APP6-(C)}, except for \texttt{Missile}, \texttt{Mine} and \texttt{Debris}, which have been broken off from \texttt{Air}, \texttt{SeaSubsurface} and \texttt{Space} for convenience. The \texttt{OwnShip} command is an exception to this rule, and does not have the \texttt{Mil}- prefix.
 
-\item \texttt{key} and \texttt{key=value} are the options used to build the symbol, such as faction, main/upper/lower glyphs and additional text fields. Keys with no value define boolean switches, such as \texttt{unclear}. Keys with values can have one parameter, such as \texttt{faction}, or two parameters, such as \texttt{speed leader}. In the latter case, the syntax is \texttt{key=\{value1\}\{value2\}}.
+\item \texttt{key} and \texttt{key=value} are the options used to build the symbol, such as faction, icons, modifiers, and amplifiers. Keys with no value define boolean switches, such as \texttt{unclear}. Keys with values can have one parameter, such as \texttt{faction}, or two parameters, such as \texttt{speed leader}. In the latter case, the syntax is \texttt{key=\{value1\}\{value2\}}.
 \item \texttt{location} is an optional coordinate or coordinate reference to place the symbol. This is generally needed when placing multiple symbols in one \texttt{tikzpicture}.
 \item \texttt{name} is an optional reference label that acts just like the \texttt{name} property of a node in TikZ. It exposes standard rectangle node anchors such as \texttt{north} and \texttt{south}, allowing connectors to be drawn between symbols. This is useful when drawing organisation charts and similar (see Example \ref{}).
 \item \texttt{label} is an optional text label that is added to the right of the symbol.
@@ -125,7 +125,54 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 
 \subsubsection{Shared Keys}
 
-\paragraph{\texttt{unclear}}
+\paragraph{\texttt{faction}}
+
+\paragraph{\texttt{main}}
+
+\paragraph{\texttt{upper}}
+
+\paragraph{\texttt{lower}}
+
+\paragraph{\texttt{frame status}}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, frame status=normal, scale=2] & \MilLand[faction=friendly, main=signal radio teletype centre, frame status=uncertain, scale=2] & \MilLand[faction=friendly, main=signal radio teletype centre, frame status=anticipated, scale=2]\\
+\node{\texttt{frame status=normal}}; & \node{\texttt{frame status=unclear}}; & \node{\texttt{frame status=anticipated}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{frame status} key in use.}
+\end{figure}
+
+\paragraph{\texttt{monochrome}}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=2] & \MilLand[faction=friendly, main=signal radio teletype centre, monochrome, scale=2]\\
+\node{normal}; & \node{\texttt{monochrome}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{monochrome} key in use.}
+\end{figure}
+
+\paragraph{\texttt{scale}}
+
+This allows you to scale the resulting symbol by a multiple. By default (\texttt{scale=1}) the boundary octagon is precisely 1cm in diameter.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=0.5] & \MilLand[faction=friendly, main=signal radio teletype centre, scale=1] & \MilLand[faction=friendly,  main=signal radio teletype centre, scale=2]\\
+\node{\texttt{scale=0.5}}; & \node{\texttt{scale=1}}; & \node{\texttt{scale=2}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{scale} key in use.}
+\end{figure}
 
 This is a boolean switch that 
 
@@ -162,7 +209,7 @@ This is a boolean switch that
 
 \subsection{Land Command (\textbf{\texttt{MilLand}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}
 %\input{manual_scripts/Land_Main_table.tex}
@@ -173,9 +220,7 @@ This is a boolean switch that
 \paragraph{\texttt{Lower}}
 %\input{manual_scripts/Land_Lower_table.tex}
 
-\subsubsection{Text Fields}
-
-\subsubsection{Additional Features}
+\subsection{Amplifiers}
 
 \paragraph{Position and Movement}
 
@@ -189,9 +234,11 @@ This is a boolean switch that
 
 \paragraph{Supply Class}
 
+\paragraph{Text Fields}
+
 \subsection{Equipment Command (\textbf{\texttt{MilEquipment}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}
 %\input{manual_scripts/Equipment_Main_table.tex}
@@ -201,7 +248,7 @@ This is a boolean switch that
 
 \subsection{Installation Command (\textbf{\texttt{MilInstallation}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}
 %\input{manual_scripts/Installation_Main_table.tex}
@@ -211,7 +258,7 @@ This is a boolean switch that
 
 \subsection{Sea Surface Command (\textbf{\texttt{MilSeaSurface}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}
 %\input{manual_scripts/SeaSurface_Main_table.tex}
@@ -230,7 +277,7 @@ This is a boolean switch that
 
 \subsection{Sea Subsurface Command (\textbf{\texttt{MilSeaSubsurface}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}
 %\input{manual_scripts/SeaSubsurface_Main_table.tex}
@@ -249,7 +296,7 @@ This is a boolean switch that
 
 \subsection{Space Command (\textbf{\texttt{MilSpace}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}
 %\input{manual_scripts/Space_Main_table.tex}
