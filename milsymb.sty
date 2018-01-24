@@ -2099,6 +2099,7 @@ MilSymb main/textsmallsquashed/.pic={
 \fontsize{6}{0}\selectfont
 \node [xscale=0.7] {#1};},
 %% BOILERPLATE %%
+uncertainline/.style={postaction={draw=black,line cap=round, dash pattern= on 0pt off 0.5pt,dash phase=0pt}, draw=white,line cap=round,dash pattern= on 0pt off 0.5pt,dash phase=0.75pt},
 /MilSymb/.search also={/tikz},
 /MilSymb/.cd,
 fill/.code={\colorlet{MilSymb@fill}{#1}},
@@ -2112,9 +2113,13 @@ symbUT/.store in=\MilSymb@symbUT,
 symbL/.store in=\MilSymb@symbL,
 symbLT/.store in=\MilSymb@symbLT,
 monochrome/.style={/MilSymb/fill=white},
-unclear/.style={/MilSymb/line=densely dotted},
+frame status/.is choice,
+frame status/normal/.style={/MilSymb/line=solid},
+frame status/anticipated/.style={/MilSymb/line=densely dashed},
+frame status/uncertain/.style={/MilSymb/line=uncertainline},
 fill=gray,
-line=solid,
+frame status=normal,
+%line=solid,
 scale=1,
 }
 \newcommand*{\clipfriendly}{

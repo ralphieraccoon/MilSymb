@@ -1,13 +1,16 @@
-\documentclass[a4paper]{article}
-\usepackage{tikz}
+\documentclass[tikz]{standalone}
 \begin{document}
 
-\begin{tikzpicture}[overlay]
+\begin{tikzpicture}
 
-\begin{scope} [local bounding box=M]
-\draw (0, 0) rectangle (1, 1);
-\end{scope}
-\node [anchor=east] at (M.north west) {A};
+%\draw (0,0) -- (1,1);
+
+%\draw[] (0,0) -- (1,1); 
+
+\draw [fill=white, postaction={draw,black,line cap=round, dash pattern= on 0pt off 0.5pt,dash phase=0pt}, white,line cap=round,dash pattern= on 0pt off 0.5pt,dash phase=0.75pt] (-0.555, -0.5) arc (180:0:0.555 and 1.37);
+
+%\draw[densely dotted] (2,2) -- (3,3); 
+
 \end{tikzpicture}
 
 \end{document}
