@@ -13,6 +13,11 @@
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
 \definecolor{unknownA}{RGB}{255, 255, 128}
+\definecolor{friendlyB}{RGB}{0, 255, 255}
+\definecolor{hostileB}{RGB}{255, 0, 0}
+\definecolor{neutralB}{RGB}{0, 255, 0}
+\definecolor{unknownB}{RGB}{255, 255, 0}
+\definecolor{offwhite}{RGB}{239, 239, 239}
 \definecolor{lightgray}{gray}{0.75}
 \usetikzlibrary{arrows.meta, shapes.geometric, shapes.symbols, positioning, calc}
 \tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
@@ -1473,12 +1478,16 @@ MilSymb seasubsurface/main/civilian seabed installation/.pic={
 },
 % MINES %
 MilSymb seasubsurface/mine/sea mine/.pic={
-\fill (0, -0.05) circle(0.25);
-\fill (0.05, 0) rectangle (-0.05, 0.25);
-\scoped [shift={(150:0.1)}, rotate=45] {\fill (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
-\scoped [shift={(30:0.1)}, rotate=315] {\fill (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
+\fill[fill=MilSymb@iconcolour] (0, -0.05) circle(0.25);
+\fill[fill=MilSymb@iconcolour] (0.05, 0) rectangle (-0.05, 0.25);
+\scoped [shift={(150:0.1)}, rotate=45] {\fill[fill=MilSymb@iconcolour] (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
+\scoped [shift={(30:0.1)}, rotate=315] {\fill[fill=MilSymb@iconcolour] (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
 },
 MilSymb seasubsurface/mine/sea mine-neutralised/.pic={
+\path (0, -0.05) circle(0.25);
+\path (0.05, 0) rectangle (-0.05, 0.25);
+\scoped [shift={(150:0.1)}, rotate=45] {\path (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
+\scoped [shift={(30:0.1)}, rotate=315] {\path (0.075, 0) -- (0.02, 0.25) -- (-0.02, 0.25) -- (-0.075, 0) -- cycle;}
 \begin{scope} [even odd rule]
 \clip [shift={(150:0.1)}, rotate=45] (0.015, 0.26) rectangle (-0.015, -0.39) [reverseclip];
 \clip [shift={(30:0.1)}, rotate=315] (0.015, 0.26) rectangle (-0.015, -0.39) [reverseclip];
@@ -1487,49 +1496,49 @@ MilSymb seasubsurface/mine/sea mine-neutralised/.pic={
 },
 MilSymb seasubsurface/mine/bottomed sea mine/.pic={
 \pic [yshift=1.5] {MilSymb seasubsurface/mine/sea mine};
-\fill (0.25, -0.225) rectangle (-0.25, -0.3);
+\fill[fill=MilSymb@iconcolour] (0.25, -0.225) rectangle (-0.25, -0.3);
 },
 MilSymb seasubsurface/mine/bottomed sea mine-neutralised/.pic={
 \pic [yshift=1.5] {MilSymb seasubsurface/mine/sea mine-neutralised};
-\fill (0.25, -0.225) rectangle (-0.25, -0.3);
+\fill[fill=MilSymb@iconcolour] (0.25, -0.225) rectangle (-0.25, -0.3);
 },
 MilSymb seasubsurface/mine/moored sea mine/.pic={
 \pic [yshift=2.5] {MilSymb seasubsurface/mine/sea mine};
-\draw [thick] (0, -0.2) -- (0, -0.35);
-\draw [thick] (0.175, -0.35) -- (-0.175, -0.35);
+\draw [thick, MilSymb@iconcolour] (0, -0.2) -- (0, -0.35);
+\draw [thick, MilSymb@iconcolour] (0.175, -0.35) -- (-0.175, -0.35);
 },
 MilSymb seasubsurface/mine/moored sea mine-neutralised/.pic={
 \pic [yshift=2.5] {MilSymb seasubsurface/mine/sea mine-neutralised};
-\draw [thick] (0, -0.2) -- (0, -0.35);
-\draw [thick] (0.175, -0.35) -- (-0.175, -0.35);
+\draw [thick, MilSymb@iconcolour] (0, -0.2) -- (0, -0.35);
+\draw [thick, MilSymb@iconcolour] (0.175, -0.35) -- (-0.175, -0.35);
 },
 MilSymb seasubsurface/mine/floating sea mine/.pic={
 \pic [yshift=2.5] {MilSymb seasubsurface/mine/sea mine};
-\draw [thick] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
+\draw [thick, MilSymb@iconcolour] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
 },
 MilSymb seasubsurface/mine/floating sea mine-neutralised/.pic={
 \pic [yshift=2.5] {MilSymb seasubsurface/mine/sea mine-neutralised};
-\draw [thick] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
+\draw [thick, MilSymb@iconcolour] (-0.3, -0.3) -- (-0.25, -0.215) -- (-0.2, -0.3) -- (-0.15, -0.215) -- (-0.1, -0.3) -- (-0.05, -0.215) -- (0, -0.3) -- (0.05, -0.215) -- (0.1, -0.3) -- (0.15, -0.215) -- (0.2, -0.3) -- (0.25, -0.215) -- (0.3, -0.3);
 },
 MilSymb seasubsurface/mine/sea mine in other position/.pic={
 \pic {MilSymb seasubsurface/mine/sea mine};
-\draw [thick] (0.3, -0.05) -- (0.2, -0.05);
-\draw [thick] (-0.3, -0.05) -- (-0.2, -0.05);
+\draw [thick, MilSymb@iconcolour] (0.3, -0.05) -- (0.2, -0.05);
+\draw [thick, MilSymb@iconcolour] (-0.3, -0.05) -- (-0.2, -0.05);
 },
 MilSymb seasubsurface/mine/sea mine in other position-neutralised/.pic={
 \pic {MilSymb seasubsurface/mine/sea mine-neutralised};
-\draw [thick] (0.3, -0.05) -- (0.2, -0.05);
-\draw [thick] (-0.3, -0.05) -- (-0.2, -0.05);
+\draw [thick, MilSymb@iconcolour] (0.3, -0.05) -- (0.2, -0.05);
+\draw [thick, MilSymb@iconcolour] (-0.3, -0.05) -- (-0.2, -0.05);
 },
 MilSymb seasubsurface/mine/rising sea mine/.pic={
 \pic [yshift=3.5] {MilSymb seasubsurface/mine/sea mine};
-\draw [thick] (0, -0.15) -- (0, -0.35);
-\fill (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
+\draw [thick, MilSymb@iconcolour] (0, -0.15) -- (0, -0.35);
+\fill[fill=MilSymb@iconcolour] (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
 },
 MilSymb seasubsurface/mine/rising sea mine-neutralised/.pic={
 \pic [yshift=3.5] {MilSymb seasubsurface/mine/sea mine-neutralised};
-\draw [thick] (0, -0.15) -- (0, -0.35);
-\fill (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
+\draw [thick, MilSymb@iconcolour] (0, -0.15) -- (0, -0.35);
+\fill[fill=MilSymb@iconcolour] (0.065, -0.425) -- (-0.065, -0.425) -- (0, -0.225);
 },
 MilSymb seasubsurface/mine/unexploded ordanance/.pic={
 \fill (0, 0) circle(0.25);
@@ -2112,14 +2121,13 @@ symbU/.store in=\MilSymb@symbU,
 symbUT/.store in=\MilSymb@symbUT,
 symbL/.store in=\MilSymb@symbL,
 symbLT/.store in=\MilSymb@symbLT,
-monochrome/.style={/MilSymb/fill=white},
+monochrome/.style={/MilSymb/fill=offwhite},
 frame status/.is choice,
 frame status/normal/.style={/MilSymb/line=solid},
-frame status/anticipated/.style={/MilSymb/line=densely dashed},
+frame status/anticipated/.style={/MilSymb/line=dashed},
 frame status/uncertain/.style={/MilSymb/line=uncertainline},
 fill=gray,
 frame status=normal,
-%line=solid,
 scale=1,
 }
 \newcommand*{\clipfriendly}{
@@ -2740,15 +2748,16 @@ scale=1,
 \draw ([shift={(5pt,3pt)}]G.north west) -| ([shift={(-3pt,-3pt)}]G.south west) -- ++(8pt,0)
  (G.west) -- ++(-5pt,0);
 \end{scope}}
+\newif\ifnoframe
 \NewDocumentCommand\MilEquipment{ o D(){0,0} d() g}{
 \tikzset{%
    /MilSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/MilSymb/.cd, shape=equipment/none, fill=white},
-   faction/friendly/.style={/MilSymb/.cd, shape=equipment/friendly, fill=friendlyA},
-   faction/hostile/.style={/MilSymb/.cd, shape=equipment/hostile, fill=hostileA},
-   faction/neutral/.style={/MilSymb/.cd, shape=equipment/neutral, fill=neutralA},
-   faction/unknown/.style={/MilSymb/.cd, shape=equipment/unknown, fill=unknownA},
+   faction/none/.style={/MilSymb/.cd, shape=equipment/none, fill=white, iconcolour=black},
+   faction/friendly/.style={/MilSymb/.cd, shape=equipment/friendly, fill=friendlyA, iconcolour=friendlyB},
+   faction/hostile/.style={/MilSymb/.cd, shape=equipment/hostile, fill=hostileA, iconcolour=hostileB},
+   faction/neutral/.style={/MilSymb/.cd, shape=equipment/neutral, fill=neutralA, iconcolour=neutralB},
+   faction/unknown/.style={/MilSymb/.cd, shape=equipment/unknown, fill=unknownA, iconcolour=unknownB},
    main/.is choice,
    main/none/.style={/MilSymb/.cd, symbC=main/textsmall, symbCT=}, 
    main/rifle/.style= {/MilSymb/.cd, symbC=equipment/main/rifle},
@@ -2844,7 +2853,9 @@ scale=1,
    offset/.value required,
    movement/.code 2 args={\begin{scope}[shift={(#2)}]\draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +(##2);\end{scope}},
    movement/.value required,
+   no frame/.is if=noframe,
    feint or dummy/.is if=feintdummy,
+   iconcolour/.code={\colorlet{MilSymb@iconcolour}{##1}},
    quantity/.store in=\MilSymb@symbQ,
    staff comments/.store in=\MilSymb@symbG,
    additional information/.store in=\MilSymb@symbH,
@@ -2886,14 +2897,23 @@ scale=1,
    common identifier=,
    speed=,
    feint or dummy=false,
+   no frame=false,
    #1,
 }%
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \begin{scope} [local bounding box=Q]
+\ifnoframe
+\tikzset{every path/.style={MilSymb@iconcolour}}
+\pic [local bounding box=M] {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol
+\ifthenelse{\isequivalentto{\MilSymb@symbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@symbL};} %Draw mobility
+\tikzset{every path/.style={black}}
+\else
+\tikzset{/MilSymb/.cd, iconcolour=black}
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
 \pic {MilSymb \MilSymb@symbC={\MilSymb@symbCT}}; %Draw main symbol
 \ifthenelse{\isequivalentto{\MilSymb@symbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@symbL};} %Draw mobility
+\fi
 \end{scope}
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
@@ -3313,12 +3333,11 @@ scale=1,
 \tikzset{%
    /MilSymb/.cd,
    faction/.is choice,
-   faction/none/.style={/MilSymb/.cd, shape=seasubsurface/none, fill=white},
-   faction/noframe/.style={/MilSymb/.cd, shape=main/text, fill=transparent},
-   faction/friendly/.style={/MilSymb/.cd, shape=seasubsurface/friendly, fill=friendlyA},
-   faction/hostile/.style={/MilSymb/.cd, shape=seasubsurface/hostile, fill=hostileA},
-   faction/neutral/.style={/MilSymb/.cd, shape=seasubsurface/neutral, fill=neutralA},
-   faction/unknown/.style={/MilSymb/.cd, shape=seasubsurface/unknown, fill=unknownA},
+   faction/none/.style={/MilSymb/.cd, shape=seasubsurface/none, fill=white, iconcolour=black},
+   faction/friendly/.style={/MilSymb/.cd, shape=seasubsurface/friendly, fill=friendlyA, iconcolour=friendlyB},
+   faction/hostile/.style={/MilSymb/.cd, shape=seasubsurface/hostile, fill=hostileA, iconcolour=hostileB},
+   faction/neutral/.style={/MilSymb/.cd, shape=seasubsurface/neutral, fill=neutralA, iconcolour=unknownB},
+   faction/unknown/.style={/MilSymb/.cd, shape=seasubsurface/unknown, fill=unknownA, iconcolour=unknownB},
    mine/.is choice,
    mine/normal/.style={/MilSymb/.cd, symbC=seasubsurface/mine/sea mine},
    mine/bottomed/.style={/MilSymb/.cd, symbC=seasubsurface/mine/bottomed sea mine},
@@ -3327,6 +3346,8 @@ scale=1,
    mine/in other position/.style={/MilSymb/.cd, symbC=seasubsurface/mine/sea mine in other position},
    mine/rising/.style={/MilSymb/.cd, symbC=seasubsurface/mine/rising sea mine},
    neutralised/.is if=neutralised,
+   no frame/.is if=noframe,
+   iconcolour/.code={\colorlet{MilSymb@iconcolour}{##1}},
    track number/.store in=\MilSymb@symbA,
    name/.store in=\MilSymb@symbB,
    position and movement/.store in=\MilSymb@symbD,
@@ -3346,7 +3367,11 @@ scale=1,
 }%
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
- \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+ \ifnoframe
+ \else
+ \tikzset{/MilSymb/.cd, iconcolour=black}
+ \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape 
+ \fi
  \ifneutralised
  \pic {MilSymb \MilSymb@symbC-neutralised}; %Draw neutralised mine
  \else

@@ -1,15 +1,14 @@
 \documentclass[tikz]{standalone}
+\usepackage{milsymb}
 \begin{document}
 
 \begin{tikzpicture}
 
-%\draw (0,0) -- (1,1);
+\MilMine[faction=friendly, mine=bottomed, neutralised, no frame]
 
-%\draw[] (0,0) -- (1,1); 
+%\MilEquipment[faction=friendly, main=armoured personnel carrier, mobility=amphibious](1,1)
 
-\draw [fill=white, postaction={draw,black,line cap=round, dash pattern= on 0pt off 0.5pt,dash phase=0pt}, white,line cap=round,dash pattern= on 0pt off 0.5pt,dash phase=0.75pt] (-0.555, -0.5) arc (180:0:0.555 and 1.37);
-
-%\draw[densely dotted] (2,2) -- (3,3); 
+\MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=2](2, 2)
 
 \end{tikzpicture}
 
