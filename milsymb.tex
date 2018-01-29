@@ -1,7 +1,7 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array}
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
 \usetikzlibrary{calc}
@@ -9,8 +9,12 @@
 \newcolumntype{s}{>{\centering\arraybackslash}m{1.75cm}}
 \newcommand\MilSymb{\textbf{\texttt{MilSymb}} }
 \renewcommand\theadfont{\bfseries}
+\newenvironment{writett}{\ttfamily}{\par}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4} 
+\setlength{\cftsubsecnumwidth}{3em}
+\setlength{\cftsubsubsecnumwidth}{4em}
+\setlength{\cftparanumwidth}{5em}
 \title{MilSymb}
 \author{Damian Crosby}
 \begin{document}
@@ -127,6 +131,29 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 
 \paragraph{\texttt{faction}}
 
+\begin{table}[H]
+\begin{tabular}{|c|s|s|s|s|@{}m{0pt}@{}}
+\hline
+\multirow{4}{*}{\thead{Command}} & \multicolumn{4}{c|}{\thead{Faction Frame}} \\ \cline{2-5}
+& \thead{Friendly} & \thead{Hostile} & \thead{Neutral} & \thead{Unknown}&\\
+\hline
+\texttt{MilAir} + \texttt{MilMissile} & \tikz[baseline=-0.5ex]{\MilAir[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilAir[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilAir[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilAir[faction=unknown]}&\\
+[1.25cm]\hline
+\texttt{MilLand} & \tikz[baseline=-0.5ex]{\MilLand[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilLand[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilLand[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilEquipment}* + \texttt{MilSeaSurface} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilInstallation} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilSeaSubsurface} + \texttt{MilMine}* & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilSpace} & \tikz[baseline=-0.5ex]{\MilSpace[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilActivity} & \tikz[baseline=-0.5ex]{\MilActivity[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=unknown]}&\\
+[1.25cm] \hline
+\end{tabular}
+\end{table}
+
 \paragraph{\texttt{main}}
 
 \paragraph{\texttt{upper}}
@@ -174,14 +201,12 @@ This allows you to scale the resulting symbol by a multiple. By default (\texttt
 \caption{Example of the \texttt{scale} key in use.}
 \end{figure}
 
-This is a boolean switch that 
-
 \subsection{Air Command (\textbf{\texttt{MilAir}})}
 
 \subsubsection{Symbol Tables}
 
 \paragraph{\texttt{Main}}
-%\input{manual_scripts/Air_Main_table.tex}
+\input{manual_scripts/Air_Main_table.tex}
 
 \paragraph{\texttt{Upper}}
 %\input{manual_scripts/Air_Upper_table.tex}
@@ -323,7 +348,115 @@ This is a boolean switch that
 \paragraph{\texttt{Upper}}
 %\input{manual_scripts/Activity_Upper_table.tex}
 
-\section{Examples}
+\section{Custom Icons and Modifiers}
+
+\subsection{\MilSymb TikZ Picture Directory Structure}
+
+\begin{figure}[H]
+\begin{forest}
+  for tree={
+    font=\ttfamily\footnotesize,
+    grow'=0,
+    child anchor=west,
+    parent anchor=south,
+    inner sep=0pt,
+    anchor=west,
+    calign=first,
+    edge path={
+      \noexpand\path [draw, \forestoption{edge}]
+      (!u.south west) +(7.5pt,0) |- node[] {} (.child anchor)\forestoption{edge label};
+    },
+    before typesetting nodes={
+      if n=1
+        {insert before={[,phantom]}}
+        {}
+    },
+    fit=band,
+    before computing xy={l=15pt},
+  }
+[MilSymb
+  [text
+    [normal]
+    [squashed]
+    [small]
+    [smallsquashed]
+  ]
+  [air
+    [main\ldots]
+    [upper\ldots]
+    [lower\ldots]
+  ]
+   [land
+    [main\ldots]
+    [upper\ldots]
+    [lower\ldots]
+  ]
+  [equipment
+    [main\ldots]
+    [mobility\ldots]
+  ]
+  [installation
+    [main\ldots]
+    [upper\ldots]
+  ]
+  [seasurface
+    [main\ldots]
+    [upper\ldots]
+    [lower\ldots]
+  ]
+  [seasubsurface
+    [main\ldots]
+    [upper\ldots]
+    [lower\ldots]
+    [mine\ldots]
+  ]
+  [space
+    [main\ldots]
+    [upper\ldots]
+    [lower\ldots]
+  ]
+  [activity
+    [main\ldots]
+    [upper\ldots]
+  ]
+    [multi
+    [main\ldots]
+    [upper\ldots]
+    [lower\ldots]
+    [upperlower\ldots]
+  ]
+  [supply\ldots]
+  [custom\ldots]
+]
+\end{forest}
+
+\end{figure}
+
+To add a custom icon or modifier, create a TikZ \texttt{.pic} in the \texttt{custom} directory using \texttt{tikzset}:
+
+\begin{writett}
+\begin{verbatim}
+\tikzset{
+MilSymb custom/user icon/.pic={
+  custom TikZ drawing commands go here...
+} %comma after bracket is needed if defining multiple .pic.
+}
+\begin{tikzpicture}
+  \MilLand[faction=hostile, main=user icon]
+\end{tikzpicture}
+\end{verbatim}
+\end{writett}
+
+You can also create your own subdirectories, such as \texttt{custom/land/main/user icon}. This is recommended if you want too organise your custom shapes by symbol type and position.
+
+
+
+\subsection{Drawing Bounds}
+
+\subsection{Border Anchors}
+
+\subsection{Faction Variants}
+
 
 \section{Control Measures}
 

@@ -2,13 +2,16 @@
 \usepackage{milsymb}
 \begin{document}
 
+\tikzset{
+MilSymb custom/user test/.pic={
+\draw (0.1, 0.2) -- (0.2, 0.1) -- (0.3, 0.2);
+\pic {MilSymb main/textsmall={C}};
+}
+}
+
 \begin{tikzpicture}
 
-\MilMine[faction=friendly, mine=bottomed, neutralised, no frame]
-
-%\MilEquipment[faction=friendly, main=armoured personnel carrier, mobility=amphibious](1,1)
-
-\MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=2](2, 2)
+\MilAir[faction=hostile, main=user test]
 
 \end{tikzpicture}
 
