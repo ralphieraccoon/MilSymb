@@ -157,6 +157,7 @@ The general structure of a \MilSymb command is as follows. Syntax in \textit{ita
 \begin{tablenotes}
 \item \qquad  *Can be used without a frame using the \texttt{noframe} option.
 \end{tablenotes}
+\caption{Table of all the \MilSymb command frames.}
 \end{table}
 
 \paragraph{\texttt{main}}
@@ -438,7 +439,8 @@ This allows you to scale the resulting symbol by a multiple. By default (\texttt
   [custom\ldots]
 ]
 \end{forest}
-
+\caption{\MilSymb TikZ Picture Directory Structure.}
+\label{directory}
 \end{figure}
 
 To add a custom icon or modifier, create a TikZ \texttt{.pic} in the \texttt{custom} directory using \texttt{tikzset}:
@@ -498,6 +500,64 @@ Most \textit{fullframe} icons have slight variations depending on the faction fr
 Then, insert \texttt{/\textbackslash MilSymb@selectedfaction} directly after the \texttt{path/to/user icon} (so it forms \texttt{path/to/user icon/\textbackslash MilSymb@selectedfaction}). \texttt{\textbackslash MilSymb@selectedfaction} will be replaced by the name of the faction, and complete the path to the icon.
 
 \subsection{Using Existing Icons and Modifiers}
+
+To insert an existing icon or modifier into your custom icon use a nested \texttt{.pic} as so: \texttt{\textbackslash pic\{MilSymb category/position/name\}}, where \texttt{command} generally refers to the \MilSymb command it is used in as displayed in Figure \ref{directory}, and \texttt{position} refers to . The exceptions are \texttt{supply}, which contains supply icons detailed in \ref{supply}, \texttt{text} which provides common text templates as detailed in \ref{text}, and \texttt{multi} which is detailed in \ref{multi}. \texttt{mine} is also contained in a sub-directory of \texttt{seasubsurface}, instead of its own directory. \texttt{\textbf{MilDebris}} does not use any icons or modifiers, all drawing syntax is contained within the command.
+
+\subsubsection{Text Templates}
+\label{text}
+
+\MilSymb uses 4 standard text templates for commonly used text in icons and modifiers. Use regular TikZ text syntax for any varaitions. You can use them by nesting a \texttt{.pic} as before, but adding \texttt{=\{text to display\}} as a suffix, as in \texttt{\textbackslash pic\{MilSymb text/type=\{text to display\}\}}. Note that conventionally up to 3 characters are designed to be used with normal text, and up to 4 with \lq\lq{}squashed\rq\rq{} versions, in order to appear similar to \DocLink guidelines. Any more characters should use a smaller font.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\begin{scope}[scale=2, transform shape]
+\MilLand[faction=none]
+\pic{MilSymb text/normal={Text}};
+\end{scope}
+&
+\begin{scope}[scale=2, transform shape]
+\MilLand[faction=none]
+\pic{MilSymb text/squashed={Text}};
+\end{scope} 
+&
+\begin{scope}[scale=2, transform shape]
+\MilLand[faction=none]
+\pic at (0, 0.34) {MilSymb text/small={Text}};
+\end{scope} 
+&
+\begin{scope}[scale=2, transform shape]
+\MilLand[faction=none]
+\pic at (0, 0.34) {MilSymb text/smallsquashed={Text}};
+\end{scope} 
+\\
+\node{\texttt{text/normal}}; & \node{\texttt{text/squashed}}; & \node{\texttt{text/small}}; & \node{\texttt{text/smallsquashed}}; \\
+};
+\end{tikzpicture}
+\caption{\MilSymb text templates.}
+\end{figure}
+
+\subsubsection{Multiple Class}
+\label{multi} 
+
+Some \MilSymb icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command.
+
+\begin{table}[H]
+
+\caption{Table of Multiple Class Icons and Modifiers}
+\end{table}
+
+\subsubsection{Hidden Glyphs} 
+
+There are some \texttt{.pic} that are not used as an icon or modifier directly, but are used to construct other icons or modifiers because they are used multiple times.
+
+\begin{table}[H]
+
+\caption{Table of Hidden Glyphs}
+\end{table}
+
+\section{Examples}
 
 \section{Control Measures}
 
