@@ -1,12 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{milsymb}[2017/11/09 Dev]
+\ProvidesPackage{milSymb}[2017/11/09 Dev]
 \RequirePackage{tikz}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fix-cm}
 \RequirePackage{arevmath}
 \RequirePackage{marvosym}
 \RequirePackage{acronym}
-\RequirePackage{amssymb}
+\RequirePackage{amsSymb}
 \RequirePackage{xifthen}
 \RequirePackage{xparse}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
@@ -19,7 +19,7 @@
 \definecolor{unknownB}{RGB}{255, 255, 0}
 \definecolor{offwhite}{RGB}{239, 239, 239}
 \definecolor{lightgray}{gray}{0.75}
-\usetikzlibrary{arrows.meta, shapes.geometric, shapes.symbols, positioning, calc}
+\usetikzlibrary{arrows.meta, shapes.geometric, shapes.Symbols, positioning, calc}
 \tikzstyle{reverseclip}=[insert path={(current bounding box.north east) --
   (current bounding box.south east) --
   (current bounding box.south west) --
@@ -31,7 +31,7 @@
 % AIR %
 MilSymb air/none/.pic={
 \path (0.5, 0.5) rectangle (-0.5, -0.5);
-\draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - symbol template
+\draw[lightgray, dashed] (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle; %DEBUG - Symbol template
 \begin{scope}
 \clip (0:0.5) -- (45:0.5) -- (90:0.5) -- (135:0.5) -- (180:0.5) -- (225:0.5) -- (270:0.5) -- (315:0.5) -- cycle;
 	\draw[lightgray, dashed] (0.5, 0.2) -- (-0.5, 0.2);
@@ -2115,10 +2115,10 @@ shape/.store in=\MilSymb@shape,
 scale/.store in=\MilSymb@scale,
 SymbC/.store in=\MilSymb@SymbC,
 SymbCT/.store in=\MilSymb@SymbCT,
-symbU/.store in=\MilSymb@symbU,
-symbUT/.store in=\MilSymb@symbUT,
-symbL/.store in=\MilSymb@symbL,
-symbLT/.store in=\MilSymb@symbLT,
+SymbU/.store in=\MilSymb@SymbU,
+SymbUT/.store in=\MilSymb@SymbUT,
+SymbL/.store in=\MilSymb@SymbL,
+SymbLT/.store in=\MilSymb@SymbLT,
 monochrome/.style={/MilSymb/fill=offwhite},
 frame status/.is choice,
 frame status/normal/.style={/MilSymb/line=solid},
@@ -2199,54 +2199,54 @@ scale=1,
    main/very important person/.style={/MilSymb/.cd, SymbC=text/normal, SymbCT=VIP},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    upper/.is choice,
-   upper/none/.style={/MilSymb/.cd, symbU=text/small, symbUT=}, 
-   upper/medical evacuation/.style={/MilSymb/.cd, symbU=multi/upper/medic},
-   upper/cargo/.style={/MilSymb/.cd, symbU=text/small, symbUT=C}, 
-   upper/jammer/.style={/MilSymb/.cd, symbU=text/small, symbUT=J},
-   upper/tanker/.style={/MilSymb/.cd, symbU=text/small, symbUT=K},
-   upper/patrol/.style={/MilSymb/.cd, symbU=text/small, symbUT=J}, 
-   upper/reconnaissance/.style={/MilSymb/.cd, symbU=text/small, symbUT=P}, 
-   upper/jammer/.style={/MilSymb/.cd, symbU=text/small, symbUT=R}, 
-   upper/trainer/.style={/MilSymb/.cd, symbU=text/small, symbUT=T}, 
-   upper/utility/.style={/MilSymb/.cd, symbU=text/small, symbUT=U}, 
-   upper/airborne command post/.style={/MilSymb/.cd, symbU=text/small, symbUT=ACP}, 
-   upper/airborne early warning/.style={/MilSymb/.cd, symbU=text/small, symbUT=AEW},
-   upper/anti surface warfare/.style={/MilSymb/.cd, symbU=text/smallsquashed, symbUT=ASUW},    
-   upper/anti submarine warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=ASW}, 
-   upper/communications/.style={/MilSymb/.cd, symbU=text/small, symbUT=COM},   
-   upper/combat search and rescue/.style={/MilSymb/.cd, symbU=text/smallsquashed, symbUT=CSAR}, 
-   upper/electronic support measures/.style={/MilSymb/.cd, symbU=text/small, symbUT=ESM},   
-   upper/government flight/.style={/MilSymb/.cd, symbU=text/small, symbUT=GOV},   
-   upper/mine countermeasures/.style={/MilSymb/.cd, symbU=text/small, symbUT=MCM},   
-   upper/personnel recovery/.style={/MilSymb/.cd, symbU=text/small, symbUT=PR},   
-   upper/passenger plane/.style={/MilSymb/.cd, symbU=text/small, symbUT=PX},
-   upper/search and rescue/.style={/MilSymb/.cd, symbU=text/small, symbUT=SAR},        
-   upper/suppression of enemy air defenses/.style={/MilSymb/.cd, symbU=text/smallsquashed, symbUT=SEAD},
-   upper/special operations forces/.style={/MilSymb/.cd, symbU=text/small, symbUT=SOF},       
-   upper/ultra light/.style={/MilSymb/.cd, symbU=text/small, symbUT=UL},   
-   upper/photographic/.style={/MilSymb/.cd, symbU=text/small, symbUT=PH},   
-   upper/very important person/.style={/MilSymb/.cd, symbU=text/small, symbUT=VIP},  
-   upper/escort/.style={/MilSymb/.cd, symbU=text/small, symbUT=E},
-   upper/intensive care/.style={/MilSymb/.cd, symbU=text/small, symbUT=IC},
+   upper/none/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=}, 
+   upper/medical evacuation/.style={/MilSymb/.cd, SymbU=multi/upper/medic},
+   upper/cargo/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=C}, 
+   upper/jammer/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=J},
+   upper/tanker/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=K},
+   upper/patrol/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=J}, 
+   upper/reconnaissance/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=P}, 
+   upper/jammer/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=R}, 
+   upper/trainer/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=T}, 
+   upper/utility/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=U}, 
+   upper/airborne command post/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ACP}, 
+   upper/airborne early warning/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=AEW},
+   upper/anti surface warfare/.style={/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=ASUW},    
+   upper/anti submarine warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ASW}, 
+   upper/communications/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=COM},   
+   upper/combat search and rescue/.style={/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=CSAR}, 
+   upper/electronic support measures/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ESM},   
+   upper/government flight/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=GOV},   
+   upper/mine countermeasures/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MCM},   
+   upper/personnel recovery/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=PR},   
+   upper/passenger plane/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=PX},
+   upper/search and rescue/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=SAR},        
+   upper/suppression of enemy air defenses/.style={/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=SEAD},
+   upper/special operations forces/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=SOF},       
+   upper/ultra light/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=UL},   
+   upper/photographic/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=PH},   
+   upper/very important person/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=VIP},  
+   upper/escort/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=E},
+   upper/intensive care/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=IC},
    upper/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    lower/.is choice,
-   lower/none/.style={/MilSymb/.cd, symbL=text/small, symbLT=},
-   lower/light/.style={/MilSymb/.cd, symbL=text/small, symbLT=L},      
-   lower/medium/.style={/MilSymb/.cd, symbL=text/small, symbLT=M},    
-   lower/heavy/.style={/MilSymb/.cd, symbL=text/small, symbLT=H},    
-   lower/boom only/.style={/MilSymb/.cd, symbL=text/small, symbLT=B},    
-   lower/drogue only/.style={/MilSymb/.cd, symbL=text/small, symbLT=D},
-   lower/boom and drogue/.style={/MilSymb/.cd, symbL=text/small, symbLT=B/D}, 
-   lower/close range/.style={/MilSymb/.cd, symbL=text/small, symbLT=CR},      
-   lower/short range/.style={/MilSymb/.cd, symbL=text/small, symbLT=SR},     
-   lower/medium range/.style={/MilSymb/.cd, symbL=text/small, symbLT=MR},
-   lower/long range/.style={/MilSymb/.cd, symbL=text/small, symbLT=LR},
+   lower/none/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=},
+   lower/light/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=L},      
+   lower/medium/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=M},    
+   lower/heavy/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=H},    
+   lower/boom only/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=B},    
+   lower/drogue only/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=D},
+   lower/boom and drogue/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=B/D}, 
+   lower/close range/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=CR},      
+   lower/short range/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=SR},     
+   lower/medium range/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=MR},
+   lower/long range/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=LR},
    lower/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
-   track number/.store in=\MilSymb@symbA,
-   call sign/.store in=\MilSymb@symbB,
-   position and movement/.store in=\MilSymb@symbD,
-   nation/.store in= \MilSymb@symbE,
-   additional information/.store in=\MilSymb@symbF,
+   track number/.store in=\MilSymb@SymbA,
+   call sign/.store in=\MilSymb@SymbB,
+   position and movement/.store in=\MilSymb@SymbD,
+   nation/.store in= \MilSymb@SymbE,
+   additional information/.store in=\MilSymb@SymbF,
    speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
    speed leader/.value required,
    track number=,
@@ -2262,15 +2262,15 @@ scale=1,
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
- \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
- \pic at (0,0.34) {MilSymb \MilSymb@symbU={\MilSymb@symbUT}}; %Draw upper symbol
- \pic at (0,-0.34) {MilSymb \MilSymb@symbL={\MilSymb@symbLT}}; %Draw lower symbol
+ \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+ \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
+ \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
  \fontsize{6}{0}\selectfont
- \ifthenelse{\isequivalentto{\MilSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbA};}
- \ifthenelse{\isequivalentto{\MilSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbB};}
- \ifthenelse{\isequivalentto{\MilSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbD};}
- \ifthenelse{\isequivalentto{\MilSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbE};}
- \ifthenelse{\isequivalentto{\MilSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbF};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbD}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbD};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbE};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbF};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -2284,29 +2284,29 @@ scale=1,
    faction/neutral/.style={/MilSymb/.cd, shape=air/neutral, fill=neutralA},
    faction/unknown/.style={/MilSymb/.cd, shape=air/unknown, fill=unknownA},
    left/.is choice,
-   left/none/.style= {/MilSymb/.cd, symbU=text/small, symbUT=}, 
-   left/air/.style= {/MilSymb/.cd, symbU=text/small, symbUT=A}, 
-   left/surface/.style= {/MilSymb/.cd, symbU=text/small, symbUT=S}, 
-   left/sub surface/.style= {/MilSymb/.cd, symbU=text/small, symbUT=SU}, 
-   left/space/.style= {/MilSymb/.cd, symbU=text/small, symbUT=SP}, 
-   left/anti ballistic/.style= {/MilSymb/.cd, symbU=text/small, symbUT=AB}, 
-   left/ballistic/.style= {/MilSymb/.cd, symbU=text/small, symbUT=B}, 
-   left/cruise/.style= {/MilSymb/.cd, symbU=text/small, symbUT=C},
+   left/none/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=}, 
+   left/air/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=A}, 
+   left/surface/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=S}, 
+   left/sub surface/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=SU}, 
+   left/space/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=SP}, 
+   left/anti ballistic/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=AB}, 
+   left/ballistic/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=B}, 
+   left/cruise/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=C},
    left/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    right/.is choice,
-   right/none/.style= {/MilSymb/.cd, symbL=text/small, symbLT=}, 
-   right/air/.style= {/MilSymb/.cd, symbL=text/small, symbLT=A}, 
-   right/surface/.style= {/MilSymb/.cd, symbL=text/small, symbLT=S}, 
-   right/sub surface/.style= {/MilSymb/.cd, symbL=text/small, symbLT=SU}, 
-   right/space/.style= {/MilSymb/.cd, symbL=text/small, symbLT=SP}, 
-   right/launched/.style= {/MilSymb/.cd, symbL=text/small, symbLT=L}, 
-   right/missile/.style= {/MilSymb/.cd, symbL=text/small, symbLT=M},
+   right/none/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=}, 
+   right/air/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=A}, 
+   right/surface/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=S}, 
+   right/sub surface/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=SU}, 
+   right/space/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=SP}, 
+   right/launched/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=L}, 
+   right/missile/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=M},
    right/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
-   track number/.store in= \MilSymb@symbA,
-   call sign/.store in=\MilSymb@symbB,
-   position and movement/.store in=\MilSymb@symbD,
-   nation/.store in= \MilSymb@symbE,
-   additional information/.store in=\MilSymb@symbF,
+   track number/.store in= \MilSymb@SymbA,
+   call sign/.store in=\MilSymb@SymbB,
+   position and movement/.store in=\MilSymb@SymbD,
+   nation/.store in= \MilSymb@SymbE,
+   additional information/.store in=\MilSymb@SymbF,
    track number=,
    call sign=,
    position and movement=,
@@ -2322,13 +2322,13 @@ scale=1,
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
 \fontsize{6}{0}\selectfont
-\node at (0.34, 0) {\MilSymb@symbLT};
-\node at (-0.34, 0) {\MilSymb@symbUT};
- \ifthenelse{\isequivalentto{\MilSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbA};}
- \ifthenelse{\isequivalentto{\MilSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbB};}
- \ifthenelse{\isequivalentto{\MilSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbD};}
- \ifthenelse{\isequivalentto{\MilSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbE};}
- \ifthenelse{\isequivalentto{\MilSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbF};}
+\node at (0.34, 0) {\MilSymb@SymbLT};
+\node at (-0.34, 0) {\MilSymb@SymbUT};
+ \ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbD}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbD};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbE};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbF};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -2472,197 +2472,197 @@ scale=1,
    main/spy/.style={/MilSymb/.cd, SymbC=text/normal, SymbCT=SPY},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    upper/.is choice,
-   upper/none/.style= {/MilSymb/.cd, symbU=text/small, symbUT=},
-   upper/air assault/.style= {/MilSymb/.cd, symbU=land/upper/air assault},
-   upper/area/.style= {/MilSymb/.cd, symbU=text/smallsquashed, symbUT=AREA},
-   upper/attack/.style= {/MilSymb/.cd, symbU=text/small, symbUT=A},
-   upper/biological/.style= {/MilSymb/.cd, symbU=text/small, symbUT=B},
-   upper/border/.style= {/MilSymb/.cd, symbU=text/small, symbUT=BOR},
-   upper/bridging/.style= {/MilSymb/.cd, symbU=land/upper/bridging},
-   upper/chemical/.style= {/MilSymb/.cd, symbU=text/small, symbUT=C},
-   upper/close protection/.style= {/MilSymb/.cd, symbU=text/small, symbUT=CLP},
-   upper/combat/.style= {/MilSymb/.cd, symbU=text/small, symbUT=CBT},
-   upper/command and control/.style= {/MilSymb/.cd, symbU=text/small, symbUT=C2},
-   upper/communications contingency package/.style= {/MilSymb/.cd, symbU=text/small, symbUT=CCP},
-   upper/construction/.style= {/MilSymb/.cd, symbU=text/smallsquashed, symbUT=CONST},
-   upper/cross cultural communication/.style= {/MilSymb/.cd, symbU=text/small, symbUT=CCC},
-   upper/crowd and riot control/.style= {/MilSymb/.cd, symbU=text/small, symbUT=CRC},
-   upper/decontamination/.style= {/MilSymb/.cd, symbU=text/small, symbUT=D},
-   upper/detention/.style= {/MilSymb/.cd, symbU=text/small, symbUT=DET},
-   upper/direct communications/.style= {/MilSymb/.cd, symbU=land/upper/direct communications},
-   upper/diving/.style= {/MilSymb/.cd, symbU=land/upper/diving},
-   upper/division/.style= {/MilSymb/.cd, symbU=text/small, symbUT=XX},
-   upper/dog/.style= {/MilSymb/.cd, symbU=text/small, symbUT=DOG},
-   upper/drilling/.style= {/MilSymb/.cd, symbU=land/upper/drilling},
-   upper/electro optical/.style= {/MilSymb/.cd, symbU=text/small, symbUT=EO},
-   upper/enhanced/.style= {/MilSymb/.cd, symbU=text/small, symbUT=ENH},
-   upper/explosive ordnance disposal/.style= {/MilSymb/.cd, symbU=text/small, symbUT=EOD},
-   upper/fire direction centre/.style= {/MilSymb/.cd, symbU=text/small, symbUT=FDC},
-   upper/force/.style= {/MilSymb/.cd, symbU=text/small, symbUT=F},
-   upper/forward/.style= {/MilSymb/.cd, symbU=text/small, symbUT=FWD},
-   upper/ground station module/.style= {/MilSymb/.cd, symbU=text/small, symbUT=GSM},
-   upper/landing support/.style= {/MilSymb/.cd, symbU=text/small, symbUT=LS},
-   upper/large extension node/.style= {/MilSymb/.cd, symbU=text/small, symbUT=LEN},
-   upper/maintenance/.style= {/MilSymb/.cd, symbU=multi/upperlower/maintenance},
-   upper/meteorological/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MET},
-   upper/mine countermeasure/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MCM},
-   upper/missile/.style= {/MilSymb/.cd, symbU=land/upper/missile},
-   upper/mobile advisor and support/.style= {/MilSymb/.cd, symbU=land/upper/mobile advisor and support},
-   upper/mobile subscriber equipment/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MSE},
-   upper/mobility support/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MS},
-   upper/movement control centre/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MCC},
-   upper/multinational/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MN},
-   upper/multinational specialized unit/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MSU},
-   upper/multiple rocket launcher/.style= {/MilSymb/.cd, symbU=land/upper/multiple rocket launcher},
-   upper/Mil medical role 1/.style= {/MilSymb/.cd, symbU=text/small, symbUT=\ \ \ \ 1},
-   upper/Mil medical role 2/.style= {/MilSymb/.cd, symbU=text/small, symbUT=\ \ \ \ 2},
-   upper/Mil medical role 3/.style= {/MilSymb/.cd, symbU=text/small, symbUT=\ \ \ \ 3},
-   upper/Mil medical role 4/.style= {/MilSymb/.cd, symbU=text/small, symbUT=\ \ \ \ 4},
-   upper/naval/.style= {/MilSymb/.cd, symbU=multi/upper/naval},
-   upper/node centre/.style= {/MilSymb/.cd, symbU=text/small, symbUT=NC},
-   upper/nuclear/.style= {/MilSymb/.cd, symbU=text/small, symbUT=N},
-   upper/operations/.style= {/MilSymb/.cd, symbU=text/small, symbUT=OPS},
-   upper/radar/.style= {/MilSymb/.cd, symbU=land/upper/radar},
-   upper/radiological/.style= {/MilSymb/.cd, symbU=text/small, symbUT=RAD},
-   upper/runway/.style= {/MilSymb/.cd, symbU=multi/upper/runway},
-   upper/search and rescue/.style= {/MilSymb/.cd, symbU=text/small, symbUT=SAR},
-   upper/security/.style= {/MilSymb/.cd, symbU=text/small, symbUT=SEC},
-   upper/sensor/.style= {/MilSymb/.cd, symbU=land/upper/sensor},
-   upper/sensor control module/.style= {/MilSymb/.cd, symbU=text/small, symbUT=SCM},
-   upper/signals intelligence/.style= {/MilSymb/.cd, symbU=land/upper/signals intelligence},
-   upper/single shelter switch/.style= {/MilSymb/.cd, symbU=text/small, symbUT=SSS},
-   upper/single rocket launcher/.style= {/MilSymb/.cd, symbU=land/upper/single rocket launcher},
-   upper/smoke/.style= {/MilSymb/.cd, symbU=text/small, symbUT=S},
-   upper/sniper/.style= {/MilSymb/.cd, symbU=land/upper/sniper},
-   upper/sound ranging/.style= {/MilSymb/.cd, symbU=text/small, symbUT=SDR},
-   upper/special weapons and tactics/.style= {/MilSymb/.cd, symbU=text/smallsquashed, symbUT=SWAT},
-   upper/survey/.style= {/MilSymb/.cd, symbU=land/upper/survey},
-   upper/tactical exploitation/.style= {/MilSymb/.cd, symbU=text/small, symbUT=TE},
-   upper/target acquisition/.style= {/MilSymb/.cd, symbU=text/small, symbUT=TA},
-   upper/topographic/.style= {/MilSymb/.cd, symbU=land/upper/topographic},
-   upper/utility/.style= {/MilSymb/.cd, symbU=text/small, symbUT=U},
-   upper/video imagery/.style= {/MilSymb/.cd, symbU=land/upper/video imagery},
-   upper/assassination/.style= {/MilSymb/.cd, symbU=text/small, symbUT=AS},
-   upper/execution/.style= {/MilSymb/.cd, symbU=text/small, symbUT=EX},
-   upper/murder victims/.style= {/MilSymb/.cd, symbU=text/small, symbUT=MU},
-   upper/hijacking/.style= {/MilSymb/.cd, symbU=text/small, symbUT=H},
-   upper/kidnapping/.style= {/MilSymb/.cd, symbU=text/small, symbUT=K},
-   upper/piracy/.style= {/MilSymb/.cd, symbU=text/small, symbUT=PI},
-   upper/rape/.style= {/MilSymb/.cd, symbU=text/small, symbUT=RA},
-   upper/displaced persons refugees and evacuees/.style= {/MilSymb/.cd, symbU=text/smallsquashed, symbUT=DPRE},
-   upper/foreign fighters/.style= {/MilSymb/.cd, symbU=text/small, symbUT=FF},
-   upper/gang member or gang/.style= {/MilSymb/.cd, symbU=text/smallsquashed, symbUT=GANG},
-   upper/government organisation/.style= {/MilSymb/.cd, symbU=text/small, symbUT=GO},
-   upper/leader or leadership/.style= {/MilSymb/.cd, symbU=text/small, symbUT=LDR},
-   upper/non-governmental organization member or non-governmental organization/.style= {/MilSymb/.cd, symbU=text/small, symbUT=NGO},
-   upper/coerced or impressed recruit/.style= {/MilSymb/.cd, symbU=text/small, symbUT=C},
-   upper/willing recruit/.style= {/MilSymb/.cd, symbU=text/small, symbUT=W},
-   upper/religious or religious organisation/.style= {/MilSymb/.cd, symbU=text/small, symbUT=REL},
-   upper/targeted individual or organisation/.style= {/MilSymb/.cd, symbU=text/small, symbUT=TGT},
-   upper/terrorist or terrorist organisation/.style= {/MilSymb/.cd, symbU=text/small, symbUT=TER},
+   upper/none/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=},
+   upper/air assault/.style= {/MilSymb/.cd, SymbU=land/upper/air assault},
+   upper/area/.style= {/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=AREA},
+   upper/attack/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=A},
+   upper/biological/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=B},
+   upper/border/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=BOR},
+   upper/bridging/.style= {/MilSymb/.cd, SymbU=land/upper/bridging},
+   upper/chemical/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=C},
+   upper/close protection/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=CLP},
+   upper/combat/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=CBT},
+   upper/command and control/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=C2},
+   upper/communications contingency package/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=CCP},
+   upper/construction/.style= {/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=CONST},
+   upper/cross cultural communication/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=CCC},
+   upper/crowd and riot control/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=CRC},
+   upper/decontamination/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=D},
+   upper/detention/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=DET},
+   upper/direct communications/.style= {/MilSymb/.cd, SymbU=land/upper/direct communications},
+   upper/diving/.style= {/MilSymb/.cd, SymbU=land/upper/diving},
+   upper/division/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=XX},
+   upper/dog/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=DOG},
+   upper/drilling/.style= {/MilSymb/.cd, SymbU=land/upper/drilling},
+   upper/electro optical/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=EO},
+   upper/enhanced/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=ENH},
+   upper/explosive ordnance disposal/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=EOD},
+   upper/fire direction centre/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=FDC},
+   upper/force/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=F},
+   upper/forward/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=FWD},
+   upper/ground station module/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=GSM},
+   upper/landing support/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=LS},
+   upper/large extension node/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=LEN},
+   upper/maintenance/.style= {/MilSymb/.cd, SymbU=multi/upperlower/maintenance},
+   upper/meteorological/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MET},
+   upper/mine countermeasure/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MCM},
+   upper/missile/.style= {/MilSymb/.cd, SymbU=land/upper/missile},
+   upper/mobile advisor and support/.style= {/MilSymb/.cd, SymbU=land/upper/mobile advisor and support},
+   upper/mobile subscriber equipment/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MSE},
+   upper/mobility support/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MS},
+   upper/movement control centre/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MCC},
+   upper/multinational/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MN},
+   upper/multinational specialized unit/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MSU},
+   upper/multiple rocket launcher/.style= {/MilSymb/.cd, SymbU=land/upper/multiple rocket launcher},
+   upper/Mil medical role 1/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=\ \ \ \ 1},
+   upper/Mil medical role 2/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=\ \ \ \ 2},
+   upper/Mil medical role 3/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=\ \ \ \ 3},
+   upper/Mil medical role 4/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=\ \ \ \ 4},
+   upper/naval/.style= {/MilSymb/.cd, SymbU=multi/upper/naval},
+   upper/node centre/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=NC},
+   upper/nuclear/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=N},
+   upper/operations/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=OPS},
+   upper/radar/.style= {/MilSymb/.cd, SymbU=land/upper/radar},
+   upper/radiological/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=RAD},
+   upper/runway/.style= {/MilSymb/.cd, SymbU=multi/upper/runway},
+   upper/search and rescue/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=SAR},
+   upper/security/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=SEC},
+   upper/sensor/.style= {/MilSymb/.cd, SymbU=land/upper/sensor},
+   upper/sensor control module/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=SCM},
+   upper/signals intelligence/.style= {/MilSymb/.cd, SymbU=land/upper/signals intelligence},
+   upper/single shelter switch/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=SSS},
+   upper/single rocket launcher/.style= {/MilSymb/.cd, SymbU=land/upper/single rocket launcher},
+   upper/smoke/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=S},
+   upper/sniper/.style= {/MilSymb/.cd, SymbU=land/upper/sniper},
+   upper/sound ranging/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=SDR},
+   upper/special weapons and tactics/.style= {/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=SWAT},
+   upper/survey/.style= {/MilSymb/.cd, SymbU=land/upper/survey},
+   upper/tactical exploitation/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=TE},
+   upper/target acquisition/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=TA},
+   upper/topographic/.style= {/MilSymb/.cd, SymbU=land/upper/topographic},
+   upper/utility/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=U},
+   upper/video imagery/.style= {/MilSymb/.cd, SymbU=land/upper/video imagery},
+   upper/assassination/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=AS},
+   upper/execution/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=EX},
+   upper/murder victims/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=MU},
+   upper/hijacking/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=H},
+   upper/kidnapping/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=K},
+   upper/piracy/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=PI},
+   upper/rape/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=RA},
+   upper/displaced persons refugees and evacuees/.style= {/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=DPRE},
+   upper/foreign fighters/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=FF},
+   upper/gang member or gang/.style= {/MilSymb/.cd, SymbU=text/smallsquashed, SymbUT=GANG},
+   upper/government organisation/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=GO},
+   upper/leader or leadership/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=LDR},
+   upper/non-governmental organization member or non-governmental organization/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=NGO},
+   upper/coerced or impressed recruit/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=C},
+   upper/willing recruit/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=W},
+   upper/religious or religious organisation/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=REL},
+   upper/targeted individual or organisation/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=TGT},
+   upper/terrorist or terrorist organisation/.style= {/MilSymb/.cd, SymbU=text/small, SymbUT=TER},
    upper/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    lower/.is choice,
-   lower/none/.style= {/MilSymb/.cd, symbL=text/small, symbLT=},
-   lower/airbourne/.style= {/MilSymb/.cd, symbL=land/lower/airborne},
-   lower/arctic/.style= {/MilSymb/.cd, symbL=land/lower/arctic},
-   lower/battle damage repair/.style= {/MilSymb/.cd, symbL=text/small, symbLT=BDR},
-   lower/bicycle equipped/.style= {/MilSymb/.cd, symbL=land/lower/bicycle equipped},
-   lower/clearing/.style= {/MilSymb/.cd, symbL=text/small, symbLT=CLR},
-   lower/close range/.style= {/MilSymb/.cd, symbL=text/small, symbLT=CR},
-   lower/decontamination/.style= {/MilSymb/.cd, symbL=text/small, symbLT=D},
-   lower/demolition/.style= {/MilSymb/.cd, symbL=text/small, symbLT=DEM},
-   lower/dental/.style= {/MilSymb/.cd, symbL=text/small, symbLT=\ \ \ \  D},
-   lower/digital/.style= {/MilSymb/.cd, symbL=text/small, symbLT=DIG},
-   lower/enhanced location reporting system/.style= {/MilSymb/.cd, symbL=land/lower/enhanced position location reporting system},
-   lower/equipment/.style= {/MilSymb/.cd, symbL=text/small, symbLT=E},
-   lower/heavy/.style= {/MilSymb/.cd, symbL=text/small, symbLT=H},
-   lower/intermodal/.style= {/MilSymb/.cd, symbL=land/lower/intermodal},
-   lower/intensive care/.style= {/MilSymb/.cd, symbL=text/small, symbLT=\ \ \ \ IC},
-   lower/light/.style= {/MilSymb/.cd, symbL=text/small, symbLT=L},
-   lower/laboratory/.style= {/MilSymb/.cd, symbL=text/small, symbLT=LAB},
-   lower/launcher/.style= {/MilSymb/.cd, symbL=land/lower/launcher},
-   lower/long range/.style= {/MilSymb/.cd, symbL=text/small, symbLT=LR},
-   lower/medium range/.style= {/MilSymb/.cd, symbL=text/small, symbLT=MR},
-   lower/mountain/.style={/MilSymb/.cd, symbL=land/lower/mountain/\MilSymb@selectedfaction},
-   lower/multi channel/.style= {/MilSymb/.cd, symbL=text/small, symbLT=MC},
-   lower/optical/.style= {/MilSymb/.cd, symbL=text/small, symbLT=OPT},
-   lower/pack animal/.style= {/MilSymb/.cd, symbL=multi/lower/pack animal},
-   lower/patient evacuation coordination/.style= {/MilSymb/.cd, symbL=text/small, symbLT=PEC},
-   lower/preventative maintenance/.style= {/MilSymb/.cd, symbL=text/small, symbLT=PM},
-   lower/psychological/.style= {/MilSymb/.cd, symbL=text/small, symbLT=P},
-   lower/radio relay line of sight/.style= {/MilSymb/.cd, symbL=land/lower/radio relay line of sight},
-   lower/railroad/.style= {/MilSymb/.cd, symbL=multi/upperlower/railroad},
-   lower/recovery unmanned systems/.style= {/MilSymb/.cd, symbL=land/lower/recovery unmanned systems},
-   lower/recovery maintenance/.style= {/MilSymb/.cd, symbL=multi/upperlower/maintenance},
-   lower/rescue coordination centre/.style= {/MilSymb/.cd, symbL=text/small, symbLT=RCC},
-   lower/riverine/.style= {/MilSymb/.cd, symbL=land/lower/riverine},
-   lower/single channel/.style= {/MilSymb/.cd, symbL=text/small, symbLT=SC},
-   lower/ski/.style= {/MilSymb/.cd, symbL=land/lower/ski},
-   lower/short range/.style= {/MilSymb/.cd, symbL=text/small, symbLT=SR},
-   lower/strategic/.style= {/MilSymb/.cd, symbL=text/small, symbLT=STR},
-   lower/support/.style= {/MilSymb/.cd, symbL=text/small, symbLT=SPT},
-   lower/tactical/.style= {/MilSymb/.cd, symbL=text/small, symbLT=TAC},
-   lower/towed/.style= {/MilSymb/.cd, symbL=land/lower/towed},
-   lower/troop/.style= {/MilSymb/.cd, symbL=text/small, symbLT=T},
-   lower/vertical of short takeoff and landing/.style= {/MilSymb/.cd, symbL=text/smallsquashed, symbLT=VSTOL},
-   lower/veterinary/.style= {/MilSymb/.cd, symbL=text/small, symbLT=\ \ \ \ V},
-   lower/wheeled/.style= {/MilSymb/.cd, symbL=land/lower/wheeled},
+   lower/none/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=},
+   lower/airbourne/.style= {/MilSymb/.cd, SymbL=land/lower/airborne},
+   lower/arctic/.style= {/MilSymb/.cd, SymbL=land/lower/arctic},
+   lower/battle damage repair/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=BDR},
+   lower/bicycle equipped/.style= {/MilSymb/.cd, SymbL=land/lower/bicycle equipped},
+   lower/clearing/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=CLR},
+   lower/close range/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=CR},
+   lower/decontamination/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=D},
+   lower/demolition/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=DEM},
+   lower/dental/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=\ \ \ \  D},
+   lower/digital/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=DIG},
+   lower/enhanced location reporting system/.style= {/MilSymb/.cd, SymbL=land/lower/enhanced position location reporting system},
+   lower/equipment/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=E},
+   lower/heavy/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=H},
+   lower/intermodal/.style= {/MilSymb/.cd, SymbL=land/lower/intermodal},
+   lower/intensive care/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=\ \ \ \ IC},
+   lower/light/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=L},
+   lower/laboratory/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=LAB},
+   lower/launcher/.style= {/MilSymb/.cd, SymbL=land/lower/launcher},
+   lower/long range/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=LR},
+   lower/medium range/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=MR},
+   lower/mountain/.style={/MilSymb/.cd, SymbL=land/lower/mountain/\MilSymb@selectedfaction},
+   lower/multi channel/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=MC},
+   lower/optical/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=OPT},
+   lower/pack animal/.style= {/MilSymb/.cd, SymbL=multi/lower/pack animal},
+   lower/patient evacuation coordination/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=PEC},
+   lower/preventative maintenance/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=PM},
+   lower/psychological/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=P},
+   lower/radio relay line of sight/.style= {/MilSymb/.cd, SymbL=land/lower/radio relay line of sight},
+   lower/railroad/.style= {/MilSymb/.cd, SymbL=multi/upperlower/railroad},
+   lower/recovery unmanned systems/.style= {/MilSymb/.cd, SymbL=land/lower/recovery unmanned systems},
+   lower/recovery maintenance/.style= {/MilSymb/.cd, SymbL=multi/upperlower/maintenance},
+   lower/rescue coordination centre/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=RCC},
+   lower/riverine/.style= {/MilSymb/.cd, SymbL=land/lower/riverine},
+   lower/single channel/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=SC},
+   lower/ski/.style= {/MilSymb/.cd, SymbL=land/lower/ski},
+   lower/short range/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=SR},
+   lower/strategic/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=STR},
+   lower/support/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=SPT},
+   lower/tactical/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=TAC},
+   lower/towed/.style= {/MilSymb/.cd, SymbL=land/lower/towed},
+   lower/troop/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=T},
+   lower/vertical of short takeoff and landing/.style= {/MilSymb/.cd, SymbL=text/smallsquashed, SymbLT=VSTOL},
+   lower/veterinary/.style= {/MilSymb/.cd, SymbL=text/small, SymbLT=\ \ \ \ V},
+   lower/wheeled/.style= {/MilSymb/.cd, SymbL=land/lower/wheeled},
    lower/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
-   symbE/.store in= \MilSymb@symbE,
-   symbR/.store in= \MilSymb@symbR,
+   SymbE/.store in= \MilSymb@SymbE,
+   SymbR/.store in= \MilSymb@SymbR,
    echelon/.is choice,
-   echelon/none/.style= {/MilSymb/.cd, symbE=},
-   echelon/team/.style= {/MilSymb/.cd, symbE=$\varnothing$},
-   echelon/squad/.style= {/MilSymb/.cd, symbE=\textbullet},
-   echelon/section/.style= {/MilSymb/.cd, symbE=\textbullet \  \textbullet},
-   echelon/platoon/.style= {/MilSymb/.cd, symbE=\textbullet \  \textbullet \  \textbullet},
-   echelon/company/.style= {/MilSymb/.cd, symbE=\textbar},
-   echelon/battalion/.style= {/MilSymb/.cd, symbE=\textbar \  \textbar},
-   echelon/regiment/.style= {/MilSymb/.cd, symbE=\textbar \  \textbar \  \textbar},
-   echelon/brigade/.style= {/MilSymb/.cd, symbE=X},
-   echelon/division/.style= {/MilSymb/.cd, symbE=XX},
-   echelon/corps/.style= {/MilSymb/.cd, symbE=XXX},
-   echelon/army/.style= {/MilSymb/.cd, symbE=XXXX},
-   echelon/army group/.style= {/MilSymb/.cd, symbE=XXXXX},
-   echelon/theatre/.style= {/MilSymb/.cd, symbE=XXXXXX},
-   echelon/command/.style= {/MilSymb/.cd, symbE=\raisebox{1pt}{+ \ +}},
+   echelon/none/.style= {/MilSymb/.cd, SymbE=},
+   echelon/team/.style= {/MilSymb/.cd, SymbE=$\varnothing$},
+   echelon/squad/.style= {/MilSymb/.cd, SymbE=\textbullet},
+   echelon/section/.style= {/MilSymb/.cd, SymbE=\textbullet \  \textbullet},
+   echelon/platoon/.style= {/MilSymb/.cd, SymbE=\textbullet \  \textbullet \  \textbullet},
+   echelon/company/.style= {/MilSymb/.cd, SymbE=\textbar},
+   echelon/battalion/.style= {/MilSymb/.cd, SymbE=\textbar \  \textbar},
+   echelon/regiment/.style= {/MilSymb/.cd, SymbE=\textbar \  \textbar \  \textbar},
+   echelon/brigade/.style= {/MilSymb/.cd, SymbE=X},
+   echelon/division/.style= {/MilSymb/.cd, SymbE=XX},
+   echelon/corps/.style= {/MilSymb/.cd, SymbE=XXX},
+   echelon/army/.style= {/MilSymb/.cd, SymbE=XXXX},
+   echelon/army group/.style= {/MilSymb/.cd, SymbE=XXXXX},
+   echelon/theatre/.style= {/MilSymb/.cd, SymbE=XXXXXX},
+   echelon/command/.style= {/MilSymb/.cd, SymbE=\raisebox{1pt}{+ \ +}},
    task force/.is if=taskforce,
    feint or dummy/.is if=feintdummy,
    drawH/.store in= \MilSymb@drawH,
-   symbHT/.store in= \MilSymb@symbHT,
+   SymbHT/.store in= \MilSymb@SymbHT,
    headquarters/.is choice,
-   headquarters/none/.style= {/MilSymb/.cd, drawH=false, symbHT=},
-   headquarters/blank/.style= {/MilSymb/.cd, drawH=true, symbHT=},
-   headquarters/assault command post/.style= {/MilSymb/.cd,  drawH=true, symbHT=ASLT},
-   headquarters/command group/.style= {/MilSymb/.cd,  drawH=true, symbHT=CMD},
-   headquarters/forward command post/.style= {/MilSymb/.cd,  drawH=true, symbHT=FWD},
-   headquarters/main command post/.style= {/MilSymb/.cd,  drawH=true, symbHT=MAIN},
-   headquarters/rear command post/.style= {/MilSymb/.cd,  drawH=true, symbHT=REAR},
-   headquarters/tactical operations center/.style= {/MilSymb/.cd,  drawH=true, symbHT=TOC},
-   headquarters/tactical command post/.style= {/MilSymb/.cd,  drawH=true, symbHT=TAC},
+   headquarters/none/.style= {/MilSymb/.cd, drawH=false, SymbHT=},
+   headquarters/blank/.style= {/MilSymb/.cd, drawH=true, SymbHT=},
+   headquarters/assault command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=ASLT},
+   headquarters/command group/.style= {/MilSymb/.cd,  drawH=true, SymbHT=CMD},
+   headquarters/forward command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=FWD},
+   headquarters/main command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=MAIN},
+   headquarters/rear command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=REAR},
+   headquarters/tactical operations center/.style= {/MilSymb/.cd,  drawH=true, SymbHT=TOC},
+   headquarters/tactical command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=TAC},
    status/.is choice,
-   status/none/.style= {/MilSymb/.cd, symbR=},
-   status/reinforced/.style= {/MilSymb/.cd, symbR=+ \ },
-   status/reduced/.style= {/MilSymb/.cd, symbR=\textminus \ },
-   status/reinforced and reduced/.style= {/MilSymb/.cd, symbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr} \ },
-   altitude/.style 2 args={/MilSymb/.cd, symbL=text/small, symbLT={\fontsize{6}{0}\selectfont \ifthenelse{\isempty{##2}}{\acs{##1}}{\acs{##1S}/\acs{##2}}}},
+   status/none/.style= {/MilSymb/.cd, SymbR=},
+   status/reinforced/.style= {/MilSymb/.cd, SymbR=+ \ },
+   status/reduced/.style= {/MilSymb/.cd, SymbR=\textminus \ },
+   status/reinforced and reduced/.style= {/MilSymb/.cd, SymbR=\ooalign{\raisebox{2pt}{+}\cr\smash{\raisebox{-2pt}{\textminus}}\cr} \ },
+   altitude/.style 2 args={/MilSymb/.cd, SymbL=text/small, SymbLT={\fontsize{6}{0}\selectfont \ifthenelse{\isempty{##2}}{\acs{##1}}{\acs{##1S}/\acs{##2}}}},
    altitude/.value required,
    supply/.style 2 args={/MilSymb/.cd, SymbC={\ifx\\##2\\supply/class ##1\else supply/text\fi}, SymbCT={\ifthenelse{\isempty{##2}}{}{\uppercase\expandafter{\romannumeral##1\relax}\&\uppercase\expandafter{\romannumeral##2\relax}}}},
    supply/.value required,
-   staff comments/.store in=\MilSymb@symbG,
-   additional information/.store in=\MilSymb@symbH,
-   higher formation/.store in=\MilSymb@symbM,
-   evaluation rating/.store in=\MilSymb@symbJ,
-   country indicator/.store in=\MilSymb@symbAC,
-   combat effectiveness/.store in=\MilSymb@symbK,
-   identification/.store in=\MilSymb@symbP,
-   unique designation/.store in=\MilSymb@symbT,
-   type of equipment/.store in=\MilSymb@symbV,
-   date-time group/.store in=\MilSymb@symbW,
-   altitude value/.store in=\MilSymb@symbX,
-   location/.store in=\MilSymb@symbY,
-   common identifier/.store in=\MilSymb@symbAF,
-   speed/.store in=\MilSymb@symbZ,
+   staff comments/.store in=\MilSymb@SymbG,
+   additional information/.store in=\MilSymb@SymbH,
+   higher formation/.store in=\MilSymb@SymbM,
+   evaluation rating/.store in=\MilSymb@SymbJ,
+   country indicator/.store in=\MilSymb@SymbAC,
+   combat effectiveness/.store in=\MilSymb@SymbK,
+   identification/.store in=\MilSymb@SymbP,
+   unique designation/.store in=\MilSymb@SymbT,
+   type of equipment/.store in=\MilSymb@SymbV,
+   date-time group/.store in=\MilSymb@SymbW,
+   altitude value/.store in=\MilSymb@SymbX,
+   location/.store in=\MilSymb@SymbY,
+   common identifier/.store in=\MilSymb@SymbAF,
+   speed/.store in=\MilSymb@SymbZ,
    offset/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\MilSymb@drawH}{true}\AND \equal{\MilSymb@selectedfaction}{friendly}}{\draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
    offset/.value required,
    movement/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\MilSymb@drawH}{true}\AND \equal{\MilSymb@selectedfaction}{friendly}}{ \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
@@ -2695,32 +2695,32 @@ scale=1,
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
-\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
-\pic at (0,0.34) {MilSymb \MilSymb@symbU={\MilSymb@symbUT}}; %Draw upper symbol
-\pic at (0,-0.34) {MilSymb \MilSymb@symbL={\MilSymb@symbLT}}; %Draw lower symbol
+\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+\pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
+\pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
 \fontsize{6}{0}\selectfont
-\ifthenelse{\isequivalentto{\MilSymb@symbE}{\empty}}{}{\node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\MilSymb@symbE};} %Draw echelon
+\ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=south, local bounding box=E] at ($(M.north)-(0,0.04)$) {\MilSymb@SymbE};} %Draw echelon
 \iftaskforce
 \draw ($(E.south west)+(0,0.03)$) -- (E.north west) -- (E.north east) -- ($(E.south east)+(0,0.03)$);
 \fi
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
 \fi
-\ifthenelse{\isequivalentto{\MilSymb@symbAC}{\empty} \AND \isequivalentto{\MilSymb@symbR}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\fontsize{8}{0}\selectfont \MilSymb@symbR \fontsize{6}{0}\selectfont \MilSymb@symbAC};} %Draw status
+\ifthenelse{\isequivalentto{\MilSymb@SymbAC}{\empty} \AND \isequivalentto{\MilSymb@SymbR}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\fontsize{8}{0}\selectfont \MilSymb@SymbR \fontsize{6}{0}\selectfont \MilSymb@SymbAC};} %Draw status
 \ifthenelse{\equal{\MilSymb@drawH}{true} \AND \equal{\MilSymb@selectedfaction}{friendly}}{
 \draw (-0.75, -0.5) -- +(0, -0.25);
 \fontsize{6}{0}\selectfont
-\node [anchor=north] at (M.south) {\MilSymb@symbHT};}{}
+\node [anchor=north] at (M.south) {\MilSymb@SymbHT};}{}
 \fontsize{6}{0}\selectfont
-\ifthenelse{\isequivalentto{\MilSymb@symbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbG};}
-\ifthenelse{\isequivalentto{\MilSymb@symbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbH};}
-\ifthenelse{\isequivalentto{\MilSymb@symbM}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbM};}
-\ifthenelse{\isequivalentto{\MilSymb@symbJ}{\empty} \AND \isequivalentto{\MilSymb@symbK}{\empty} \AND \isequivalentto{\MilSymb@symbP}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbJ\MilSymb@symbK\MilSymb@symbP};}
-\ifthenelse{\isequivalentto{\MilSymb@symbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@symbW};}
-\ifthenelse{\isequivalentto{\MilSymb@symbX}{\empty} \AND \isequivalentto{\MilSymb@symbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@symbX\MilSymb@symbY};}
-\ifthenelse{\isequivalentto{\MilSymb@symbV}{\empty} \AND \isequivalentto{\MilSymb@symbAF}{\empty}}{}{\node [anchor=east] at (M.west) {\MilSymb@symbV\MilSymb@symbAF};}
-\ifthenelse{\isequivalentto{\MilSymb@symbT}{\empty}}{}{\node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\MilSymb@symbT};}
-\ifthenelse{\isequivalentto{\MilSymb@symbZ}{\empty}}{}{\node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\MilSymb@symbZ};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbG};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbH};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbM}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbM};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbJ}{\empty} \AND \isequivalentto{\MilSymb@SymbK}{\empty} \AND \isequivalentto{\MilSymb@SymbP}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbJ\MilSymb@SymbK\MilSymb@SymbP};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@SymbW};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbX}{\empty} \AND \isequivalentto{\MilSymb@SymbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@SymbX\MilSymb@SymbY};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbV}{\empty} \AND \isequivalentto{\MilSymb@SymbAF}{\empty}}{}{\node [anchor=east] at (M.west) {\MilSymb@SymbV\MilSymb@SymbAF};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbT}{\empty}}{}{\node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\MilSymb@SymbT};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbZ}{\empty}}{}{\node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\MilSymb@SymbZ};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -2843,19 +2843,19 @@ scale=1,
    main/booby trap/.style= {/MilSymb/.cd, SymbC=equipment/main/booby trap},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    mobility/.is choice,
-   mobility/none/.style= {/MilSymb/.cd, symbL=, symbLT=},
-   mobility/amphibious/.style= {/MilSymb/.cd, symbL=equipment/mobility/amphibious},
-   mobility/barge/.style= {/MilSymb/.cd, symbL=equipment/mobility/barge},
-   mobility/over snow/.style= {/MilSymb/.cd, symbL=equipment/mobility/over snow},
-   mobility/pack animal/.style= {/MilSymb/.cd, symbL=equipment/mobility/pack animal},
-   mobility/railroad/.style= {/MilSymb/.cd, symbL=equipment/mobility/railroad},
-   mobility/sled/.style= {/MilSymb/.cd, symbL=equipment/mobility/sled},
-   mobility/towed/.style= {/MilSymb/.cd, symbL=equipment/mobility/towed},
-   mobility/tracked/.style= {/MilSymb/.cd, symbL=equipment/mobility/tracked},
-   mobility/wheeled cross country/.style= {/MilSymb/.cd, symbL=equipment/mobility/wheeled cross country},
-   mobility/wheeled limited mobility/.style= {/MilSymb/.cd, symbL=equipment/mobility/wheeled limited mobility},
-   mobility/wheeled semi trailer/.style= {/MilSymb/.cd, symbL=equipment/mobility/wheeled semi trailer},
-   mobility/wheeled and tracked/.style= {/MilSymb/.cd, symbL=equipment/mobility/wheeled and tracked},
+   mobility/none/.style= {/MilSymb/.cd, SymbL=, SymbLT=},
+   mobility/amphibious/.style= {/MilSymb/.cd, SymbL=equipment/mobility/amphibious},
+   mobility/barge/.style= {/MilSymb/.cd, SymbL=equipment/mobility/barge},
+   mobility/over snow/.style= {/MilSymb/.cd, SymbL=equipment/mobility/over snow},
+   mobility/pack animal/.style= {/MilSymb/.cd, SymbL=equipment/mobility/pack animal},
+   mobility/railroad/.style= {/MilSymb/.cd, SymbL=equipment/mobility/railroad},
+   mobility/sled/.style= {/MilSymb/.cd, SymbL=equipment/mobility/sled},
+   mobility/towed/.style= {/MilSymb/.cd, SymbL=equipment/mobility/towed},
+   mobility/tracked/.style= {/MilSymb/.cd, SymbL=equipment/mobility/tracked},
+   mobility/wheeled cross country/.style= {/MilSymb/.cd, SymbL=equipment/mobility/wheeled cross country},
+   mobility/wheeled limited mobility/.style= {/MilSymb/.cd, SymbL=equipment/mobility/wheeled limited mobility},
+   mobility/wheeled semi trailer/.style= {/MilSymb/.cd, SymbL=equipment/mobility/wheeled semi trailer},
+   mobility/wheeled and tracked/.style= {/MilSymb/.cd, SymbL=equipment/mobility/wheeled and tracked},
    mobility/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    offset/.code 2 args={\begin{scope}[shift={(#2)}]\draw (0,0)  -- +(0, -##1) -- +(##2);\end{scope}},
    offset/.value required,
@@ -2864,24 +2864,24 @@ scale=1,
    no frame/.is if=noframe,
    feint or dummy/.is if=feintdummy,
    iconcolour/.code={\colorlet{MilSymb@iconcolour}{##1}},
-   quantity/.store in=\MilSymb@symbQ,
-   staff comments/.store in=\MilSymb@symbG,
-   additional information/.store in=\MilSymb@symbH,
-   evaluation rating/.store in=\MilSymb@symbJ,
-   combat effectiveness/.store in=\MilSymb@symbK,
-   signature equipment/.store in=\MilSymb@symbSE,
-   higher formation/.store in=\MilSymb@symbM,
-   identification/.store in=\MilSymb@symbP,
-   unique designation/.store in=\MilSymb@symbT,
-   type of equipment/.store in=\MilSymb@symbV,
-   date-time group/.store in=\MilSymb@symbW,
-   altitude value/.store in=\MilSymb@symbX,
-   location/.store in=\MilSymb@symbY,
-   country indicator/.store in=\MilSymb@symbAC,
-   platform type/.store in=\MilSymb@symbAD,
-   equipment teardown time/.store in=\MilSymb@symbAE,
-   common identifier/.store in=\MilSymb@symbAF,
-   speed/.store in=\MilSymb@symbZ,
+   quantity/.store in=\MilSymb@SymbQ,
+   staff comments/.store in=\MilSymb@SymbG,
+   additional information/.store in=\MilSymb@SymbH,
+   evaluation rating/.store in=\MilSymb@SymbJ,
+   combat effectiveness/.store in=\MilSymb@SymbK,
+   signature equipment/.store in=\MilSymb@SymbSE,
+   higher formation/.store in=\MilSymb@SymbM,
+   identification/.store in=\MilSymb@SymbP,
+   unique designation/.store in=\MilSymb@SymbT,
+   type of equipment/.store in=\MilSymb@SymbV,
+   date-time group/.store in=\MilSymb@SymbW,
+   altitude value/.store in=\MilSymb@SymbX,
+   location/.store in=\MilSymb@SymbY,
+   country indicator/.store in=\MilSymb@SymbAC,
+   platform type/.store in=\MilSymb@SymbAD,
+   equipment teardown time/.store in=\MilSymb@SymbAE,
+   common identifier/.store in=\MilSymb@SymbAF,
+   speed/.store in=\MilSymb@SymbZ,
    faction=none,
    main=none,
    mobility=none,
@@ -2913,31 +2913,31 @@ scale=1,
 \begin{scope} [local bounding box=Q]
 \ifnoframe
 \tikzset{every path/.style={MilSymb@iconcolour}}
-\pic [local bounding box=M] {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
-\ifthenelse{\isequivalentto{\MilSymb@symbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@symbL};} %Draw mobility
+\pic [local bounding box=M] {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+\ifthenelse{\isequivalentto{\MilSymb@SymbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@SymbL};} %Draw mobility
 \tikzset{every path/.style={black}}
 \else
 \tikzset{/MilSymb/.cd, iconcolour=black}
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
-\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
-\ifthenelse{\isequivalentto{\MilSymb@symbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@symbL};} %Draw mobility
+\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+\ifthenelse{\isequivalentto{\MilSymb@SymbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@SymbL};} %Draw mobility
 \fi
 \end{scope}
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
 \fi
 \fontsize{6}{0}\selectfont
-\ifthenelse{\isequivalentto{\MilSymb@symbQ}{\empty}}{}{\node [anchor=south] at ($(M.north) + (0, 0.02)$) {\MilSymb@symbQ};}
-\ifthenelse{\isequivalentto{\MilSymb@symbAC}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!-0.17!(M.south east)$}) {\MilSymb@symbAC};}
-\ifthenelse{\isequivalentto{\MilSymb@symbG}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!.17!(M.south east)$}) {\MilSymb@symbG};}
-\ifthenelse{\isequivalentto{\MilSymb@symbH}{\empty} \AND \isequivalentto{\MilSymb@symbAE}{\empty}}{}{\node [anchor=west] at (Q.east |- M.east) {\MilSymb@symbH\MilSymb@symbAE};}
-\ifthenelse{\isequivalentto{\MilSymb@symbM}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!0.83!(M.south east)$}) {\MilSymb@symbM};}
-\ifthenelse{\isequivalentto{\MilSymb@symbJ}{\empty} \AND \isequivalentto{\MilSymb@symbK}{\empty} \AND \isequivalentto{\MilSymb@symbSE}{\empty} \AND \isequivalentto{\MilSymb@symbP}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!1.17!(M.south east)$}) {\MilSymb@symbJ\MilSymb@symbK\MilSymb@symbSE\MilSymb@symbP};}
-\ifthenelse{\isequivalentto{\MilSymb@symbW}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!-0.17!(M.south west)$}) {\MilSymb@symbW};}
-\ifthenelse{\isequivalentto{\MilSymb@symbX}{\empty} \AND \isequivalentto{\MilSymb@symbY}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!.17!(M.south west)$}) {\MilSymb@symbX\MilSymb@symbY};}
-\ifthenelse{\isequivalentto{\MilSymb@symbV}{\empty} \AND \isequivalentto{\MilSymb@symbAD}{\empty} \AND \isequivalentto{\MilSymb@symbAF}{\empty}}{}{\node [anchor=east] at (Q.west |- M.west) {\MilSymb@symbV\MilSymb@symbAD\MilSymb@symbAF};}
-\ifthenelse{\isequivalentto{\MilSymb@symbT}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!0.83!(M.south west)$}) {\MilSymb@symbT};}
-\ifthenelse{\isequivalentto{\MilSymb@symbZ}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!1.17!(M.south west)$}) {\MilSymb@symbZ};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbQ}{\empty}}{}{\node [anchor=south] at ($(M.north) + (0, 0.02)$) {\MilSymb@SymbQ};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbAC}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!-0.17!(M.south east)$}) {\MilSymb@SymbAC};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!.17!(M.south east)$}) {\MilSymb@SymbG};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbH}{\empty} \AND \isequivalentto{\MilSymb@SymbAE}{\empty}}{}{\node [anchor=west] at (Q.east |- M.east) {\MilSymb@SymbH\MilSymb@SymbAE};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbM}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!0.83!(M.south east)$}) {\MilSymb@SymbM};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbJ}{\empty} \AND \isequivalentto{\MilSymb@SymbK}{\empty} \AND \isequivalentto{\MilSymb@SymbSE}{\empty} \AND \isequivalentto{\MilSymb@SymbP}{\empty}}{}{\node [anchor=west] at ({Q.east} |- {$(M.north east)!1.17!(M.south east)$}) {\MilSymb@SymbJ\MilSymb@SymbK\MilSymb@SymbSE\MilSymb@SymbP};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbW}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!-0.17!(M.south west)$}) {\MilSymb@SymbW};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbX}{\empty} \AND \isequivalentto{\MilSymb@SymbY}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!.17!(M.south west)$}) {\MilSymb@SymbX\MilSymb@SymbY};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbV}{\empty} \AND \isequivalentto{\MilSymb@SymbAD}{\empty} \AND \isequivalentto{\MilSymb@SymbAF}{\empty}}{}{\node [anchor=east] at (Q.west |- M.west) {\MilSymb@SymbV\MilSymb@SymbAD\MilSymb@SymbAF};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbT}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!0.83!(M.south west)$}) {\MilSymb@SymbT};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbZ}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!1.17!(M.south west)$}) {\MilSymb@SymbZ};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -2977,21 +2977,21 @@ scale=1,
    main/white list location/.style={/MilSymb/.cd, SymbC=text/normal, SymbCT=WHT},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    upper/.is choice,
-   upper/none/.style={/MilSymb/.cd, symbU=text/small, symbUT=},
-   upper/nuclear energy/.style={/MilSymb/.cd, symbU=installation/upper/nuclear},
-   upper/railroad/.style={/MilSymb/.cd, symbU=installation/upper/railroad},
-   upper/yard/.style={/MilSymb/.cd, symbU=text/small, symbUT=YRD},
-   upper/biological/.style={/MilSymb/.cd, symbU=text/small, symbUT=B},
-   upper/chemical/.style={/MilSymb/.cd, symbU=text/small, symbUT=C},
-   upper/nuclear/.style={/MilSymb/.cd, symbU=text/small, symbUT=N},
-   upper/coal/.style={/MilSymb/.cd, symbU=text/small, symbUT=CO},
-   upper/geothermal/.style={/MilSymb/.cd, symbU=text/small, symbUT=GT},
-   upper/hydroelectric/.style={/MilSymb/.cd, symbU=text/small, symbUT=HY},
-   upper/natural gas/.style={/MilSymb/.cd, symbU=text/small, symbUT=NG},
-   upper/petroleum/.style= {/MilSymb/.cd, symbU=installation/upper/petroleum oil and lubricants},
-   upper/radio/.style={/MilSymb/.cd, symbU=text/small, symbUT=R},
-   upper/telephone/.style={/MilSymb/.cd, symbU=text/small, symbUT=T},
-   upper/television/.style={/MilSymb/.cd, symbU=text/small, symbUT=TV},
+   upper/none/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=},
+   upper/nuclear energy/.style={/MilSymb/.cd, SymbU=installation/upper/nuclear},
+   upper/railroad/.style={/MilSymb/.cd, SymbU=installation/upper/railroad},
+   upper/yard/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=YRD},
+   upper/biological/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=B},
+   upper/chemical/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=C},
+   upper/nuclear/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=N},
+   upper/coal/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=CO},
+   upper/geothermal/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=GT},
+   upper/hydroelectric/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=HY},
+   upper/natural gas/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=NG},
+   upper/petroleum/.style= {/MilSymb/.cd, SymbU=installation/upper/petroleum oil and lubricants},
+   upper/radio/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=R},
+   upper/telephone/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=T},
+   upper/television/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=TV},
    upper/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    offset/.code 2 args={\begin{scope}[shift={(#2)}]\ifheadquarters\ifthenelse{\equal{\MilSymb@selectedfaction}{friendly}}{\draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}\fi},
    offset/.value required,
@@ -3002,18 +3002,18 @@ scale=1,
    faction=none,
    main=none,
    upper=none,
-   staff comments/.store in=\MilSymb@symbG,
-   additional information/.store in=\MilSymb@symbH,
-   higher formation/.store in=\MilSymb@symbM,
-   evaluation rating/.store in=\MilSymb@symbJ,
-   country indicator/.store in=\MilSymb@symbAC,
-   capacity of installation/.store in=\MilSymb@symbK,
-   installation composition/.store in=\MilSymb@symbAI,
-   unique designation/.store in=\MilSymb@symbT,
-   date-time group/.store in=\MilSymb@symbW,
-   altitude value/.store in=\MilSymb@symbX,
-   location/.store in=\MilSymb@symbY,
-   speed/.store in=\MilSymb@symbZ,
+   staff comments/.store in=\MilSymb@SymbG,
+   additional information/.store in=\MilSymb@SymbH,
+   higher formation/.store in=\MilSymb@SymbM,
+   evaluation rating/.store in=\MilSymb@SymbJ,
+   country indicator/.store in=\MilSymb@SymbAC,
+   capacity of installation/.store in=\MilSymb@SymbK,
+   installation composition/.store in=\MilSymb@SymbAI,
+   unique designation/.store in=\MilSymb@SymbT,
+   date-time group/.store in=\MilSymb@SymbW,
+   altitude value/.store in=\MilSymb@SymbX,
+   location/.store in=\MilSymb@SymbY,
+   speed/.store in=\MilSymb@SymbZ,
    headquarters=false,
    feint or dummy=false,
    country indicator=,
@@ -3034,23 +3034,23 @@ scale=1,
 \fontfamily{phv}\fontseries{bx}\selectfont
 \fontsize{6}{0}\selectfont
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
-\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
-\pic at (0,0.34) {MilSymb \MilSymb@symbU={\MilSymb@symbUT}}; %Draw upper symbol
+\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+\pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
 \ifheadquarters\ifthenelse{\equal{\MilSymb@selectedfaction}{friendly}}{
 \draw (-0.75, -0.5) -- +(0, -0.25);}{}\fi
 \iffeintdummy
 \draw [dashed] (M.north west) -- ($(M.north)+(0, 0.5)$) -- (M.north east);
 \fi
-\ifthenelse{\isequivalentto{\MilSymb@symbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbAC};}
-\ifthenelse{\isequivalentto{\MilSymb@symbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbG};}
-\ifthenelse{\isequivalentto{\MilSymb@symbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbH};}
-\ifthenelse{\isequivalentto{\MilSymb@symbM}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbM};}
-\ifthenelse{\isequivalentto{\MilSymb@symbJ}{\empty} \AND \isequivalentto{\MilSymb@symbK}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbJ\MilSymb@symbK};}
-\ifthenelse{\isequivalentto{\MilSymb@symbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@symbW};}
-\ifthenelse{\isequivalentto{\MilSymb@symbX}{\empty} \AND \isequivalentto{\MilSymb@symbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@symbX\MilSymb@symbY};}
-\ifthenelse{\isequivalentto{\MilSymb@symbAI}{\empty}}{}{\node [anchor=east] at (M.west) {\MilSymb@symbAI};}
-\ifthenelse{\isequivalentto{\MilSymb@symbT}{\empty}}{}{\node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\MilSymb@symbT};}
-\ifthenelse{\isequivalentto{\MilSymb@symbZ}{\empty}}{}{\node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\MilSymb@symbZ};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbAC};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbG};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbH};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbM}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbM};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbJ}{\empty} \AND \isequivalentto{\MilSymb@SymbK}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbJ\MilSymb@SymbK};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@SymbW};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbX}{\empty} \AND \isequivalentto{\MilSymb@SymbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@SymbX\MilSymb@SymbY};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbAI}{\empty}}{}{\node [anchor=east] at (M.west) {\MilSymb@SymbAI};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbT}{\empty}}{}{\node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\MilSymb@SymbT};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbZ}{\empty}}{}{\node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\MilSymb@SymbZ};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -3153,50 +3153,50 @@ scale=1,
    main/civilian unmanned surface water vehicle/.style={/MilSymb/.cd, SymbC=multi/main/civilian unmanned systems},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    upper/.is choice,
-   upper/none/.style={/MilSymb/.cd, symbU=text/small, symbUT=},
-   upper/anti air warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=AAW},
-   upper/anti submarine warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=ASW},
-   upper/escort/.style={/MilSymb/.cd, symbU=text/small, symbUT=E},
-   upper/electronic warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=EW},
-   upper/intelligence surveillance reconnaissance/.style={/MilSymb/.cd, symbU=text/small, symbUT=ISR},
-   upper/mine counter measures/.style={/MilSymb/.cd, symbU=text/small, symbUT=MCM},
-   upper/missile defence/.style={/MilSymb/.cd, symbU=text/small, symbUT=MD},
-   upper/medical/.style={/MilSymb/.cd, symbU=text/small, symbUT=ME},
-   upper/mine warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=MW},
-   upper/remote multi mission vehicle/.style={/MilSymb/.cd, symbU=text/small, symbUT=RMV},
-   upper/special operations force/.style={/MilSymb/.cd, symbU=text/small, symbUT=SOF},
-   upper/surface warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=SUW},
-   upper/ballistic missile/.style={/MilSymb/.cd, symbU=text/small, symbUT=B},
-   upper/guided missile/.style={/MilSymb/.cd, symbU=text/small, symbUT=G},
-   upper/other guided missile/.style={/MilSymb/.cd, symbU=text/small, symbUT=M},
-   upper/torpedo/.style={/MilSymb/.cd, symbU=text/small, symbUT=T},
-   upper/drone equipped/.style={/MilSymb/.cd, symbU=seasurface/upper/drone equipped},
-   upper/helicopter equipped/.style={/MilSymb/.cd, symbU=text/small, symbUT=H},
+   upper/none/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=},
+   upper/anti air warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=AAW},
+   upper/anti submarine warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ASW},
+   upper/escort/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=E},
+   upper/electronic warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=EW},
+   upper/intelligence surveillance reconnaissance/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ISR},
+   upper/mine counter measures/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MCM},
+   upper/missile defence/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MD},
+   upper/medical/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ME},
+   upper/mine warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MW},
+   upper/remote multi mission vehicle/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=RMV},
+   upper/special operations force/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=SOF},
+   upper/surface warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=SUW},
+   upper/ballistic missile/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=B},
+   upper/guided missile/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=G},
+   upper/other guided missile/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=M},
+   upper/torpedo/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=T},
+   upper/drone equipped/.style={/MilSymb/.cd, SymbU=seasurface/upper/drone equipped},
+   upper/helicopter equipped/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=H},
    upper/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    lower/.is choice,
-   lower/none/.style={/MilSymb/.cd, symbL=text/small, symbLT=},
-   lower/nuclear powered/.style={/MilSymb/.cd, symbL=text/small, symbLT=N},
-   lower/heavy/.style={/MilSymb/.cd, symbL=text/small, symbLT=H},
-   lower/light/.style={/MilSymb/.cd, symbL=text/small, symbLT=L},
-   lower/medium/.style={/MilSymb/.cd, symbL=text/small, symbLT=M},
-   lower/dock/.style={/MilSymb/.cd, symbL=text/small, symbLT=D},
-   lower/logistics/.style={/MilSymb/.cd, symbL=text/small, symbLT=LOG},
-   lower/tank/.style={/MilSymb/.cd, symbL=text/small, symbLT=T},
-   lower/vehicle/.style={/MilSymb/.cd, symbL=text/small, symbLT=V},
-   lower/fast/.style={/MilSymb/.cd, symbL=text/small, symbLT=F},
-   lower/air cushioned/.style={/MilSymb/.cd, symbL=text/small, symbLT=J},
-   lower/air cushioned alternate/.style={/MilSymb/.cd, symbL=text/small, symbLT=AC},
-   lower/hydrofoil/.style={/MilSymb/.cd, symbL=text/small, symbLT=K},
-   lower/autonomous control/.style={/MilSymb/.cd, symbL=text/small, symbLT=AUT},
-   lower/remotely piloted/.style={/MilSymb/.cd, symbL=text/small, symbLT=RP},
-   lower/expendable/.style={/MilSymb/.cd, symbL=text/small, symbLT=EXP},
+   lower/none/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=},
+   lower/nuclear powered/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N},
+   lower/heavy/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=H},
+   lower/light/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=L},
+   lower/medium/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=M},
+   lower/dock/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=D},
+   lower/logistics/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=LOG},
+   lower/tank/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=T},
+   lower/vehicle/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=V},
+   lower/fast/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=F},
+   lower/air cushioned/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=J},
+   lower/air cushioned alternate/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=AC},
+   lower/hydrofoil/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=K},
+   lower/autonomous control/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=AUT},
+   lower/remotely piloted/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=RP},
+   lower/expendable/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=EXP},
    lower/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
-   track number/.store in=\MilSymb@symbA,
-   name/.store in=\MilSymb@symbB,
-   position and movement/.store in=\MilSymb@symbD,
-   identification/.store in= \MilSymb@symbE,
-   additional information/.store in=\MilSymb@symbF,
-   date-time group/.store in= \MilSymb@symbG,
+   track number/.store in=\MilSymb@SymbA,
+   name/.store in=\MilSymb@SymbB,
+   position and movement/.store in=\MilSymb@SymbD,
+   identification/.store in= \MilSymb@SymbE,
+   additional information/.store in=\MilSymb@SymbF,
+   date-time group/.store in= \MilSymb@SymbG,
    speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
    speed leader/.value required,
    track number=,
@@ -3214,15 +3214,15 @@ scale=1,
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
- \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
- \pic at (0,0.34) {MilSymb \MilSymb@symbU={\MilSymb@symbUT}}; %Draw upper symbol
- \pic at (0,-0.34) {MilSymb \MilSymb@symbL={\MilSymb@symbLT}}; %Draw lower symbol
+ \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+ \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
+ \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
  \fontsize{6}{0}\selectfont
- \ifthenelse{\isequivalentto{\MilSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbA};}
- \ifthenelse{\isequivalentto{\MilSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbB};}
- \ifthenelse{\isequivalentto{\MilSymb@symbD}{\empty} \AND \isequivalentto{\MilSymb@symbG}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbD\MilSymb@symbG};}
- \ifthenelse{\isequivalentto{\MilSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbE};}
- \ifthenelse{\isequivalentto{\MilSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbF};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbD}{\empty} \AND \isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbD\MilSymb@SymbG};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbE};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbF};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -3270,51 +3270,51 @@ scale=1,
    main/civilian seabed installation/.style={/MilSymb/.cd, SymbC=seasubsurface/main/civilian seabed installation},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    upper/.is choice,
-   upper/none/.style={/MilSymb/.cd, symbU=text/small, symbUT=},
-   upper/anti submarine warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=ASW},
-   upper/auxiliary/.style={/MilSymb/.cd, symbU=text/small, symbUT=AUX},
-   upper/command and control/.style={/MilSymb/.cd, symbU=text/small, symbUT=C2},
-   upper/intelligence surveillance reconnaissance/.style={/MilSymb/.cd, symbU=text/small, symbUT=ISR},
-   upper/mine countermeasures/.style={/MilSymb/.cd, symbU=text/small, symbUT=MCM},
-   upper/mine warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=MW},
-   upper/surface warfare/.style={/MilSymb/.cd, symbU=text/small, symbUT=SUW},
-   upper/attack/.style={/MilSymb/.cd, symbU=text/small, symbUT=A},
-   upper/ballistic missile/.style={/MilSymb/.cd, symbU=text/small, symbUT=B},
-   upper/guided missile/.style={/MilSymb/.cd, symbU=text/small, symbUT=G},
-   upper/other guided missile/.style={/MilSymb/.cd, symbU=text/small, symbUT=M},
-   upper/special operations force/.style={/MilSymb/.cd, symbU=text/small, symbUT=SOF},
-   upper/possible submarine low 1/.style={/MilSymb/.cd, symbU=text/small, symbUT=P1},
-   upper/possible submarine low 2/.style={/MilSymb/.cd, symbU=text/small, symbUT=P2},
-   upper/possible submarine high 3/.style={/MilSymb/.cd, symbU=text/small, symbUT=P3},
-   upper/possible submarine high 4/.style={/MilSymb/.cd, symbU=text/small, symbUT=P4},
-   upper/probable submarine/.style={/MilSymb/.cd, symbU=text/small, symbUT=PB},
-   upper/certain submarine/.style={/MilSymb/.cd, symbU=text/small, symbUT=CT},
+   upper/none/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=},
+   upper/anti submarine warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ASW},
+   upper/auxiliary/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=AUX},
+   upper/command and control/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=C2},
+   upper/intelligence surveillance reconnaissance/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=ISR},
+   upper/mine countermeasures/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MCM},
+   upper/mine warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MW},
+   upper/surface warfare/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=SUW},
+   upper/attack/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=A},
+   upper/ballistic missile/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=B},
+   upper/guided missile/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=G},
+   upper/other guided missile/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=M},
+   upper/special operations force/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=SOF},
+   upper/possible submarine low 1/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=P1},
+   upper/possible submarine low 2/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=P2},
+   upper/possible submarine high 3/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=P3},
+   upper/possible submarine high 4/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=P4},
+   upper/probable submarine/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=PB},
+   upper/certain submarine/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=CT},
    upper/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    lower/.is choice,
-   lower/none/.style={/MilSymb/.cd, symbL=text/small, symbLT=},
-   lower/air independent propulsion/.style={/MilSymb/.cd, symbL=text/small, symbLT=AI},
-   lower/diesel propulsion/.style={/MilSymb/.cd, symbL=text/small, symbLT=D},
-   lower/diesel type 1/.style={/MilSymb/.cd, symbL=text/small, symbLT=D1},
-   lower/diesel type 2/.style={/MilSymb/.cd, symbL=text/small, symbLT=D2},
-   lower/diesel type 3/.style={/MilSymb/.cd, symbL=text/small, symbLT=D3},
-   lower/nuclear propulsion/.style={/MilSymb/.cd, symbL=text/small, symbLT=N},
-   lower/nuclear type 1/.style={/MilSymb/.cd, symbL=text/small, symbLT=N1},
-   lower/nuclear type 2/.style={/MilSymb/.cd, symbL=text/small, symbLT=N2},
-   lower/nuclear type 3/.style={/MilSymb/.cd, symbL=text/small, symbLT=N3},
-   lower/nuclear type 4/.style={/MilSymb/.cd, symbL=text/small, symbLT=N4},
-   lower/nuclear type 5/.style={/MilSymb/.cd, symbL=text/small, symbLT=N5},
-   lower/nuclear type 6/.style={/MilSymb/.cd, symbL=text/small, symbLT=N6},
-   lower/nuclear type 7/.style={/MilSymb/.cd, symbL=text/small, symbLT=N7},
-   lower/autonomous control/.style={/MilSymb/.cd, symbL=text/small, symbLT=AUT},
-   lower/remotely piloted/.style={/MilSymb/.cd, symbL=text/small, symbLT=RP},
-   lower/expendable/.style={/MilSymb/.cd, symbL=text/small, symbLT=EXP},
+   lower/none/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=},
+   lower/air independent propulsion/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=AI},
+   lower/diesel propulsion/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=D},
+   lower/diesel type 1/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=D1},
+   lower/diesel type 2/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=D2},
+   lower/diesel type 3/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=D3},
+   lower/nuclear propulsion/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N},
+   lower/nuclear type 1/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N1},
+   lower/nuclear type 2/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N2},
+   lower/nuclear type 3/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N3},
+   lower/nuclear type 4/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N4},
+   lower/nuclear type 5/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N5},
+   lower/nuclear type 6/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N6},
+   lower/nuclear type 7/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=N7},
+   lower/autonomous control/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=AUT},
+   lower/remotely piloted/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=RP},
+   lower/expendable/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=EXP},
    lower/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
-   track number/.store in=\MilSymb@symbA,
-   name/.store in=\MilSymb@symbB,
-   position and movement/.store in=\MilSymb@symbD,
-   identification/.store in= \MilSymb@symbE,
-   additional information/.store in=\MilSymb@symbF,
-   date-time group/.store in= \MilSymb@symbG,
+   track number/.store in=\MilSymb@SymbA,
+   name/.store in=\MilSymb@SymbB,
+   position and movement/.store in=\MilSymb@SymbD,
+   identification/.store in= \MilSymb@SymbE,
+   additional information/.store in=\MilSymb@SymbF,
+   date-time group/.store in= \MilSymb@SymbG,
    speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
    speed leader/.value required,
    track number=,
@@ -3332,15 +3332,15 @@ scale=1,
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
- \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
- \pic at (0,0.34) {MilSymb \MilSymb@symbU={\MilSymb@symbUT}}; %Draw upper symbol
- \pic at (0,-0.34) {MilSymb \MilSymb@symbL={\MilSymb@symbLT}}; %Draw lower symbol
+ \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+ \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
+ \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
  \fontsize{6}{0}\selectfont
- \ifthenelse{\isequivalentto{\MilSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbA};}
- \ifthenelse{\isequivalentto{\MilSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbB};}
- \ifthenelse{\isequivalentto{\MilSymb@symbD}{\empty} \AND \isequivalentto{\MilSymb@symbG}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbD\MilSymb@symbG};}
- \ifthenelse{\isequivalentto{\MilSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbE};}
- \ifthenelse{\isequivalentto{\MilSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbF};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbD}{\empty} \AND \isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbD\MilSymb@SymbG};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbE};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbF};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -3365,12 +3365,12 @@ scale=1,
    neutralised/.is if=neutralised,
    no frame/.is if=noframe,
    iconcolour/.code={\colorlet{MilSymb@iconcolour}{##1}},
-   track number/.store in=\MilSymb@symbA,
-   name/.store in=\MilSymb@symbB,
-   position and movement/.store in=\MilSymb@symbD,
-   identification/.store in= \MilSymb@symbE,
-   additional information/.store in=\MilSymb@symbF,
-   date-time group/.store in= \MilSymb@symbG,
+   track number/.store in=\MilSymb@SymbA,
+   name/.store in=\MilSymb@SymbB,
+   position and movement/.store in=\MilSymb@SymbD,
+   identification/.store in= \MilSymb@SymbE,
+   additional information/.store in=\MilSymb@SymbF,
+   date-time group/.store in= \MilSymb@SymbG,
    track number=,
    name=,
    position and movement=,
@@ -3395,11 +3395,11 @@ scale=1,
  \pic {MilSymb \MilSymb@SymbC}; %Draw mine
  \fi
  \fontsize{6}{0}\selectfont
- \ifthenelse{\isequivalentto{\MilSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbA};}
- \ifthenelse{\isequivalentto{\MilSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbB};}
- \ifthenelse{\isequivalentto{\MilSymb@symbD}{\empty} \AND \isequivalentto{\MilSymb@symbG}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbD\MilSymb@symbG};}
- \ifthenelse{\isequivalentto{\MilSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbE};}
- \ifthenelse{\isequivalentto{\MilSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbF};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbD}{\empty} \AND \isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbD\MilSymb@SymbG};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbE};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbF};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -3446,26 +3446,26 @@ scale=1,
    main/civilian weather satellite/.style={/MilSymb/.cd, SymbC=space/main/civilian weather satellite},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    upper/.is choice,
-   upper/none/.style={/MilSymb/.cd, symbU=text/small, symbUT=},
-   upper/low earth orbit/.style={/MilSymb/.cd, symbU=text/small, symbUT=LEO},
-   upper/medium earth orbit/.style={/MilSymb/.cd, symbU=text/small, symbUT=MEO},
-   upper/high earth orbit/.style={/MilSymb/.cd, symbU=text/small, symbUT=HEO},
-   upper/geosynchronous orbit/.style={/MilSymb/.cd, symbU=text/small, symbUT=GSO},
-   upper/geostationary orbit/.style={/MilSymb/.cd, symbU=text/small, symbUT=GO},
-   upper/molinya orbit/.style={/MilSymb/.cd, symbU=text/small, symbUT=MO},
+   upper/none/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=},
+   upper/low earth orbit/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=LEO},
+   upper/medium earth orbit/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MEO},
+   upper/high earth orbit/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=HEO},
+   upper/geosynchronous orbit/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=GSO},
+   upper/geostationary orbit/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=GO},
+   upper/molinya orbit/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MO},
    upper/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    lower/.is choice,
-   lower/none/.style={/MilSymb/.cd, symbL=text/small, symbLT=},
-   lower/optical/.style={/MilSymb/.cd, symbL=text/small, symbLT=O},
-   lower/infra red/.style={/MilSymb/.cd, symbL=text/small, symbLT=IR},
-   lower/radar/.style={/MilSymb/.cd, symbL=text/small, symbLT=R},
-   lower/signals intelligence/.style={/MilSymb/.cd, symbL=text/small, symbLT=SI},
+   lower/none/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=},
+   lower/optical/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=O},
+   lower/infra red/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=IR},
+   lower/radar/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=R},
+   lower/signals intelligence/.style={/MilSymb/.cd, SymbL=text/small, SymbLT=SI},
    lower/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
-   track number/.store in=\MilSymb@symbA,
-   name/.store in=\MilSymb@symbB,
-   position and movement/.store in=\MilSymb@symbD,
-   nation/.store in= \MilSymb@symbE,
-   additional information/.store in=\MilSymb@symbF,
+   track number/.store in=\MilSymb@SymbA,
+   name/.store in=\MilSymb@SymbB,
+   position and movement/.store in=\MilSymb@SymbD,
+   nation/.store in= \MilSymb@SymbE,
+   additional information/.store in=\MilSymb@SymbF,
    speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
    speed leader/.value required,
    track number=,
@@ -3482,15 +3482,15 @@ scale=1,
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
- \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
- \pic at (0,0.34) {MilSymb \MilSymb@symbU={\MilSymb@symbUT}}; %Draw upper symbol
- \pic at (0,-0.34) {MilSymb \MilSymb@symbL={\MilSymb@symbLT}}; %Draw lower symbol
+ \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+ \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
+ \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
  \fontsize{6}{0}\selectfont
- \ifthenelse{\isequivalentto{\MilSymb@symbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbA};}
- \ifthenelse{\isequivalentto{\MilSymb@symbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbB};}
- \ifthenelse{\isequivalentto{\MilSymb@symbD}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbD};}
- \ifthenelse{\isequivalentto{\MilSymb@symbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@symbE};}
- \ifthenelse{\isequivalentto{\MilSymb@symbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbF};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbD}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbD};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbE};}
+ \ifthenelse{\isequivalentto{\MilSymb@SymbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbF};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
@@ -3555,23 +3555,23 @@ scale=1,
    main/individual/.style={/MilSymb/.cd, SymbC=multi/main/individual},
    main/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
    upper/.is choice,
-   upper/none/.style={/MilSymb/.cd, symbU=text/small, symbUT=},
-   upper/assassination/.style={/MilSymb/.cd, symbU=text/small, symbUT=AS},
-   upper/execution/.style={/MilSymb/.cd, symbU=text/small, symbUT=EX},
-   upper/hijack/.style={/MilSymb/.cd, symbU=text/small, symbUT=H},
-   upper/house to house/.style={/MilSymb/.cd, symbU=activity/upper/house to house},
-   upper/kidnapping/.style={/MilSymb/.cd, symbU=text/small, symbUT=K},
-   upper/murder/.style={/MilSymb/.cd, symbU=text/small, symbUT=MU},
-   upper/piracy/.style={/MilSymb/.cd, symbU=text/small, symbUT=PI},
-   upper/rape/.style={/MilSymb/.cd, symbU=text/small, symbUT=RA},
-   upper/written/.style={/MilSymb/.cd, symbU=text/small, symbUT=W},
+   upper/none/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=},
+   upper/assassination/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=AS},
+   upper/execution/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=EX},
+   upper/hijack/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=H},
+   upper/house to house/.style={/MilSymb/.cd, SymbU=activity/upper/house to house},
+   upper/kidnapping/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=K},
+   upper/murder/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=MU},
+   upper/piracy/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=PI},
+   upper/rape/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=RA},
+   upper/written/.style={/MilSymb/.cd, SymbU=text/small, SymbUT=W},
    upper/.unknown/.style={/MilSymb/.cd, SymbC=custom/\pgfkeys@was@choice},
-   staff comments/.store in=\MilSymb@symbG,
-   additional information/.store in=\MilSymb@symbH,
-   evaluation rating/.store in=\MilSymb@symbJ,
-   country indicator/.store in=\MilSymb@symbAC,
-   date-time group/.store in=\MilSymb@symbW,
-   location/.store in=\MilSymb@symbY,
+   staff comments/.store in=\MilSymb@SymbG,
+   additional information/.store in=\MilSymb@SymbH,
+   evaluation rating/.store in=\MilSymb@SymbJ,
+   country indicator/.store in=\MilSymb@SymbAC,
+   date-time group/.store in=\MilSymb@SymbW,
+   location/.store in=\MilSymb@SymbY,
    offset/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\MilSymb@drawH}{true}\AND \equal{\MilSymb@selectedfaction}{friendly}}{\draw (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
    offset/.value required,
    movement/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\MilSymb@drawH}{true}\AND \equal{\MilSymb@selectedfaction}{friendly}}{ \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
@@ -3590,15 +3590,15 @@ scale=1,
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
-\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main symbol
-\pic at (0,0.34) {MilSymb \MilSymb@symbU={\MilSymb@symbUT}}; %Draw upper symbol
+\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+\pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
 \fontsize{6}{0}\selectfont
-\ifthenelse{\isequivalentto{\MilSymb@symbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@symbAC};}
-\ifthenelse{\isequivalentto{\MilSymb@symbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@symbG};}
-\ifthenelse{\isequivalentto{\MilSymb@symbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@symbH};}
-\ifthenelse{\isequivalentto{\MilSymb@symbJ}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@symbJ};}
-\ifthenelse{\isequivalentto{\MilSymb@symbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@symbW};}
-\ifthenelse{\isequivalentto{\MilSymb@symbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@symbY};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbAC};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbG};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbH};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbJ}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbJ};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@SymbW};}
+\ifthenelse{\isequivalentto{\MilSymb@SymbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@SymbY};}
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
