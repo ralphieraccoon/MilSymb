@@ -62,4 +62,6 @@ d = co.difference(li)
 
 d = list(filter(lambda i: not re.search('(multi|/debris/|/mine/)', i), list(d)))
 
+d.sort()
+
 pass

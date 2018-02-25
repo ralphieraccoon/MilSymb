@@ -506,7 +506,7 @@ To insert an existing icon or modifier into your custom icon use a nested \textt
 \subsubsection{Text Templates}
 \label{text}
 
-\MilSymb uses 4 standard text templates for commonly used text in icons and modifiers. Use regular TikZ text syntax for any varaitions. You can use them by nesting a \texttt{.pic} as before, but adding \texttt{=\{text to display\}} as a suffix, as in \texttt{\textbackslash pic\{MilSymb text/type=\{text to display\}\}}. Note that conventionally up to 3 characters are designed to be used with normal text, and up to 4 with \lq\lq{}squashed\rq\rq{} versions, in order to appear similar to \DocLink guidelines. Any more characters should use a smaller font.
+\MilSymb uses 4 standard text templates for commonly used text in icons and modifiers. Use regular TikZ text syntax for any variations. You can use them by nesting a \texttt{.pic} as before, but adding \texttt{=\{text to display\}} as a suffix, as in \texttt{\textbackslash pic\{MilSymb text/type=\{text to display\}\}}. Note that conventionally up to 3 characters are designed to be used with normal text, and up to 4 with \lq\lq{}squashed\rq\rq{} versions, in order to appear similar to \DocLink guidelines. Any more characters should use a smaller font.
 
 \begin{figure}[H]
 \centering
@@ -541,19 +541,78 @@ To insert an existing icon or modifier into your custom icon use a nested \textt
 \subsubsection{Multiple Class}
 \label{multi} 
 
-Some \MilSymb icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command.
+Some \MilSymb icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command. The \texttt{upperlower} sub-directory is used to store modifier glyphs that are used in both the \texttt{upper} and \texttt{lower} positions.
 
-\begin{table}[H]
-
+\begin{tabularx}{\linewidth}{|l|s|l|@{}m{0pt}@{}}
+\hline
+\thead{Name} & \thead{Glyph} & \thead{Usage}&\\ \hline
+\texttt{main/amphibious} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/amphibious}} & Test &\\ [1.25cm] \hline
+\texttt{main/antenna} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/antenna}} & Test &\\ [1.25cm] \hline
+\texttt{main/ammunition} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/ammunition}} & Test &\\ [1.25cm] \hline
+\texttt{main/armoured} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/armoured}} & Test &\\ [1.25cm] \hline
+\texttt{main/aviation fixed wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation fixed wing}} & Test &\\ [1.25cm] \hline
+\texttt{main/aviation rotary wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation rotary wing}} & Test &\\ [1.25cm] \hline
+\texttt{main/bridge} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/bridge}} & Test &\\ [1.25cm] \hline
+\texttt{main/chemical biological radiological nuclear} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/chemical biological radiological nuclear}} & Test &\\ [1.25cm] \hline
+\texttt{main/drill} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/drill}} & Test &\\ [1.25cm] \hline
+\texttt{main/decoy} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/decoy}} & Test &\\ [1.25cm] \hline
+\texttt{main/diver} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/diver}} & Test &\\ [1.25cm] \hline
+\texttt{main/engineer} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/engineer}} & Test &\\ [1.25cm] \hline
+\texttt{main/field artillery} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/field artillery}} & Test &\\ [1.25cm] \hline
+\texttt{main/individual} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/individual}} & Test &\\ [1.25cm] \hline
+\texttt{main/killing victim} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/killing victim}} & Test &\\ [1.25cm] \hline
+\texttt{main/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/maintenance}} & Test &\\ [1.25cm] \hline
+\texttt{main/major end} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/major end}} & Test &\\ [1.25cm] \hline
+\texttt{main/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/medic}} & Test &\\ [1.25cm] \hline
+\texttt{main/medical} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical}} & Test &\\ [1.25cm] \hline
+\texttt{main/medical treatment facility} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical treatment facility}} & Test &\\ [1.25cm] \hline
+\texttt{main/missile} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/missile}} & Test &\\ [1.25cm] \hline
+\texttt{main/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/naval}} & Test &\\ [1.25cm] \hline
+\texttt{main/person} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/person}} & Test &\\ [1.25cm] \hline
+\texttt{main/petroleum oil and lubricants} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/petroleum oil and lubricants}} & Test &\\ [1.25cm] \hline
+\texttt{main/psychological operations} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations}} & Test &\\ [1.25cm] \hline
+\texttt{main/psychological operations filled} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations filled}} & Test &\\ [1.25cm] \hline
+\texttt{main/radar} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/radar}} & Test &\\ [1.25cm] \hline
+\texttt{main/repair parts} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/repair parts}} & Test &\\ [1.25cm] \hline
+\texttt{main/sailing boat} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sailing boat}} & Test &\\ [1.25cm] \hline
+\texttt{main/sensor} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sensor}} & Test &\\ [1.25cm] \hline
+\texttt{main/signal}* & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/signal/neutral}} & Test &\\ [1.25cm] \hline
+\texttt{main/transportation} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/transportation}} & Test &\\ [1.25cm] \hline
+\texttt{main/victim of an attempted crime} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/victim of an attempted crime}} & Test &\\ [1.25cm] \hline
+\texttt{main/water} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water}} & Test &\\ [1.25cm] \hline
+\texttt{main/water purification} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water purification}} & Test &\\ [1.25cm] \hline
+\texttt{upper/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/naval}} & Test &\\ [1.25cm] \hline
+\texttt{upper/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/medic}} & Test &\\ [1.25cm] \hline
+\texttt{upper/runway} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/runway}} & Test &\\ [1.25cm] \hline
+\texttt{lower/pack animal} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/lower/pack animal}} & Test &\\ [1.25cm] \hline
+\texttt{upperlower/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/maintenance}} & Test &\\ [1.25cm] \hline
+\texttt{upperlower/railroad} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/railroad}} & Test &\\ [1.25cm] \hline
+\multicolumn{4}{c}{}\\
 \caption{Table of Multiple Class Icons and Modifiers}
-\end{table}
+\end{tabularx}
+
 
 \subsubsection{Hidden Glyphs} 
 
 There are some \texttt{.pic} that are not used as an icon or modifier directly, but are used to construct other icons or modifiers because they are used multiple times.
 
 \begin{table}[H]
-
+\centering
+\begin{tabular}{|l|s|l|@{}m{0pt}@{}}
+\hline
+\thead{Name} & \thead{Glyph} & \thead{Usage}&\\ \hline
+\texttt{equipment/main/weapon} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/weapon}} & Test &\\ [1.25cm] \hline
+\texttt{equipment/main/air defence} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/air defence}} & Test &\\ [1.25cm] \hline
+\texttt{equipment/main/anti tank} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/anti tank}} & Test &\\ [1.25cm] \hline
+\texttt{equipment/main/high trajectory indirect fire weapons system} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/high trajectory indirect fire weapons system}} & Test &\\  [1.25cm] \hline
+\texttt{equipment/main/side bands} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/side bands}} & Test &\\ [1.25cm] \hline
+\texttt{equipment/main/single band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/single band}} & Test &\\ [1.25cm] \hline
+\texttt{equipment/main/double band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/double band}} & Test &\\ [1.25cm] \hline
+\texttt{equipment/main/triple band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/triple band}} & Test &\\ [1.25cm] \hline
+\texttt{seasubsurface/main/half sea mine} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/half sea mine}} & Test &\\ [1.25cm] \hline
+\texttt{seasubsurface/main/sea surface} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/sea surface}} & Test &\\ [1.25cm] \hline
+\texttt{supply/medicalbar} & \tikz[baseline=-0.5ex]{\pic{MilSymb supply/medicalbar/neutral}} & Test &\\ [1.25cm] \hline
+\end{tabular}
 \caption{Table of Hidden Glyphs}
 \end{table}
 
