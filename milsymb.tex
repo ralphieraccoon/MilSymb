@@ -111,6 +111,8 @@ To use \MilSymb\  in your document, just include \texttt{\textbackslash usepacka
 
 \subsubsection{Package Options}
 
+Currently, there are no package options specified for \MilSymb.
+
 \subsubsection{Symbol Construction}
 
 \textit{NATO Joint Military Symbology} uses a \lq\lq{}building block\rq\rq{} philosophy when constructing military symbols, so each symbol can be broken into individual components. Only a brief overview will be given here, more information can be found in \DocLink. These components are shown in Figure \ref{Annotate}.
@@ -139,7 +141,7 @@ To use \MilSymb\  in your document, just include \texttt{\textbackslash usepacka
 \begin{itemize}
 \item The \textbf{Frame} consists of a filled shape encompassing the icon and modifiers, denoting the type (land, sea surface, air, etc.) and faction (friendly, hostile, neutral, unknown) of the symbol. In some situations this is optional.
 \item The \textbf{Icon} denotes the entity the symbol represents (infantry, tank, mine, etc.). It is always placed in the centre of the symbol.
-\item The \textbf{Modifiers} are symbols that go above and below the icon (or to the left and right in the case of missile symbols). These \lq\lq{}modify\rq\rq{} the entity with additional features or information (equipped with rocket launchers, extra heavy, etc.)  These are usually optional.
+\item The \textbf{Modifiers} are symbols that go above and below the icon (or to the left and right in the case of missile symbols, and just below the frame in the case of equipment symbols). These \lq\lq{}modify\rq\rq{} the entity with additional features or information (equipped with rocket launchers, extra heavy, etc.)  These are usually optional.
 \item The \textbf{Amplifiers} are text and symbols that go outside the frame, and denote additional attributes of the symbol (country of origin, military echelon, speed and direction, etc.). These are always optional.
 \end{itemize}
 
@@ -162,7 +164,21 @@ The general structure of a \MilSymb\  command is as follows. Syntax in \textit{i
 
 \subsubsection{Shared Keys}
 
+These are all the keys that are shared by multiple \MilSymb\ commands. Not all keys are shared by all commands, please see Table \ref{shared} for details about which keys are used by which commands.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+
+\end{tabular}
+\caption{Table of which keys are used in which commands.}
+\label{shared}
+\end{table}
+
+
 \paragraph{\texttt{faction}}
+
+\textit{Additionally applicable to the \textbf{\texttt{MilMine}} command.} This key selects the military faction of the symbol relative to the user, which determines the colour and shape of the frame, or the colour of the icon and modifiers if \texttt{noframe} is specified. The values available are \texttt{friendly}, \texttt{hostile}, \texttt{neutral} and \texttt{unknown}.
 
 \begin{table}[H]
 \centering
@@ -189,16 +205,24 @@ The general structure of a \MilSymb\  command is as follows. Syntax in \textit{i
 \begin{tablenotes}
 \item \qquad  *Can be used without a frame using the \texttt{noframe} option.
 \end{tablenotes}
-\caption{Table of all the \MilSymb command frames.}
+\caption{Table of all the \MilSymb\ command frames.}
 \end{table}
 
 \paragraph{\texttt{main}}
 
-\paragraph{\texttt{upper}}
+This key defines the icon to use in the centre of the frame. See the individual command symbol tables for the list of available values.
 
-\paragraph{\texttt{lower}}
+\paragraph{\texttt{upper}} 
+
+\textit{Not applicable to the \textbf{\texttt{MilMissile}} and \textbf{\texttt{MilInstallation}} commands.} This key defines the modifier to use above the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
+
+\paragraph{\texttt{lower}} 
+
+\textit{Not applicable to the \textbf{\texttt{MilMissile}} and \textbf{\texttt{MilInstallation}} commands.} This key defines the modifier to use below the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
 
 \paragraph{\texttt{frame status}}
+
+\textit{Additionally applicable to the \textbf{\texttt{MilMine}} command.} This key modifies the border of the frame to allow for the expression of both the full set of \lq\lq{}standard identities\rq\rq{}, and the planned status as seen in \DocLink. The \texttt{unclear} value creates a black and white dotted line to display the alternate identities of each faction (assumed friend for friendly, suspect for hostile and pending for unknown, neutral should not use this value). The \texttt{anticipated} value create a longer dashed line to display the planned status.
 
 \begin{figure}[H]
 \centering
@@ -212,6 +236,8 @@ The general structure of a \MilSymb\  command is as follows. Syntax in \textit{i
 \end{figure}
 
 \paragraph{\texttt{monochrome}}
+
+\textit{Additionally applicable to the \textbf{\texttt{MilMine}} command.} This boolean switch key allows the symbol to be generated in a monochrome format. All faction colours are instead rendered as an off-white colour as specified in \DocLink. 
 
 \begin{figure}[H]
 \centering
@@ -239,9 +265,44 @@ This allows you to scale the resulting symbol by a multiple. By default (\texttt
 \caption{Example of the \texttt{scale} key in use.}
 \end{figure}
 
-\paragraph{\texttt{speed leader}}
+\paragraph{\texttt{noframe}}
 
-\paragraph{\texttt{offset}, \texttt{movement}}
+\paragraph{\texttt{speed leader} (Amplifier)}
+
+\textit{Only applicable to the \textbf{\texttt{MilAir}}, \textbf{\texttt{MilSeaSurface}},\\ \textbf{\texttt{MilSeaSubSurface}} and \textbf{\texttt{MilSpace}} commands.} This draws a line from the centre of the symbol at a specified heading for a specified length. This is used to denote the speed (length) and direction (heading) of the symbol. This key takes two arguments, the first is the length and the second is the heading, as shown below:\\
+
+\texttt{speed leader=\{\textit{heading}\}\{\textit{length}\}}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilAir[faction=friendly, main=military rotary wing, speed leader={35}{3}, scale=2] & \MilAir[faction=friendly, main=military rotary wing, speed leader={118}{4}, scale=2] & \MilAir[faction=friendly, main=military rotary wing, speed leader={335}{2}, scale=2] \\
+\node{\texttt{speed leader=\{35\}\{3\}}}; & \node{\texttt{speed leader=\{118\}\{4\}}}; & \node{\texttt{speed leader=\{335\}\{2\}}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{speed leader} key in use.}
+\end{figure}
+
+\paragraph{\texttt{offset}, \texttt{movement} (Amplifier)}
+
+\textit{Only applicable to the \textbf{\texttt{MilLand}}, \textbf{\texttt{MilEquipment}},\\ \textbf{\texttt{MilInstallation}} and \textbf{\texttt{MilActivity}} commands.}  This draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol, then another to a specified position \textit{offset} from the centre of the symbol. The \texttt{offset} key should be used to denote precise location, and the \texttt{movement} key should be used to indicate direction of movement (in the case of the \texttt{movement} key, the line is tipped by an arrow). They should not be used simultaneously. This key takes two arguments, the first is the length of the \lq\lq{}leader line\rq\rq{} extending below the symbol, then the second is a pair of TikZ coordinates (with no brackets) indicating the specified position \textit{offset} from the centre of the symbol, as shown below:\\
+
+\texttt{offset=\{\textit{leader length}\}\{\textit{offset}\}}\\
+\indent\texttt{movement=\{\textit{leader length}\}\{\textit{offset}\}}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=2, offset={3}{2,-4}] & \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, movement={4}{2,-2}] &  \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, offset={2}{-2,-2}] \\
+\node{\texttt{offset=\{3\}\{2,-4\}}}; & \node{\texttt{ movement=\{4\}\{2,-2\}}}; & \node{\texttt{offset=\{2\}\{-2,-2\}}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{offset} and \texttt{movement}  key in use.}
+\end{figure}
+
+
 
 \subsection{Air Command (\textbf{\texttt{MilAir}})}
 
@@ -287,7 +348,7 @@ This allows you to scale the resulting symbol by a multiple. By default (\texttt
 \paragraph{\texttt{Lower}}
 %\input{manual_scripts/Land_Lower_table.tex}
 
-\subsection{Amplifiers}
+\subsubsection{Amplifiers}
 
 \paragraph{Echelon}
 
