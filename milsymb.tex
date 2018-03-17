@@ -1,7 +1,7 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl}
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
 \usetikzlibrary{calc, arrows.meta}
@@ -168,9 +168,26 @@ These are all the keys that are shared by multiple \MilSymb\ commands. Not all k
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{10}{*}{\thead{Command}} & \multicolumn{10}{c|}{\thead{Shared Key}} \\ \cline{2-11}
+& \rotatebox{90}{\thead{\texttt{faction}}} & \rotatebox{90}{\thead{\texttt{main}}} & \rotatebox{90}{\thead{\texttt{upper}}} & \rotatebox{90}{\thead{\texttt{lower}}} & \rotatebox{90}{\thead{\texttt{frame status}}} & \rotatebox{90}{\thead{\texttt{monochrome}}} & \rotatebox{90}{\thead{\texttt{scale}}} & \rotatebox{90}{\thead{\texttt{no frame}}} & \rotatebox{90}{\thead{\texttt{speed leader}}} & \rotatebox{90}{\thead{\texttt{offset, movement}}}\\ \hline
+\texttt{MilAir} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
+\texttt{MilMissile} &  &  & \cellcolor{gray} & \cellcolor{gray} &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
+\texttt{MilLand} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
+\texttt{MilEquipment} &  &  &  \cellcolor{gray} & \cellcolor{gray}  & $\ast$ &  &  &  &  \cellcolor{gray} & \\ \hline
+\texttt{MilInstallation} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
+\texttt{MilSeaSurface} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
+\texttt{MilSeaSubSurface} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
+\texttt{MilMine} &  &  \cellcolor{gray} &  \cellcolor{gray} & \cellcolor{gray}  & $\ast$  &  &  &  &  \cellcolor{gray} & \cellcolor{gray} \\ \hline
+\texttt{MilSpace} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
+\texttt{MilActivity} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
+\texttt{MilDebris} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} &  \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray}\\ \hline
+\texttt{OwnShip} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} &  \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray}\\ \hline
 \end{tabular}
+\begin{tablenotes}
+\item \qquad \quad  *Not functional when the \texttt{no frame} option is used.
+\end{tablenotes}
 \caption{Table of which keys are used in which commands.}
 \label{shared}
 \end{table}
@@ -178,7 +195,7 @@ These are all the keys that are shared by multiple \MilSymb\ commands. Not all k
 
 \paragraph{\texttt{faction}}
 
-\textit{Additionally applicable to the \textbf{\texttt{MilMine}} command.} This key selects the military faction of the symbol relative to the user, which determines the colour and shape of the frame, or the colour of the icon and modifiers if \texttt{noframe} is specified. The values available are \texttt{friendly}, \texttt{hostile}, \texttt{neutral} and \texttt{unknown}.
+This key selects the military faction of the symbol relative to the user, which determines the colour and shape of the frame, or the colour of the icon and modifiers if \texttt{no frame} is specified. The values available are \texttt{friendly}, \texttt{hostile}, \texttt{neutral} and \texttt{unknown}.
 
 \begin{table}[H]
 \centering
@@ -203,7 +220,7 @@ These are all the keys that are shared by multiple \MilSymb\ commands. Not all k
 [1.25cm] \hline
 \end{tabular}
 \begin{tablenotes}
-\item \qquad  *Can be used without a frame using the \texttt{noframe} option.
+\item \qquad  *Can be used without a frame using the \texttt{no frame} option.
 \end{tablenotes}
 \caption{Table of all the \MilSymb\ command frames.}
 \end{table}
@@ -214,15 +231,15 @@ This key defines the icon to use in the centre of the frame. See the individual 
 
 \paragraph{\texttt{upper}} 
 
-\textit{Not applicable to the \textbf{\texttt{MilMissile}} and \textbf{\texttt{MilInstallation}} commands.} This key defines the modifier to use above the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
+This key defines the modifier to use above the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
 
 \paragraph{\texttt{lower}} 
 
-\textit{Not applicable to the \textbf{\texttt{MilMissile}} and \textbf{\texttt{MilInstallation}} commands.} This key defines the modifier to use below the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
+This key defines the modifier to use below the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
 
 \paragraph{\texttt{frame status}}
 
-\textit{Additionally applicable to the \textbf{\texttt{MilMine}} command.} This key modifies the border of the frame to allow for the expression of both the full set of \lq\lq{}standard identities\rq\rq{}, and the planned status as seen in \DocLink. The \texttt{unclear} value creates a black and white dotted line to display the alternate identities of each faction (assumed friend for friendly, suspect for hostile and pending for unknown, neutral should not use this value). The \texttt{anticipated} value create a longer dashed line to display the planned status.
+This key modifies the border of the frame to allow for the expression of both the full set of \lq\lq{}standard identities\rq\rq{}, and the planned status as seen in \DocLink. The \texttt{unclear} value creates a black and white dotted line to display the alternate identities of each faction (assumed friend for friendly, suspect for hostile and pending for unknown, neutral should not use this value). The \texttt{anticipated} value create a longer dashed line to display the planned status.
 
 \begin{figure}[H]
 \centering
@@ -237,7 +254,7 @@ This key defines the icon to use in the centre of the frame. See the individual 
 
 \paragraph{\texttt{monochrome}}
 
-\textit{Additionally applicable to the \textbf{\texttt{MilMine}} command.} This boolean switch key allows the symbol to be generated in a monochrome format. All faction colours are instead rendered as an off-white colour as specified in \DocLink. 
+This boolean switch key allows the symbol to be generated in a monochrome format. All faction colours are instead rendered as an off-white colour as specified in \DocLink. 
 
 \begin{figure}[H]
 \centering
@@ -265,11 +282,24 @@ This allows you to scale the resulting symbol by a multiple. By default (\texttt
 \caption{Example of the \texttt{scale} key in use.}
 \end{figure}
 
-\paragraph{\texttt{noframe}}
+\paragraph{\texttt{no frame}}
+
+This boolean switch key allows for specific commands (namely \textbf{\texttt{MilEquipment}} and \textbf{\texttt{MilMine}}) to be used without a faction frame. Instead, the icon and modifiers are recoloured with a fluorescent version of the faction colour, as per \DocLink.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilEquipment[faction=friendly, main=mine clearing vehicle, mobility=wheeled and tracked, scale=2] & \MilEquipment[faction=friendly,  main=mine clearing vehicle, mobility=wheeled and tracked, scale=2, no frame]\\
+\node{normal}; & \node{\texttt{no frame}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{no frame} key in use.}
+\end{figure}
 
 \paragraph{\texttt{speed leader} (Amplifier)}
 
-\textit{Only applicable to the \textbf{\texttt{MilAir}}, \textbf{\texttt{MilSeaSurface}},\\ \textbf{\texttt{MilSeaSubSurface}} and \textbf{\texttt{MilSpace}} commands.} This draws a line from the centre of the symbol at a specified heading for a specified length. This is used to denote the speed (length) and direction (heading) of the symbol. This key takes two arguments, the first is the length and the second is the heading, as shown below:\\
+This key draws a line from the centre of the symbol at a specified heading for a specified length. This is used to denote the speed (length) and direction (heading) of the symbol. This key takes two arguments, the first is the length and the second is the heading, as shown below:\\
 
 \texttt{speed leader=\{\textit{heading}\}\{\textit{length}\}}
 
@@ -286,7 +316,7 @@ This allows you to scale the resulting symbol by a multiple. By default (\texttt
 
 \paragraph{\texttt{offset}, \texttt{movement} (Amplifier)}
 
-\textit{Only applicable to the \textbf{\texttt{MilLand}}, \textbf{\texttt{MilEquipment}},\\ \textbf{\texttt{MilInstallation}} and \textbf{\texttt{MilActivity}} commands.}  This draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol, then another to a specified position \textit{offset} from the centre of the symbol. The \texttt{offset} key should be used to denote precise location, and the \texttt{movement} key should be used to indicate direction of movement (in the case of the \texttt{movement} key, the line is tipped by an arrow). They should not be used simultaneously. This key takes two arguments, the first is the length of the \lq\lq{}leader line\rq\rq{} extending below the symbol, then the second is a pair of TikZ coordinates (with no brackets) indicating the specified position \textit{offset} from the centre of the symbol, as shown below:\\
+This key draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol, then another to a specified position \textit{offset} from the centre of the symbol. The \texttt{offset} key should be used to denote precise location, and the \texttt{movement} key should be used to indicate direction of movement (in the case of the \texttt{movement} key, the line is tipped by an arrow). They should not be used simultaneously. This key takes two arguments, the first is the length of the \lq\lq{}leader line\rq\rq{} extending below the symbol, then the second is a pair of TikZ coordinates (with no brackets) indicating the specified position \textit{offset} from the centre of the symbol, as shown below:\\
 
 \texttt{offset=\{\textit{leader length}\}\{\textit{offset}\}}\\
 \indent\texttt{movement=\{\textit{leader length}\}\{\textit{offset}\}}
