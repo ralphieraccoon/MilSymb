@@ -1,7 +1,7 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption}
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
 \usetikzlibrary{calc, arrows.meta}
@@ -227,15 +227,15 @@ This key selects the military faction of the symbol relative to the user, which 
 
 \paragraph{\texttt{main}}
 
-This key defines the icon to use in the centre of the frame. See the individual command symbol tables for the list of available values.
+This key defines the icon to use in the centre of the frame. See the individual command icon and modifier tables for the list of available values.
 
 \paragraph{\texttt{upper}} 
 
-This key defines the modifier to use above the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
+This key defines the modifier to use above the icon defined by \texttt{main}. See the individual command icon and modifier tables for the list of available values.
 
 \paragraph{\texttt{lower}} 
 
-This key defines the modifier to use below the icon defined by \texttt{main}. See the individual command symbol tables for the list of available values.
+This key defines the modifier to use below the icon defined by \texttt{main}. See the individual command icon and modifier tables for the list of available values.
 
 \paragraph{\texttt{frame status}}
 
@@ -332,28 +332,61 @@ This key draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol,
 \caption{Example of the \texttt{offset} and \texttt{movement}  key in use.}
 \end{figure}
 
+\subsubsection{Text Fields}
 
+Most \MilSymb\ commands (apart from \textbf{\texttt{MilDebris}} and \textbf{\texttt{OwnShip}}) have a set of text amplifiers that go around the edge of the symbol. These are set by individually named keys specified in the \textbf{Text Fields} subheading of each command entry. Some symbols have multiple text fields in the same location, be default no spaces are inserted between these fields, so spaces must be entered manually as appropriate.
 
 \subsection{Air Command (\textbf{\texttt{MilAir}})}
 
-\subsubsection{Symbol Tables}
+This command covers symbols for air assets and their activities.
 
-\paragraph{\texttt{Main}}
-%\input{manual_scripts/Air_Main_table.tex}
+\subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Upper}}
-%\input{manual_scripts/Air_Upper_table.tex}
+\paragraph{\texttt{main}}\quad
+\input{manual_scripts/Air_Main_table.tex}
 
-\paragraph{\texttt{Lower}}
-%\input{manual_scripts/Air_Lower_table.tex}
+\paragraph{\texttt{upper}}\quad
+\input{manual_scripts/Air_Upper_table.tex}
 
-\subsubsection{Shared Amplifiers}
+\paragraph{\texttt{lower}}\quad 
+\input{manual_scripts/Air_Lower_table.tex}
 
-\paragraph{Speed Leader}
+\subsubsection{Amplifiers}
+
+\paragraph{Text Fields}
+
+\textbf{\texttt{MilAir}} has 5 text field amplifiers, as shown in Figure \ref{airtext}. Table \ref{airtexttable} gives the key and description of each field, along with the standard prefixes to use. This table is mostly identical to the one found in \DocLink.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\MilAir[faction=friendly, main=military rotary wing, scale=2, track number=\qquad A, call sign=\qquad B, position and movement=\qquad C, nation=\qquad D, additional information=\qquad E]
+\end{tikzpicture}
+\caption{Location of \textbf{\texttt{MilAir}} text field amplifiers.}
+\label{airtext}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|l|X|c|}
+\hline
+\thead{Location} & \thead{Key} & \thead{Description} & \thead{Prefix*}\\ \hline
+\textbf{A} & \texttt{track number} & System Track Number. & TN \\ \hline
+\textbf{B} & \texttt{call sign} & Airframe Number or Mission Call Sign. & \\ \hline
+\textbf{C} & \texttt{position and movement} & Course [degrees]/Speed [knots] or Bearing [degrees]/Distance [nautical miles] Height [feet/flight level]. & C/S, B/D \\ \hline
+\textbf{D} & \texttt{nation} & Nation\rq{}s Name: A 3-letter code indicating the object\rq{}s country of origin (STANAG 1059). & \\ \hline
+\textbf{E} & \texttt{additional information} & For friendly units: Sensor or Weapon load, endurance, etc. For other Units: Credibility of Information. & \\ \hline
+\end{tabularx}
+\begin{tablenotes}
+\item *when applicable.
+\end{tablenotes}
+\caption{Description of \textbf{\texttt{MilAir}} text field amplifiers.}
+\label{airtexttable}
+\end{table}
 
 \subsection{Missile Command (\textbf{\texttt{MilMissile}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Left}}
 %\input{manual_scripts/Missile_Left_table.tex}
@@ -470,7 +503,7 @@ This key draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol,
 
 \subsection{Activity Command (\textbf{\texttt{MilActivity}})}
 
-\subsubsection{Symbol Tables}
+\subsubsection{glyph tables}
 
 \paragraph{\texttt{Main}}
 %\input{manual_scripts/Activity_Main_table.tex}

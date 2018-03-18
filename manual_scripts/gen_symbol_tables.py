@@ -12,7 +12,7 @@ def maketable(x, y, z=1.25):
         n = re.search('.*?/(.*?)/', j).group(1)  # get name
         if n == 'none' or n == '.unknown':
             continue  # skip if a blank placeholder
-        ro = n.title() + r' & \tikz[baseline=-0.5ex]{' \
+        ro = r'\texttt{' + n + r'} & \tikz[baseline=-0.5ex]{' \
                          r'\Mil' + y + r'[faction=none, ' + c + r'=' + n + r']}' \
                          r' & \tikz[baseline=-0.5ex]{' \
                          r'\Mil' + y + r'[faction=friendly, ' + c + r'=' + n + r']}' \
@@ -24,9 +24,10 @@ def maketable(x, y, z=1.25):
                          r'\Mil' + y + r'[faction=unknown, ' + c + r'=' + n + r']}' \
                          r'&\\[' + str(z) + 'cm] \hline'
         l.append(ro)
-    ta = '\\begin{tabularx}{\\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}\n\\hline\n \\thead{Name} & ' \
-         '\\thead{Symbol} & \multicolumn{4}{c|}' \
-         '{\\thead{Examples}} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\end{tabularx}'
+    ta = '\\begin{tabularx}{\\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}\n\\hline\n \\thead{Value} & ' \
+         '\\thead{Glyph} & \multicolumn{4}{c|}{\\thead{Examples}} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\' \
+         'caption{Table for \\texttt{' + c + '} values in the \\textbf{\\texttt{Mil' + y + '}} command.}' \
+         '\n\\end{tabularx}'
     ofn = os.path.join(dr, y + '_' + c + '_table.tex')
     of = open(ofn, 'w')
     of.write(ta)
