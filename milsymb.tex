@@ -173,7 +173,7 @@ These are all the keys that are shared by multiple \MilSymb\ commands. Not all k
 \multirow{10}{*}{\thead{Command}} & \multicolumn{10}{c|}{\thead{Shared Key}} \\ \cline{2-11}
 & \rotatebox{90}{\thead{\texttt{faction}}} & \rotatebox{90}{\thead{\texttt{main}}} & \rotatebox{90}{\thead{\texttt{upper}}} & \rotatebox{90}{\thead{\texttt{lower}}} & \rotatebox{90}{\thead{\texttt{frame status}}} & \rotatebox{90}{\thead{\texttt{monochrome}}} & \rotatebox{90}{\thead{\texttt{scale}}} & \rotatebox{90}{\thead{\texttt{no frame}}} & \rotatebox{90}{\thead{\texttt{speed leader}}} & \rotatebox{90}{\thead{\texttt{offset, movement}}}\\ \hline
 \texttt{MilAir} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
-\texttt{MilMissile} &  &  & \cellcolor{gray} & \cellcolor{gray} &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
+\texttt{MilMissile} &  & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
 \texttt{MilLand} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
 \texttt{MilEquipment} &  &  &  \cellcolor{gray} & \cellcolor{gray}  & $\ast$ &  &  &  &  \cellcolor{gray} & \\ \hline
 \texttt{MilInstallation} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
@@ -336,9 +336,13 @@ This key draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol,
 
 Most \MilSymb\ commands (apart from \textbf{\texttt{MilDebris}} and \textbf{\texttt{OwnShip}}) have a set of text amplifiers that go around the edge of the symbol. These are set by individually named keys specified in the \textbf{Text Fields} subheading of each command entry. Some symbols have multiple text fields in the same location, be default no spaces are inserted between these fields, so spaces must be entered manually as appropriate.
 
+\subsubsection{Full Frame Icons}
+
+In some commands (\textbf{\texttt{MilLand}}, \textbf{\texttt{MilInstallation}} and \textbf{\texttt{MilActivity}}) some icons (as set by \texttt{main}) will take up the entire frame. These are referred to as \lq\lq{}full frame\rq\rq{} icons. Modifiers (as set by \texttt{upper} and \texttt{lower}) should not be used when a full frame icon has been selected.
+
 \subsection{Air Command (\textbf{\texttt{MilAir}})}
 
-This command covers symbols for air assets and their activities.
+This command covers symbols for air assets and their activities. Refer to \textit{Chapter 2, Section 2 and 3} in \DocLink\ for further information.
 
 \subsubsection{Icons and Modifiers}
 
@@ -386,29 +390,37 @@ This command covers symbols for air assets and their activities.
 
 \subsection{Missile Command (\textbf{\texttt{MilMissile}})}
 
-\subsubsection{Icons and Modifiers}
+This command is a special application of \textbf{\texttt{MilAir}} for missiles. Instead of setting an icon using \texttt{main}, a predefined \lq\lq{}missile\rq\rq{} icon is used. Modifiers are then added to the left and right instead of above and below. Refer to \textit{Chapter 2, Section 4} in \DocLink\ for further information.
 
-\paragraph{\texttt{Left}}
-%\input{manual_scripts/Missile_Left_table.tex}
+\subsubsection{Modifiers}
 
-\paragraph{\texttt{Right}}
-%\input{manual_scripts/Missile_Right_table.tex}
+Instead of using \texttt{upper} and \texttt{lower} keys to define the modifiers, \texttt{left} and \texttt{right} keys are used to reflect the position of the modifier.
 
-\subsubsection{Additional Features}
+\paragraph{\texttt{left}}\quad
+\input{manual_scripts/Missile_Left_table.tex}
 
-\paragraph{Speed Leader}
+\paragraph{\texttt{right}}\quad
+\input{manual_scripts/Missile_Right_table.tex}
+
+\subsubsection{Amplifiers}
+
+\paragraph{Text Fields}
+
+Text fields for \textbf{\texttt{MilMissile}} are identical to \textbf{\texttt{MilAir}}.
 
 \subsection{Land Command (\textbf{\texttt{MilLand}})}
 
+This command covers symbols for land units, individuals, and organizations. Refer to \textit{Chapter 3, Section 2} in \DocLink\ for further information.
+
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Main}}
+\paragraph{\texttt{main}}
 %\input{manual_scripts/Land_Main_table.tex}
 
-\paragraph{\texttt{Upper}}
+\paragraph{\texttt{upper}}
 %\input{manual_scripts/Land_Upper_table.tex}
 
-\paragraph{\texttt{Lower}}
+\paragraph{\texttt{lower}}
 %\input{manual_scripts/Land_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -419,10 +431,51 @@ This command covers symbols for air assets and their activities.
 
 \paragraph{Headquarters}
 
-\paragraph{Grouping}
+\subsubsection{Supply Class}
 
-\paragraph{Supply Class}
+\subsubsection{Grouping}
 
+For \textbf{\texttt{MilLand}} symbols, there is the option to group several commands together to indicate several entities in one location. \MilSymb\  provides two \LaTeX\ environments to achieve this,  \textbf{\texttt{landgroup}} and \textbf{\texttt{landheadquarters}}.  \textbf{\texttt{landgroup}} is designed to be used with normal \textbf{\texttt{MilLand}} symbols, and \textbf{\texttt{landheadquarters}} is designed to be used with symbols that have a headquarters amplifier. Within the environments, each command should be the argument inside an \texttt{\textbackslash item\{...\}} command (note that it is not the same as the \texttt{\textbackslash item} that is used in bulleted and numbered lists in \LaTeX\ , it has an argument in curly braces rather than just a command). Do not use the \texttt{scale} key within a \MilSymb\ command when grouping them. Instead, use the \texttt{scale} key at the environment level. See this example:\\
+
+\begin{writett}
+\begin{verbatim}
+\begin{landgroup}[scale=2]
+\item{\MilLand[faction=friendly, 
+main=signal radio teletype centre, 
+echelon=section]}
+\item{\MilLand[faction=friendly, 
+main=diving, 
+upper=video imagery, 
+echelon=brigade, 
+status=reduced]}
+\item{\MilLand[faction=friendly, 
+main=sensor, 
+upper=large extension node, 
+lower=single channel]}
+\end{landgroup}
+\end{verbatim}
+\end{writett}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\begin{landgroup}[scale=2]
+\item{\MilLand[faction=friendly, main=signal radio teletype centre, echelon=section]}
+\item{\MilLand[faction=friendly, main=diving, upper=video imagery, echelon=brigade, status=reduced]}
+\item{\MilLand[faction=friendly, main=sensor, upper=large extension node, lower=single channel]}
+\end{landgroup}
+&
+\begin{landheadquarters}[scale=2]
+\item{\MilLand[faction=friendly, main=signal radio teletype centre, echelon=section, headquarters=command group]}
+\item{\MilLand[faction=friendly, main=diving, upper=video imagery, echelon=brigade, status=reduced, headquarters=command group]}
+\item{\MilLand[faction=friendly, main=sensor, upper=large extension node, lower=single channel, headquarters=command group]}
+\end{landheadquarters} \\
+\node {\textbf{\texttt{landgroup}}}; & \node{\textbf{\texttt{landheadquarters}}}; \\
+ };
+\end{tikzpicture}
+\caption{Example of \textbf{\texttt{landgroup}} and \textbf{\texttt{landheadquarters}} grouping.}
+\end{figure}
 
 \subsection{Equipment Command (\textbf{\texttt{MilEquipment}})}
 

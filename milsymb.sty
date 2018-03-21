@@ -2727,9 +2727,10 @@ scale=1,
 }
 \newcounter{exitem}
 \newlength{\itemlength}
-\NewDocumentEnvironment{landheadquarters}{D(){0,0}}{
+\NewDocumentEnvironment{landheadquarters}{ o D(){0,0}}{
+\tikzset{#1}
 \setlength{\itemlength}{0pt}
-\begin{scope}[shift={(#1)}]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \setcounter{exitem}{0}
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
@@ -2743,9 +2744,10 @@ scale=1,
 \addtolength{\itemlength}{\pgf@y-5pt}
 \stepcounter{exitem}}
 }{\end{scope}}
-\NewDocumentEnvironment{landgroup}{D(){0,0}}{
+\NewDocumentEnvironment{landgroup}{ o D(){0,0}}{
+\tikzset{#1}
 \setlength{\itemlength}{0pt}
-\begin{scope}[local bounding box=G, shift={(#1)}]
+\begin{scope}[local bounding box=G, shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
 ##1;
