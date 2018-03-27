@@ -168,61 +168,28 @@ These are all the keys that are shared by multiple \MilSymb\ commands. Not all k
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-\multirow{10}{*}{\thead{Command}} & \multicolumn{10}{c|}{\thead{Shared Key}} \\ \cline{2-11}
-& \rotatebox{90}{\thead{\texttt{faction}}} & \rotatebox{90}{\thead{\texttt{main}}} & \rotatebox{90}{\thead{\texttt{upper}}} & \rotatebox{90}{\thead{\texttt{lower}}} & \rotatebox{90}{\thead{\texttt{frame status}}} & \rotatebox{90}{\thead{\texttt{monochrome}}} & \rotatebox{90}{\thead{\texttt{scale}}} & \rotatebox{90}{\thead{\texttt{no frame}}} & \rotatebox{90}{\thead{\texttt{speed leader}}} & \rotatebox{90}{\thead{\texttt{offset, movement}}}\\ \hline
-\texttt{MilAir} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
-\texttt{MilMissile} &  & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
-\texttt{MilLand} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
-\texttt{MilEquipment} &  &  &  \cellcolor{gray} & \cellcolor{gray}  & $\ast$ &  &  &  &  \cellcolor{gray} & \\ \hline
-\texttt{MilInstallation} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
-\texttt{MilSeaSurface} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
-\texttt{MilSeaSubSurface} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
-\texttt{MilMine} &  &  \cellcolor{gray} &  \cellcolor{gray} & \cellcolor{gray}  & $\ast$  &  &  &  &  \cellcolor{gray} & \cellcolor{gray} \\ \hline
-\texttt{MilSpace} &  &  &  &  &  &  &  &  \cellcolor{gray} &  & \cellcolor{gray}\\ \hline
-\texttt{MilActivity} &  &  &  &  &  &  &  & \cellcolor{gray} &  \cellcolor{gray} & \\ \hline
-\texttt{MilDebris} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} &  \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray}\\ \hline
-\texttt{OwnShip} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} &  \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray}\\ \hline
+\multirow{10}{*}{\thead{Command}} & \multicolumn{11}{c|}{\thead{Shared Key}} \\ \cline{2-12}
+& \rotatebox{90}{\thead{\texttt{faction}}} & \rotatebox{90}{\thead{\texttt{main}}} & \rotatebox{90}{\thead{\texttt{upper}}} & \rotatebox{90}{\thead{\texttt{lower}}} & \rotatebox{90}{\thead{\texttt{frame status}}} & \rotatebox{90}{\thead{\texttt{monochrome}}} & \rotatebox{90}{\thead{\texttt{scale}}} & \rotatebox{90}{\thead{\texttt{no frame}}} & \rotatebox{90}{\thead{\texttt{speed leader}}} & \rotatebox{90}{\thead{\texttt{offset, movement}}~} &  \rotatebox{90}{\thead{\texttt{feint or dummy}}}\\ \hline
+\texttt{MilAir} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black} \\ \hline
+\texttt{MilMissile} &  & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
+\texttt{MilLand} &  &  &  &  &  &  &  & \cellcolor{black} &  \cellcolor{black} & & \\ \hline
+\texttt{MilEquipment} &  &  &  \cellcolor{black} & \cellcolor{black}  & $\ast$ &  &  &  &  \cellcolor{black} &  & \\ \hline
+\texttt{MilInstallation} &  &  &  &  &  &  &  & \cellcolor{black} &  \cellcolor{black} &  & \\ \hline
+\texttt{MilSeaSurface} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
+\texttt{MilSeaSubSurface} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
+\texttt{MilMine} &  &  \cellcolor{black} &  \cellcolor{black} & \cellcolor{black}  & $\ast$  &  &  &  &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} \\ \hline
+\texttt{MilSpace} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
+\texttt{MilActivity} &  &  &  &  &  &  &  & \cellcolor{black} &  \cellcolor{black} &  & \cellcolor{black}\\ \hline
+\texttt{MilDebris} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
+\texttt{OwnShip} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
 \end{tabular}
 \begin{tablenotes}
-\item \qquad \quad  *Not functional when the \texttt{no frame} option is used.
+\item \qquad *Not functional when the \texttt{no frame} option is used.
 \end{tablenotes}
 \caption{Table of which keys are used in which commands.}
 \label{shared}
-\end{table}
-
-
-\paragraph{\texttt{faction}}
-
-This key selects the military faction of the symbol relative to the user, which determines the colour and shape of the frame, or the colour of the icon and modifiers if \texttt{no frame} is specified. The values available are \texttt{friendly}, \texttt{hostile}, \texttt{neutral} and \texttt{unknown}.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|s|s|s|s|@{}m{0pt}@{}}
-\hline
-\multirow{4}{*}{\thead{Command}} & \multicolumn{4}{c|}{\thead{Faction Frame}} \\ \cline{2-5}
-& \thead{Friendly} & \thead{Hostile} & \thead{Neutral} & \thead{Unknown}&\\
-\hline
-\texttt{MilAir} + \texttt{MilMissile} & \tikz[baseline=-0.5ex]{\MilAir[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilAir[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilAir[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilAir[faction=unknown]}&\\
-[1.25cm]\hline
-\texttt{MilLand} & \tikz[baseline=-0.5ex]{\MilLand[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilLand[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilLand[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilEquipment}* + \texttt{MilSeaSurface} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilInstallation} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilSeaSubsurface} + \texttt{MilMine}* & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilSpace} & \tikz[baseline=-0.5ex]{\MilSpace[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilActivity} & \tikz[baseline=-0.5ex]{\MilActivity[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=unknown]}&\\
-[1.25cm] \hline
-\end{tabular}
-\begin{tablenotes}
-\item \qquad  *Can be used without a frame using the \texttt{no frame} option.
-\end{tablenotes}
-\caption{Table of all the \MilSymb\ command frames.}
 \end{table}
 
 \paragraph{\texttt{main}}
@@ -252,6 +219,39 @@ This key modifies the border of the frame to allow for the expression of both th
 \caption{Example of the \texttt{frame status} key in use.}
 \end{figure}
 
+
+\paragraph{\texttt{faction}}
+
+This key selects the military faction of the symbol relative to the user, which determines the colour and shape of the frame, or the colour of the icon and modifiers if \texttt{no frame} is specified. The values available are \texttt{friendly}, \texttt{hostile}, \texttt{neutral} and \texttt{unknown}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|s|s|s|s|@{}m{0pt}@{}}
+\hline
+\multirow{4}{*}{\thead{Command}} & \multicolumn{4}{c|}{\thead{Faction Frame}} \\ \cline{2-5}
+& \thead{Friendly} & \thead{Hostile} & \thead{Neutral} & \thead{Unknown}&\\
+\hline
+\texttt{MilAir} + \texttt{MilMissile} & \tikz[baseline=-0.5ex]{\MilAir[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilAir[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilAir[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilAir[faction=unknown]}&\\
+[1.25cm]\hline
+\texttt{MilLand} & \tikz[baseline=-0.5ex]{\MilLand[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilLand[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilLand[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilEquipment}* + \texttt{MilSeaSurface} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilInstallation} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilSeaSubsurface} + \texttt{MilMine}* & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilSpace} & \tikz[baseline=-0.5ex]{\MilSpace[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=unknown]}&\\
+[1.25cm] \hline
+\texttt{MilActivity} & \tikz[baseline=-0.5ex]{\MilActivity[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=unknown]}&\\
+[1.25cm] \hline
+\end{tabular}
+\begin{tablenotes}
+\item \qquad \quad *Can be used without a frame using the \texttt{no frame} option.
+\end{tablenotes}
+\caption{Table of all the \MilSymb\ command frames.}
+\end{table}
+
 \paragraph{\texttt{monochrome}}
 
 This boolean switch key allows the symbol to be generated in a monochrome format. All faction colours are instead rendered as an off-white colour as specified in \DocLink. 
@@ -269,7 +269,7 @@ This boolean switch key allows the symbol to be generated in a monochrome format
 
 \paragraph{\texttt{scale}}
 
-This allows you to scale the resulting symbol by a multiple. By default (\texttt{scale=1}) the boundary octagon is precisely 1cm in diameter.
+This key allows you to scale the resulting symbol by a multiple. By default (\texttt{scale=1}) the boundary octagon is precisely 1cm in diameter.
 
 \begin{figure}[H]
 \centering
@@ -330,6 +330,21 @@ This key draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol,
 };
 \end{tikzpicture}
 \caption{Example of the \texttt{offset} and \texttt{movement}  key in use.}
+\end{figure}
+
+\paragraph{\texttt{feint or dummy} (Amplifier)}
+
+This boolean switch key draws the \textit{feint or dummy} amplifier on the symbol. See \DocLink\ for further information about its use.
+
+ \begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=2] & \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, feint or dummy] \\
+\node{normal}; & \node{\texttt{feint or dummy}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{feint or dummy} key in use.}
 \end{figure}
 
 \subsubsection{Text Fields}
@@ -426,6 +441,43 @@ This command covers symbols for land units, individuals, and organizations. Refe
 \subsubsection{Amplifiers}
 
 \paragraph{Echelon}
+
+Positioned directly above the frame, this amplifier denotes the \lq\lq{}level of command\rq\rq{} of the symbol (in the case of infantry this usually denotes the size of the unit). Table \ref{echelon} lists all the options available. No symbol will be displayed if this key is not specified. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\thead{Value} & \thead{Symbol} \\ \hline
+\texttt{team} &  $\varnothing$ \\ \hline
+\texttt{squad} &  \textbullet \\ \hline
+\texttt{section} &  \textbullet \  \textbullet \\ \hline
+\texttt{platoon} &  \textbullet \  \textbullet \  \textbullet \\ \hline
+\texttt{company} &  \textbar \\ \hline
+\texttt{battalion} &  \textbar \  \textbar \\ \hline
+\texttt{regiment} &  \textbar \  \textbar \  \textbar \\ \hline
+\texttt{brigade} &  X \\ \hline
+\texttt{division} &  XX \\ \hline
+\texttt{corps} &  XXX \\ \hline
+\texttt{army} &  XXXX\\ \hline
+\texttt{army group} &  XXXXX \\ \hline
+\texttt{theatre} &  XXXXXX \\ \hline
+\texttt{command} &  \raisebox{1pt}{+ \ +} \\ \hline
+\end{tabular}
+\caption{Echelon levels and corresponding symbols.}
+\label{echelon}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=2, echelon=section] & \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, echelon=regiment] &  \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, echelon=army] \\
+\node{\texttt{echelon=section}}; & \node{\texttt{echelon=regiment}}; & \node{\texttt{echelon=army}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{echelon} key in use.}
+\end{figure}
 
 \paragraph{Status}
 
