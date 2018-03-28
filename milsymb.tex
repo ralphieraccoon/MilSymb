@@ -316,7 +316,7 @@ This key draws a line from the centre of the symbol at a specified heading for a
 
 \paragraph{\texttt{offset}, \texttt{movement} (Amplifier)}
 
-This key draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol, then another to a specified position \textit{offset} from the centre of the symbol. The \texttt{offset} key should be used to denote precise location, and the \texttt{movement} key should be used to indicate direction of movement (in the case of the \texttt{movement} key, the line is tipped by an arrow). They should not be used simultaneously. This key takes two arguments, the first is the length of the \lq\lq{}leader line\rq\rq{} extending below the symbol, then the second is a pair of TikZ coordinates (with no brackets) indicating the specified position \textit{offset} from the centre of the symbol, as shown below:\\
+This key draws a \lq\lq{}leader line\rq\rq{} down from the centre of the symbol, then another to a specified position \textit{offset} from the centre of the symbol. The \texttt{offset} key should be used to denote precise location, and the \texttt{movement} key should be used to indicate direction of movement (in the case of the \texttt{movement} key, the line is tipped by an arrow). \textit{They should not be used simultaneously.} This key takes two arguments, each enclosed in curly braces, the first is the length of the \lq\lq{}leader line\rq\rq{} extending below the symbol, then the second is a pair of TikZ coordinates (with no brackets) indicating the specified position \textit{offset} from the centre of the symbol, as shown below:\\
 
 \texttt{offset=\{\textit{leader length}\}\{\textit{offset}\}}\\
 \indent\texttt{movement=\{\textit{leader length}\}\{\textit{offset}\}}
@@ -442,7 +442,7 @@ This command covers symbols for land units, individuals, and organizations. Refe
 
 \paragraph{Echelon}
 
-Positioned directly above the frame, this amplifier denotes the \lq\lq{}level of command\rq\rq{} of the symbol (in the case of infantry this usually denotes the size of the unit). Table \ref{echelon} lists all the options available. No symbol will be displayed if this key is not specified. 
+This amplifier denotes the \lq\lq{}level of command\rq\rq{} of the symbol (in the case of infantry this usually denotes the size of the unit). Table \ref{echelon} lists all the options available.
 
 \begin{table}[H]
 \centering
@@ -479,11 +479,129 @@ Positioned directly above the frame, this amplifier denotes the \lq\lq{}level of
 \caption{Example of the \texttt{echelon} key in use.}
 \end{figure}
 
+\paragraph{Task Force}
+
+This amplifier denotes a temporary unit for a specific task or objective. If the \texttt{echelon} key is set, it will automatically size to enclose the echelon amplifier.
+
+ \begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, echelon=platoon, scale=2] & \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, echelon=platoon, task force] \\
+\node{normal}; & \node{\texttt{task force}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{task force} key in use.}
+\end{figure}
+
+
 \paragraph{Status}
+
+This amplifier denotes the condition of the of the symbol. There are 3 options, \texttt{reinforced} indicates part of another unit is augmenting the capability of this unit, \texttt{reduced} means part of the unit has been detached to augment another unit, and \texttt{reinforced and reduced} means both situations have occurred. If this key is specified, the text field adjacent to it will be shifted right in order to accommodate the amplifier. 
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=2, status=reinforced] & \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, status=reduced] &  \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, status=reinforced and reduced] \\
+\node{\texttt{status=reinforced}}; & \node{\texttt{status=reduced}}; & \node{\texttt{status=reinforced and reduced}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{status} key in use.}
+\end{figure}
 
 \paragraph{Headquarters}
 
-\subsubsection{Supply Class}
+\textit{This key only works for \texttt{friendly} faction \textbf{\texttt{MilLand}} symbols.}
+
+This amplifier denotes if the symbol is stationed at a headquarters or some other kind of military base. The key can be provided with no value, which will produce a blank headquaters amplifer, which is a line drawn downwards from the south-west of the symbol frame, or with a set of values that insert acronyms next to the line. Table \ref{headquarters} lists all the options available.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\thead{Value} & \thead{Acronym} \\ \hline
+\texttt{assault command post} & ASLT \\ \hline
+\texttt{command group} &  CMD \\ \hline
+\texttt{forward command post} &  FWD \\ \hline
+\texttt{main command post} &  MAIN \\ \hline
+\texttt{rear command post} &  REAR \\ \hline
+\texttt{tactical operations centre} &  TOC \\ \hline
+\texttt{tactical command post} &  TAC \\ \hline
+\end{tabular}
+\caption{Headquarters acronyms.}
+\label{headquarters}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=2, headquarters] & \MilLand[faction=friendly, main=signal radio teletype centre, scale=2, headquarters=tactical operations centre] \\
+\node{\texttt{headquarters} (no value)}; & \node{\texttt{headquarters=tactical operations centre}};\\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{headquarters} key in use.}
+\end{figure}
+
+\subsubsection{Supply Icons}
+
+An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denote classes of supply. \MilSymb\ uses an additional \texttt{supply} key to construct these icons, which takes up to two values each enclosed in curly braces.\textit{If only one value is used, then there must be a set of empty curly braces (\{\}) after the first value}. Each value is a supply class number, as listed in Table \ref{}. The US uses different symbols and designations for their supply classes, their supply class numbers are prefixed with \texttt{US } (including the space). When one value is set, the symbol from the table will be used, and when two values are set, the roman numeral for the supply class is used, with an ampersand (\&) inserted between the numerals. \textit{This key should be used in place of the \texttt{main} key.}
+
+\begin{center}
+\begin{longtable}{|l|c|s|@{}m{0pt}@{}}
+\hline
+\thead{Value} & \rotatebox{90}{\thead{Roman Numeral}~} & \thead{Symbol}& \\ \hline
+\texttt{all}* & N/A & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={all}{}]}& \\[1.25cm] \hline
+\multicolumn{3}{|c|}{\thead{NATO Supply Classes}}& \\ \hline
+\texttt{1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={1}{}]}&\\[1.25cm]\hline
+\texttt{2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={2}{}]}&\\[1.25cm]\hline
+\texttt{3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={3}{}]}&\\[1.25cm]\hline
+\texttt{4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={4}{}]}&\\[1.25cm]\hline
+\texttt{5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={5}{}]}&\\[1.25cm]\hline
+\multicolumn{3}{|c|}{\thead{US Supply Classes}} \\ \hline
+\texttt{US 1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 1}{}]}&\\[1.25cm]\hline
+\texttt{US 2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 2}{}]}&\\[1.25cm]\hline
+\texttt{US 3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 3}{}]}&\\[1.25cm]\hline
+\texttt{US 4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 4}{}]}&\\[1.25cm]\hline
+\texttt{US 5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 5}{}]}&\\[1.25cm]\hline
+\texttt{US 6} & VI & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 6}{}]}&\\[1.25cm]\hline
+\texttt{US 7} & VII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 7}{}]}&\\[1.25cm]\hline
+\texttt{US 8} & VIII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 8}{}]}&\\[1.25cm]\hline
+\texttt{US 9} & IX & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 9}{}]}&\\[1.25cm]\hline
+\texttt{US 10} & X & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 10}{}]}&\\[1.25cm]\hline
+\multicolumn{4}{c}{}\\
+\caption{Table of Supply Icons.}
+\end{longtable}
+\end{center}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, supply={1}{5}, scale=2] & \MilLand[faction=friendly, supply={US 8}{}, scale=2] &  \MilLand[faction=friendly, supply={3}{}, scale=2] \\
+\node{\texttt{supply=\{1\}\{5\}}}; & \node{\texttt{supply=\{US 8\}\{\}}}; & \node{\texttt{supply=\{3\}\{\}}}; \\
+};
+\end{tikzpicture}
+\caption{Example of Supply symbols.}
+\end{figure}
+
+
+\subsubsection{Altitude Modifier}
+
+\textbf{\texttt{MilLand}} defines a special lower modifier for altitude, which takes up to two values each enclosed in curly braces.\textit{If only one value is used, then there must be a set of empty curly braces (\{\}) after the first value}. Each value is an altitude designation, \texttt{high} (HA), \texttt{medium} (MA) and \texttt{low} (LA), which inserts the acronym. Having two values will insert a slash (/) between them and removes the \lq\lq{}A\rq\rq{} suffix from the first acronym. \textit{This key should be used in place of the \texttt{lower} key.}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\matrix[column sep=5mm, row sep=5mm]{
+\MilLand[faction=friendly, main=unmanned systems, scale=2, altitude={high}{}] & \MilLand[faction=friendly, main=unmanned systems, scale=2,  altitude={medium}{low}] &  \MilLand[faction=friendly, main=unmanned systems, scale=2,  altitude={low}{}] \\
+\node{\texttt{altitude=\{high\}\{\}}}; & \node{\texttt{altitude=\{medium\}\{low\}}}; & \node{\texttt{altitude=\{low\}\{\}}}; \\
+};
+\end{tikzpicture}
+\caption{Example of the \texttt{altitude} key in use.}
+\end{figure}
+
 
 \subsubsection{Grouping}
 
@@ -618,7 +736,7 @@ lower=single channel]}
 
 \section{Custom Icons and Modifiers}
 
-\subsection{\MilSymb TikZ Picture Directory Structure}
+\subsection{\MilSymb\  TikZ Picture Directory Structure}
 
 \begin{figure}[H]
 \begin{forest}
@@ -744,7 +862,7 @@ For the \texttt{\textbf{MilMissile}} command, the template is rotated 90\textdeg
 
 \subsection{Border Anchors}
 
-\MilSymb defines an anchored bounding box named \textbf{\texttt{M}} around all frames. This has anchor points identical to the \texttt{rectangle} node in TikZ. These can be used as coordinates for drawing icons and modifiers relative to the edge of the frame.
+\MilSymb\  defines an anchored bounding box named \textbf{\texttt{M}} around all frames. This has anchor points identical to the \texttt{rectangle} node in TikZ. These can be used as coordinates for drawing icons and modifiers relative to the edge of the frame.
 
 \subsection{Faction Variants}
 
@@ -793,13 +911,13 @@ To insert an existing icon or modifier into your custom icon use a nested \textt
 \node{\texttt{text/normal}}; & \node{\texttt{text/squashed}}; & \node{\texttt{text/small}}; & \node{\texttt{text/smallsquashed}}; \\
 };
 \end{tikzpicture}
-\caption{\MilSymb text templates.}
+\caption{\MilSymb\  text templates.}
 \end{figure}
 
 \subsubsection{Multiple Class}
 \label{multi} 
 
-Some \MilSymb icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command. The \texttt{upperlower} sub-directory is used to store modifier glyphs that are used in both the \texttt{upper} and \texttt{lower} positions.
+Some \MilSymb\  icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command. The \texttt{upperlower} sub-directory is used to store modifier glyphs that are used in both the \texttt{upper} and \texttt{lower} positions.
 
 \begin{tabularx}{\linewidth}{|l|s|l|@{}m{0pt}@{}}
 \hline

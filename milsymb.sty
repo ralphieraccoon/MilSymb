@@ -2023,7 +2023,7 @@ MilSymb supply/class 3/.pic={
 \pic {MilSymb multi/main/petroleum oil and lubricants};
 },
 MilSymb supply/class 4/.pic={
-\pic {MilSymb land/main/supply\MilSymb@selectedfaction};
+\pic {MilSymb land/main/supply/\MilSymb@selectedfaction};
 \pic {MilSymb text/normal={IV}};
 },
 MilSymb supply/class 5/.pic={
@@ -2039,7 +2039,7 @@ MilSymb supply/class US 1/.pic={
 \draw (0.075, 0.2) to[out=210, in=150, looseness=1] (0.075, -0.2) to[out=180, in=180, looseness=1.5] (0.075, 0.2) -- cycle;
 },
 MilSymb supply/class US 2/.pic={
-\pic {MilSymb land/main/supply\MilSymb@selectedfaction};
+\pic {MilSymb land/main/supply/\MilSymb@selectedfaction};
 \pic {MilSymb multi/main/quartermaster};
 },
 MilSymb supply/class US 3/.pic={
@@ -2051,7 +2051,7 @@ MilSymb supply/class US 4/.pic={
 \pic {MilSymb multi/main/engineer};
 },
 MilSymb supply/class US 5/.pic={
-\pic {MilSymb land/main/supply\MilSymb@selectedfaction};
+\pic {MilSymb land/main/supply/\MilSymb@selectedfaction};
 \pic {MilSymb multi/main/ammunition};
 },
 MilSymb supply/class US 6/.pic={
@@ -2064,7 +2064,7 @@ MilSymb supply/class US 7/.pic={
 },
 MilSymb supply/class US 8/.pic={
 \pic {MilSymb land/main/supply/\MilSymb@selectedfaction};
-\draw (0, -0.2) -- (M.north);
+\draw (0, -0.25) -- (M.north);
 \pic {MilSymb supply/medicalbar/\MilSymb@selectedfaction};
 },
 MilSymb supply/class US 9/.pic={
@@ -2140,12 +2140,12 @@ scale=1,
 \newcommand*{\clipunknown}{
  (45:0.5) to[out=90,in=90,looseness=1.7] (135:0.5) to[out=180,in=180,looseness=1.7] (225:0.5) to[out=270, in=270, looseness=1.7] (315:0.5) to[out=0, in=0, looseness=1.7] (45:0.5) -- cycle
 }
-\acrodef{High}[HA]{}
-\acrodef{Medium}[MA]{}
-\acrodef{Low}[LA]{}
-\acrodef{HighS}[H]{}
-\acrodef{MediumS}[M]{}
-\acrodef{LowS}[L]{}
+\newacro{high}[HA]{}
+\newacro{medium}[MA]{}
+\newacro{low}[LA]{}
+\newacro{highS}[H]{}
+\newacro{mediumS}[M]{}
+\newacro{lowS}[L]{}
 \NewDocumentCommand\MilAir{ o D(){0,0} d() g}{
 \tikzset{%	
    /MilSymb/.cd,
@@ -2639,8 +2639,9 @@ scale=1,
    headquarters/forward command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=FWD},
    headquarters/main command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=MAIN},
    headquarters/rear command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=REAR},
-   headquarters/tactical operations center/.style= {/MilSymb/.cd,  drawH=true, SymbHT=TOC},
+   headquarters/tactical operations centre/.style= {/MilSymb/.cd,  drawH=true, SymbHT=TOC},
    headquarters/tactical command post/.style= {/MilSymb/.cd,  drawH=true, SymbHT=TAC},
+   headquarters/.default=blank,
    status/.is choice,
    status/none/.style= {/MilSymb/.cd, SymbR=},
    status/reinforced/.style= {/MilSymb/.cd, SymbR=+ \ },
