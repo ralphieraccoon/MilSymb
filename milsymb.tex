@@ -1,7 +1,8 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption, enumitem}
+\keepXColumns
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
 \usetikzlibrary{calc, arrows.meta}
@@ -362,13 +363,13 @@ This command covers symbols for air assets and their activities. Refer to \texti
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{main}}\quad
-\input{manual_scripts/Air_Main_table.tex}
+%\input{manual_scripts/Air_Main_table.tex}
 
 \paragraph{\texttt{upper}}\quad
-\input{manual_scripts/Air_Upper_table.tex}
+%\input{manual_scripts/Air_Upper_table.tex}
 
 \paragraph{\texttt{lower}}\quad 
-\input{manual_scripts/Air_Lower_table.tex}
+%\input{manual_scripts/Air_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -429,14 +430,14 @@ This command covers symbols for land units, individuals, and organizations. Refe
 
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{main}}
-%\input{manual_scripts/Land_Main_table.tex}
+\paragraph{\texttt{main}}\quad
+\input{manual_scripts/Land_Main_table.tex}
 
-\paragraph{\texttt{upper}}
-%\input{manual_scripts/Land_Upper_table.tex}
+\paragraph{\texttt{upper}}\quad
+\input{manual_scripts/Land_Upper_table.tex}
 
-\paragraph{\texttt{lower}}
-%\input{manual_scripts/Land_Lower_table.tex}
+\paragraph{\texttt{lower}}\quad
+\input{manual_scripts/Land_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -544,35 +545,98 @@ This amplifier denotes if the symbol is stationed at a headquarters or some othe
 \caption{Example of the \texttt{headquarters} key in use.}
 \end{figure}
 
+\paragraph{Text Fields}
+
+\textbf{\texttt{MilAir}} has 14 text field amplifiers, as shown in Figure \ref{landtext}. \textit{Some of these amplifiers are placed adjacent to each other, spaces are not automatically inserted between them.} Table \ref{landtexttable} gives the key and description of each field, along with the standard prefixes to use. This table is mostly identical to the one found in \DocLink.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\MilLand[faction=friendly, main=signal radio teletype centre, scale=2, staff comments=\qquad G, additional information=\qquad H, higher formation=\qquad M, evaluation rating=\qquad J, country indicator=\qquad AC, combat effectiveness=\textbackslash K, identification=\textbackslash P, unique designation=T\qquad~, type of equipment=\qquad V, date-time group=W\qquad~, altitude value=X, location=\textbackslash Y\qquad~, common identifier=\textbackslash AF\qquad~, speed=Z\qquad~]
+\end{tikzpicture}
+\caption{Location of \textbf{\texttt{MilLand}} text field amplifiers.}
+\label{landtext}
+\end{figure}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|c|l|X|}
+\hline
+\thead{Location} & \thead{Key} & \thead{Description} \\ \hline
+\textbf{AC} & \texttt{country indicator} & A three-letter code that indicates the country of origin of the unit (STANAG 1059). In stability activities, this field can be used for factions or groups.\\ \hline
+\textbf{G} & \texttt{staff comments} & Free text. Can be used by staff for information required by commander.\\ \hline
+\textbf{H} & \texttt{additional information} &  Free Text.\\ \hline
+\textbf{M} & \texttt{higher formation} & Number or title of higher echelon command of unit being displayed. \\ \hline
+\textbf{J} & \texttt{evaluation rating} & Degree of confidence that may be placed on the information represented by the symbol. It is shown as one letter and one number made up of Reliability of Source and Credibility of Information. (STANAG 2511). \newline
+Reliability of Source:
+\begin{enumerate}[label=\Alph*.]
+\item Completely reliable.
+\item Usually reliable.
+\item Fairly reliable.
+\item Not usually reliable.
+\item Unreliable.
+\item Reliability cannot be judged.
+\end{enumerate}
+Credibility of Information:
+\begin{enumerate}[label=\arabic*.]
+\item Confirmed by other sources
+\item Probably true
+\item Possibly true
+\item Doubtful
+\item Improbable
+\item Truth cannot be judged.
+\end{enumerate}
+\\ \hline
+\textbf{K} & \texttt{combat effectiveness} & Effectiveness of unit or equipment displayed.
+\begin{enumerate}[label=\arabic*.]
+\item Fully operational.
+\item Substantially operational.
+\item Marginally operational.
+\item Not operational.
+\end{enumerate} \\ \hline
+\textbf{P} & \texttt{identification} & Identification modes and codes.\\ \hline
+\textbf{W} & \texttt{date-time group} & An alphanumeric designator for displaying a date-time group (DDHHMMSSZMONYY) or \lq\lq{}O/O\rq\rq{} for on order. The date-time group is composed of a group of six numeric digits with a time zone suffix and the standardized three-letter abbreviation for the month followed by two digits. The first pair of digits represents the day; the second pair, the hour; the third pair, the minutes. The last two digits of the year are after the month. For automated systems, two digits may be added before the time zone suffix and after the minutes to designate seconds.\\ \hline
+\textbf{X} & \texttt{altitude value} & Altitude as displayed on the global positioning system (GPS). \\ \hline
+\textbf{Y} & \texttt{track number} & Latitude and longitude; grid coordinates. \\ \hline
+\textbf{AF} & \texttt{common identifier} & Example: Paladin for the M109A6 howitzer or Leopard for the KPz-70 tank. (Use NATO code name for hostile common identifiers.) \\ \hline
+\textbf{Z} & \texttt{track number} & Displays speed in nautical miles per hour or kilometres per hour. \\ \hline
+\multicolumn{3}{c}{}\\
+\caption{Description of \textbf{\texttt{MilLand}} text field amplifiers.}
+\label{airtexttable}
+\end{tabularx}
+\end{center}
+
 \subsubsection{Supply Icons}
 
 An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denote classes of supply. \MilSymb\ uses an additional \texttt{supply} key to construct these icons, which takes up to two values each enclosed in curly braces.\textit{If only one value is used, then there must be a set of empty curly braces (\{\}) after the first value}. Each value is a supply class number, as listed in Table \ref{}. The US uses different symbols and designations for their supply classes, their supply class numbers are prefixed with \texttt{US } (including the space). When one value is set, the symbol from the table will be used, and when two values are set, the roman numeral for the supply class is used, with an ampersand (\&) inserted between the numerals. \textit{This key should be used in place of the \texttt{main} key.}
 
 \begin{center}
-\begin{longtable}{|l|c|s|@{}m{0pt}@{}}
+\begin{longtable}{|l|c|s|s|s|s|s|@{}m{0pt}@{}}
 \hline
-\thead{Value} & \rotatebox{90}{\thead{Roman Numeral}~} & \thead{Symbol}& \\ \hline
-\texttt{all}* & N/A & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={all}{}]}& \\[1.25cm] \hline
-\multicolumn{3}{|c|}{\thead{NATO Supply Classes}}& \\ \hline
-\texttt{1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={1}{}]}&\\[1.25cm]\hline
-\texttt{2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={2}{}]}&\\[1.25cm]\hline
-\texttt{3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={3}{}]}&\\[1.25cm]\hline
-\texttt{4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={4}{}]}&\\[1.25cm]\hline
-\texttt{5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={5}{}]}&\\[1.25cm]\hline
-\multicolumn{3}{|c|}{\thead{US Supply Classes}} \\ \hline
-\texttt{US 1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 1}{}]}&\\[1.25cm]\hline
-\texttt{US 2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 2}{}]}&\\[1.25cm]\hline
-\texttt{US 3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 3}{}]}&\\[1.25cm]\hline
-\texttt{US 4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 4}{}]}&\\[1.25cm]\hline
-\texttt{US 5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 5}{}]}&\\[1.25cm]\hline
-\texttt{US 6} & VI & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 6}{}]}&\\[1.25cm]\hline
-\texttt{US 7} & VII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 7}{}]}&\\[1.25cm]\hline
-\texttt{US 8} & VIII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 8}{}]}&\\[1.25cm]\hline
-\texttt{US 9} & IX & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 9}{}]}&\\[1.25cm]\hline
-\texttt{US 10} & X & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 10}{}]}&\\[1.25cm]\hline
-\multicolumn{4}{c}{}\\
+\thead{Value} & \rotatebox{90}{\thead{Roman Numeral}~} & \thead{Glyph} & \multicolumn{4}{c|}{\thead{Examples}} & \\ \hline
+\texttt{all}* & N/A & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={all}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={all}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={all}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={all}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={all}{}]}& \\[1.25cm] \hline
+\multicolumn{7}{|c|}{\thead{NATO Supply Classes}}& \\ \hline
+\texttt{1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={1}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={1}{}]}&\\[1.25cm] \hline
+\texttt{2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={2}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={2}{}]}&\\[1.25cm] \hline
+\texttt{3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={3}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={3}{}]}&\\[1.25cm] \hline
+\texttt{4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={4}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={4}{}]}&\\[1.25cm] \hline
+\texttt{5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={5}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={5}{}]}&\\[1.25cm] \hline
+\multicolumn{7}{|c|}{\thead{US Supply Classes}} \\ \hline
+\texttt{US 1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 1}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 1}{}]}&\\[1.25cm] \hline
+\texttt{US 2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 2}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 2}{}]}&\\[1.25cm] \hline
+\texttt{US 3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 3}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 3}{}]}&\\[1.25cm] \hline
+\texttt{US 4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 4}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 4}{}]}&\\[1.25cm] \hline
+\texttt{US 5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 5}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 5}{}]}&\\[1.25cm] \hline
+\texttt{US 6} & VI & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 6}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 6}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 6}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 6}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 6}{}]}&\\[1.25cm] \hline
+\texttt{US 7} & VII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 7}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 7}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 7}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 7}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 7}{}]}&\\[1.25cm] \hline
+\texttt{US 8} & VIII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 8}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 8}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 8}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 8}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 8}{}]}&\\[1.25cm] \hline
+\texttt{US 9} & IX & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 9}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 9}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 9}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 9}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 9}{}]}&\\[1.25cm] \hline
+\texttt{US 10} & X & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 10}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 10}{}]}&\\[1.25cm]\hline
+\multicolumn{8}{c}{}\\
 \caption{Table of Supply Icons.}
 \end{longtable}
+\begin{tablenotes}
+\item *can only be used as a single value.
+\end{tablenotes}
 \end{center}
 
 \begin{figure}[H]
@@ -605,7 +669,7 @@ An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denot
 
 \subsubsection{Grouping}
 
-For \textbf{\texttt{MilLand}} symbols, there is the option to group several commands together to indicate several entities in one location. \MilSymb\  provides two \LaTeX\ environments to achieve this,  \textbf{\texttt{landgroup}} and \textbf{\texttt{landheadquarters}}.  \textbf{\texttt{landgroup}} is designed to be used with normal \textbf{\texttt{MilLand}} symbols, and \textbf{\texttt{landheadquarters}} is designed to be used with symbols that have a headquarters amplifier. Within the environments, each command should be the argument inside an \texttt{\textbackslash item\{...\}} command (note that it is not the same as the \texttt{\textbackslash item} that is used in bulleted and numbered lists in \LaTeX\ , it has an argument in curly braces rather than just a command). Do not use the \texttt{scale} key within a \MilSymb\ command when grouping them. Instead, use the \texttt{scale} key at the environment level. See this example:\\
+For \textbf{\texttt{MilLand}} symbols, there is the option to group several commands together to indicate several entities in one location. \MilSymb\  provides two \LaTeX\ environments to achieve this,  \textbf{\texttt{landgroup}} and \textbf{\texttt{landheadquarters}}.  \textbf{\texttt{landgroup}} is designed to be used with normal \textbf{\texttt{MilLand}} symbols, and \textbf{\texttt{landheadquarters}} is designed to be used with symbols that have a headquarters amplifier. Within the environments, each command should be the argument inside an \texttt{\textbackslash item\{...\}} command (note that it is not the same as the \texttt{\textbackslash item} that is used in bulleted and numbered lists in \LaTeX\ , it has an argument in curly braces rather than just a command). \textit{Do not use the \texttt{scale} key within a \MilSymb\ command when grouping them. Instead, use the \texttt{scale} key at the environment level.} See this example:\\
 
 \begin{writett}
 \begin{verbatim}
