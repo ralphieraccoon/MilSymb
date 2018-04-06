@@ -568,7 +568,7 @@ This amplifier denotes if the symbol is stationed at a headquarters or some othe
 \textbf{M} & \texttt{higher formation} & Number or title of higher echelon command of unit being displayed. \\ \hline
 \textbf{J} & \texttt{evaluation rating} & Degree of confidence that may be placed on the information represented by the symbol. It is shown as one letter and one number made up of Reliability of Source and Credibility of Information. (STANAG 2511). \newline
 Reliability of Source:
-\begin{enumerate}[label=\Alph*.]
+\begin{enumerate}[label=\Alph*., align=left]
 \item Completely reliable.
 \item Usually reliable.
 \item Fairly reliable.
@@ -577,7 +577,7 @@ Reliability of Source:
 \item Reliability cannot be judged.
 \end{enumerate}
 Credibility of Information:
-\begin{enumerate}[label=\arabic*.]
+\begin{enumerate}[label=\arabic*., align=left]
 \item Confirmed by other sources
 \item Probably true
 \item Possibly true
@@ -587,7 +587,7 @@ Credibility of Information:
 \end{enumerate}
 \\ \hline
 \textbf{K} & \texttt{combat effectiveness} & Effectiveness of unit or equipment displayed.
-\begin{enumerate}[label=\arabic*.]
+\begin{enumerate}[label=\arabic*., align=left]
 \item Fully operational.
 \item Substantially operational.
 \item Marginally operational.
@@ -750,6 +750,14 @@ lower=single channel]}
 
 \subsection{Own Ship Command (\textbf{\texttt{OwnShip}})}
 
+This command places a marker indicating the position of the vessel the user is on, if they are at sea. See \textit{Chapter 2, Section 2, Table 4-7} in \DocLink.
+
+\begin{figure}[H]
+\centering
+\tikz{\OwnShip[scale=10]}
+\caption{\textbf{\texttt{OwnShip}} command symbol.}
+\end{figure}
+
 \subsection{Sea Subsurface Command (\textbf{\texttt{MilSeaSubsurface}})}
 
 \subsubsection{Icons and Modifiers}
@@ -768,6 +776,8 @@ lower=single channel]}
 \paragraph{Speed Leader}
 
 \subsection{Sea Mine Command (\textbf{\texttt{MilMine}})}
+
+This command is used to build 
 
 \subsection{Space Command (\textbf{\texttt{MilSpace}})}
 
