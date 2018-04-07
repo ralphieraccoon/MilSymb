@@ -183,8 +183,8 @@ These are all the keys that are shared by multiple \MilSymb\ commands. Not all k
 \texttt{MilMine} &  &  \cellcolor{black} &  \cellcolor{black} & \cellcolor{black}  & $\ast$  &  &  &  &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} \\ \hline
 \texttt{MilSpace} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
 \texttt{MilActivity} &  &  &  &  &  &  &  & \cellcolor{black} &  \cellcolor{black} &  & \cellcolor{black}\\ \hline
-\texttt{MilDebris} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
-\texttt{OwnShip} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
+\texttt{MilDebris} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
+\texttt{OwnShip} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
 \end{tabular}
 \begin{tablenotes}
 \item \qquad *Not functional when the \texttt{no frame} option is used.
@@ -207,14 +207,14 @@ This key defines the modifier to use below the icon defined by \texttt{main}. Se
 
 \paragraph{\texttt{frame status}}
 
-This key modifies the border of the frame to allow for the expression of both the full set of \lq\lq{}standard identities\rq\rq{}, and the planned status as seen in \DocLink. The \texttt{unclear} value creates a black and white dotted line to display the alternate identities of each faction (assumed friend for friendly, suspect for hostile and pending for unknown, neutral should not use this value). The \texttt{anticipated} value create a longer dashed line to display the planned status.
+This key modifies the border of the frame to allow for the expression of both the full set of \lq\lq{}standard identities\rq\rq{}, and the planned status as seen in \DocLink. The \texttt{unclear} value creates a black and white dotted line to display the alternate identities of each faction (assumed friend for friendly, suspect for hostile and pending for unknown, neutral should not use this value). The \texttt{anticipated} value create a longer dashed line to display the planned status. If the \texttt{frame status} key is not set, a standard solid border is used.
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
 \matrix[column sep=5mm, row sep=5mm]{
 \MilLand[faction=friendly, main=signal radio teletype centre, frame status=normal, scale=2] & \MilLand[faction=friendly, main=signal radio teletype centre, frame status=uncertain, scale=2] & \MilLand[faction=friendly, main=signal radio teletype centre, frame status=anticipated, scale=2]\\
-\node{\texttt{frame status=normal}}; & \node{\texttt{frame status=unclear}}; & \node{\texttt{frame status=anticipated}}; \\
+\node{normal}; & \node{\texttt{frame status=unclear}}; & \node{\texttt{frame status=anticipated}}; \\
 };
 \end{tikzpicture}
 \caption{Example of the \texttt{frame status} key in use.}
@@ -607,7 +607,7 @@ Credibility of Information:
 
 \subsubsection{Supply Icons}
 
-An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denote classes of supply. \MilSymb\ uses an additional \texttt{supply} key to construct these icons, which takes up to two values each enclosed in curly braces.\textit{If only one value is used, then there must be a set of empty curly braces (\{\}) after the first value}. Each value is a supply class number, as listed in Table \ref{}. The US uses different symbols and designations for their supply classes, their supply class numbers are prefixed with \texttt{US } (including the space). When one value is set, the symbol from the table will be used, and when two values are set, the roman numeral for the supply class is used, with an ampersand (\&) inserted between the numerals. \textit{This key should be used in place of the \texttt{main} key.}
+An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denote classes of supply. \MilSymb\ uses an additional \texttt{supply} key to construct these icons, which takes up to two values each enclosed in curly braces.\textit{If only one value is used, then there must be a set of empty curly braces (\{\}) after the first value}. Each value is a supply class number, as listed in Table \ref{supply}. The US uses different symbols and designations for their supply classes, their supply class numbers are prefixed with \texttt{US } (including the space). When one value is set, the symbol from the table will be used, and when two values are set, the roman numeral for the supply class is used, with an ampersand (\&) inserted between the numerals. \textit{This key should be used in place of the \texttt{main} key.}
 
 \begin{center}
 \begin{longtable}{|l|c|s|s|s|s|s|@{}m{0pt}@{}}
@@ -633,6 +633,7 @@ An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denot
 \texttt{US 10} & X & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 10}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 10}{}]}&\\[1.25cm]\hline
 \multicolumn{8}{c}{}\\
 \caption{Table of Supply Icons.}
+\label{supply}
 \end{longtable}
 \begin{tablenotes}
 \item *can only be used as a single value.
@@ -750,11 +751,11 @@ lower=single channel]}
 
 \subsection{Own Ship Command (\textbf{\texttt{OwnShip}})}
 
-This command places a marker indicating the position of the vessel the user is on, if they are at sea. See \textit{Chapter 2, Section 2, Table 4-7} in \DocLink.
+This command places a marker indicating the position of the vessel the user is on, if they are at sea. No keys are available other than \texttt{scale}. See \textit{Chapter 2, Section 2, Table 4-7} in \DocLink.
 
 \begin{figure}[H]
 \centering
-\tikz{\OwnShip[scale=10]}
+\tikz{\OwnShip[scale=2]}
 \caption{\textbf{\texttt{OwnShip}} command symbol.}
 \end{figure}
 
@@ -777,7 +778,31 @@ This command places a marker indicating the position of the vessel the user is o
 
 \subsection{Sea Mine Command (\textbf{\texttt{MilMine}})}
 
-This command is used to build 
+This command is used to construct sea mine symbols. Instead of using the \texttt{main} key, this command uses the key \texttt{mine} to define the mine type, and the boolean switch \texttt{neutralised} to display the neutralised variant, as shown in Table \ref{mine}. No modifiers are used. This command also accepts the \texttt{no frame} key. See \textit{Chapter 2, Section 2, Table 4-17} in \DocLink.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|s|c|s|s|s|s|@{}m{0pt}@{}}
+\hline
+\multirow{3}{*}{\thead{Value}} & \multicolumn{2}{c|}{\thead{Glyph}} &  \multicolumn{4}{c|}{\multirow{3}{*}{\thead{Examples}}}&\\ \cline{2-3}
+& \thead{Normal} & \thead{\texttt{neutralised}} & \multicolumn{4}{c|}{}&\\ 
+\hline
+\texttt{free} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=free, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=free]}&\\[1.25cm] \hline
+\texttt{bottomed} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=bottomed, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=bottomed]}&\\[1.25cm] \hline
+\texttt{moored} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=moored, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=moored]}&\\[1.25cm] \hline
+\texttt{floating} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=floating, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=floating]}&\\[1.25cm] \hline
+\texttt{in other position} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=in other position, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=in other position]}&\\[1.25cm] \hline
+\texttt{rising} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=rising, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=rising]}&\\[1.25cm] \hline
+\end{tabular}
+\caption{Table of \textbf{\texttt{MilMine}} icons.}
+\label{mine}
+\end{table}
+
+\subsubsection{Amplifiers}
+
+\paragraph{Text Fields}
+
+Text fields for \textbf{\texttt{MilMine}} are identical to \textbf{\texttt{MilSeaSubsurface}}.
 
 \subsection{Space Command (\textbf{\texttt{MilSpace}})}
 
@@ -797,6 +822,23 @@ This command is used to build
 \paragraph{Speed Leader}
 
 \subsection{Space Debris Command (\textbf{\texttt{MilDebris}})}
+
+This command is used to construct symbols the represent space debris. No shared keys are used other than \texttt{scale}. This command uses the key \texttt{size} to define the debris size, and the boolean switch \texttt{man made} to display the variant for artificial debris, as shown in Table \ref{debris}. See \textit{Chapter 5, Section 3, Table 5-7} in \DocLink.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|s|c|@{}m{0pt}@{}}
+\hline
+\multirow{3}{*}{\thead{Value}} & \multicolumn{2}{c|}{\thead{Glyph}} \\ \cline{2-3}
+& \thead{Normal} & \thead{\texttt{man made}} &\\ \hline
+\texttt{small} & \tikz[baseline=-0.5ex]{\MilDebris[size=small]} & \tikz[baseline=-0.5ex]{\MilDebris[size=small, man made]} & \\ [1.25cm] \hline
+\texttt{medium} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium]} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium, man made]} & \\ [1.25cm] \hline
+\texttt{large} & \tikz[baseline=-0.5ex]{\MilDebris[size=large]} & \tikz[baseline=-0.5ex]{\MilDebris[size=large, man made]} & \\ [1.25cm] \hline
+\end{tabular}
+\caption{Table of \textbf{\texttt{MilDebris}} symbols.}
+\label{mine}
+\end{table}
+
 
 \subsection{Activity Command (\textbf{\texttt{MilActivity}})}
 

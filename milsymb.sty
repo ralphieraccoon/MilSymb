@@ -3235,13 +3235,14 @@ scale=1,
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
-\NewDocumentCommand\OwnShip{D(){0,0} d() g}{
-\begin{scope}[shift={(#1)}, local bounding box=#2, scale=\MilSymb@scale, transform shape]
+\NewDocumentCommand\OwnShip{o D(){0,0} d() g}{
+\tikzset{#1}
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \draw [ultra thick, friendlyA] (0, 0) circle (0.5);
 \draw [ultra thick, friendlyA] (0.5, 0) -- (-0.5, 0);
 \draw [ultra thick, friendlyA] (0, 0.5) -- (0, -0.5);
 \end{scope}
- \IfNoValueF{#3}{\node [anchor=west] at (#2.east) {#3};}
+ \IfNoValueF{#4}{\node [anchor=west] at (#3.east) {#4};}
 }
 \NewDocumentCommand\MilSeaSubsurface{ o D(){0,0} d() g}{
 \tikzset{%
@@ -3364,7 +3365,7 @@ scale=1,
    faction/neutral/.style={/MilSymb/.cd, shape=seasubsurface/neutral, fill=neutralA, iconcolour=unknownB},
    faction/unknown/.style={/MilSymb/.cd, shape=seasubsurface/unknown, fill=unknownA, iconcolour=unknownB},
    mine/.is choice,
-   mine/normal/.style={/MilSymb/.cd, SymbC=seasubsurface/mine/sea mine},
+   mine/free/.style={/MilSymb/.cd, SymbC=seasubsurface/mine/sea mine},
    mine/bottomed/.style={/MilSymb/.cd, SymbC=seasubsurface/mine/bottomed sea mine},
    mine/moored/.style={/MilSymb/.cd, SymbC=seasubsurface/mine/moored sea mine},
    mine/floating/.style={/MilSymb/.cd, SymbC=seasubsurface/mine/floating sea mine},
@@ -3509,14 +3510,14 @@ scale=1,
   /MilSymb/.cd,
   size/.is choice,
   size/small/.style={/MilSymb/.cd, shape=space/debris/small},
-  size/medium/.style={/MilSymb/.cd, shape=},
+  size/medium/.style={/MilSymb/.cd, shape=text/small},
   size/large/.style={/MilSymb/.cd, shape=space/debris/large},
   man made/.is if=manmade,
   size=small,
   man made=false,
   #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3]
+\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \draw circle (0.5);
 \ifmanmade
 \fill circle (0.15);
