@@ -363,13 +363,13 @@ This command covers symbols for air assets and their activities. Refer to \texti
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{main}}\quad
-%\input{manual_scripts/Air_Main_table.tex}
+\input{manual_scripts/Air_Main_table.tex}
 
 \paragraph{\texttt{upper}}\quad
-%\input{manual_scripts/Air_Upper_table.tex}
+\input{manual_scripts/Air_Upper_table.tex}
 
 \paragraph{\texttt{lower}}\quad 
-%\input{manual_scripts/Air_Lower_table.tex}
+\input{manual_scripts/Air_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -547,7 +547,7 @@ This amplifier denotes if the symbol is stationed at a headquarters or some othe
 
 \paragraph{Text Fields}
 
-\textbf{\texttt{MilAir}} has 14 text field amplifiers, as shown in Figure \ref{landtext}. \textit{Some of these amplifiers are placed adjacent to each other, spaces are not automatically inserted between them.} Table \ref{landtexttable} gives the key and description of each field, along with the standard prefixes to use. This table is mostly identical to the one found in \DocLink.
+\textbf{\texttt{MilLand}} has 14 text field amplifiers, as shown in Figure \ref{equiptext}. \textit{Some of these amplifiers are placed adjacent to each other, spaces are not automatically inserted between them.} Table \ref{landtexttable} gives the key and description of each field, along with the standard prefixes to use. This table is mostly identical to the one found in \DocLink.
 
 \begin{figure}[H]
 \centering
@@ -598,10 +598,10 @@ Credibility of Information:
 \textbf{X} & \texttt{altitude value} & Altitude as displayed on the global positioning system (GPS). \\ \hline
 \textbf{Y} & \texttt{track number} & Latitude and longitude; grid coordinates. \\ \hline
 \textbf{AF} & \texttt{common identifier} & Example: Paladin for the M109A6 howitzer or Leopard for the KPz-70 tank. (Use NATO code name for hostile common identifiers.) \\ \hline
-\textbf{Z} & \texttt{track number} & Displays speed in nautical miles per hour or kilometres per hour. \\ \hline
+\textbf{Z} & \texttt{speed} & Displays speed in nautical miles per hour or kilometres per hour. \\ \hline
 \multicolumn{3}{c}{}\\
 \caption{Description of \textbf{\texttt{MilLand}} text field amplifiers.}
-\label{airtexttable}
+\label{landtexttable}
 \end{tabularx}
 \end{center}
 
@@ -714,13 +714,83 @@ lower=single channel]}
 
 \subsection{Equipment Command (\textbf{\texttt{MilEquipment}})}
 
+This command covers symbols for land equipment. The are no \texttt{upper} and \texttt{lower} modifiers, instead a \texttt{mobility} key sets a modifier to be displayed below the frame (or when the \texttt{no frame} key is set, adjacent to the bottom of the icon). This command also accepts the \texttt{no frame} key. See \textit{Chapter 3, Section 3} in \DocLink.
+
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}
-%\input{manual_scripts/Equipment_Main_table.tex}
+\input{manual_scripts/Equipment_Main_table.tex}
 
 \paragraph{\texttt{Mobility}}
-%\input{manual_scripts/Equipment_Mobility_table.tex}
+\input{manual_scripts/Equipment_Mobility_table.tex}
+
+\subsubsection{Amplifiers}
+
+\paragraph{Text Fields}
+
+\textbf{\texttt{MilEquipment}} has 16 text field amplifiers, as shown in Figure \ref{equiptext}. \textit{Some of these amplifiers are placed adjacent to each other, spaces are not automatically inserted between them.} Table \ref{equiptexttable} gives the key and description of each field, along with the standard prefixes to use. This table is mostly identical to the one found in \DocLink.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\MilEquipment[faction=friendly, main=mine clearing vehicle, mobility=wheeled and tracked, scale=2, quantity=Q, staff comments=\qquad G, additional information=\qquad H, evaluation rating=\qquad J, combat effectiveness=\textbackslash K, signature equipment=\textbackslash SE, higher formation=\qquad M, identification=\textbackslash P, unique designation=T\qquad~, type of equipment=V, date-time group=W\qquad~, altitude value=X, location=\textbackslash Y\qquad~, country indicator=\qquad AC, platform type=\textbackslash AD, equipment teardown time=\textbackslash AE, common identifier=\textbackslash AF\qquad~, speed=Z\qquad~]
+\end{tikzpicture}
+\caption{Location of \textbf{\texttt{MilEquipment}} text field amplifiers.}
+\label{equiptext}
+\end{figure}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|c|l|X|}
+\hline
+\thead{Location} & \thead{Key} & \thead{Description} \\ \hline
+\textbf{Q} & \texttt{quantity} & Identifies the number of items present.\\ \hline
+\textbf{AC} & \texttt{country indicator} & A three-letter code that indicates the country of origin of the unit (STANAG 1059). In stability activities, this field can be used for factions or groups.\\ \hline
+\textbf{G} & \texttt{staff comments} & Free text. Can be used by staff for information required by commander.\\ \hline
+\textbf{H} & \texttt{additional information} &  Free Text.\\ \hline
+\textbf{M} & \texttt{higher formation} & Number or title of higher echelon command of unit being displayed. \\ \hline
+\textbf{J} & \texttt{evaluation rating} & Degree of confidence that may be placed on the information represented by the symbol. It is shown as one letter and one number made up of Reliability of Source and Credibility of Information. (STANAG 2511). \newline
+Reliability of Source:
+\begin{enumerate}[label=\Alph*., align=left]
+\item Completely reliable.
+\item Usually reliable.
+\item Fairly reliable.
+\item Not usually reliable.
+\item Unreliable.
+\item Reliability cannot be judged.
+\end{enumerate}
+Credibility of Information:
+\begin{enumerate}[label=\arabic*., align=left]
+\item Confirmed by other sources
+\item Probably true
+\item Possibly true
+\item Doubtful
+\item Improbable
+\item Truth cannot be judged.
+\end{enumerate}
+\\ \hline
+\textbf{K} & \texttt{combat effectiveness} & Effectiveness of unit or equipment displayed.
+\begin{enumerate}[label=\arabic*., align=left]
+\item Fully operational.
+\item Substantially operational.
+\item Marginally operational.
+\item Not operational.
+\end{enumerate} \\ \hline
+\textbf{SE} & \texttt{signature equipment} & Identifies a detectable electronic signature \lq\lq{}!\rq\rq{} for hostile equipment. \\ \hline
+\textbf{P} & \texttt{identification} & Identification modes and codes.\\ \hline
+\textbf{T} & \texttt{unique designation} & An alphanumeric designator that uniquely identifies a particular model of equipment (number).\\ \hline
+\textbf{V} & \texttt{type of equipment} & Identifies unique designation (such as AH-64 for attack helicopter).\\ \hline
+\textbf{W} & \texttt{date-time group} & An alphanumeric designator for displaying a date-time group (DDHHMMSSZMONYY) or \lq\lq{}O/O\rq\rq{} for on order. The date-time group is composed of a group of six numeric digits with a time zone suffix and the standardized three-letter abbreviation for the month followed by two digits. The first pair of digits represents the day; the second pair, the hour; the third pair, the minutes. The last two digits of the year are after the month. For automated systems, two digits may be added before the time zone suffix and after the minutes to designate seconds.\\ \hline
+\textbf{X} & \texttt{altitude value} & Altitude as displayed on the global positioning system (GPS). \\ \hline
+\textbf{Y} & \texttt{track number} & Latitude and longitude; grid coordinates. \\ \hline
+\textbf{AF} & \texttt{common identifier} & Example: Paladin for the M109A6 howitzer or Leopard for the KPz-70 tank. (Use NATO code name for hostile common identifiers.) \\ \hline
+\textbf{Z} & \texttt{speed} & Displays speed in nautical miles per hour or kilometres per hour. \\ \hline
+\textbf{AD} & \texttt{platform type} & Electronic intelligence notation (ELNOT) or communications intelligence notation (CENOT).\\ \hline
+\textbf{AE} & \texttt{equipment teardown time} & Equipment teardown time in minutes.\\ \hline
+\multicolumn{3}{c}{}\\
+\caption{Description of \textbf{\texttt{MilLand}} text field amplifiers.}
+\label{equiptexttable}
+\end{tabularx}
+\end{center}
 
 \subsection{Installation Command (\textbf{\texttt{MilInstallation}})}
 
@@ -823,7 +893,7 @@ Text fields for \textbf{\texttt{MilMine}} are identical to \textbf{\texttt{MilSe
 
 \subsection{Space Debris Command (\textbf{\texttt{MilDebris}})}
 
-This command is used to construct symbols the represent space debris. No shared keys are used other than \texttt{scale}. This command uses the key \texttt{size} to define the debris size, and the boolean switch \texttt{man made} to display the variant for artificial debris, as shown in Table \ref{debris}. See \textit{Chapter 5, Section 3, Table 5-7} in \DocLink.
+This command is used to construct symbols that represent space debris. No shared keys are used other than \texttt{scale}. This command uses the key \texttt{size} to define the debris size, and the boolean switch \texttt{man made} to display the variant for artificial debris, as shown in Table \ref{debris}. See \textit{Chapter 5, Section 3, Table 5-7} in \DocLink.
 
 \begin{table}[H]
 \centering
