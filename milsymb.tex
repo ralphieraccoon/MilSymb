@@ -177,12 +177,12 @@ These are all the keys that are shared by multiple \MilSymb\ commands. Not all k
 \texttt{MilMissile} &  & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
 \texttt{MilLand} &  &  &  &  &  &  &  & \cellcolor{black} &  \cellcolor{black} & & \\ \hline
 \texttt{MilEquipment} &  &  &  \cellcolor{black} & \cellcolor{black}  & $\ast$ &  &  &  &  \cellcolor{black} &  & \\ \hline
-\texttt{MilInstallation} &  &  &  &  &  &  &  & \cellcolor{black} &  \cellcolor{black} &  & \\ \hline
+\texttt{MilInstallation} &  &  &  & \cellcolor{black} &  &  &  & \cellcolor{black} &  \cellcolor{black} &  & \\ \hline
 \texttt{MilSeaSurface} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
 \texttt{MilSeaSubSurface} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
 \texttt{MilMine} &  &  \cellcolor{black} &  \cellcolor{black} & \cellcolor{black}  & $\ast$  &  &  &  &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} \\ \hline
 \texttt{MilSpace} &  &  &  &  &  &  &  &  \cellcolor{black} &  & \cellcolor{black} & \cellcolor{black}\\ \hline
-\texttt{MilActivity} &  &  &  &  &  &  &  & \cellcolor{black} &  \cellcolor{black} &  & \cellcolor{black}\\ \hline
+\texttt{MilActivity} &  &  &  & \cellcolor{black} &  &  &  & \cellcolor{black} &  \cellcolor{black} &  & \cellcolor{black}\\ \hline
 \texttt{MilDebris} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
 \texttt{OwnShip} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & &  \cellcolor{black} & \cellcolor{black} & \cellcolor{black} & \cellcolor{black}\\ \hline
 \end{tabular}
@@ -406,11 +406,11 @@ This command covers symbols for air assets and their activities. Refer to \texti
 
 \subsection{Missile Command (\textbf{\texttt{MilMissile}})}
 
-This command is a special application of \textbf{\texttt{MilAir}} for missiles. Instead of setting an icon using \texttt{main}, a predefined \lq\lq{}missile\rq\rq{} icon is used. Modifiers are then added to the left and right instead of above and below. Refer to \textit{Chapter 2, Section 4} in \DocLink\ for further information.
+This command is a special application of \textbf{\texttt{MilAir}} for missiles. \textit{Instead of setting an icon using \texttt{main}, a predefined \lq\lq{}missile\rq\rq{} icon is used. Modifiers are then added to the left and right instead of above and below.} Refer to \textit{Chapter 2, Section 4} in \DocLink\ for further information.
 
 \subsubsection{Modifiers}
 
-Instead of using \texttt{upper} and \texttt{lower} keys to define the modifiers, \texttt{left} and \texttt{right} keys are used to reflect the position of the modifier.
+\textit{Instead of using \texttt{upper} and \texttt{lower} keys to define the modifiers, \texttt{left} and \texttt{right} keys are used to reflect the position of the modifier.}
 
 \paragraph{\texttt{left}}\quad
 \input{manual_scripts/Missile_Left_table.tex}
@@ -714,14 +714,14 @@ lower=single channel]}
 
 \subsection{Equipment Command (\textbf{\texttt{MilEquipment}})}
 
-This command covers symbols for land equipment. The are no \texttt{upper} and \texttt{lower} modifiers, instead a \texttt{mobility} key sets a modifier to be displayed below the frame (or when the \texttt{no frame} key is set, adjacent to the bottom of the icon). This command also accepts the \texttt{no frame} key. See \textit{Chapter 3, Section 3} in \DocLink.
+This command covers symbols for land equipment. \textit{The are no \texttt{upper} and \texttt{lower} keys, instead a \texttt{mobility} key sets a modifier to be displayed below the frame (or when the \texttt{no frame} key is set, adjacent to the bottom of the icon)}. This command also accepts the \texttt{no frame} key. See \textit{Chapter 3, Section 3} in \DocLink.
 
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Main}}
+\paragraph{\texttt{Main}}\quad
 \input{manual_scripts/Equipment_Main_table.tex}
 
-\paragraph{\texttt{Mobility}}
+\paragraph{\texttt{Mobility}}\quad
 \input{manual_scripts/Equipment_Mobility_table.tex}
 
 \subsubsection{Amplifiers}
@@ -794,13 +794,83 @@ Credibility of Information:
 
 \subsection{Installation Command (\textbf{\texttt{MilInstallation}})}
 
+This command covers symbols for land installations, sites that incorporate permanent, semi-permanent, and temporary structures. \textit{The \texttt{lower} key is not used as there are no lwer modifiers.} See \textit{Chapter 3, Section 4} in \DocLink.
+
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Main}}
-%\input{manual_scripts/Installation_Main_table.tex}
+\paragraph{\texttt{Main}}\quad
+\input{manual_scripts/Installation_Main_table.tex}
 
-\paragraph{\texttt{Upper}}
-%\input{manual_scripts/Installation_Upper_table.tex}
+\paragraph{\texttt{Upper}}\quad
+\input{manual_scripts/Installation_Upper_table.tex}
+
+\subsubsection{Amplifiers}
+
+\paragraph{Text Fields}
+
+\textbf{\texttt{MilInstallation}} has 12 text field amplifiers, as shown in Figure \ref{installtext}. \textit{Some of these amplifiers are placed adjacent to each other, spaces are not automatically inserted between them.} Table \ref{installtexttable} gives the key and description of each field, along with the standard prefixes to use. This table is mostly identical to the one found in \DocLink.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\MilInstallation[faction=friendly, main=civilian telecommunications, upper=radio, staff comments=G, additional information=H, higher formation=M,  scale=2]
+\end{tikzpicture}
+\caption{Location of \textbf{\texttt{MilInstallation}} text field amplifiers.}
+\label{installtext}
+\end{figure}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|c|l|X|}
+\hline
+\thead{Location} & \thead{Key} & \thead{Description} \\ \hline
+\textbf{Q} & \texttt{quantity} & Identifies the number of items present.\\ \hline
+\textbf{AC} & \texttt{country indicator} & A three-letter code that indicates the country of origin of the unit (STANAG 1059). In stability activities, this field can be used for factions or groups.\\ \hline
+\textbf{G} & \texttt{staff comments} & Free text. Can be used by staff for information required by commander.\\ \hline
+\textbf{H} & \texttt{additional information} &  Free Text.\\ \hline
+\textbf{M} & \texttt{higher formation} & Number or title of higher echelon command of unit being displayed. \\ \hline
+\textbf{J} & \texttt{evaluation rating} & Degree of confidence that may be placed on the information represented by the symbol. It is shown as one letter and one number made up of Reliability of Source and Credibility of Information. (STANAG 2511). \newline
+Reliability of Source:
+\begin{enumerate}[label=\Alph*., align=left]
+\item Completely reliable.
+\item Usually reliable.
+\item Fairly reliable.
+\item Not usually reliable.
+\item Unreliable.
+\item Reliability cannot be judged.
+\end{enumerate}
+Credibility of Information:
+\begin{enumerate}[label=\arabic*., align=left]
+\item Confirmed by other sources
+\item Probably true
+\item Possibly true
+\item Doubtful
+\item Improbable
+\item Truth cannot be judged.
+\end{enumerate}
+\\ \hline
+\textbf{K} & \texttt{combat effectiveness} & Effectiveness of unit or equipment displayed.
+\begin{enumerate}[label=\arabic*., align=left]
+\item Fully operational.
+\item Substantially operational.
+\item Marginally operational.
+\item Not operational.
+\end{enumerate} \\ \hline
+\textbf{SE} & \texttt{signature equipment} & Identifies a detectable electronic signature \lq\lq{}!\rq\rq{} for hostile equipment. \\ \hline
+\textbf{P} & \texttt{identification} & Identification modes and codes.\\ \hline
+\textbf{T} & \texttt{unique designation} & An alphanumeric designator that uniquely identifies a particular model of equipment (number).\\ \hline
+\textbf{V} & \texttt{type of equipment} & Identifies unique designation (such as AH-64 for attack helicopter).\\ \hline
+\textbf{W} & \texttt{date-time group} & An alphanumeric designator for displaying a date-time group (DDHHMMSSZMONYY) or \lq\lq{}O/O\rq\rq{} for on order. The date-time group is composed of a group of six numeric digits with a time zone suffix and the standardized three-letter abbreviation for the month followed by two digits. The first pair of digits represents the day; the second pair, the hour; the third pair, the minutes. The last two digits of the year are after the month. For automated systems, two digits may be added before the time zone suffix and after the minutes to designate seconds.\\ \hline
+\textbf{X} & \texttt{altitude value} & Altitude as displayed on the global positioning system (GPS). \\ \hline
+\textbf{Y} & \texttt{track number} & Latitude and longitude; grid coordinates. \\ \hline
+\textbf{AF} & \texttt{common identifier} & Example: Paladin for the M109A6 howitzer or Leopard for the KPz-70 tank. (Use NATO code name for hostile common identifiers.) \\ \hline
+\textbf{Z} & \texttt{speed} & Displays speed in nautical miles per hour or kilometres per hour. \\ \hline
+\textbf{AD} & \texttt{platform type} & Electronic intelligence notation (ELNOT) or communications intelligence notation (CENOT).\\ \hline
+\textbf{AE} & \texttt{equipment teardown time} & Equipment teardown time in minutes.\\ \hline
+\multicolumn{3}{c}{}\\
+\caption{Description of \textbf{\texttt{MilLand}} text field amplifiers.}
+\label{equiptexttable}
+\end{tabularx}
+\end{center}
 
 \subsection{Sea Surface Command (\textbf{\texttt{MilSeaSurface}})}
 
