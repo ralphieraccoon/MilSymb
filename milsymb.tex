@@ -78,6 +78,10 @@ The author would particularly like to thank the following members of the \TeX\  
 \item \href{https://tex.stackexchange.com/users/2388}{Ulrike Fischer}
 \end{itemize}
 
+\section*{Attributions}
+
+The \texttt{combatant} icon in the \textbf{\texttt{MilSeaSurface}} command has been adapated from a \href{https://commons.wikimedia.org/wiki/File:Small_battle_symbol.svg}{work} on Wikimedia Commons by \href{https://commons.wikimedia.org/wiki/User:Kathovo}{Kathovo} under the CC BY-SA 3.0 licence.
+
 \clearpage
 
 \tableofcontents
@@ -92,7 +96,7 @@ This package allows for the drawing of symbols from the \textit{NATO Joint Milit
 
 \subsection{Package Dependencies}
 
-The \MilSymb package uses the following packages as dependencies:
+The \MilSymb\  package uses the following packages as dependencies:
 
 \begin{itemize}
 \item \texttt{tikz}
@@ -869,15 +873,17 @@ Credibility of Information:
 
 \subsection{Sea Surface Command (\textbf{\texttt{MilSeaSurface}})}
 
+This command covers symbols for units, equipment, and objects of maritime surface operations. See \textit{Chapter 4, Section 1} in \DocLink.
+
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Main}}
+\paragraph{\texttt{Main}}\quad
 \input{manual_scripts/SeaSurface_Main_table.tex}
 
-\paragraph{\texttt{Upper}}
+\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/SeaSurface_Upper_table.tex}
 
-\paragraph{\texttt{Lower}}
+\paragraph{\texttt{Lower}}\quad
 \input{manual_scripts/SeaSurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -916,7 +922,7 @@ Credibility of Information:
 
 \subsection{Own Ship Command (\textbf{\texttt{OwnShip}})}
 
-This command places a marker indicating the position of the vessel the user is on, if they are at sea. No keys are available other than \texttt{scale}. See \textit{Chapter 2, Section 2, Table 4-7} in \DocLink.
+This command places a marker indicating the position of the vessel the user is on, if they are at sea. No keys are available other than \texttt{scale}. See \textit{Chapter 4, Section 1, Table 4-7} in \DocLink.
 
 \begin{figure}[H]
 \centering
@@ -926,15 +932,17 @@ This command places a marker indicating the position of the vessel the user is o
 
 \subsection{Sea Subsurface Command (\textbf{\texttt{MilSeaSubsurface}})}
 
+This command covers symbols for units, equipment, and objects of maritime sub surface operations. See \textit{Chapter 4, Section 2} in \DocLink.
+
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Main}}
+\paragraph{\texttt{Main}}\quad
 \input{manual_scripts/SeaSubsurface_Main_table.tex}
 
-\paragraph{\texttt{Upper}}
+\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/SeaSubsurface_Upper_table.tex}
 
-\paragraph{\texttt{Lower}}
+\paragraph{\texttt{Lower}}\quad
 \input{manual_scripts/SeaSubsurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -981,7 +989,7 @@ This command places a marker indicating the position of the vessel the user is o
 
 \subsection{Sea Mine Command (\textbf{\texttt{MilMine}})}
 
-This command is used to construct sea mine symbols. Instead of using the \texttt{main} key, this command uses the key \texttt{mine} to define the mine type, and the boolean switch \texttt{neutralised} to display the neutralised variant, as shown in Table \ref{mine}. No modifiers are used. This command also accepts the \texttt{no frame} key. See \textit{Chapter 2, Section 2, Table 4-17} in \DocLink.
+This command is used to construct sea mine symbols. Instead of using the \texttt{main} key, this command uses the key \texttt{mine} to define the mine type, and the boolean switch \texttt{neutralised} to display the neutralised variant, as shown in Table \ref{mine}. No modifiers are used. This command also accepts the \texttt{no frame} key. See \textit{Chapter 4, Section 2, Table 4-17} in \DocLink.
 
 \begin{table}[H]
 \centering
@@ -1009,15 +1017,17 @@ Text fields for \textbf{\texttt{MilMine}} are identical to \textbf{\texttt{MilSe
 
 \subsection{Space Command (\textbf{\texttt{MilSpace}})}
 
+This command covers symbols for space assets, related activities and other relevant objects (debris) within earth orbit. See \textit{Chapter 5, Section 1 and 2} in \DocLink.
+
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Main}}
+\paragraph{\texttt{Main}}\quad
 \input{manual_scripts/Space_Main_table.tex}
 
-\paragraph{\texttt{Upper}}
+\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/Space_Upper_table.tex}
 
-\paragraph{\texttt{Lower}}
+\paragraph{\texttt{Lower}}\quad
 \input{manual_scripts/Space_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -1074,12 +1084,14 @@ This command is used to construct symbols that represent space debris. No shared
 
 \subsection{Activity Command (\textbf{\texttt{MilActivity}})}
 
+This command covers symbols that provide the capability to depict stability activities and civil support activities across the continuum of operations. \textit{The \texttt{lower} key is not used as there are no lower modifiers.} See \textit{Chapter 6} in \DocLink.
+
 \subsubsection{Icons and Modifiers}
 
-\paragraph{\texttt{Main}}
+\paragraph{\texttt{Main}}\quad
 \input{manual_scripts/Activity_Main_table.tex}
 
-\paragraph{\texttt{Upper}}
+\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/Activity_Upper_table.tex}
 
 \subsubsection{Amplifiers}
