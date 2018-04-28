@@ -1,7 +1,7 @@
 % WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption, enumitem}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption, enumitem, graphicx, pdflscape}
 \keepXColumns
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
@@ -17,6 +17,7 @@
 \setlength{\cftsubsecnumwidth}{3em}
 \setlength{\cftsubsubsecnumwidth}{4em}
 \setlength{\cftparanumwidth}{5em}
+\DeclareGraphicsExtensions{.png}
 \title{MilSymb}
 \author{Damian Crosby}
 \begin{document}
@@ -163,7 +164,7 @@ The general structure of a \MilSymb\  command is as follows. Syntax in \textit{i
 
 \item \texttt{key} and \texttt{key=value} are the options used to build the symbol, such as faction, icons, modifiers, and amplifiers. Keys with no value define boolean switches, such as \texttt{unclear}. Keys with values can have one parameter, such as \texttt{faction}, or two parameters, such as \texttt{speed leader}. In the latter case, the syntax is \texttt{key=\{value1\}\{value2\}}.
 \item \texttt{location} is an optional coordinate or coordinate reference to place the symbol. This is generally needed when placing multiple symbols in one \texttt{tikzpicture}.
-\item \texttt{name} is an optional reference label that acts just like the \texttt{name} property of a node in TikZ. It exposes standard rectangle node anchors such as \texttt{north} and \texttt{south}, allowing connectors to be drawn between symbols. This is useful when drawing organisation charts and similar (see Example \ref{}).
+\item \texttt{name} is an optional reference label that acts just like the \texttt{name} property of a node in TikZ. It exposes standard rectangle node anchors such as \texttt{north} and \texttt{south}, allowing connectors to be drawn between symbols. This is useful when drawing organisation charts and similar (see Example \ref{org}).
 \item \texttt{label} is an optional text label that is added to the right of the symbol.
 \end{itemize}
 
@@ -445,13 +446,13 @@ This command covers symbols for air assets and their activities. Refer to \texti
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{main}}\quad
-\input{manual_scripts/Air_Main_table.tex}
+%\input{manual_scripts/Air_Main_table.tex}
 
 \paragraph{\texttt{upper}}\quad
-\input{manual_scripts/Air_Upper_table.tex}
+%\input{manual_scripts/Air_Upper_table.tex}
 
 \paragraph{\texttt{lower}}\quad 
-\input{manual_scripts/Air_Lower_table.tex}
+%\input{manual_scripts/Air_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -495,10 +496,10 @@ This command is a special application of \textbf{\texttt{MilAir}} for missiles. 
 \textit{Instead of using \texttt{upper} and \texttt{lower} keys to define the modifiers, \texttt{left} and \texttt{right} keys are used to reflect the position of the modifier.}
 
 \paragraph{\texttt{left}}\quad
-\input{manual_scripts/Missile_Left_table.tex}
+%\input{manual_scripts/Missile_Left_table.tex}
 
 \paragraph{\texttt{right}}\quad
-\input{manual_scripts/Missile_Right_table.tex}
+%\input{manual_scripts/Missile_Right_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -513,13 +514,13 @@ This command covers symbols for land units, individuals, and organizations. Refe
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{main}}\quad
-\input{manual_scripts/Land_Main_table.tex}
+%\input{manual_scripts/Land_Main_table.tex}
 
 \paragraph{\texttt{upper}}\quad
-\input{manual_scripts/Land_Upper_table.tex}
+%\input{manual_scripts/Land_Upper_table.tex}
 
 \paragraph{\texttt{lower}}\quad
-\input{manual_scripts/Land_Lower_table.tex}
+%\input{manual_scripts/Land_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -722,10 +723,10 @@ This command covers symbols for land equipment. \textit{The are no \texttt{upper
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-\input{manual_scripts/Equipment_Main_table.tex}
+%\input{manual_scripts/Equipment_Main_table.tex}
 
 \paragraph{\texttt{Mobility}}\quad
-\input{manual_scripts/Equipment_Mobility_table.tex}
+%\input{manual_scripts/Equipment_Mobility_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -802,10 +803,10 @@ This command covers symbols for land installations, sites that incorporate perma
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-\input{manual_scripts/Installation_Main_table.tex}
+%\input{manual_scripts/Installation_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-\input{manual_scripts/Installation_Upper_table.tex}
+%\input{manual_scripts/Installation_Upper_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -878,13 +879,13 @@ This command covers symbols for units, equipment, and objects of maritime surfac
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-\input{manual_scripts/SeaSurface_Main_table.tex}
+%\input{manual_scripts/SeaSurface_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-\input{manual_scripts/SeaSurface_Upper_table.tex}
+%\input{manual_scripts/SeaSurface_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}\quad
-\input{manual_scripts/SeaSurface_Lower_table.tex}
+%\input{manual_scripts/SeaSurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -937,13 +938,13 @@ This command covers symbols for units, equipment, and objects of maritime sub su
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-\input{manual_scripts/SeaSubsurface_Main_table.tex}
+%\input{manual_scripts/SeaSubsurface_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-\input{manual_scripts/SeaSubsurface_Upper_table.tex}
+%\input{manual_scripts/SeaSubsurface_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}\quad
-\input{manual_scripts/SeaSubsurface_Lower_table.tex}
+%\input{manual_scripts/SeaSubsurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -1022,13 +1023,13 @@ This command covers symbols for space assets, related activities and other relev
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-\input{manual_scripts/Space_Main_table.tex}
+%\input{manual_scripts/Space_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-\input{manual_scripts/Space_Upper_table.tex}
+%\input{manual_scripts/Space_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}\quad
-\input{manual_scripts/Space_Lower_table.tex}
+%\input{manual_scripts/Space_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -1089,10 +1090,10 @@ This command covers symbols that provide the capability to depict stability acti
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-\input{manual_scripts/Activity_Main_table.tex}
+%\input{manual_scripts/Activity_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-\input{manual_scripts/Activity_Upper_table.tex}
+%\input{manual_scripts/Activity_Upper_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -1233,11 +1234,13 @@ To add a custom icon or modifier, create a TikZ \texttt{.pic} in the \texttt{cus
 
 \begin{writett}
 \begin{verbatim}
+\makeatletter %required if using MilSymb@selectedfaction
 \tikzset{
 MilSymb custom/user icon/.pic={
   custom TikZ drawing commands go here...
 } %comma after bracket is needed if defining multiple .pic.
 }
+\makeatother %required if using MilSymb@selectedfaction
 \begin{tikzpicture}
   \MilLand[faction=hostile, main=user icon]
 \end{tikzpicture}
@@ -1282,6 +1285,10 @@ Most \textit{fullframe} icons have slight variations depending on the faction fr
 \texttt{custom/user icon/hostile/.pic}\\
 \texttt{custom/user icon/neutral/.pic}\\
 \texttt{custom/user icon/unknown/.pic}\\
+
+\subsection{Clipping}
+
+For \textbf{\texttt{MilLand}} symbols, clipping commands are available to trim any icon or modfier to the inside of the frame. Use \texttt{\textbackslash clip \textbackslash clip<faction>} within the drawing commands to clip anything specified after the command to the frame.
 
 Then, insert \texttt{/\textbackslash MilSymb@selectedfaction} directly after the \texttt{path/to/user icon} (so it forms \texttt{path/to/user icon/\textbackslash MilSymb@selectedfaction}). \texttt{\textbackslash MilSymb@selectedfaction} will be replaced by the name of the faction, and complete the path to the icon.
 
@@ -1402,7 +1409,65 @@ There are some \texttt{.pic} that are not used as an icon or modifier directly, 
 \caption{Table of Hidden Glyphs}
 \end{table}
 
+\begin{landscape}
+
 \section{Examples}
+
+\subsection{Front Cover}
+
+\begin{writett}
+\begin{verbatim}
+\thispagestyle{empty}
+\begin{center}
+\begin{tikzpicture}[remember picture]
+
+\coordinate (NE) at ($(current page text area.north east)-(1.5, 1.5)$);
+\coordinate (NW) at ($(current page text area.north west)-(-1.5, 1.5)$);
+\coordinate (SE) at ($(current page text area.south east)-(1.5, -1.5)$);
+\coordinate (SW) at ($(current page text area.south west)-(-1.5, -1.5)$);
+
+\MilLand[faction=hostile, echelon=team, main=infantry, scale=2](NE)
+\MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=2](NW)
+\MilSeaSurface[faction=neutral, main=hazardous material transport ship, lower=fast, scale=2](SE)
+\MilActivity[faction=unknown, main=searching, upper=house to house, scale=2](SW)
+
+\MilLand[faction=unknown, echelon=battalion, main=armoured, upper=missile, lower=long range, scale=2]($(NE)!0.33!(NW)$)
+\MilEquipment[faction=neutral, main=heavy machine gun, mobility=pack animal, scale=2]($(NE)!0.66!(NW)$)
+
+\MilSpace[faction=hostile, main=military earth observation satellite, upper=low earth orbit, lower=radar, scale=2]($(SE)!0.33!(SW)$)
+\MilInstallation[faction=friendly, main=electric power, upper=nuclear energy, scale=2]($(SE)!0.66!(SW)$)
+
+\MilSeaSubsurface[faction=friendly, main=snorkelling submarine, upper=auxiliary, lower=nuclear type 5, scale=2]($(NE)!0.2!(SE)$)
+\MilLand[faction=neutral, echelon=platoon, main=supply, supply={2}{4}, scale=2]($(NE)!0.4!(SE)$)
+\MilActivity[faction=hostile, main=attempted criminal activity, upper=rape, scale=2]($(NE)!0.6!(SE)$)
+\MilEquipment[faction=unknown, main=tank recovery vehicle, mobility=wheeled semi trailer, scale=2]($(NE)!0.8!(SE)$)
+
+\MilMissile[faction=hostile, left=sub surface, right=launched, scale=2]($(NW)!0.2!(SW)$)
+\MilInstallation[faction=unknown, main=civilian telecommunications, upper=television, scale=2]($(NW)!0.4!(SW)$)
+\MilSpace[faction=friendly, main=civilian space station, upper=geosynchronous orbit, scale=2]($(NW)!0.6!(SW)$)
+\MilLand[faction=neutral, echelon=corps, main=armoured, upper=missile, lower=long range, scale=2]($(NW)!0.8!(SW)$)
+
+\pgfresetboundingbox
+\path[use as bounding box] (0,0);
+
+\end{tikzpicture}
+
+{\let\newpage\relax\maketitle}
+\end{center}
+\end{verbatim}
+\end{writett}
+
+\subsection{1\textsuperscript{st} Marine Division}
+
+
+
+\begin{figure}[H]
+\centering
+\input{manual_examples/mef.tex}
+\label{org}
+\end{figure}
+
+\end{landscape}
 
 \section{Control Measures}
 
