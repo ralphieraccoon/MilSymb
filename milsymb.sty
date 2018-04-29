@@ -1,5 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MilSymb Style File									    	%%
+%%--------------------                                                                                                  	%%
+%% Version: 1.0                                                                                                        	%%
+%% Last Updated: 29/04/2018                                                                                 	%%
+%% Github: https://github.com/ralphieraccoon/MilSymb                                          	%%
+%% Copyright: Damian Crosby 2018                                                                        	%%
+%% Licence: Creative Commons Attribution-ShareAlike 4.0 International License  	%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{milsymb}[23/04/2018 v1.0]
+\ProvidesPackage{milsymb}[29/04/2018 v1.0]
 \RequirePackage{tikz}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fix-cm}
@@ -2261,7 +2271,9 @@ scale=1,
  }%
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
+\begin{scope}[local bounding box=#3]
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+ \end{scope}
  \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
  \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
  \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
@@ -2317,9 +2329,11 @@ scale=1,
    right=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
+\begin{scope}[local bounding box=#3]
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\end{scope}
 \draw[fill=unknownA] (0, 0.3) -- (-0.05, 0.2) -- (-0.05, -0.2) -- (-0.125,-0.3) -- (-0.125,-0.4) -- (0, -0.265) -- (0.125,-0.4) -- (0.125,-0.3) -- (0.05,-0.2) -- (0.05,0.2) -- cycle;
 \fontsize{6}{0}\selectfont
 \node at (0.34, 0) {\MilSymb@SymbLT};
@@ -2694,9 +2708,11 @@ scale=1,
    feint or dummy=false,
   #1,
 } %
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
+\begin{scope}[local bounding box=#3]
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\end{scope}
 \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
 \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
 \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
@@ -2916,17 +2932,22 @@ scale=1,
    no frame=false,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
 \begin{scope} [local bounding box=Q]
 \ifnoframe
 \tikzset{every path/.style={MilSymb@iconcolour}}
+\begin{scope}[local bounding box=#3]
 \pic [local bounding box=M] {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+\end{scope}
 \ifthenelse{\isequivalentto{\MilSymb@SymbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@SymbL};} %Draw mobility
 \tikzset{every path/.style={black}}
 \else
+
 \tikzset{/MilSymb/.cd, iconcolour=black}
+\begin{scope}[local bounding box=#3]
 \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\end{scope}
 \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
 \ifthenelse{\isequivalentto{\MilSymb@SymbL}{\empty}}{}{\pic at ($(M.south) + (0, -0.1)$) {MilSymb \MilSymb@SymbL};} %Draw mobility
 \fi
@@ -3220,9 +3241,11 @@ scale=1,
    lower=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
+ \begin{scope}[local bounding box=#3]
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+ \end{scope}
  \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
  \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
  \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
@@ -3339,9 +3362,11 @@ scale=1,
    lower=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
+\begin{scope}[local bounding box=#3]
  \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\end{scope}
  \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
  \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
  \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
@@ -3392,18 +3417,20 @@ scale=1,
    neutralised=false,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
  \ifnoframe
  \else
  \tikzset{/MilSymb/.cd, iconcolour=black}
- \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape 
+ \begin{scope}[local bounding box=#3]
+ \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
  \fi
  \ifneutralised
  \pic {MilSymb \MilSymb@SymbC-neutralised}; %Draw neutralised mine
  \else
  \pic {MilSymb \MilSymb@SymbC}; %Draw mine
  \fi
+ \end{scope}
  \fontsize{6}{0}\selectfont
  \ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
  \ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
@@ -3489,9 +3516,11 @@ scale=1,
    lower=none,
    #1,
 }%
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
  \fontfamily{phv}\fontseries{bx}\selectfont
- \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\begin{scope}[local bounding box=#3]
+\pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\end{scope}
  \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
  \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
  \pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
@@ -3597,9 +3626,11 @@ scale=1,
    country indicator=,
   #1,
 } %
-\begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \fontfamily{phv}\fontseries{bx}\selectfont
-\pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\begin{scope}[local bounding box=#3]
+ \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+\end{scope}
 \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
 \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
 \fontsize{6}{0}\selectfont

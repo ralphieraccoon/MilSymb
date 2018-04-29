@@ -1,0 +1,108 @@
+
+\definecolor{salmon}{HTML}{F69289} %custom tank symbol colour
+
+%custom icons
+\makeatletter
+\tikzset{
+MilSymb custom/marine/.pic={
+  \pic{MilSymb land/main/infantry/\MilSymb@selectedfaction};
+  \clip \clipfriendly;
+  \pic[yshift=-10.75]{MilSymb land/main/amphibious/\MilSymb@selectedfaction};
+},
+MilSymb custom/tank/.pic={
+  \filldraw[fill=salmon]circle(0.5 and 0.15);
+},
+MilSymb custom/reconnaissance tank/.pic={
+  \pic{MilSymb custom/tank};
+  \pic{MilSymb land/main/reconnaissance/\MilSymb@selectedfaction};
+},
+MilSymb custom/amphibious tank/.pic={
+  \pic{MilSymb custom/tank};
+  \clip \clipfriendly;
+  \pic[yshift=-10.75]{MilSymb land/main/amphibious/\MilSymb@selectedfaction};
+}
+}
+\makeatother
+
+\fontsize{6}{0}\selectfont
+
+\begin{tikzpicture}
+
+% grid of symbols
+\node(H) at (7,0){\includegraphics[width=1.5cm]{manual_examples/772px-1st_Marine_Division_insignia}};
+\node[right of=H, node distance=1.85cm, align=left](HT){1\textsuperscript{st} Marine Division\\ CAMP PENDLETON};
+\node[above of=H, star,star points=5, star point ratio=0.5, rotate=180, xshift=-3, fill=yellow, draw] {};
+\node[above of=H, star,star points=5, star point ratio=0.5, rotate=180, xshift=3, fill=yellow, draw] {};
+\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=marine](3.5, -2)(C11){1\textsuperscript{st} Marine Rgt. \\ CAMP PENDLETON}
+\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=marine](7, -2)(C21){5\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON} 
+\MilLand[scale=0.75, faction=friendly,  echelon=regiment, main=marine](10.5, -2)(C31){7\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON} 
+\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=field artillery](14, -2)(C41){11\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=headquarters](0, -3)(C02){Headquarters \\ Battalion} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](3.75, -3)(C12){~\\ HQ Coy.} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](7.25, -3)(C22){~\\ HQ Coy.} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](10.75, -3)(C32){~\\ HQ Coy.} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](14.25, -3)(C42){~\\ HQ Battery}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=tank](0, -4)(C03){1\textsuperscript{st} Tank \\ Battalion}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -4)(C13){1\textsuperscript{st} Btn. \\ 1\textsuperscript{st} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -4)(C23){1\textsuperscript{st} Btn. \\ 5\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -4)(C33){1\textsuperscript{st} Btn. \\ 7\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery](14.25, -4)(C43){1\textsuperscript{st} Btn. \\ 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=reconnaissance tank, lower=wheeled](0, -5)(C04){1\textsuperscript{st} Light Armoured \\ Reconnaissance Btn.}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -5)(C14){2\textsuperscript{nd} Btn. \\ 1\textsuperscript{st} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -5)(C24){2\textsuperscript{nd} Btn. \\ 5\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -5)(C34){2\textsuperscript{nd} Btn. \\ 7\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery](14.25, -5)(C44){2\textsuperscript{nd} Btn. \\ 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=reconnaissance tank, lower=wheeled](0, -6)(C05){3\textsuperscript{rd} Light Armoured \\ Reconnaissance Btn.}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -6)(C15){3\textsuperscript{rd} Btn. \\ 1\textsuperscript{st} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -6)(C25){3\textsuperscript{rd} Btn. \\ 5\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -6)(C35){3\textsuperscript{rd} Btn. \\ 7\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery](14.25, -6)(C45){3\textsuperscript{rd} Btn. \\ 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=reconnaissance](0, -7)(C06){1\textsuperscript{st} Reconnaissance \\  Battalion}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -7)(C16){1\textsuperscript{st} Btn. \\ 4\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -7)(C26){2\textsuperscript{nd} Btn. \\ 4\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -7)(C36){3\textsuperscript{rd} Btn. \\ 4\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery, upper=multiple rocket launcher, lower=wheeled](14.25, -7)(C46){5\textsuperscript{rd} Btn. 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=engineer](0, -8)(C07){1\textsuperscript{st} Combat \\ Engineer Battalion}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=engineer](0, -9)(C08){3\textsuperscript{rd} Combat \\ Engineer Battalion}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=amphibious tank](0, -10)(C09){3\textsuperscript{rd} Assault \\ Amphibian Battalion}
+
+%connecting lines
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C11.north);
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C21.north);
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C31.north);
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C41.north);
+\draw (H.south) |- ($(H.south)!0.5!(C11.north)$) -|  ($(C02.west)+(-0.25, 0)$) -| (C02.west);
+
+\draw (C11.south west) |- (C12.west);
+\draw (C11.south west) |- (C13.west);
+\draw (C11.south west) |- (C14.west);
+\draw (C11.south west) |- (C15.west);
+\draw (C11.south west) |- (C16.west);
+
+\draw (C21.south west) |- (C22.west);
+\draw (C21.south west) |- (C23.west);
+\draw (C21.south west) |- (C24.west);
+\draw (C21.south west) |- (C25.west);
+\draw (C21.south west) |- (C26.west);
+
+\draw (C31.south west) |- (C32.west);
+\draw (C31.south west) |- (C33.west);
+\draw (C31.south west) |- (C34.west);
+\draw (C31.south west) |- (C35.west);
+\draw (C31.south west) |- (C36.west);
+
+\draw (C41.south west) |- (C42.west);
+\draw (C41.south west) |- (C43.west);
+\draw (C41.south west) |- (C44.west);
+\draw (C41.south west) |- (C45.west);
+\draw (C41.south west) |- (C46.west);
+
+\draw (C02.west) -| ($(C02.west)+(-0.25, 0)$) |- (C03.west);
+\draw (C03.west) -| ($(C02.west)+(-0.25, 0)$) |- (C04.west);
+\draw (C04.west) -| ($(C02.west)+(-0.25, 0)$) |- (C05.west);
+\draw (C05.west) -| ($(C02.west)+(-0.25, 0)$) |- (C06.west);
+\draw (C06.west) -| ($(C02.west)+(-0.25, 0)$) |- (C07.west);
+\draw (C07.west) -| ($(C02.west)+(-0.25, 0)$) |- (C08.west);
+\draw (C08.west) -| ($(C02.west)+(-0.25, 0)$) |- (C09.west);
+
+\end{tikzpicture}

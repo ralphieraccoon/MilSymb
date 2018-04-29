@@ -1,11 +1,24 @@
-% WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MilSymb Manual File									    	%%
+%%--------------------                                                                                                  	%%
+%% Version: 1.0                                                                                                        	%%
+%% Last Updated: 29/04/2018                                                                                 	%%
+%% Github: https://github.com/ralphieraccoon/MilSymb                                          	%%
+%% Copyright: Damian Crosby 2018                                                                        	%%
+%% Licence: Creative Commons Attribution-ShareAlike 4.0 International License  	%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf		%
+% Table typesetting also takes a very long time. Consider commenting out \input commands when editing the rest of the document.	%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, titlepage]{article}
 \usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption, enumitem, graphicx, pdflscape}
 \keepXColumns
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
-\usetikzlibrary{calc, arrows.meta}
+\usetikzlibrary{calc, arrows.meta, matrix}
 \newcolumntype{n}{>{\raggedright\arraybackslash}m{5cm}}
 \newcolumntype{s}{>{\centering\arraybackslash}m{1.75cm}}
 \newcommand\MilSymb{\textbf{\texttt{MilSymb}}}
@@ -63,7 +76,7 @@
 
 \begin{versionhistory}
 \renewcommand \vhAuthorColWidth{6cm}
-\vhEntry{1.0}{22/01/2018}{Damian Crosby}{Creation}
+\vhEntry{1.0}{29/04/2018}{Damian Crosby}{Creation}
 \end{versionhistory}
 
 \clearpage
@@ -81,7 +94,13 @@ The author would particularly like to thank the following members of the \TeX\  
 
 \section*{Attributions}
 
-The \texttt{combatant} icon in the \textbf{\texttt{MilSeaSurface}} command has been adapated from a \href{https://commons.wikimedia.org/wiki/File:Small_battle_symbol.svg}{work} on Wikimedia Commons by \href{https://commons.wikimedia.org/wiki/User:Kathovo}{Kathovo} under the CC BY-SA 3.0 licence.
+\begin{itemize}
+\item The \texttt{combatant} icon in the \textbf{\texttt{MilSeaSurface}} command has been adapated from a \href{https://commons.wikimedia.org/wiki/File:Small_battle_symbol.svg}{work} on Wikimedia Commons by \href{https://commons.wikimedia.org/wiki/User:Kathovo}{Kathovo} under the \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0} licence.
+\item The Structure of 1\textsuperscript{st} Marine Division (Figure \ref{org}) receration is based on an \href{https://commons.wikimedia.org/wiki/File:1st_US_Marine_Division.png}{image} created by \href{https://commons.wikimedia.org/wiki/User:Noclador}{Noclador} under the \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0} licence.
+\end{itemize}
+
+\section*{Licence}
+In order to comply with the attributions listed above, this package is licenced under \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA 4.0}.
 
 \clearpage
 
@@ -446,13 +465,13 @@ This command covers symbols for air assets and their activities. Refer to \texti
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{main}}\quad
-%\input{manual_scripts/Air_Main_table.tex}
+\input{manual_scripts/Air_Main_table.tex}
 
 \paragraph{\texttt{upper}}\quad
-%\input{manual_scripts/Air_Upper_table.tex}
+\input{manual_scripts/Air_Upper_table.tex}
 
 \paragraph{\texttt{lower}}\quad 
-%\input{manual_scripts/Air_Lower_table.tex}
+\input{manual_scripts/Air_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -496,10 +515,10 @@ This command is a special application of \textbf{\texttt{MilAir}} for missiles. 
 \textit{Instead of using \texttt{upper} and \texttt{lower} keys to define the modifiers, \texttt{left} and \texttt{right} keys are used to reflect the position of the modifier.}
 
 \paragraph{\texttt{left}}\quad
-%\input{manual_scripts/Missile_Left_table.tex}
+\input{manual_scripts/Missile_Left_table.tex}
 
 \paragraph{\texttt{right}}\quad
-%\input{manual_scripts/Missile_Right_table.tex}
+\input{manual_scripts/Missile_Right_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -514,13 +533,13 @@ This command covers symbols for land units, individuals, and organizations. Refe
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{main}}\quad
-%\input{manual_scripts/Land_Main_table.tex}
+\input{manual_scripts/Land_Main_table.tex}
 
 \paragraph{\texttt{upper}}\quad
-%\input{manual_scripts/Land_Upper_table.tex}
+\input{manual_scripts/Land_Upper_table.tex}
 
 \paragraph{\texttt{lower}}\quad
-%\input{manual_scripts/Land_Lower_table.tex}
+\input{manual_scripts/Land_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -723,10 +742,10 @@ This command covers symbols for land equipment. \textit{The are no \texttt{upper
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-%\input{manual_scripts/Equipment_Main_table.tex}
+\input{manual_scripts/Equipment_Main_table.tex}
 
 \paragraph{\texttt{Mobility}}\quad
-%\input{manual_scripts/Equipment_Mobility_table.tex}
+\input{manual_scripts/Equipment_Mobility_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -803,10 +822,10 @@ This command covers symbols for land installations, sites that incorporate perma
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-%\input{manual_scripts/Installation_Main_table.tex}
+\input{manual_scripts/Installation_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-%\input{manual_scripts/Installation_Upper_table.tex}
+\input{manual_scripts/Installation_Upper_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -879,13 +898,13 @@ This command covers symbols for units, equipment, and objects of maritime surfac
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-%\input{manual_scripts/SeaSurface_Main_table.tex}
+\input{manual_scripts/SeaSurface_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-%\input{manual_scripts/SeaSurface_Upper_table.tex}
+\input{manual_scripts/SeaSurface_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}\quad
-%\input{manual_scripts/SeaSurface_Lower_table.tex}
+\input{manual_scripts/SeaSurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -938,13 +957,13 @@ This command covers symbols for units, equipment, and objects of maritime sub su
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-%\input{manual_scripts/SeaSubsurface_Main_table.tex}
+\input{manual_scripts/SeaSubsurface_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-%\input{manual_scripts/SeaSubsurface_Upper_table.tex}
+\input{manual_scripts/SeaSubsurface_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}\quad
-%\input{manual_scripts/SeaSubsurface_Lower_table.tex}
+\input{manual_scripts/SeaSubsurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -1023,13 +1042,13 @@ This command covers symbols for space assets, related activities and other relev
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-%\input{manual_scripts/Space_Main_table.tex}
+\input{manual_scripts/Space_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-%\input{manual_scripts/Space_Upper_table.tex}
+\input{manual_scripts/Space_Upper_table.tex}
 
 \paragraph{\texttt{Lower}}\quad
-%\input{manual_scripts/Space_Lower_table.tex}
+\input{manual_scripts/Space_Lower_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -1090,10 +1109,10 @@ This command covers symbols that provide the capability to depict stability acti
 \subsubsection{Icons and Modifiers}
 
 \paragraph{\texttt{Main}}\quad
-%\input{manual_scripts/Activity_Main_table.tex}
+\input{manual_scripts/Activity_Main_table.tex}
 
 \paragraph{\texttt{Upper}}\quad
-%\input{manual_scripts/Activity_Upper_table.tex}
+\input{manual_scripts/Activity_Upper_table.tex}
 
 \subsubsection{Amplifiers}
 
@@ -1416,6 +1435,7 @@ There are some \texttt{.pic} that are not used as an icon or modifier directly, 
 \subsection{Front Cover}
 
 \begin{writett}
+\fontsize{6}{0}\selectfont
 \begin{verbatim}
 \thispagestyle{empty}
 \begin{center}
@@ -1457,15 +1477,131 @@ There are some \texttt{.pic} that are not used as an icon or modifier directly, 
 \end{verbatim}
 \end{writett}
 
-\subsection{1\textsuperscript{st} Marine Division}
+\end{landscape}
 
-
+\subsection{1\textsuperscript{st} Marine Division (USA)}
 
 \begin{figure}[H]
 \centering
 \input{manual_examples/mef.tex}
+\caption{Recreation of Structure of 1\textsuperscript{st} US Marine Division. Sourced from \href{https://commons.wikimedia.org/wiki/File:1st_US_Marine_Division.png}{Wikipedia}}.
 \label{org}
 \end{figure}
+
+\begin{landscape}
+
+\begin{writett}
+\fontsize{6}{0}\selectfont
+\begin{verbatim}
+\definecolor{salmon}{HTML}{F69289} %custom tank symbol colour
+
+%custom icons
+\makeatletter
+\tikzset{
+MilSymb custom/marine/.pic={
+  \pic{MilSymb land/main/infantry/\MilSymb@selectedfaction};
+  \clip \clipfriendly;
+  \pic[yshift=-10.75]{MilSymb land/main/amphibious/\MilSymb@selectedfaction};
+},
+MilSymb custom/tank/.pic={
+  \filldraw[fill=salmon]circle(0.5 and 0.15);
+},
+MilSymb custom/reconnaissance tank/.pic={
+  \pic{MilSymb custom/tank};
+  \pic{MilSymb land/main/reconnaissance/\MilSymb@selectedfaction};
+},
+MilSymb custom/amphibious tank/.pic={
+  \pic{MilSymb custom/tank};
+  \clip \clipfriendly;
+  \pic[yshift=-10.75]{MilSymb land/main/amphibious/\MilSymb@selectedfaction};
+}
+}
+\makeatother
+
+\fontsize{6}{0}\selectfont
+
+\begin{tikzpicture}
+
+% grid of symbols
+\node(H) at (7,0){\includegraphics[width=1.5cm]{manual_examples/772px-1st_Marine_Division_insignia}};
+\node[right of=H, node distance=1.85cm, align=left](HT){1\textsuperscript{st} Marine Division\\ CAMP PENDLETON};
+\node[above of=H, star,star points=5, star point ratio=0.5, rotate=180, xshift=-3, fill=yellow, draw] {};
+\node[above of=H, star,star points=5, star point ratio=0.5, rotate=180, xshift=3, fill=yellow, draw] {};
+\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=marine](3.5, -2)(C11){1\textsuperscript{st} Marine Rgt. \\ CAMP PENDLETON}
+\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=marine](7, -2)(C21){5\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON} 
+\MilLand[scale=0.75, faction=friendly,  echelon=regiment, main=marine](10.5, -2)(C31){7\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON} 
+\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=field artillery](14, -2)(C41){11\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=headquarters](0, -3)(C02){Headquarters \\ Battalion} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](3.75, -3)(C12){~\\ HQ Coy.} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](7.25, -3)(C22){~\\ HQ Coy.} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](10.75, -3)(C32){~\\ HQ Coy.} 
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](14.25, -3)(C42){~\\ HQ Battery}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=tank](0, -4)(C03){1\textsuperscript{st} Tank \\ Battalion}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -4)(C13){1\textsuperscript{st} Btn. \\ 1\textsuperscript{st} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -4)(C23){1\textsuperscript{st} Btn. \\ 5\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -4)(C33){1\textsuperscript{st} Btn. \\ 7\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery](14.25, -4)(C43){1\textsuperscript{st} Btn. \\ 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=reconnaissance tank, lower=wheeled](0, -5)(C04){1\textsuperscript{st} Light Armoured \\ Reconnaissance Btn.}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -5)(C14){2\textsuperscript{nd} Btn. \\ 1\textsuperscript{st} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -5)(C24){2\textsuperscript{nd} Btn. \\ 5\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -5)(C34){2\textsuperscript{nd} Btn. \\ 7\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery](14.25, -5)(C44){2\textsuperscript{nd} Btn. \\ 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=reconnaissance tank, lower=wheeled](0, -6)(C05){3\textsuperscript{rd} Light Armoured \\ Reconnaissance Btn.}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -6)(C15){3\textsuperscript{rd} Btn. \\ 1\textsuperscript{st} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -6)(C25){3\textsuperscript{rd} Btn. \\ 5\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -6)(C35){3\textsuperscript{rd} Btn. \\ 7\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery](14.25, -6)(C45){3\textsuperscript{rd} Btn. \\ 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=reconnaissance](0, -7)(C06){1\textsuperscript{st} Reconnaissance \\  Battalion}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -7)(C16){1\textsuperscript{st} Btn. \\ 4\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](7.25, -7)(C26){2\textsuperscript{nd} Btn. \\ 4\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](10.75, -7)(C36){3\textsuperscript{rd} Btn. \\ 4\textsuperscript{th} Marines}
+ \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=field artillery, upper=multiple rocket launcher, lower=wheeled](14.25, -7)(C46){5\textsuperscript{rd} Btn. 11\textsuperscript{th} Marines}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=engineer](0, -8)(C07){1\textsuperscript{st} Combat \\ Engineer Battalion}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=engineer](0, -9)(C08){3\textsuperscript{rd} Combat \\ Engineer Battalion}
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=amphibious tank](0, -10)(C09){3\textsuperscript{rd} Assault \\ Amphibian Battalion}
+
+%connecting lines
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C11.north);
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C21.north);
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C31.north);
+\draw [shorten >=0.25cm] (H.south) |- ($(H.south)!0.5!(C11.north)$) -| (C41.north);
+\draw (H.south) |- ($(H.south)!0.5!(C11.north)$) -|  ($(C02.west)+(-0.25, 0)$) -| (C02.west);
+
+\draw (C11.south west) |- (C12.west);
+\draw (C11.south west) |- (C13.west);
+\draw (C11.south west) |- (C14.west);
+\draw (C11.south west) |- (C15.west);
+\draw (C11.south west) |- (C16.west);
+
+\draw (C21.south west) |- (C22.west);
+\draw (C21.south west) |- (C23.west);
+\draw (C21.south west) |- (C24.west);
+\draw (C21.south west) |- (C25.west);
+\draw (C21.south west) |- (C26.west);
+
+\draw (C31.south west) |- (C32.west);
+\draw (C31.south west) |- (C33.west);
+\draw (C31.south west) |- (C34.west);
+\draw (C31.south west) |- (C35.west);
+\draw (C31.south west) |- (C36.west);
+
+\draw (C41.south west) |- (C42.west);
+\draw (C41.south west) |- (C43.west);
+\draw (C41.south west) |- (C44.west);
+\draw (C41.south west) |- (C45.west);
+\draw (C41.south west) |- (C46.west);
+
+\draw (C02.west) -| ($(C02.west)+(-0.25, 0)$) |- (C03.west);
+\draw (C03.west) -| ($(C02.west)+(-0.25, 0)$) |- (C04.west);
+\draw (C04.west) -| ($(C02.west)+(-0.25, 0)$) |- (C05.west);
+\draw (C05.west) -| ($(C02.west)+(-0.25, 0)$) |- (C06.west);
+\draw (C06.west) -| ($(C02.west)+(-0.25, 0)$) |- (C07.west);
+\draw (C07.west) -| ($(C02.west)+(-0.25, 0)$) |- (C08.west);
+\draw (C08.west) -| ($(C02.west)+(-0.25, 0)$) |- (C09.west);
+
+\end{tikzpicture}
+\end{verbatim}
+\end{writett}
 
 \end{landscape}
 
