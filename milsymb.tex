@@ -77,6 +77,7 @@
 \begin{versionhistory}
 \renewcommand \vhAuthorColWidth{6cm}
 \vhEntry{1.0}{29/04/2018}{Damian Crosby}{Creation}
+\vhEntry{1.01}{18/06/2019}{Damian Crosby}{Added clarification on DVI output.}
 \end{versionhistory}
 
 \clearpage
@@ -132,7 +133,7 @@ The \MilSymb\  package uses the following packages as dependencies:
 
 \subsection{Using \MilSymb}
 
-To use \MilSymb\  in your document, just include \texttt{\textbackslash usepackage\{milsymb\}} in your preamble. \MilSymb\  has only been tested on \LaTeX, other \TeX\  flavours will probably not work. All \MilSymb\  symbols must be placed inside a TikZ environment, either as part of an inline \texttt{tikz} command or an \texttt{tikzpicture} enviroment. 
+To use \MilSymb\  in your document, just include \texttt{\textbackslash usepackage\{milsymb\}} in your preamble. \MilSymb\  has only been tested on \LaTeX, other \TeX\  flavours will probably not work. All \MilSymb\  symbols must be placed inside a TikZ environment, either as part of an inline \texttt{tikz} command or an \texttt{tikzpicture} enviroment. As with other packages that use TikZ or other postscript based drawing programs, DVI format is not directly supported, though some DVI viewers are able to display TikZ images by embedding postscript.
 
 \subsubsection{Package Options}
 
