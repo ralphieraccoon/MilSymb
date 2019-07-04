@@ -1,20 +1,20 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MilSymb Manual File									    	%%
-%%--------------------                                                                                                  	%%
-%% Version: 1.0                                                                                                        	%%
-%% Last Updated: 29/04/2018                                                                                 	%%
-%% Github: https://github.com/ralphieraccoon/MilSymb                                          	%%
-%% Copyright: Damian Crosby 2018                                                                        	%%
-%% Licence: Creative Commons Attribution-ShareAlike 4.0 International License  	%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MilSymb Manual File									    	              %%
+%%--------------------                                                        %%
+%% Version: 1.01                                                              %%
+%% Last Updated: 03/07/2019                                                   %%
+%% Github: https://github.com/ralphieraccoon/MilSymb                          %%
+%% Copyright: Damian Crosby 2018                                              %%
+%% Licence: Creative Commons Attribution-ShareAlike 4.0 International License %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf		%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WARNING! Typesetting tables can cause memory overflow. Set --extra-mem-top=10000000 in Typesetting or texmf.cnf		        %
 % Table typesetting also takes a very long time. Consider commenting out \input commands when editing the rest of the document.	%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, titlepage]{article}
-\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption, enumitem, graphicx, pdflscape}
+\usepackage{milsymb, arev, ltablex, makecell, multirow, tikzpagenodes, vhistory, titlesec, float, forest, tocloft, alltt, array, tikz-dimline, threeparttable, textcomp, pifont, colortbl, caption, enumitem, graphicx, pdflscape, adjustbox, graphicx}
 \keepXColumns
 \usepackage[a4paper, margin=1.75cm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
@@ -253,25 +253,25 @@ This key selects the military faction of the symbol relative to the user, which 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|s|s|s|s|@{}m{0pt}@{}}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-\multirow{4}{*}{\thead{Command}} & \multicolumn{4}{c|}{\thead{Faction Frame}} \\ \cline{2-5}
-& \thead{Friendly} & \thead{Hostile} & \thead{Neutral} & \thead{Unknown}&\\
+\multirow{2.5}{*}{\thead{Command}} & \multicolumn{4}{c|}{\thead{Faction Frame}} \\ \cline{2-5}
+& \thead{Friendly} & \thead{Hostile} & \thead{Neutral} & \thead{Unknown}\\
 \hline
-\texttt{MilAir} + \texttt{MilMissile} & \tikz[baseline=-0.5ex]{\MilAir[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilAir[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilAir[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilAir[faction=unknown]}&\\
-[1.25cm]\hline
-\texttt{MilLand} & \tikz[baseline=-0.5ex]{\MilLand[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilLand[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilLand[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilEquipment}* + \texttt{MilSeaSurface} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilEquipment[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilLand[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilInstallation} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilInstallation[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilSeaSubsurface} + \texttt{MilMine}* & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSeaSubsurface[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilSpace} & \tikz[baseline=-0.5ex]{\MilSpace[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilSpace[faction=unknown]}&\\
-[1.25cm] \hline
-\texttt{MilActivity} & \tikz[baseline=-0.5ex]{\MilActivity[faction=friendly]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=hostile]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=neutral]} & \tikz[baseline=-0.5ex]{\MilActivity[faction=unknown]}&\\
-[1.25cm] \hline
+\texttt{MilAir} + \texttt{MilMissile} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilAir[faction=friendly]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilAir[faction=hostile]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilAir[faction=neutral]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilAir[faction=unknown]}}\\
+\hline
+\texttt{MilLand} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown]}}\\
+ \hline
+\texttt{MilEquipment}* + \texttt{MilSeaSurface} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilEquipment[faction=friendly]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilEquipment[faction=hostile]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilEquipment[faction=neutral]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown]}}\\
+ \hline
+\texttt{MilInstallation} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilInstallation[faction=friendly]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilInstallation[faction=hostile]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilInstallation[faction=neutral]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilInstallation[faction=unknown]}}\\
+ \hline
+\texttt{MilSeaSubsurface} + \texttt{MilMine}* & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSeaSubsurface[faction=friendly]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSeaSubsurface[faction=hostile]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSeaSubsurface[faction=neutral]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSeaSubsurface[faction=unknown]}}\\
+ \hline
+\texttt{MilSpace} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSpace[faction=friendly]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSpace[faction=hostile]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSpace[faction=neutral]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilSpace[faction=unknown]}}\\
+ \hline
+\texttt{MilActivity} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilActivity[faction=friendly]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilActivity[faction=hostile]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilActivity[faction=neutral]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilActivity[faction=unknown]}}\\
+ \hline
 \end{tabular}
 \begin{tablenotes}
 \item \qquad \quad *Can be used without a frame using the \texttt{no frame} option.
@@ -281,7 +281,7 @@ This key selects the military faction of the symbol relative to the user, which 
 
 \paragraph{\texttt{monochrome}}
 
-This boolean switch key allows the symbol to be generated in a monochrome format. All faction colours are instead rendered as an off-white colour as specified in \DocLink. 
+This boolean switch key allows the symbol to be generated in a monochrome format. All faction colours are instead rendered as an off-white colour as specified in \DocLink.
 
 \begin{figure}[H]
 \centering
@@ -422,17 +422,17 @@ For \textbf{\texttt{MilLand}} and \textbf{\texttt{MilInstallation}} symbols with
 \begin{writett}
 \begin{verbatim}
 \begin{landgroup}[scale=2]
-\item{\MilLand[faction=friendly, 
-main=signal radio teletype centre, 
+\item{\MilLand[faction=friendly,
+main=signal radio teletype centre,
 echelon=section]}
-\item{\MilLand[faction=friendly, 
-main=diving, 
-upper=video imagery, 
-echelon=brigade, 
+\item{\MilLand[faction=friendly,
+main=diving,
+upper=video imagery,
+echelon=brigade,
 status=reduced]}
-\item{\MilLand[faction=friendly, 
-main=sensor, 
-upper=large extension node, 
+\item{\MilLand[faction=friendly,
+main=sensor,
+upper=large extension node,
 lower=single channel]}
 \end{landgroup}
 \end{verbatim}
@@ -471,7 +471,7 @@ This command covers symbols for air assets and their activities. Refer to \texti
 \paragraph{\texttt{upper}}\quad
 \input{manual_scripts/Air_Upper_table.tex}
 
-\paragraph{\texttt{lower}}\quad 
+\paragraph{\texttt{lower}}\quad
 \input{manual_scripts/Air_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -601,7 +601,7 @@ This amplifier denotes a temporary unit for a specific task or objective. If the
 
 \paragraph{Status}
 
-This amplifier denotes the condition of the of the symbol. There are 3 options, \texttt{reinforced} indicates part of another unit is augmenting the capability of this unit, \texttt{reduced} means part of the unit has been detached to augment another unit, and \texttt{reinforced and reduced} means both situations have occurred. If this key is specified, the text field adjacent to it will be shifted right in order to accommodate the amplifier. 
+This amplifier denotes the condition of the of the symbol. There are 3 options, \texttt{reinforced} indicates part of another unit is augmenting the capability of this unit, \texttt{reduced} means part of the unit has been detached to augment another unit, and \texttt{reinforced and reduced} means both situations have occurred. If this key is specified, the text field adjacent to it will be shifted right in order to accommodate the amplifier.
 
 \begin{figure}[H]
 \centering
@@ -679,28 +679,28 @@ Credibility of Information:
 An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denote classes of supply. \MilSymb\ uses an additional \texttt{supply} key to construct these icons, which takes up to two values each enclosed in curly braces.\textit{If only one value is used, then there must be a set of empty curly braces (\{\}) after the first value}. Each value is a supply class number, as listed in Table \ref{supply}. The US uses different symbols and designations for their supply classes, their supply class numbers are prefixed with \texttt{US } (including the space). When one value is set, the symbol from the table will be used, and when two values are set, the roman numeral for the supply class is used, with an ampersand (\&) inserted between the numerals. \textit{This key should be used in place of the \texttt{main} key.}
 
 \begin{center}
-\begin{longtable}{|l|c|s|s|s|s|s|@{}m{0pt}@{}}
+\begin{longtable}{|l|c|c|c|c|c|c|}
 \hline
-\thead{Value} & \rotatebox{90}{\thead{Roman Numeral}~} & \thead{Glyph} & \multicolumn{4}{c|}{\thead{Examples}} & \\ \hline
-\texttt{all}* & N/A & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={all}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={all}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={all}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={all}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={all}{}]}& \\[1.25cm] \hline
-\multicolumn{7}{|c|}{\thead{NATO Supply Classes}}& \\ \hline
-\texttt{1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={1}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={1}{}]}&\\[1.25cm] \hline
-\texttt{2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={2}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={2}{}]}&\\[1.25cm] \hline
-\texttt{3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={3}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={3}{}]}&\\[1.25cm] \hline
-\texttt{4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={4}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={4}{}]}&\\[1.25cm] \hline
-\texttt{5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={5}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={5}{}]}&\\[1.25cm] \hline
+\thead{Value} & \rotatebox{90}{\thead{Roman Numeral}~} & \thead{Glyph} & \multicolumn{4}{c|}{\thead{Examples}}\\ \hline
+\texttt{all}* & N/A & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={all}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={all}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={all}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={all}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={all}{}]}}\\ \hline
+\multicolumn{7}{|c|}{\thead{NATO Supply Classes}}\\ \hline
+\texttt{1} & I & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={1}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={1}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={1}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={1}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={1}{}]}}\\ \hline
+\texttt{2} & II & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={2}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={2}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={2}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={2}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={2}{}]}}\\ \hline
+\texttt{3} & III & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={3}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={3}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={3}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={3}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={3}{}]}}\\ \hline
+\texttt{4} & IV & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={4}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={4}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={4}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={4}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={4}{}]}}\\ \hline
+\texttt{5} & V & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={5}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={5}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={5}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={5}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={5}{}]}}\\ \hline
 \multicolumn{7}{|c|}{\thead{US Supply Classes}} \\ \hline
-\texttt{US 1} & I & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 1}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 1}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 1}{}]}&\\[1.25cm] \hline
-\texttt{US 2} & II & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 2}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 2}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 2}{}]}&\\[1.25cm] \hline
-\texttt{US 3} & III & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 3}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 3}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 3}{}]}&\\[1.25cm] \hline
-\texttt{US 4} & IV & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 4}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 4}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 4}{}]}&\\[1.25cm] \hline
-\texttt{US 5} & V & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 5}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 5}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 5}{}]}&\\[1.25cm] \hline
-\texttt{US 6} & VI & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 6}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 6}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 6}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 6}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 6}{}]}&\\[1.25cm] \hline
-\texttt{US 7} & VII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 7}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 7}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 7}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 7}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 7}{}]}&\\[1.25cm] \hline
-\texttt{US 8} & VIII & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 8}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 8}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 8}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 8}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 8}{}]}&\\[1.25cm] \hline
-\texttt{US 9} & IX & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 9}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 9}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 9}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 9}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 9}{}]}&\\[1.25cm] \hline
-\texttt{US 10} & X & \tikz[baseline=-0.5ex]{\MilLand[faction=none, supply={US 10}{}]}& \tikz[baseline=-0.5ex]{\MilLand[faction=friendly, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=hostile, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=neutral, supply={US 10}{}]}&\tikz[baseline=-0.5ex]{\MilLand[faction=unknown, supply={US 10}{}]}&\\[1.25cm]\hline
-\multicolumn{8}{c}{}\\
+\texttt{US 1} & I & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 1}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 1}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 1}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 1}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 1}{}]}}\\ \hline
+\texttt{US 2} & II & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 2}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 2}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 2}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 2}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 2}{}]}}\\ \hline
+\texttt{US 3} & III & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 3}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 3}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 3}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 3}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 3}{}]}}\\ \hline
+\texttt{US 4} & IV & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 4}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 4}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 4}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 4}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 4}{}]}}\\ \hline
+\texttt{US 5} & V & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 5}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 5}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 5}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 5}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 5}{}]}}\\ \hline
+\texttt{US 6} & VI & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 6}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 6}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 6}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 6}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 6}{}]}}\\ \hline
+\texttt{US 7} & VII & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 7}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 7}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 7}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 7}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 7}{}]}}\\ \hline
+\texttt{US 8} & VIII & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 8}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 8}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 8}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 8}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 8}{}]}}\\ \hline
+\texttt{US 9} & IX & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 9}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 9}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 9}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 9}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 9}{}]}}\\ \hline
+\texttt{US 10} & X & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=none, supply={US 10}{}]}}& \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=friendly, supply={US 10}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=hostile, supply={US 10}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=neutral, supply={US 10}{}]}}&\adjustbox{valign=m,margin=0.25cm}{\tikz{\MilLand[faction=unknown, supply={US 10}{}]}}\\\hline
+\multicolumn{7}{c}{}\\
 \caption{Table of Supply Icons.}
 \label{supply}
 \end{longtable}
@@ -877,7 +877,7 @@ Credibility of Information:
 \textbf{X} & \texttt{altitude value} & Height in feet of equipment or structure on the ground. \\ \hline
 \textbf{Y} & \texttt{location} & Latitude and longitude; grid coordinates. \\ \hline
 \textbf{Z} & \texttt{speed} & Displays speed in nautical miles per hour or kilometres per hour. \\ \hline
-\textbf{AI} & \texttt{installation composition} & Indicates the component type of the installation: 
+\textbf{AI} & \texttt{installation composition} & Indicates the component type of the installation:
 \begin{itemize}
 \item Development.
 \item Research.
@@ -1014,17 +1014,17 @@ This command is used to construct sea mine symbols. Instead of using the \texttt
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|s|c|s|s|s|s|@{}m{0pt}@{}}
+\begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \multirow{3}{*}{\thead{Value}} & \multicolumn{2}{c|}{\thead{Glyph}} &  \multicolumn{4}{c|}{\multirow{3}{*}{\thead{Examples}}}&\\ \cline{2-3}
-& \thead{Normal} & \thead{\texttt{neutralised}} & \multicolumn{4}{c|}{}&\\ 
+& \thead{Normal} & \thead{\texttt{neutralised}} & \multicolumn{4}{c|}{}\\
 \hline
-\texttt{free} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=free, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=free]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=free]}&\\[1.25cm] \hline
-\texttt{bottomed} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=bottomed, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=bottomed]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=bottomed]}&\\[1.25cm] \hline
-\texttt{moored} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=moored, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=moored]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=moored]}&\\[1.25cm] \hline
-\texttt{floating} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=floating, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=floating]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=floating]}&\\[1.25cm] \hline
-\texttt{in other position} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=in other position, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=in other position]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=in other position]}&\\[1.25cm] \hline
-\texttt{rising} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=none, mine=rising, neutralised]} &  \tikz[baseline=-0.5ex]{\MilMine[faction=friendly, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=hostile, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=neutral, mine=rising]} & \tikz[baseline=-0.5ex]{\MilMine[faction=unknown, mine=rising]}&\\[1.25cm] \hline
+\texttt{free} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=free, neutralised]}} &  \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=friendly, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=hostile, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=neutral, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=unknown, mine=free]}}\\ \hline
+\texttt{bottomed} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=bottomed]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=bottomed, neutralised]}} &  \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=friendly, mine=bottomed]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=hostile, mine=bottomed]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=neutral, mine=bottomed]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=unknown, mine=bottomed]}}\\ \hline
+\texttt{moored} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=moored]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=moored, neutralised]}} &  \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=friendly, mine=moored]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=hostile, mine=moored]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=neutral, mine=moored]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=unknown, mine=moored]}}\\ \hline
+\texttt{floating} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=floating]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=floating, neutralised]}} &  \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=friendly, mine=floating]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=hostile, mine=floating]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=neutral, mine=floating]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=unknown, mine=floating]}}\\ \hline
+\texttt{in other position} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=in other position]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=in other position, neutralised]}} &  \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=friendly, mine=in other position]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=hostile, mine=in other position]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=neutral, mine=in other position]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=unknown, mine=in other position]}}\\ \hline
+\texttt{rising} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=rising]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=rising, neutralised]}} &  \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=friendly, mine=rising]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=hostile, mine=rising]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=neutral, mine=rising]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=unknown, mine=rising]}}\\ \hline
 \end{tabular}
 \caption{Table of \textbf{\texttt{MilMine}} icons.}
 \label{mine}
@@ -1094,9 +1094,9 @@ This command is used to construct symbols that represent space debris. No shared
 \hline
 \multirow{3}{*}{\thead{Value}} & \multicolumn{2}{c|}{\thead{Glyph}} \\ \cline{2-3}
 & \thead{Normal} & \thead{\texttt{man made}} &\\ \hline
-\texttt{small} & \tikz[baseline=-0.5ex]{\MilDebris[size=small]} & \tikz[baseline=-0.5ex]{\MilDebris[size=small, man made]} & \\ [1.25cm] \hline
-\texttt{medium} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium]} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium, man made]} & \\ [1.25cm] \hline
-\texttt{large} & \tikz[baseline=-0.5ex]{\MilDebris[size=large]} & \tikz[baseline=-0.5ex]{\MilDebris[size=large, man made]} & \\ [1.25cm] \hline
+\texttt{small} & \tikz[baseline=-0.5ex]{\MilDebris[size=small]} & \tikz[baseline=-0.5ex]{\MilDebris[size=small, man made]} & \\ \hline
+\texttt{medium} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium]} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium, man made]} & \\ \hline
+\texttt{large} & \tikz[baseline=-0.5ex]{\MilDebris[size=large]} & \tikz[baseline=-0.5ex]{\MilDebris[size=large, man made]} & \\ \hline
 \end{tabular}
 \caption{Table of \textbf{\texttt{MilDebris}} symbols.}
 \label{debris}
@@ -1333,17 +1333,17 @@ To insert an existing icon or modifier into your custom icon use a nested \textt
 \begin{scope}[scale=2, transform shape]
 \MilLand[faction=none]
 \pic{MilSymb text/squashed={Text}};
-\end{scope} 
+\end{scope}
 &
 \begin{scope}[scale=2, transform shape]
 \MilLand[faction=none]
 \pic at (0, 0.34) {MilSymb text/small={Text}};
-\end{scope} 
+\end{scope}
 &
 \begin{scope}[scale=2, transform shape]
 \MilLand[faction=none]
 \pic at (0, 0.34) {MilSymb text/smallsquashed={Text}};
-\end{scope} 
+\end{scope}
 \\
 \node{\texttt{text/normal}}; & \node{\texttt{text/squashed}}; & \node{\texttt{text/small}}; & \node{\texttt{text/smallsquashed}}; \\
 };
@@ -1352,79 +1352,79 @@ To insert an existing icon or modifier into your custom icon use a nested \textt
 \end{figure}
 
 \subsubsection{Multiple Class}
-\label{multi} 
+\label{multi}
 
 Some \MilSymb\  icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command. The \texttt{upperlower} sub-directory is used to store modifier glyphs that are used in both the \texttt{upper} and \texttt{lower} positions.
 
-\begin{tabularx}{\linewidth}{|l|s|l|@{}m{0pt}@{}}
+\begin{tabularx}{\linewidth}{|l|s|@{}m{0pt}@{}}
 \hline
-\thead{Name} & \thead{Glyph} & \thead{Usage}&\\ \hline
-\texttt{main/amphibious} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/amphibious}} & Test &\\ [1.25cm] \hline
-\texttt{main/antenna} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/antenna}} & Test &\\ [1.25cm] \hline
-\texttt{main/ammunition} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/ammunition}} & Test &\\ [1.25cm] \hline
-\texttt{main/armoured} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/armoured}} & Test &\\ [1.25cm] \hline
-\texttt{main/aviation fixed wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation fixed wing}} & Test &\\ [1.25cm] \hline
-\texttt{main/aviation rotary wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation rotary wing}} & Test &\\ [1.25cm] \hline
-\texttt{main/bridge} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/bridge}} & Test &\\ [1.25cm] \hline
-\texttt{main/chemical biological radiological nuclear} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/chemical biological radiological nuclear}} & Test &\\ [1.25cm] \hline
-\texttt{main/drill} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/drill}} & Test &\\ [1.25cm] \hline
-\texttt{main/decoy} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/decoy}} & Test &\\ [1.25cm] \hline
-\texttt{main/diver} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/diver}} & Test &\\ [1.25cm] \hline
-\texttt{main/engineer} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/engineer}} & Test &\\ [1.25cm] \hline
-\texttt{main/field artillery} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/field artillery}} & Test &\\ [1.25cm] \hline
-\texttt{main/individual} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/individual}} & Test &\\ [1.25cm] \hline
-\texttt{main/killing victim} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/killing victim}} & Test &\\ [1.25cm] \hline
-\texttt{main/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/maintenance}} & Test &\\ [1.25cm] \hline
-\texttt{main/major end} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/major end}} & Test &\\ [1.25cm] \hline
-\texttt{main/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/medic}} & Test &\\ [1.25cm] \hline
-\texttt{main/medical} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical}} & Test &\\ [1.25cm] \hline
-\texttt{main/medical treatment facility} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical treatment facility}} & Test &\\ [1.25cm] \hline
-\texttt{main/missile} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/missile}} & Test &\\ [1.25cm] \hline
-\texttt{main/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/naval}} & Test &\\ [1.25cm] \hline
-\texttt{main/person} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/person}} & Test &\\ [1.25cm] \hline
-\texttt{main/petroleum oil and lubricants} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/petroleum oil and lubricants}} & Test &\\ [1.25cm] \hline
-\texttt{main/psychological operations} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations}} & Test &\\ [1.25cm] \hline
-\texttt{main/psychological operations filled} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations filled}} & Test &\\ [1.25cm] \hline
-\texttt{main/radar} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/radar}} & Test &\\ [1.25cm] \hline
-\texttt{main/repair parts} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/repair parts}} & Test &\\ [1.25cm] \hline
-\texttt{main/sailing boat} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sailing boat}} & Test &\\ [1.25cm] \hline
-\texttt{main/sensor} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sensor}} & Test &\\ [1.25cm] \hline
-\texttt{main/signal}* & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/signal/neutral}} & Test &\\ [1.25cm] \hline
-\texttt{main/transportation} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/transportation}} & Test &\\ [1.25cm] \hline
-\texttt{main/victim of an attempted crime} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/victim of an attempted crime}} & Test &\\ [1.25cm] \hline
-\texttt{main/water} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water}} & Test &\\ [1.25cm] \hline
-\texttt{main/water purification} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water purification}} & Test &\\ [1.25cm] \hline
-\texttt{upper/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/naval}} & Test &\\ [1.25cm] \hline
-\texttt{upper/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/medic}} & Test &\\ [1.25cm] \hline
-\texttt{upper/runway} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/runway}} & Test &\\ [1.25cm] \hline
-\texttt{lower/pack animal} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/lower/pack animal}} & Test &\\ [1.25cm] \hline
-\texttt{upperlower/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/maintenance}} & Test &\\ [1.25cm] \hline
-\texttt{upperlower/railroad} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/railroad}} & Test &\\ [1.25cm] \hline
-\multicolumn{4}{c}{}\\
+\thead{Name} & \thead{Glyph} &\\ \hline
+\texttt{multi/main/amphibious} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/amphibious}} &\\ \hline
+\texttt{multi/main/antenna} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/antenna}} &\\ \hline
+\texttt{multi/main/ammunition} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/ammunition}} &\\ \hline
+\texttt{multi/main/armoured} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/armoured}} &\\ \hline
+\texttt{multi/main/aviation fixed wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation fixed wing}} &\\ \hline
+\texttt{multi/main/aviation rotary wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation rotary wing}} &\\ \hline
+\texttt{multi/main/bridge} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/bridge}} &\\ \hline
+\texttt{multi/main/chemical biological radiological nuclear} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/chemical biological radiological nuclear}} &\\ \hline
+\texttt{multi/main/drill} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/drill}} &\\ \hline
+\texttt{multi/main/decoy} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/decoy}} &\\ \hline
+\texttt{multi/main/diver} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/diver}} &\\ \hline
+\texttt{multi/main/engineer} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/engineer}} &\\ \hline
+\texttt{multi/main/field artillery} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/field artillery}} &\\ \hline
+\texttt{multi/main/individual} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/individual}} &\\ \hline
+\texttt{multi/main/killing victim} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/killing victim}} &\\ \hline
+\texttt{multi/main/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/maintenance}} &\\ \hline
+\texttt{multi/main/major end} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/major end}} &\\ \hline
+\texttt{multi/main/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/medic}} &\\ \hline
+\texttt{multi/main/medical} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical}} &\\ \hline
+\texttt{multi/main/medical treatment facility} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical treatment facility}} &\\ \hline
+\texttt{multi/main/missile} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/missile}} &\\ \hline
+\texttt{multi/main/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/naval}} &\\ \hline
+\texttt{multi/main/person} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/person}} &\\ \hline
+\texttt{multi/main/petroleum oil and lubricants} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/petroleum oil and lubricants}} &\\ \hline
+\texttt{multi/main/psychological operations} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations}} &\\ \hline
+\texttt{multi/main/psychological operations filled} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations filled}} &\\ \hline
+\texttt{multi/main/radar} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/radar}} &\\ \hline
+\texttt{multi/main/repair parts} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/repair parts}} &\\ \hline
+\texttt{multi/main/sailing boat} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sailing boat}} &\\ \hline
+\texttt{multi/main/sensor} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sensor}} &\\ \hline
+\texttt{multi/main/signal}* & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/signal/neutral}} &\\ \hline
+\texttt{multi/main/transportation} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/transportation}} &\\ \hline
+\texttt{multi/main/victim of an attempted crime} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/victim of an attempted crime}} &\\ \hline
+\texttt{multi/main/water} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water}} &\\ \hline
+\texttt{multi/main/water purification} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water purification}} &\\ \hline
+\texttt{multi/upper/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/naval}} &\\ \hline
+\texttt{multi/upper/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/medic}} &\\ \hline
+\texttt{multi/upper/runway} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/runway}} &\\ \hline
+\texttt{multi/lower/pack animal} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/lower/pack animal}} &\\ \hline
+\texttt{multi/upperlower/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/maintenance}} &\\ \hline
+\texttt{multi/upperlower/railroad} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/railroad}} &\\ \hline
+\multicolumn{3}{c}{}\\
 \caption{Table of Multiple Class Icons and Modifiers}
 \end{tabularx}
 
 
-\subsubsection{Hidden Glyphs} 
+\subsubsection{Hidden Glyphs}
 
 There are some \texttt{.pic} that are not used as an icon or modifier directly, but are used to construct other icons or modifiers because they are used multiple times.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|s|l|@{}m{0pt}@{}}
+\begin{tabular}{|l|s|@{}m{0pt}@{}}
 \hline
-\thead{Name} & \thead{Glyph} & \thead{Usage}&\\ \hline
-\texttt{equipment/main/weapon} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/weapon}} & Test &\\ [1.25cm] \hline
-\texttt{equipment/main/air defence} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/air defence}} & Test &\\ [1.25cm] \hline
-\texttt{equipment/main/anti tank} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/anti tank}} & Test &\\ [1.25cm] \hline
-\texttt{equipment/main/high trajectory indirect fire weapons system} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/high trajectory indirect fire weapons system}} & Test &\\  [1.25cm] \hline
-\texttt{equipment/main/side bands} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/side bands}} & Test &\\ [1.25cm] \hline
-\texttt{equipment/main/single band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/single band}} & Test &\\ [1.25cm] \hline
-\texttt{equipment/main/double band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/double band}} & Test &\\ [1.25cm] \hline
-\texttt{equipment/main/triple band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/triple band}} & Test &\\ [1.25cm] \hline
-\texttt{seasubsurface/main/half sea mine} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/half sea mine}} & Test &\\ [1.25cm] \hline
-\texttt{seasubsurface/main/sea surface} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/sea surface}} & Test &\\ [1.25cm] \hline
-\texttt{supply/medicalbar} & \tikz[baseline=-0.5ex]{\pic{MilSymb supply/medicalbar/neutral}} & Test &\\ [1.25cm] \hline
+\thead{Name} & \thead{Glyph} &\\ \hline
+\texttt{equipment/main/weapon} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/weapon}} &\\ \hline
+\texttt{equipment/main/air defence} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/air defence}} &\\ \hline
+\texttt{equipment/main/anti tank} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/anti tank}} &\\ \hline
+\texttt{equipment/main/high trajectory indirect fire weapons system} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/high trajectory indirect fire weapons system}} &\\   \hline
+\texttt{equipment/main/side bands} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/side bands}} &\\ \hline
+\texttt{equipment/main/single band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/single band}} &\\ \hline
+\texttt{equipment/main/double band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/double band}} &\\ \hline
+\texttt{equipment/main/triple band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/triple band}} &\\ \hline
+\texttt{seasubsurface/main/half sea mine} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/half sea mine}} &\\ \hline
+\texttt{seasubsurface/main/sea surface} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/sea surface}} &\\ \hline
+\texttt{supply/medicalbar} & \tikz[baseline=-0.5ex]{\pic{MilSymb supply/medicalbar/neutral}} &\\ \hline
 \end{tabular}
 \caption{Table of Hidden Glyphs}
 \end{table}
@@ -1529,13 +1529,13 @@ MilSymb custom/amphibious tank/.pic={
 \node[above of=H, star,star points=5, star point ratio=0.5, rotate=180, xshift=-3, fill=yellow, draw] {};
 \node[above of=H, star,star points=5, star point ratio=0.5, rotate=180, xshift=3, fill=yellow, draw] {};
 \MilLand[scale=0.75, faction=friendly, echelon=regiment, main=marine](3.5, -2)(C11){1\textsuperscript{st} Marine Rgt. \\ CAMP PENDLETON}
-\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=marine](7, -2)(C21){5\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON} 
-\MilLand[scale=0.75, faction=friendly,  echelon=regiment, main=marine](10.5, -2)(C31){7\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON} 
+\MilLand[scale=0.75, faction=friendly, echelon=regiment, main=marine](7, -2)(C21){5\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON}
+\MilLand[scale=0.75, faction=friendly,  echelon=regiment, main=marine](10.5, -2)(C31){7\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON}
 \MilLand[scale=0.75, faction=friendly, echelon=regiment, main=field artillery](14, -2)(C41){11\textsuperscript{th} Marine Rgt. \\ CAMP PENDLETON}
-\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=headquarters](0, -3)(C02){Headquarters \\ Battalion} 
-\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](3.75, -3)(C12){~\\ HQ Coy.} 
-\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](7.25, -3)(C22){~\\ HQ Coy.} 
-\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](10.75, -3)(C32){~\\ HQ Coy.} 
+\MilLand[scale=0.75, faction=friendly, echelon=battalion, main=headquarters](0, -3)(C02){Headquarters \\ Battalion}
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](3.75, -3)(C12){~\\ HQ Coy.}
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](7.25, -3)(C22){~\\ HQ Coy.}
+\MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](10.75, -3)(C32){~\\ HQ Coy.}
 \MilLand[scale=0.75, faction=friendly, echelon=company, main=headquarters](14.25, -3)(C42){~\\ HQ Battery}
  \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=tank](0, -4)(C03){1\textsuperscript{st} Tank \\ Battalion}
 \MilLand[scale=0.75, faction=friendly, echelon=battalion, main=marine](3.75, -4)(C13){1\textsuperscript{st} Btn. \\ 1\textsuperscript{st} Marines}
