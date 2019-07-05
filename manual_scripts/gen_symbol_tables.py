@@ -2,7 +2,7 @@ import re
 import os
 
 
-def maketable(x, y, z=1.25):
+def maketable(x, y):
     l = list()
     s = re.split('}(?:\n|, *\n) *', x)
     del s[-1]
@@ -12,19 +12,19 @@ def maketable(x, y, z=1.25):
         n = re.search('.*?/(.*?)/', j).group(1)  # get name
         if n == 'none' or n == '.unknown':
             continue  # skip if a blank placeholder
-        ro = r'\texttt{' + n + r'} & \tikz[baseline=-0.5ex]{' \
-                         r'\Mil' + y + r'[faction=none, ' + c + r'=' + n + r']}' \
-                         r' & \tikz[baseline=-0.5ex]{' \
-                         r'\Mil' + y + r'[faction=friendly, ' + c + r'=' + n + r']}' \
-                         r' & \tikz[baseline=-0.5ex]{' \
-                         r'\Mil' + y + r'[faction=hostile, ' + c + r'=' + n + r']}' \
-                         r' & \tikz[baseline=-0.5ex]{' \
-                         r'\Mil' + y + r'[faction=neutral, ' + c + r'=' + n + r']}' \
-                         r' & \tikz[baseline=-0.5ex]{' \
-                         r'\Mil' + y + r'[faction=unknown, ' + c + r'=' + n + r']}' \
-                         r'&\\[' + str(z) + 'cm] \hline'
+        ro = r'\texttt{' + n + r'} & \adjustbox{valign=m,margin=0.25cm}{\tikz{' \
+                         r'\Mil' + y + r'[faction=none, ' + c + r'=' + n + r']}}' \
+                         r' & \adjustbox{valign=m,margin=0.25cm}{\tikz{' \
+                         r'\Mil' + y + r'[faction=friendly, ' + c + r'=' + n + r']}}' \
+                         r' & \adjustbox{valign=m,margin=0.25cm}{\tikz{' \
+                         r'\Mil' + y + r'[faction=hostile, ' + c + r'=' + n + r']}}' \
+                         r' & \adjustbox{valign=m,margin=0.25cm}{\tikz{' \
+                         r'\Mil' + y + r'[faction=neutral, ' + c + r'=' + n + r']}}' \
+                         r' & \adjustbox{valign=m,margin=0.25cm}{\tikz{' \
+                         r'\Mil' + y + r'[faction=unknown, ' + c + r'=' + n + r']}}' \
+                         r'\\ \hline'
         l.append(ro)
-    ta = '\\begin{tabularx}{\\linewidth}{|n|s|s|s|s|s|@{}m{0pt}@{}}\n\\hline\n \\thead{Value} & ' \
+    ta = '\\begin{tabularx}{\\linewidth}{|m{5cm}|c|c|c|c|c|}\n\\hline\n \\thead{Value} & ' \
          '\\thead{Glyph} & \multicolumn{4}{c|}{\\thead{Examples}} \\\\ ''\n\\hline\n' + '\n'.join(l) + '\n\\' \
          'caption{Table for \\texttt{' + c + '} values in the \\textbf{\\texttt{Mil' + y + '}} command.}' \
          '\n\\end{tabularx}'
@@ -55,7 +55,7 @@ for i in ['Air', 'Missile', 'Land', 'Equipment', 'Installation', 'SeaSurface', '
             r'.*mobility/\.is choice,\n *?(.*?)^(?! *mobility)',
             r, re.S | re.M)  # extract all main, mobility
         maketable(t.group(1), i)  # main
-        maketable(t.group(2), i, 1.5)  # mobility
+        maketable(t.group(2), i)  # mobility
     elif i == 'Installation' or i == 'Activity':
         t = re.search(
             r'\\NewDocumentCommand\\Mil' + i + '{ o D\(\)\{0,0} d\(\) g}{.*?main/\.is choice,\n *(.*?)^(?! *main)'

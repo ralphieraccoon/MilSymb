@@ -77,7 +77,7 @@
 \begin{versionhistory}
 \renewcommand \vhAuthorColWidth{6cm}
 \vhEntry{1.0}{29/04/2018}{Damian Crosby}{Creation}
-\vhEntry{1.01}{18/06/2019}{Damian Crosby}{Added clarification on DVI output.}
+\vhEntry{1.01}{05/07/2019}{Damian Crosby}{Added clarification on DVI output, added clarification}
 \end{versionhistory}
 
 \clearpage
@@ -459,7 +459,7 @@ lower=single channel]}
 \caption{Example of \textbf{\texttt{landgroup}} and \textbf{\texttt{landheadquarters}} grouping.}
 \end{figure}
 
-\subsection{Air Command (\textbf{\texttt{MilAir}})}
+\newpage\subsection{Air Command (\textbf{\texttt{MilAir}})}
 
 This command covers symbols for air assets and their activities. Refer to \textit{Chapter 2, Section 2 and 3} in \DocLink\ for further information.
 
@@ -468,10 +468,10 @@ This command covers symbols for air assets and their activities. Refer to \texti
 \paragraph{\texttt{main}}\quad
 \input{manual_scripts/Air_Main_table.tex}
 
-\paragraph{\texttt{upper}}\quad
+\newpage\paragraph{\texttt{upper}}\quad
 \input{manual_scripts/Air_Upper_table.tex}
 
-\paragraph{\texttt{lower}}\quad
+\newpage\paragraph{\texttt{lower}}\quad
 \input{manual_scripts/Air_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -507,7 +507,7 @@ This command covers symbols for air assets and their activities. Refer to \texti
 \label{airtexttable}
 \end{table}
 
-\subsection{Missile Command (\textbf{\texttt{MilMissile}})}
+\newpage\subsection{Missile Command (\textbf{\texttt{MilMissile}})}
 
 This command is a special application of \textbf{\texttt{MilAir}} for missiles. \textit{Instead of setting an icon using \texttt{main}, a predefined \lq\lq{}missile\rq\rq{} icon is used. Modifiers are then added to the left and right instead of above and below.} Refer to \textit{Chapter 2, Section 4} in \DocLink\ for further information.
 
@@ -518,7 +518,7 @@ This command is a special application of \textbf{\texttt{MilAir}} for missiles. 
 \paragraph{\texttt{left}}\quad
 \input{manual_scripts/Missile_Left_table.tex}
 
-\paragraph{\texttt{right}}\quad
+\newpage\paragraph{\texttt{right}}\quad
 \input{manual_scripts/Missile_Right_table.tex}
 
 \subsubsection{Amplifiers}
@@ -527,7 +527,7 @@ This command is a special application of \textbf{\texttt{MilAir}} for missiles. 
 
 Text fields for \textbf{\texttt{MilMissile}} are identical to \textbf{\texttt{MilAir}}.
 
-\subsection{Land Command (\textbf{\texttt{MilLand}})}
+\newpage\subsection{Land Command (\textbf{\texttt{MilLand}})}
 
 This command covers symbols for land units, individuals, and organizations. Refer to \textit{Chapter 3, Section 2} in \DocLink\ for further information.
 
@@ -536,10 +536,10 @@ This command covers symbols for land units, individuals, and organizations. Refe
 \paragraph{\texttt{main}}\quad
 \input{manual_scripts/Land_Main_table.tex}
 
-\paragraph{\texttt{upper}}\quad
+\newpage\paragraph{\texttt{upper}}\quad
 \input{manual_scripts/Land_Upper_table.tex}
 
-\paragraph{\texttt{lower}}\quad
+\newpage\paragraph{\texttt{lower}}\quad
 \input{manual_scripts/Land_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -736,7 +736,7 @@ An additional set of fullframe \textbf{\texttt{MilLand}} icons are used to denot
 \caption{Example of the \texttt{altitude} key in use.}
 \end{figure}
 
-\subsection{Equipment Command (\textbf{\texttt{MilEquipment}})}
+\newpage\subsection{Equipment Command (\textbf{\texttt{MilEquipment}})}
 
 This command covers symbols for land equipment. \textit{The are no \texttt{upper} and \texttt{lower} keys, instead a \texttt{mobility} key sets a modifier to be displayed below the frame (or when the \texttt{no frame} key is set, adjacent to the bottom of the icon)}. This command also accepts the \texttt{no frame} key. See \textit{Chapter 3, Section 3} in \DocLink.
 
@@ -745,7 +745,7 @@ This command covers symbols for land equipment. \textit{The are no \texttt{upper
 \paragraph{\texttt{Main}}\quad
 \input{manual_scripts/Equipment_Main_table.tex}
 
-\paragraph{\texttt{Mobility}}\quad
+\newpage\paragraph{\texttt{Mobility}}\quad
 \input{manual_scripts/Equipment_Mobility_table.tex}
 
 \subsubsection{Amplifiers}
@@ -816,7 +816,7 @@ Credibility of Information:
 \end{tabularx}
 \end{center}
 
-\subsection{Installation Command (\textbf{\texttt{MilInstallation}})}
+\newpage\subsection{Installation Command (\textbf{\texttt{MilInstallation}})}
 
 This command covers symbols for land installations, sites that incorporate permanent, semi-permanent, and temporary structures. \textit{The \texttt{lower} key is not used as there are no lower modifiers.} See \textit{Chapter 3, Section 4} in \DocLink.
 
@@ -825,7 +825,7 @@ This command covers symbols for land installations, sites that incorporate perma
 \paragraph{\texttt{Main}}\quad
 \input{manual_scripts/Installation_Main_table.tex}
 
-\paragraph{\texttt{Upper}}\quad
+\newpage\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/Installation_Upper_table.tex}
 
 \subsubsection{Amplifiers}
@@ -892,7 +892,7 @@ Credibility of Information:
 \end{tabularx}
 \end{center}
 
-\subsection{Sea Surface Command (\textbf{\texttt{MilSeaSurface}})}
+\newpage\subsection{Sea Surface Command (\textbf{\texttt{MilSeaSurface}})}
 
 This command covers symbols for units, equipment, and objects of maritime surface operations. See \textit{Chapter 4, Section 1} in \DocLink.
 
@@ -901,10 +901,10 @@ This command covers symbols for units, equipment, and objects of maritime surfac
 \paragraph{\texttt{Main}}\quad
 \input{manual_scripts/SeaSurface_Main_table.tex}
 
-\paragraph{\texttt{Upper}}\quad
+\newpage\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/SeaSurface_Upper_table.tex}
 
-\paragraph{\texttt{Lower}}\quad
+\newpage\paragraph{\texttt{Lower}}\quad
 \input{manual_scripts/SeaSurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -951,7 +951,7 @@ This command places a marker indicating the position of the vessel the user is o
 \caption{\textbf{\texttt{OwnShip}} command symbol.}
 \end{figure}
 
-\subsection{Sea Subsurface Command (\textbf{\texttt{MilSeaSubsurface}})}
+\newpage\subsection{Sea Subsurface Command (\textbf{\texttt{MilSeaSubsurface}})}
 
 This command covers symbols for units, equipment, and objects of maritime sub surface operations. See \textit{Chapter 4, Section 2} in \DocLink.
 
@@ -960,10 +960,10 @@ This command covers symbols for units, equipment, and objects of maritime sub su
 \paragraph{\texttt{Main}}\quad
 \input{manual_scripts/SeaSubsurface_Main_table.tex}
 
-\paragraph{\texttt{Upper}}\quad
+\newpage\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/SeaSubsurface_Upper_table.tex}
 
-\paragraph{\texttt{Lower}}\quad
+\newpage\paragraph{\texttt{Lower}}\quad
 \input{manual_scripts/SeaSubsurface_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -1016,7 +1016,7 @@ This command is used to construct sea mine symbols. Instead of using the \texttt
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-\multirow{3}{*}{\thead{Value}} & \multicolumn{2}{c|}{\thead{Glyph}} &  \multicolumn{4}{c|}{\multirow{3}{*}{\thead{Examples}}}&\\ \cline{2-3}
+\multirow{3}{*}{\thead{Value}} & \multicolumn{2}{c|}{\thead{Glyph}} &  \multicolumn{4}{c|}{\multirow{3}{*}{\thead{Examples}}}\\ \cline{2-3}
 & \thead{Normal} & \thead{\texttt{neutralised}} & \multicolumn{4}{c|}{}\\
 \hline
 \texttt{free} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=none, mine=free, neutralised]}} &  \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=friendly, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=hostile, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=neutral, mine=free]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilMine[faction=unknown, mine=free]}}\\ \hline
@@ -1036,7 +1036,7 @@ This command is used to construct sea mine symbols. Instead of using the \texttt
 
 Text fields for \textbf{\texttt{MilMine}} are identical to \textbf{\texttt{MilSeaSubsurface}}.
 
-\subsection{Space Command (\textbf{\texttt{MilSpace}})}
+\newpage\subsection{Space Command (\textbf{\texttt{MilSpace}})}
 
 This command covers symbols for space assets, related activities and other relevant objects (debris) within earth orbit. See \textit{Chapter 5, Section 1 and 2} in \DocLink.
 
@@ -1045,10 +1045,10 @@ This command covers symbols for space assets, related activities and other relev
 \paragraph{\texttt{Main}}\quad
 \input{manual_scripts/Space_Main_table.tex}
 
-\paragraph{\texttt{Upper}}\quad
+\newpage\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/Space_Upper_table.tex}
 
-\paragraph{\texttt{Lower}}\quad
+\newpage\paragraph{\texttt{Lower}}\quad
 \input{manual_scripts/Space_Lower_table.tex}
 
 \subsubsection{Amplifiers}
@@ -1090,20 +1090,20 @@ This command is used to construct symbols that represent space debris. No shared
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|s|c|@{}m{0pt}@{}}
+\begin{tabular}{|l|c|c|}
 \hline
 \multirow{3}{*}{\thead{Value}} & \multicolumn{2}{c|}{\thead{Glyph}} \\ \cline{2-3}
-& \thead{Normal} & \thead{\texttt{man made}} &\\ \hline
-\texttt{small} & \tikz[baseline=-0.5ex]{\MilDebris[size=small]} & \tikz[baseline=-0.5ex]{\MilDebris[size=small, man made]} & \\ \hline
-\texttt{medium} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium]} & \tikz[baseline=-0.5ex]{\MilDebris[size=medium, man made]} & \\ \hline
-\texttt{large} & \tikz[baseline=-0.5ex]{\MilDebris[size=large]} & \tikz[baseline=-0.5ex]{\MilDebris[size=large, man made]} & \\ \hline
+& \thead{Normal} & \thead{\texttt{man made}}\\ \hline
+\texttt{small} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilDebris[size=small]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilDebris[size=small, man made]}}\\ \hline
+\texttt{medium} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilDebris[size=medium]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilDebris[size=medium, man made]}}\\ \hline
+\texttt{large} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilDebris[size=large]}} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\MilDebris[size=large, man made]}}\\ \hline
 \end{tabular}
 \caption{Table of \textbf{\texttt{MilDebris}} symbols.}
 \label{debris}
 \end{table}
 
 
-\subsection{Activity Command (\textbf{\texttt{MilActivity}})}
+\newpage\subsection{Activity Command (\textbf{\texttt{MilActivity}})}
 
 This command covers symbols that provide the capability to depict stability activities and civil support activities across the continuum of operations. \textit{The \texttt{lower} key is not used as there are no lower modifiers.} See \textit{Chapter 6} in \DocLink.
 
@@ -1112,7 +1112,7 @@ This command covers symbols that provide the capability to depict stability acti
 \paragraph{\texttt{Main}}\quad
 \input{manual_scripts/Activity_Main_table.tex}
 
-\paragraph{\texttt{Upper}}\quad
+\newpage\paragraph{\texttt{Upper}}\quad
 \input{manual_scripts/Activity_Upper_table.tex}
 
 \subsubsection{Amplifiers}
@@ -1356,51 +1356,51 @@ To insert an existing icon or modifier into your custom icon use a nested \textt
 
 Some \MilSymb\  icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command. The \texttt{upperlower} sub-directory is used to store modifier glyphs that are used in both the \texttt{upper} and \texttt{lower} positions.
 
-\begin{tabularx}{\linewidth}{|l|s|@{}m{0pt}@{}}
+\begin{tabularx}{\linewidth}{|c|c|}
 \hline
-\thead{Name} & \thead{Glyph} &\\ \hline
-\texttt{multi/main/amphibious} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/amphibious}} &\\ \hline
-\texttt{multi/main/antenna} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/antenna}} &\\ \hline
-\texttt{multi/main/ammunition} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/ammunition}} &\\ \hline
-\texttt{multi/main/armoured} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/armoured}} &\\ \hline
-\texttt{multi/main/aviation fixed wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation fixed wing}} &\\ \hline
-\texttt{multi/main/aviation rotary wing} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/aviation rotary wing}} &\\ \hline
-\texttt{multi/main/bridge} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/bridge}} &\\ \hline
-\texttt{multi/main/chemical biological radiological nuclear} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/chemical biological radiological nuclear}} &\\ \hline
-\texttt{multi/main/drill} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/drill}} &\\ \hline
-\texttt{multi/main/decoy} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/decoy}} &\\ \hline
-\texttt{multi/main/diver} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/diver}} &\\ \hline
-\texttt{multi/main/engineer} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/engineer}} &\\ \hline
-\texttt{multi/main/field artillery} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/field artillery}} &\\ \hline
-\texttt{multi/main/individual} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/individual}} &\\ \hline
-\texttt{multi/main/killing victim} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/killing victim}} &\\ \hline
-\texttt{multi/main/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/maintenance}} &\\ \hline
-\texttt{multi/main/major end} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/major end}} &\\ \hline
-\texttt{multi/main/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/medic}} &\\ \hline
-\texttt{multi/main/medical} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical}} &\\ \hline
-\texttt{multi/main/medical treatment facility} & \tikz[baseline=-0.5ex]{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical treatment facility}} &\\ \hline
-\texttt{multi/main/missile} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/missile}} &\\ \hline
-\texttt{multi/main/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/naval}} &\\ \hline
-\texttt{multi/main/person} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/person}} &\\ \hline
-\texttt{multi/main/petroleum oil and lubricants} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/petroleum oil and lubricants}} &\\ \hline
-\texttt{multi/main/psychological operations} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations}} &\\ \hline
-\texttt{multi/main/psychological operations filled} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/psychological operations filled}} &\\ \hline
-\texttt{multi/main/radar} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/radar}} &\\ \hline
-\texttt{multi/main/repair parts} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/repair parts}} &\\ \hline
-\texttt{multi/main/sailing boat} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sailing boat}} &\\ \hline
-\texttt{multi/main/sensor} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/sensor}} &\\ \hline
-\texttt{multi/main/signal}* & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/signal/neutral}} &\\ \hline
-\texttt{multi/main/transportation} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/transportation}} &\\ \hline
-\texttt{multi/main/victim of an attempted crime} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/victim of an attempted crime}} &\\ \hline
-\texttt{multi/main/water} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water}} &\\ \hline
-\texttt{multi/main/water purification} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/main/water purification}} &\\ \hline
-\texttt{multi/upper/naval} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/naval}} &\\ \hline
-\texttt{multi/upper/medic} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/medic}} &\\ \hline
-\texttt{multi/upper/runway} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upper/runway}} &\\ \hline
-\texttt{multi/lower/pack animal} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/lower/pack animal}} &\\ \hline
-\texttt{multi/upperlower/maintenance} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/maintenance}} &\\ \hline
-\texttt{multi/upperlower/railroad} & \tikz[baseline=-0.5ex]{\pic{MilSymb multi/upperlower/railroad}} &\\ \hline
-\multicolumn{3}{c}{}\\
+\thead{Name} & \thead{Glyph}\\ \hline
+\texttt{multi/main/amphibious} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/amphibious}}}\\ \hline
+\texttt{multi/main/antenna} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/antenna}}}\\ \hline
+\texttt{multi/main/ammunition} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/ammunition}}}\\ \hline
+\texttt{multi/main/armoured} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/armoured}}}\\ \hline
+\texttt{multi/main/aviation fixed wing} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/aviation fixed wing}}}\\ \hline
+\texttt{multi/main/aviation rotary wing} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/aviation rotary wing}}}\\ \hline
+\texttt{multi/main/bridge} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/bridge}}}\\ \hline
+\texttt{multi/main/chemical biological radiological nuclear} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/chemical biological radiological nuclear}}}\\ \hline
+\texttt{multi/main/drill} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/drill}}}\\ \hline
+\texttt{multi/main/decoy} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/decoy}}}\\ \hline
+\texttt{multi/main/diver} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/diver}}}\\ \hline
+\texttt{multi/main/engineer} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/engineer}}}\\ \hline
+\texttt{multi/main/field artillery} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/field artillery}}}\\ \hline
+\texttt{multi/main/individual} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/individual}}}\\ \hline
+\texttt{multi/main/killing victim} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/killing victim}}}\\ \hline
+\texttt{multi/main/maintenance} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/maintenance}}}\\ \hline
+\texttt{multi/main/major end} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/major end}}}\\ \hline
+\texttt{multi/main/medic} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/medic}}}\\ \hline
+\texttt{multi/main/medical} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical}}}\\ \hline
+\texttt{multi/main/medical treatment facility} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical treatment facility}}}\\ \hline
+\texttt{multi/main/missile} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/missile}}}\\ \hline
+\texttt{multi/main/naval} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/naval}}}\\ \hline
+\texttt{multi/main/person} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/person}}}\\ \hline
+\texttt{multi/main/petroleum oil and lubricants} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/petroleum oil and lubricants}}}\\ \hline
+\texttt{multi/main/psychological operations} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/psychological operations}}}\\ \hline
+\texttt{multi/main/psychological operations filled} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/psychological operations filled}}}\\ \hline
+\texttt{multi/main/radar} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/radar}}}\\ \hline
+\texttt{multi/main/repair parts} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/repair parts}}}\\ \hline
+\texttt{multi/main/sailing boat} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/sailing boat}}}\\ \hline
+\texttt{multi/main/sensor} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/sensor}}}\\ \hline
+\texttt{multi/main/signal} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/signal/neutral}}}\\ \hline
+\texttt{multi/main/transportation} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/transportation}}}\\ \hline
+\texttt{multi/main/victim of an attempted crime} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/victim of an attempted crime}}}\\ \hline
+\texttt{multi/main/water} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/water}}}\\ \hline
+\texttt{multi/main/water purification} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/water purification}}}\\ \hline
+\texttt{multi/upper/naval} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upper/naval}}}\\ \hline
+\texttt{multi/upper/medic} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upper/medic}}}\\ \hline
+\texttt{multi/upper/runway} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upper/runway}}}\\ \hline
+\texttt{multi/lower/pack animal} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/lower/pack animal}}}\\ \hline
+\texttt{multi/upperlower/maintenance} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upperlower/maintenance}}}\\ \hline
+\texttt{multi/upperlower/railroad} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upperlower/railroad}}}\\ \hline
+\multicolumn{2}{c}{}\\
 \caption{Table of Multiple Class Icons and Modifiers}
 \end{tabularx}
 
@@ -1411,20 +1411,20 @@ There are some \texttt{.pic} that are not used as an icon or modifier directly, 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|s|@{}m{0pt}@{}}
+\begin{tabular}{|c|c|}
 \hline
-\thead{Name} & \thead{Glyph} &\\ \hline
-\texttt{equipment/main/weapon} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/weapon}} &\\ \hline
-\texttt{equipment/main/air defence} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/air defence}} &\\ \hline
-\texttt{equipment/main/anti tank} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/anti tank}} &\\ \hline
-\texttt{equipment/main/high trajectory indirect fire weapons system} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/high trajectory indirect fire weapons system}} &\\   \hline
-\texttt{equipment/main/side bands} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/side bands}} &\\ \hline
-\texttt{equipment/main/single band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/single band}} &\\ \hline
-\texttt{equipment/main/double band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/double band}} &\\ \hline
-\texttt{equipment/main/triple band} & \tikz[baseline=-0.5ex]{\pic{MilSymb equipment/main/triple band}} &\\ \hline
-\texttt{seasubsurface/main/half sea mine} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/half sea mine}} &\\ \hline
-\texttt{seasubsurface/main/sea surface} & \tikz[baseline=-0.5ex]{\pic{MilSymb seasubsurface/main/sea surface}} &\\ \hline
-\texttt{supply/medicalbar} & \tikz[baseline=-0.5ex]{\pic{MilSymb supply/medicalbar/neutral}} &\\ \hline
+\thead{Name} & \thead{Glyph}\\ \hline
+\texttt{equipment/main/weapon} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/weapon}}}\\ \hline
+\texttt{equipment/main/air defence} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/air defence}}}\\ \hline
+\texttt{equipment/main/anti tank} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/anti tank}}}\\ \hline
+\texttt{equipment/main/high trajectory indirect fire weapons system} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/high trajectory indirect fire weapons system}}}\\   \hline
+\texttt{equipment/main/side bands} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/side bands}}}\\ \hline
+\texttt{equipment/main/single band} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/single band}}}\\ \hline
+\texttt{equipment/main/double band} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/double band}}}\\ \hline
+\texttt{equipment/main/triple band} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb equipment/main/triple band}}}\\ \hline
+\texttt{seasubsurface/main/half sea mine} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb seasubsurface/main/half sea mine}}}\\ \hline
+\texttt{seasubsurface/main/sea surface} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb seasubsurface/main/sea surface}}}\\ \hline
+\texttt{supply/medicalbar} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb supply/medicalbar/neutral}}}\\ \hline
 \end{tabular}
 \caption{Table of Hidden Glyphs}
 \end{table}
