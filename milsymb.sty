@@ -2135,8 +2135,6 @@ frame status/normal/.style={/MilSymb/line=solid},
 frame status/anticipated/.style={/MilSymb/line=dashed},
 frame status/uncertain/.style={/MilSymb/line=uncertainline},
 fill=gray,
-frame status=normal,
-scale=1,
 }
 \newcommand*{\clipfriendly}{
    (-0.75, -0.5) rectangle (0.75, 0.5)
@@ -2257,8 +2255,10 @@ scale=1,
    position and movement/.store in=\MilSymb@SymbD,
    nation/.store in= \MilSymb@SymbE,
    additional information/.store in=\MilSymb@SymbF,
-   speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
+   speed leader/.code 2 args={\begin{scope}[shift={(#2)}, scale=\MilSymb@scale]\draw (0,0) -- (##1:##2);\end{scope}},
    speed leader/.value required,
+   frame status=normal,
+   scale=1,
    track number=,
    call sign=,
    position and movement=,
@@ -2319,6 +2319,8 @@ scale=1,
    position and movement/.store in=\MilSymb@SymbD,
    nation/.store in= \MilSymb@SymbE,
    additional information/.store in=\MilSymb@SymbF,
+   frame status=normal,
+   scale=1,
    track number=,
    call sign=,
    position and movement=,
@@ -2683,6 +2685,8 @@ scale=1,
    offset/.value required,
    movement/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\MilSymb@drawH}{true}\AND \equal{\MilSymb@selectedfaction}{friendly}}{ \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
    movement/.value required,
+   frame status=normal,
+   scale=1,
    faction=friendly,
    main=none,
    upper=none,
@@ -2747,7 +2751,7 @@ scale=1,
 \NewDocumentEnvironment{landheadquarters}{ o D(){0,0}}{
 \tikzset{#1}
 \setlength{\itemlength}{0pt}
-\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
+\begin{scope}
 \setcounter{exitem}{0}
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
@@ -2764,7 +2768,7 @@ scale=1,
 \NewDocumentEnvironment{landgroup}{ o D(){0,0}}{
 \tikzset{#1}
 \setlength{\itemlength}{0pt}
-\begin{scope}[local bounding box=G, shift={(#2)}, scale=\MilSymb@scale, transform shape]
+\begin{scope}[local bounding box=G]
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
 ##1;
@@ -2906,6 +2910,8 @@ scale=1,
    equipment teardown time/.store in=\MilSymb@SymbAE,
    common identifier/.store in=\MilSymb@SymbAF,
    speed/.store in=\MilSymb@SymbZ,
+   frame status=normal,
+   scale=1,
    faction=none,
    main=none,
    mobility=none,
@@ -3043,6 +3049,8 @@ scale=1,
    altitude value/.store in=\MilSymb@SymbX,
    location/.store in=\MilSymb@SymbY,
    speed/.store in=\MilSymb@SymbZ,
+   frame status=normal,
+   scale=1,
    headquarters=false,
    feint or dummy=false,
    country indicator=,
@@ -3227,8 +3235,10 @@ scale=1,
    identification/.store in= \MilSymb@SymbE,
    additional information/.store in=\MilSymb@SymbF,
    date-time group/.store in= \MilSymb@SymbG,
-   speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
+   speed leader/.code 2 args={\begin{scope}[shift={(#2)}, scale=\MilSymb@scale]\draw (0,0) -- (##1:##2);\end{scope}},
    speed leader/.value required,
+   frame status=normal,
+   scale=1,
    track number=,
    name=,
    position and movement=,
@@ -3258,8 +3268,12 @@ scale=1,
 \end{scope}
  \IfNoValueF{#4}{\node [anchor=west, align=left] at (#3.east) {#4};}
 }
-\NewDocumentCommand\OwnShip{o D(){0,0} d() g}{
-\tikzset{#1}
+\NewDocumentCommand\OwnShip{ O{} D(){0,0} d() g}{
+\tikzset{%
+ /MilSymb/.cd,
+ scale=1,
+ #1,
+}%
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
 \draw [ultra thick, friendlyA] (0, 0) circle (0.5);
 \draw [ultra thick, friendlyA] (0.5, 0) -- (-0.5, 0);
@@ -3348,8 +3362,10 @@ scale=1,
    identification/.store in= \MilSymb@SymbE,
    additional information/.store in=\MilSymb@SymbF,
    date-time group/.store in= \MilSymb@SymbG,
-   speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
+   speed leader/.code 2 args={\begin{scope}[shift={(#2)}, scale=\MilSymb@scale]\draw (0,0) -- (##1:##2);\end{scope}},
    speed leader/.value required,
+   frame status=normal,
+   scale=1,
    track number=,
    name=,
    position and movement=,
@@ -3406,13 +3422,15 @@ scale=1,
    identification/.store in= \MilSymb@SymbE,
    additional information/.store in=\MilSymb@SymbF,
    date-time group/.store in= \MilSymb@SymbG,
+   frame status=normal,
+   scale=1,
    track number=,
    name=,
    position and movement=,
    identification=,
    additional information=,
    date-time group=, 
-   faction=none,    
+   faction=friendly,
    mine=normal,
    neutralised=false,
    #1,
@@ -3503,8 +3521,10 @@ scale=1,
    position and movement/.store in=\MilSymb@SymbD,
    nation/.store in= \MilSymb@SymbE,
    additional information/.store in=\MilSymb@SymbF,
-   speed leader/.code 2 args={\draw (0,0) -- (##1:##2);},
+   speed leader/.code 2 args={\begin{scope}[shift={(#2)}, scale=\MilSymb@scale]\draw (0,0) -- (##1:##2);\end{scope}},
    speed leader/.value required,
+   frame status=normal,
+   scale=1,
    track number=,
    name=,
    position and movement=,
@@ -3544,6 +3564,7 @@ scale=1,
   man made/.is if=manmade,
   size=small,
   man made=false,
+  scale=1,
   #1,
 }%
 \begin{scope}[shift={(#2)}, local bounding box=#3, scale=\MilSymb@scale, transform shape]
@@ -3615,6 +3636,8 @@ scale=1,
    offset/.value required,
    movement/.code 2 args={\begin{scope}[shift={(#2)}]\ifthenelse{\equal{\MilSymb@drawH}{true}\AND \equal{\MilSymb@selectedfaction}{friendly}}{ \draw [-{Stealth[inset=0pt,scale=1]}] (-0.75, -0.75) -- +($(0, -##1) - (0, -0.75)$) -- +(##2);}{\draw [-{Stealth[inset=0pt,scale=1]}] (0,0)  -- +(0, -##1) -- +(##2);}\end{scope}},
    movement/.value required,
+   frame status=normal,
+   scale=1,
    faction=friendly,
    main=none,
    upper=none,
