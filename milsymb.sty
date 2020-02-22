@@ -19,6 +19,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{xifthen}
 \RequirePackage{xparse}
+\RequirePackage{textcomp}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
@@ -2749,9 +2750,13 @@ fill=gray,
 \newcounter{exitem}
 \newlength{\itemlength}
 \NewDocumentEnvironment{landheadquarters}{ o D(){0,0}}{
-\tikzset{#1}
+\tikzset{%
+    /MilSymb/.cd,
+    scale=1,
+    #1,
+}%
 \setlength{\itemlength}{0pt}
-\begin{scope}
+\begin{scope}[shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \setcounter{exitem}{0}
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
@@ -2766,9 +2771,13 @@ fill=gray,
 \stepcounter{exitem}}
 }{\end{scope}}
 \NewDocumentEnvironment{landgroup}{ o D(){0,0}}{
-\tikzset{#1}
+\tikzset{%
+    /MilSymb/.cd,
+    scale=1,
+    #1,
+}%
 \setlength{\itemlength}{0pt}
-\begin{scope}[local bounding box=G]
+\begin{scope}[local bounding box=G, shift={(#2)}, scale=\MilSymb@scale, transform shape]
 \RenewDocumentCommand\item{m}{
 \scoped[yshift=-\itemlength, local bounding box=T]
 ##1;
