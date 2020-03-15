@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MilSymb Manual File									    	              %%
 %%--------------------                                                        %%
-%% Version: 1.01                                                              %%
-%% Last Updated: 05/07/2019                                                   %%
+%% Version: 1.02                                                              %%
+%% Last Updated: 2020-03-15                                                   %%
 %% Github: https://github.com/ralphieraccoon/MilSymb                          %%
 %% Copyright: Damian Crosby 2018                                              %%
 %% Licence: Creative Commons Attribution-ShareAlike 4.0 International License %%
@@ -76,8 +76,9 @@
 
 \begin{versionhistory}
 \renewcommand \vhAuthorColWidth{6cm}
-\vhEntry{1.0}{29/04/2018}{Damian Crosby}{Creation}
-\vhEntry{1.01}{05/07/2019}{Damian Crosby}{Added clarification on DVI output, added clarification that multiple class symbols are found in \texttt{multi}}.
+\vhEntry{1.0}{2018-04-29}{Damian Crosby}{Creation.}
+\vhEntry{1.01}{2019-05-07}{Damian Crosby}{Added clarification on DVI output, added clarification that multiple class symbols are found in \texttt{multi}.}
+\vhEntry{1.02}{2020-03-15}{Damian Crosby}{Fixed scaling and placement errors in the \texttt{speed leader} key code, added note to define \texttt{scale} first in manual when using \texttt{speed leader}, fixed compilation issues in \texttt{landgroup} and \texttt{landheadqurters} to account for updated \texttt{xparse} package, fixed issue with \texttt{frame status} and \texttt{scale} keys not always being updated between commands, changed datestamps to be ISO 8601 compliant as per CTAN request.}
 \end{versionhistory}
 
 \clearpage
@@ -329,6 +330,8 @@ This boolean switch key allows for specific commands (namely \textbf{\texttt{Mil
 This key draws a line from the centre of the symbol at a specified heading for a specified length. This is used to denote the speed (length) and direction (heading) of the symbol. This key takes two arguments, the first is the length and the second is the heading, as shown below:\\
 
 \texttt{speed leader=\{\textit{heading}\}\{\textit{length}\}}
+
+\textit{When using this key along with the \texttt{scale} key, the \texttt{scale} key should be defined first. This is because the \texttt{speed leader} key immediately executes code that uses the \texttt{scale} key.}
 
 \begin{figure}[H]
 \centering
