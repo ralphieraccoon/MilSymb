@@ -1,0 +1,12 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.hst
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.ver
+*.zip
+.idea/*.*
+manual_scripts/*.tex
