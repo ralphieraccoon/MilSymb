@@ -1,2 +1,4 @@
+$ENV{'TEXINPUTS'}='./:' . $ENV{'TEXINPUTS'}; 
+$pdf_mode = 1;
 $latex = 'latex  %O  --shell-escape %S';
-$pdflatex = 'pdflatex  %O --extra-mem-top=10000000 --shell-escape %S';
+$pdflatex = 'lualatex  %O  --shell-escape %S';

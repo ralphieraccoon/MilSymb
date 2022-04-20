@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MilSymb Style File									    	              %%
+%% MilSymb Style File									    	                        %%
 %%--------------------                                                        %%
-%% Version: 1.02                                                              %%
+%% Version: 1.1                                                               %%
 %% Last Updated: 2020-03-15                                                   %%
 %% Github: https://github.com/ralphieraccoon/MilSymb                          %%
 %% Copyright: Damian Crosby 2018                                              %%
@@ -10,6 +10,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{milsymb}[05/07/2019 v1.01]
+\PackageInfo{milsymb}{MilSymb Version 1.1}
 \RequirePackage{tikz}
 \RequirePackage{lmodern}
 \RequirePackage{fix-cm}
@@ -19,7 +20,20 @@
 \RequirePackage{amssymb}
 \RequirePackage{xifthen}
 \RequirePackage{xparse}
+\RequirePackage{xstring}
 \RequirePackage{textcomp}
+\RequirePackage{pgfopts}
+\pgfkeys{
+   /MilSymb/.cd,
+   version/.is choice,
+   version/C/.code={\def\MilSymb@version{C}},
+   version/D/.code={\def\MilSymb@version{D}},
+   version=D,
+}
+\ProcessPgfPackageOptions{/MilSymb}
+\NewDocumentCommand\SetMilSymbVersion{m}{
+   \IfSubStr{,C,D,}{,#1,}{\def\MilSymb@version{#1}}{\PackageError{milsymb}{Version #1 not available}{Please choose "C" or "D" for the argument of the SetMilSymbVersion command.}}
+}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
