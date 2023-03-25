@@ -1,0 +1,10 @@
+*.aux
+*.ver
+*.hst
+*.toc
+*.pytxcode
+*.log
+*.out
+*.fdb_latexmk
+*.pyc
+pythontex*
