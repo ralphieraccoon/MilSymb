@@ -1,0 +1,34 @@
+\documentclass{standalone}
+
+\usepackage[version=C]{milsymb}
+
+\begin{document}
+
+% \makeatletter
+% Text test: APP-6 version is \MilSymb@version.
+
+% Choice Test:  
+
+% \ifthenelse{\equal{\MilSymb@version}{C}}{APP-6 version is C.}{APP-6 version is not C.}
+% \ifthenelse{\equal{\MilSymb@version}{D}}{APP-6 version is D.}{APP-6 version is not D.}
+
+% \SetMilSymbVersion{D}
+
+% Switch Test: APP-6 version is \MilSymb@version.
+
+% \makeatother
+
+%\SetMilSymbVersion{D}
+
+Test Text.
+
+\begin{tikzpicture}
+    \MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=1, speed leader={1}{2}]
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \MilDismountedInduvidual[faction=hostile]
+\end{tikzpicture}
+
+
+\end{document}

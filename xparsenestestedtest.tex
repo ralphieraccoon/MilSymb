@@ -1,0 +1,27 @@
+\documentclass{standalone}
+
+\usepackage{xparse, tikz}
+
+\NewDocumentCommand\outertest{m}{
+    \DeclareDocumentCommand\innertest{ o D(){0,0} d() g}{
+        \tikzset{
+            speed leader/.code 2 args={\begin{scope}[shift={(##2)}, scale=\MilSymb@scale]\draw (0,0) -- (####1:####2);\end{scope}},
+            speed leader/.value required,
+        }
+    }
+}
+
+\begin{document}
+
+\outertest{A}
+
+\begin{tikzpicture}
+\innertest[speed leader={1}{2}](0,0)
+\end{tikzpicture}
+
+% \outertest{C}
+
+% \innertest{D}
+
+\end{document}
+
