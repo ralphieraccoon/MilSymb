@@ -2122,6 +2122,11 @@ MilSymb supply/text/.pic={
 		\fontsize{10}{0}\selectfont
 		\node {#1};
 	},
+%% DISMOUNTED INDUVIDUAL SYMBOLS %%
+% FULLFRAME %
+MilSymb dismounted induvidual/main/infantry/friendly/.pic={
+		\draw
+	}
 %% TEMPLATES %%
 MilSymb text/normal/.pic={
 		\fontsize{10}{0}\selectfont
@@ -2158,6 +2163,9 @@ fill=gray,
 }
 \newcommand*{\clipfriendly}{
 	(-0.75, -0.5) rectangle (0.75, 0.5)
+}
+\newcommand*{\clipfriendlyhex}{
+	(30:0.55) -- (90:0.55) -- (150:0.55) -- (210:0.55) -- (270:0.55) -- (330:0.55) -- cycle
 }
 \newcommand*{\cliphostile}{
 	(0, -0.705) -- (-0.705, 0) -- (0, 0.705) -- (0.705, 0) -- cycle
