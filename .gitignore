@@ -8,5 +8,6 @@
 *.fdb_latexmk
 *.pyc
 *.zip
+release_*_description.txt
 *.fls
 pythontex*
