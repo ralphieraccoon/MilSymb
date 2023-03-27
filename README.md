@@ -1,5 +1,5 @@
 # MilSymb
-LaTeX package for TikZ based drawing of military symbols as per NATO [APP-6(C)](https://www.awl.edu.pl/images/en/APP_6_C.pdf).
+LaTeX package for TikZ based drawing of military symbols as per NATO [APP-6(C)](https://web.archive.org/web/20150921231042/http://armawiki.zumorc.de/files/NATO/APP-6(C).pdf).
 
 # Installation
 Download the latest release and copy **milsymb.sty** to your package directory, or install via [CTAN](https://ctan.org/pkg/milsymb) or your TeX software package manager.
