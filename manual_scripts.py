@@ -104,15 +104,26 @@ def gen_hidden():
     return d
 
 
-# def gen_multiple_class():
+def gen_multiple_class():
 
-#     co = re.search(
-#         "%% MULTIPLE CLASS SYMBOLS %%(.*)%% SUPPLY %%", r, re.S | re.M
-#     ).group(1)
+    co = re.search(
+        "%% MULTIPLE CLASS SYMBOLS %%(.*)%% SUPPLY %%", r, re.S | re.M
+    ).group(1)
 
-#     r = re.search(r"MilSymb multi/(.?*)", co, re.S | re.M).group(1)
+    co = re.findall("MilSymb (.*?)/.pic", co)
 
-#     return r
+    co.sort()
+
+    co = [
+        r"\texttt{"
+        + i
+        + r"} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb "
+        + i
+        + r"}}}\\ \hline"
+        for i in co
+    ]
+
+    return co
 
 
 def gen_symbol_tables():

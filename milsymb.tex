@@ -113,10 +113,10 @@ In order to comply with the attributions listed above, this package is licenced 
 \clearpage
 
 \begin{pycode}
-  from manual_scripts import gen_symbol_tables, gen_hidden
+  from manual_scripts import gen_symbol_tables, gen_multiple_class, gen_hidden
 
   symbol_tables = gen_symbol_tables()
-  # multi = gen_multi()
+  multi = gen_multiple_class()
   hidden = gen_hidden()
 
 \end{pycode}
@@ -1370,68 +1370,28 @@ To insert an existing icon or modifier into your custom icon use a nested \textt
 
 Some \MilSymb\  icons and modifiers are used in more than one command. In order to avoid code duplication, these are put in their own directory named \texttt{multi} with a single name, even though different aliases may be used in each command. The \texttt{upperlower} sub-directory is used to store modifier glyphs that are used in both the \texttt{upper} and \texttt{lower} positions.
 
+\begin{pysub}
 \begin{tabularx}{\linewidth}{|c|c|}
 \hline
-\thead{Name} & \thead{Glyph}\\ \hline
-\texttt{multi/main/amphibious} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/amphibious}}}\\ \hline
-\texttt{multi/main/antenna} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/antenna}}}\\ \hline
-\texttt{multi/main/ammunition} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/ammunition}}}\\ \hline
-\texttt{multi/main/armoured} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/armoured}}}\\ \hline
-\texttt{multi/main/aviation fixed wing} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/aviation fixed wing}}}\\ \hline
-\texttt{multi/main/aviation rotary wing} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/aviation rotary wing}}}\\ \hline
-\texttt{multi/main/bridge} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/bridge}}}\\ \hline
-\texttt{multi/main/chemical biological radiological nuclear} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/chemical biological radiological nuclear}}}\\ \hline
-\texttt{multi/main/drill} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/drill}}}\\ \hline
-\texttt{multi/main/decoy} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/decoy}}}\\ \hline
-\texttt{multi/main/diver} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/diver}}}\\ \hline
-\texttt{multi/main/engineer} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/engineer}}}\\ \hline
-\texttt{multi/main/field artillery} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/field artillery}}}\\ \hline
-\texttt{multi/main/individual} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/individual}}}\\ \hline
-\texttt{multi/main/killing victim} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/killing victim}}}\\ \hline
-\texttt{multi/main/maintenance} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/maintenance}}}\\ \hline
-\texttt{multi/main/major end} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/major end}}}\\ \hline
-\texttt{multi/main/medic} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/medic}}}\\ \hline
-\texttt{multi/main/medical} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical}}}\\ \hline
-\texttt{multi/main/medical treatment facility} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\path[local bounding box=M] (-0.5, -0.5) rectangle (0.5, 0.5); \pic{MilSymb multi/main/medical treatment facility}}}\\ \hline
-\texttt{multi/main/missile} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/missile}}}\\ \hline
-\texttt{multi/main/naval} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/naval}}}\\ \hline
-\texttt{multi/main/person} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/person}}}\\ \hline
-\texttt{multi/main/petroleum oil and lubricants} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/petroleum oil and lubricants}}}\\ \hline
-\texttt{multi/main/psychological operations} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/psychological operations}}}\\ \hline
-\texttt{multi/main/psychological operations filled} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/psychological operations filled}}}\\ \hline
-\texttt{multi/main/radar} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/radar}}}\\ \hline
-\texttt{multi/main/repair parts} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/repair parts}}}\\ \hline
-\texttt{multi/main/sailing boat} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/sailing boat}}}\\ \hline
-\texttt{multi/main/sensor} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/sensor}}}\\ \hline
-\texttt{multi/main/signal} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/signal/neutral}}}\\ \hline
-\texttt{multi/main/transportation} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/transportation}}}\\ \hline
-\texttt{multi/main/victim of an attempted crime} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/victim of an attempted crime}}}\\ \hline
-\texttt{multi/main/water} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/water}}}\\ \hline
-\texttt{multi/main/water purification} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/main/water purification}}}\\ \hline
-\texttt{multi/upper/naval} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upper/naval}}}\\ \hline
-\texttt{multi/upper/medic} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upper/medic}}}\\ \hline
-\texttt{multi/upper/runway} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upper/runway}}}\\ \hline
-\texttt{multi/lower/pack animal} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/lower/pack animal}}}\\ \hline
-\texttt{multi/upperlower/maintenance} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upperlower/maintenance}}}\\ \hline
-\texttt{multi/upperlower/railroad} & \adjustbox{valign=m,margin=0.25cm}{\tikz{\pic{MilSymb multi/upperlower/railroad}}}\\ \hline
-\multicolumn{2}{c}{}\\
-\caption{Table of Multiple Class Icons and Modifiers}
+\thead{Name} & \thead{Glyph}\\ 
+\hline
+!{"\n".join(multi)}
+\caption{Table of Multiple Class Icons and Modifiers.}
 \end{tabularx}
-
-
+\end{pysub}
 \subsubsection{Hidden Glyphs}
 
 There are some \texttt{.pic} that are not used as an icon or modifier directly, but are used to construct other icons or modifiers because they are used multiple times.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|}
+\begin{pysub}
+\begin{tabularx}{\linewidth}{|c|c|}
 \hline
-\thead{Name} & \thead{Glyph}\\ \hline
-\pyc{print("\n".join(hidden))}
-\end{tabular}
-\caption{Table of Hidden Glyphs}
-\end{table}
+\thead{Name} & \thead{Glyph}\\ 
+\hline
+!{"\n".join(hidden)}
+\caption{Table of Hidden Glyphs.}
+\end{tabularx}
+\end{pysub}
 
 \begin{landscape}
 

@@ -7,4 +7,6 @@
 *.out
 *.fdb_latexmk
 *.pyc
+*.zip
+*.fls
 pythontex*
