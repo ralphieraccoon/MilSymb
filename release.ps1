@@ -15,6 +15,9 @@ $lastmod = git log -1 --format=%cs
 }  | Set-Content milsymb.tex
 
 Copy-Item -Path "LICENCE.md","README.md","milsymb.sty","milsymb.pdf","milsymb.tex","manual_examples" -Destination (New-Item -Type Directory "milsymb") -Recurse -Force
+Set-Location -Path "milsymb"
+ForEach-Object -InputObject "LICENCE.md","README.md","milsymb.sty","milsymb.tex","manual_examples/mef.tex" -Process {((Get-Content $_) -join "`n") + "`n" | Set-Content -NoNewline $_}
+Set-Location -Path "..\"
 Compress-Archive -Path "milsymb" -Destination "milsymb.zip" -Force 
 Remove-Item -Recurse ".\milsymb\"
 
