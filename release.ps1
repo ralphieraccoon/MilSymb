@@ -17,5 +17,5 @@ Copy-Item -Path "LICENCE.md","README.md","milsymb.sty","milsymb.pdf","milsymb.te
 Compress-Archive -Path "milsymb" -Destination "milsymb.zip" -Force 
 Remove-Item -Recurse ".\milsymb\"
 
-Set-Content release_${ver}_description.txt -Value $desc
+Set-Content release_${ver}_description.txt -Value "$ver $lastmod $desc"
 
