@@ -1,0 +1,71 @@
+%% BOILERPLATE %%
+%<*boilerplate>
+\newcommand*{\clipfriendlyhex}{
+    (30:0.55) -- (90:0.55) -- (150:0.55) -- (210:0.55) -- (270:0.55) -- (330:0.55) -- cycle
+}
+%</boilerplate>
+%% FRAMES %%
+%<*frames>
+% DISMOUNTED INDUVIDUAL %
+MilSymb dismounted individual/none/.pic={
+\pic{MilSymb air/none};},
+MilSymb dismounted individual/friendly/.pic={
+        \draw [fill=MilSymb@fill, \MilSymb@line] (30:0.55) -- (90:0.55) -- (150:0.55) -- (210:0.55) -- (270:0.55) -- (330:0.55) -- cycle;},
+MilSymb dismounted individual/hostile/.pic={
+        \pic{MilSymb land/hostile};},
+MilSymb dismounted individual/neutral/.pic={
+        \pic{MilSymb land/neutral};},
+MilSymb dismounted individual/unknown/.pic={
+        \pic{MilSymb land/unknown};},
+%</frames>
+%% AIR SYMBOLS %%
+%% COMMANDS %%
+% NEW COMMANDS %
+%<*commands>
+% DISMOUNTED INDUVIDUAL %
+\DeclareDocumentCommand\MilDismountedInduvidual{ o D(){0,0} d() g}{
+    \tikzset{
+        /MilSymb/.cd,
+        selectedfaction/.store in=\MilSymb@selectedfaction,
+        faction/.is choice,
+        faction/none/.style={/MilSymb/.cd, shape=dismounted individual/none, fill=white, selectedfaction=neutral},
+        faction/friendly/.style={/MilSymb/.cd, shape=dismounted individual/friendly, fill=friendlyA, selectedfaction=friendly},
+        faction/hostile/.style={/MilSymb/.cd, shape=dismounted individual/hostile, fill=hostileA, selectedfaction=hostile},
+        faction/neutral/.style={/MilSymb/.cd, shape=dismounted individual/neutral, fill=neutralA, selectedfaction=neutral},
+        faction/unknown/.style={/MilSymb/.cd, shape=dismounted individual/unknown, fill=unknownA, selectedfaction=unknown},
+        frame status=normal,
+        scale=1,
+        faction=friendly,
+        %main=none,
+        %upper=none,
+    }
+    \begin{scope}[shift={(##2)}, scale=\MilSymb@scale, transform shape]
+        \ifluatex
+            \fontspec{TeX Gyre Heros Bold}
+        \else
+            \fontfamily{phv}\fontseries{bx}\selectfont
+        \fi
+        \begin{scope}[local bounding box=##3]
+            \pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
+        \end{scope}
+        % \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
+        % \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
+        \fontsize{6}{0}\selectfont
+        % \ifthenelse{\isequivalentto{\MilSymb@SymbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbAC};}
+        % \ifthenelse{\isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbG};}
+        % \ifthenelse{\isequivalentto{\MilSymb@SymbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbH};}
+        % \ifthenelse{\isequivalentto{\MilSymb@SymbJ}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbJ};}
+        % \ifthenelse{\isequivalentto{\MilSymb@SymbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@SymbW};}
+        % \ifthenelse{\isequivalentto{\MilSymb@SymbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@SymbY};}
+    \end{scope}
+    \IfNoValueF{##4}{\node [anchor=west, align=left] at (##3.east) {##4};}
+}
+%</commands>
+% COMMAND TIKZSET PATCHES % 
+%<*patches.air>
+operational condition/.is choice,
+operational condition/fully capable/.code={},
+operational condition/damaged or rendered ineffective/.code={postaction={\draw[thick] (-0.75,-1.25) -- (0.75,1.25);}},
+operational condition/destroyed/.code={postaction={\draw[thick] (-0.75,-1.25) -- (0.75,1.25) (0.75,-1.25) -- (-0.75,1.25);}},
+operartional conidtion=fully capable,
+%</patches.air>

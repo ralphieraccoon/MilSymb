@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MilSymb Style File									    	                        %%
+%% MilSymb Style File									    	              %%
 %%--------------------                                                        %%
 %% Version: 1.03                                                              %%
 %% Last Updated: 2023-03-27                                                   %%
@@ -28,6 +28,7 @@
 \RequirePackage{xstring}
 \RequirePackage{textcomp}
 \RequirePackage{pgfopts}
+\RequirePackage{catchfilebetweentags}
 \definecolor{friendlyA}{RGB}{128, 224, 255}
 \definecolor{hostileA}{RGB}{255, 128, 128}
 \definecolor{neutralA}{RGB}{170, 255, 170}
@@ -175,17 +176,6 @@ MilSymb activity/unknown/.pic={
 			\fill (0.705, 0.075) rectangle (0.555, -0.075);
 			\fill (-0.705, 0.075) rectangle (-0.555, -0.075);
 		\end{scope}},
-% DISMOUNTED INDUVIDUAL %
-MilSymb dismounted individual/none/.pic={
-		\pic{MilSymb air/none};},
-MilSymb dismounted individual/friendly/.pic={
-		\draw [fill=MilSymb@fill, \MilSymb@line] (30:0.55) -- (90:0.55) -- (150:0.55) -- (210:0.55) -- (270:0.55) -- (330:0.55) -- cycle;},
-MilSymb dismounted individual/hostile/.pic={
-		\pic{MilSymb land/hostile};},
-MilSymb dismounted individual/neutral/.pic={
-		\pic{MilSymb land/neutral};},
-MilSymb dismounted individual/unknown/.pic={
-		\pic{MilSymb land/unknown};},
 %% AIR SYMBOLS %%
 % MAIN %
 MilSymb air/main/civilian fixed wing/.pic={
@@ -1974,9 +1964,9 @@ MilSymb multi/main/quartermaster/.pic={
 		\draw (-0.35, -0.075) -- (-0.2, -0.075);
 	},
 MilSymb multi/main/engineer/.pic={
-\draw (0.4, -0.2) -- (0.4, 0.2) -- (-0.4, 0.2) -- (-0.4, -0.2);
-\draw (0, 0.2) -- (0, -0.2);
-},
+		\draw (0.4, -0.2) -- (0.4, 0.2) -- (-0.4, 0.2) -- (-0.4, -0.2);
+		\draw (0, 0.2) -- (0, -0.2);
+	},
 MilSymb multi/main/major end/.pic={
 		\draw [thick] (0.3, 0.05) arc (55:125:0.5);
 		\fill (0.35, 0) circle (0.1);
@@ -2118,15 +2108,10 @@ MilSymb supply/text/.pic={
 		\fontsize{10}{0}\selectfont
 		\node {#1};
 	},
-%% DISMOUNTED INDUVIDUAL SYMBOLS %%
-% FULLFRAME %
-MilSymb dismounted induvidual/main/infantry/friendly/.pic={
-		\draw
-	}
 %% TEMPLATES %%
 MilSymb text/normal/.pic={
-		\fontsize{10}{0}\selectfont
-		\node {#1};},
+\fontsize{10}{0}\selectfont
+\node {#1};},
 MilSymb text/squashed/.pic={
 		\fontsize{10}{0}\selectfont
 		\node [xscale=0.7] {#1};},
@@ -2160,9 +2145,6 @@ fill=gray,
 \newcommand*{\clipfriendly}{
 	(-0.75, -0.5) rectangle (0.75, 0.5)
 }
-\newcommand*{\clipfriendlyhex}{
-	(30:0.55) -- (90:0.55) -- (150:0.55) -- (210:0.55) -- (270:0.55) -- (330:0.55) -- cycle
-}
 \newcommand*{\cliphostile}{
 	(0, -0.705) -- (-0.705, 0) -- (0, 0.705) -- (0.705, 0) -- cycle
 }
@@ -2179,6 +2161,7 @@ fill=gray,
 \newacro{mediumS}[M]{}
 \newacro{lowS}[L]{}
 %% COMMANDS %%
+\makeatletter
 \NewDocumentCommand\LoadMilSymbCommands{ m }{
 	\DeclareDocumentCommand\MilAir{ o D(){0,0} d() g}{
 		\tikzset{%	
@@ -2293,6 +2276,7 @@ fill=gray,
 			main=none,
 			upper=none,
 			lower=none,
+			\ExecuteMetaData[milsymb.6D.tex]{patches.air}
 			##1,
 		}%
 		\begin{scope}[shift={(##2)}, local bounding box=##3, scale=\MilSymb@scale, transform shape]
@@ -3738,49 +3722,6 @@ speed=,
 		\ifthenelse{\isequivalentto{\MilSymb@SymbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@SymbY};}
 	\end{scope}
 	\IfNoValueF{##4}{\node [anchor=west, align=left] at (##3.east) {##4};}
-}
-\ifthenelse{\isequivalentto{#1}{D}}{
-	\DeclareDocumentCommand\MilDismountedInduvidual{ o D(){0,0} d() g}{
-		\tikzset{
-			/MilSymb/.cd,
-			selectedfaction/.store in=\MilSymb@selectedfaction,
-			faction/.is choice,
-			faction/none/.style={/MilSymb/.cd, shape=dismounted individual/none, fill=white, selectedfaction=neutral},
-			faction/friendly/.style={/MilSymb/.cd, shape=dismounted individual/friendly, fill=friendlyA, selectedfaction=friendly},
-			faction/hostile/.style={/MilSymb/.cd, shape=dismounted individual/hostile, fill=hostileA, selectedfaction=hostile},
-			faction/neutral/.style={/MilSymb/.cd, shape=dismounted individual/neutral, fill=neutralA, selectedfaction=neutral},
-			faction/unknown/.style={/MilSymb/.cd, shape=dismounted individual/unknown, fill=unknownA, selectedfaction=unknown},
-			frame status=normal,
-			scale=1,
-			faction=friendly,
-			%main=none,
-			%upper=none,
-		}
-		\begin{scope}[shift={(##2)}, scale=\MilSymb@scale, transform shape]
-			\ifluatex
-				\fontspec{TeX Gyre Heros Bold}
-			\else
-				\fontfamily{phv}\fontseries{bx}\selectfont
-			\fi
-			\begin{scope}[local bounding box=##3]
-				\pic [local bounding box=M] {MilSymb \MilSymb@shape}; %Draw background shape
-			\end{scope}
-			% \pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
-			% \pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
-			\fontsize{6}{0}\selectfont
-			% \ifthenelse{\isequivalentto{\MilSymb@SymbAC}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbAC};}
-			% \ifthenelse{\isequivalentto{\MilSymb@SymbG}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbG};}
-			% \ifthenelse{\isequivalentto{\MilSymb@SymbH}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbH};}
-			% \ifthenelse{\isequivalentto{\MilSymb@SymbJ}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbJ};}
-			% \ifthenelse{\isequivalentto{\MilSymb@SymbW}{\empty}}{}{\node [anchor=east] at ($(M.north west)!-0.17!(M.south west)$) {\MilSymb@SymbW};}
-			% \ifthenelse{\isequivalentto{\MilSymb@SymbY}{\empty}}{}{\node [anchor=east] at ($(M.north west)!.17!(M.south west)$) {\MilSymb@SymbY};}
-		\end{scope}
-		\IfNoValueF{##4}{\node [anchor=west, align=left] at (##3.east) {##4};}
-	}
-}{
-	\DeclareDocumentCommand\MilDismountedInduvidual{ o D(){0,0} d() g}{
-		\PackageError{milsymb}{Command "MilDismountedInduvidual" is only available in version D, current version is #1}{You can change versions using the "SetMilsymbVersion" command, or as the "version" package option.}
-	}
 }
 }
 \newcounter{exitem}
