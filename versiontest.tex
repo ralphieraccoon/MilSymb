@@ -1,6 +1,7 @@
 \documentclass{standalone}
 
 \usepackage[version=D]{milsymb}
+%\usepackage{catchfilebetweentags}
 
 \begin{document}
 
@@ -22,8 +23,10 @@
 
 Test Text.
 
+%\ExecuteMetaData[milsymb.6D.sty]{patches.air}
+
 \begin{tikzpicture}
-    \MilAir[faction=friendly, main=military fixed wing, upper=jammer, lower=light, scale=1, speed leader={1}{2}]
+    \MilInstallation[faction=friendly, alternate operational condition=destroyed]
 \end{tikzpicture}
 
 % \begin{tikzpicture}

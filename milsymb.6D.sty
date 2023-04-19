@@ -1,6 +1,6 @@
 %% BOILERPLATE %%
 %<*boilerplate>
-\newcommand*{\clipfriendlyhex}{
+\providecommand*{\clipfriendlyhex}{
     (30:0.55) -- (90:0.55) -- (150:0.55) -- (210:0.55) -- (270:0.55) -- (330:0.55) -- cycle
 }
 %</boilerplate>
@@ -61,11 +61,89 @@ MilSymb dismounted individual/unknown/.pic={
     \IfNoValueF{##4}{\node [anchor=west, align=left] at (##3.east) {##4};}
 }
 %</commands>
-% COMMAND TIKZSET PATCHES % 
-%<*patches.air>
-operational condition/.is choice,
-operational condition/fully capable/.code={},
-operational condition/damaged or rendered ineffective/.code={postaction={\draw[thick] (-0.75,-1.25) -- (0.75,1.25);}},
-operational condition/destroyed/.code={postaction={\draw[thick] (-0.75,-1.25) -- (0.75,1.25) (0.75,-1.25) -- (-0.75,1.25);}},
-operartional conidtion=fully capable,
-%</patches.air>
+% COMMAND TIKZSET KEYS % 
+%<*keys.air>
+\tikzset{
+    /MilSymb/.cd,
+    condition/.store in=\MilSymb@condition,
+    operational condition/.is choice,
+    operational condition/fully capable/.style={/MilSymb/.cd, condition=},
+    operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$);}},
+    operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$) ($(M.north west)+(0.2, 0.1)$) -- ($(M.south east)+(-0.2, -0.1)$);}},    
+    operational condition=fully capable,
+    alternate operational condition/.is choice,
+    alternate operational condition/none/.style={/MilSymb/.cd, condition=},
+    alternate operational condition/fully capable/.style={/MilSymb/.cd, condition={\draw[fill=green] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[fill=yellow] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[fill=red] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/full to capacity/.style={/MilSymb/.cd, condition={\draw[fill=blue] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition=none,
+}
+%</keys.air>
+%<*keys.equipment>
+\tikzset{
+    /MilSymb/.cd,
+    condition/.store in=\MilSymb@condition,
+    operational condition/.is choice,
+    operational condition/fully capable/.style={/MilSymb/.cd, condition=},
+    operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$);}},
+    operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$) ($(M.north west)+(0.2, 0.1)$) -- ($(M.south east)+(-0.2, -0.1)$);}},    
+    operational condition=fully capable,
+    alternate operational condition/.is choice,
+    alternate operational condition/none/.style={/MilSymb/.cd, condition=},
+    alternate operational condition/fully capable/.style={/MilSymb/.cd, condition={\draw[fill=green] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[fill=yellow] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[fill=red] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/full to capacity/.style={/MilSymb/.cd, condition={\draw[fill=blue] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition=none,
+}
+%</keys.equipment>
+%<*keys.installation>
+\tikzset{
+    /MilSymb/.cd,
+    condition/.store in=\MilSymb@condition,
+    operational condition/.is choice,
+    operational condition/fully capable/.style={/MilSymb/.cd, condition=},
+    operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$);}},
+    operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$) ($(M.north west)+(0.2, 0.1)$) -- ($(M.south east)+(-0.2, -0.1)$);}},    
+    operational condition=fully capable,
+    alternate operational condition/.is choice,
+    alternate operational condition/none/.style={/MilSymb/.cd, condition=},
+    alternate operational condition/fully capable/.style={/MilSymb/.cd, condition={\draw[fill=green] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[fill=yellow] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[fill=red] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/full to capacity/.style={/MilSymb/.cd, condition={\draw[fill=blue] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition=none,
+}
+%</keys.installation>
+%<*keys.space>
+\tikzset{
+    /MilSymb/.cd,
+    condition/.store in=\MilSymb@condition,
+    operational condition/.is choice,
+    operational condition/fully capable/.style={/MilSymb/.cd, condition=},
+    operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$);}},
+    operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[ultra thick] ($(M.north east)+(-0.2, 0.1)$) -- ($(M.south west)+(0.2, -0.1)$) ($(M.north west)+(0.2, 0.1)$) -- ($(M.south east)+(-0.2, -0.1)$);}},
+    operational condition=fully capable,
+    alternate operational condition/.is choice,
+    alternate operational condition/none/.style={/MilSymb/.cd, condition=},
+    alternate operational condition/fully capable/.style={/MilSymb/.cd, condition={\draw[fill=green] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/damaged or rendered ineffective/.style={/MilSymb/.cd, condition={\draw[fill=yellow] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/destroyed/.style={/MilSymb/.cd, condition={\draw[fill=red] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition/full to capacity/.style={/MilSymb/.cd, condition={\draw[fill=blue] ($(M.south west) + (0,-0.05)$) rectangle ($(M.south east) + (0,-0.25)$);}},
+    alternate operational condition=none,
+}
+%</keys.space>
+% COMMAND POST %
+%<*post.air>
+\MilSymb@condition
+%</post.air>
+%<*post.equipment>
+\MilSymb@condition
+%</post.equipment>
+%<*post.installation>
+\MilSymb@condition
+%</post.installation>
+%<*post.space>
+\MilSymb@condition
+%</post.space>

@@ -2161,9 +2161,12 @@ fill=gray,
 \newacro{mediumS}[M]{}
 \newacro{lowS}[L]{}
 %% COMMANDS %%
-\makeatletter
+%\makeatletter
 \NewDocumentCommand\LoadMilSymbCommands{ m }{
+	%% BOILERPLATE %%
+	\ExecuteMetaData[milsymb.6#1.sty]{boilerplate}
 	\DeclareDocumentCommand\MilAir{ o D(){0,0} d() g}{
+		\ExecuteMetaData[milsymb.6#1.sty]{keys.air}
 		\tikzset{%	
 			/MilSymb/.cd,
 			faction/.is choice,
@@ -2276,7 +2279,6 @@ fill=gray,
 			main=none,
 			upper=none,
 			lower=none,
-			\ExecuteMetaData[milsymb.6D.tex]{patches.air}
 			##1,
 		}%
 		\begin{scope}[shift={(##2)}, local bounding box=##3, scale=\MilSymb@scale, transform shape]
@@ -2291,6 +2293,7 @@ fill=gray,
 			\pic {MilSymb \MilSymb@SymbC={\MilSymb@SymbCT}}; %Draw main Symbol
 			\pic at (0,0.34) {MilSymb \MilSymb@SymbU={\MilSymb@SymbUT}}; %Draw upper Symbol
 			\pic at (0,-0.34) {MilSymb \MilSymb@SymbL={\MilSymb@SymbLT}}; %Draw lower Symbol
+			\ExecuteMetaData[milsymb.6#1.sty]{post.air}
 			\fontsize{6}{0}\selectfont
 			\ifthenelse{\isequivalentto{\MilSymb@SymbA}{\empty}}{}{\node [anchor=west] at ($(M.north east)!-0.17!(M.south east)$) {\MilSymb@SymbA};}
 			\ifthenelse{\isequivalentto{\MilSymb@SymbB}{\empty}}{}{\node [anchor=west] at ($(M.north east)!.17!(M.south east)$) {\MilSymb@SymbB};}
@@ -2810,6 +2813,7 @@ fill=gray,
 		\end{scope}}
 	\newif\ifnoframe
 		\DeclareDocumentCommand\MilEquipment{ o D(){0,0} d() g}{
+			\ExecuteMetaData[milsymb.6#1.sty]{keys.equipment}
 			\tikzset{%
 				/MilSymb/.cd,
 				faction/.is choice,
@@ -3006,11 +3010,13 @@ fill=gray,
 				\ifthenelse{\isequivalentto{\MilSymb@SymbV}{\empty} \AND \isequivalentto{\MilSymb@SymbAD}{\empty} \AND \isequivalentto{\MilSymb@SymbAF}{\empty}}{}{\node [anchor=east] at (Q.west |- M.west) {\MilSymb@SymbV\MilSymb@SymbAD\MilSymb@SymbAF};}
 				\ifthenelse{\isequivalentto{\MilSymb@SymbT}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!0.83!(M.south west)$}) {\MilSymb@SymbT};}
 				\ifthenelse{\isequivalentto{\MilSymb@SymbZ}{\empty}}{}{\node [anchor=east] at ({Q.west} |- {$(M.north west)!1.17!(M.south west)$}) {\MilSymb@SymbZ};}
+				\ExecuteMetaData[milsymb.6#1.sty]{post.equipment}
 			\end{scope}
 			\IfNoValueF{##4}{\node [anchor=west, align=left] at (##3.east) {##4};}
 		}
 		\newif\ifheadquarters
 			\DeclareDocumentCommand\MilInstallation{ o D(){0,0} d() g}{
+			\ExecuteMetaData[milsymb.6#1.sty]{keys.equipment}	
 			\tikzset{%
 			/MilSymb/.cd,
 			selectedfaction/.store in=\MilSymb@selectedfaction,
@@ -3125,6 +3131,7 @@ speed=,
 	\ifthenelse{\isequivalentto{\MilSymb@SymbAI}{\empty}}{}{\node [anchor=east] at (M.west) {\MilSymb@SymbAI};}
 	\ifthenelse{\isequivalentto{\MilSymb@SymbT}{\empty}}{}{\node [anchor=east] at ($(M.north west)!0.83!(M.south west)$) {\MilSymb@SymbT};}
 	\ifthenelse{\isequivalentto{\MilSymb@SymbZ}{\empty}}{}{\node [anchor=east] at ($(M.north west)!1.17!(M.south west)$) {\MilSymb@SymbZ};}
+	\ExecuteMetaData[milsymb.6#1.sty]{post.installation}
 \end{scope}
 \IfNoValueF{##4}{\node [anchor=west, align=left] at (##3.east) {##4};}
 }
@@ -3585,6 +3592,7 @@ speed=,
 		lower=none,
 		##1,
 	}%
+	\ExecuteMetaData[milsymb.6#1.sty]{keys.space}
 	\begin{scope}[shift={(##2)}, scale=\MilSymb@scale, transform shape]
 		\ifluatex
 			\fontspec{TeX Gyre Heros Bold}
@@ -3603,6 +3611,7 @@ speed=,
 		\ifthenelse{\isequivalentto{\MilSymb@SymbD}{\empty}}{}{\node [anchor=west] at (M.east) {\MilSymb@SymbD};}
 		\ifthenelse{\isequivalentto{\MilSymb@SymbE}{\empty}}{}{\node [anchor=west] at ($(M.north east)!0.83!(M.south east)$) {\MilSymb@SymbE};}
 		\ifthenelse{\isequivalentto{\MilSymb@SymbF}{\empty}}{}{\node [anchor=west] at ($(M.north east)!1.17!(M.south east)$) {\MilSymb@SymbF};}
+		\ExecuteMetaData[milsymb.6#1.sty]{post.space}
 	\end{scope}
 	\IfNoValueF{##4}{\node [anchor=west, align=left] at (##3.east) {##4};}
 }
@@ -3726,7 +3735,7 @@ speed=,
 }
 \newcounter{exitem}
 \newlength{\itemlength}
-\NewDocumentCommand\SetMilSymbVersion{m}{
+\NewDocumentCommand\SetMilSymbVersion{ m }{
 	\IfSubStr{,C,D,}{,#1,}{
 		\PackageInfo{milsymb}{Version changed to #1}
 		\LoadMilSymbCommands{#1}
